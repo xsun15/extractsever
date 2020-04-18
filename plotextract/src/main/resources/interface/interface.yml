@@ -1,0 +1,16 @@
+modelextract:
+  ip: "http://192.168.24.75:5000"
+  predictcasecausermdl: "/model/predict/casecause"
+  predictcaselistrmdl: "/model/predict/casecauseList"
+  predictfeaturermdl: "/model/inner/getlabels"
+  predictfeaturepb: "/model/pb-predict"
+  predictfeaturepbnew: "/pbmodel/extract/sentence/feature"
+  predictcrimecountpb: "/model/pb-predict/crimecount"
+  recognizemoney: "/model/recognize/money"
+  recognizemoneypb: "/model/recognize/money/pbmodel"
+portraitextract:
+  ip: "http://123.124.130.22:8762"
+  docsplitraw: "/document/split/raw"
+  docsplit: "/document/split"
+  docportray: "/document/portrait"
+  basicinfo: "/predict/basicInfo"

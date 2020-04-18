@@ -1,0 +1,70 @@
+amountextraction:
+  name: "犯罪数额"
+  type: "私有"
+  code: "1001"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+NumberOfDepositorsextraction:
+  name: "存款人数量"
+  type: "私有"
+  code: "1002"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+DirectEconomicLossextraction:
+  name: "给存款人造成的直接经济损失数额"
+  type: "私有"
+  code: "1003"
+  positivepurerule:
+  - "经济损失"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+BadSocialImpactextraction:
+  name: "造成恶劣社会影响"
+  type: "共有纯正则"
+  code: "1004"
+  positivepurerule:
+    - "恶劣社会影响"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+CausingSuicideAndMentalDisorderextraction:
+  name: "集资参与人自杀、精神失常等严重后果"
+  type: "私有"
+  code: "1005"
+  positivepurerule:
+    - "集资参与人自杀、精神失常等严重后果"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+AmountReturnedextraction:
+  name: "案发前后已归还的数额"
+  type: "私有"
+  code: "1006"
+  positivepurerule:
+  - "(退还|返还|退缴|发还|退赔)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+usedForNormalProductionactivitiesAndTimelyClearTheAbsorbedFundsextraction:
+  name: "主要用于正常的生产经营活动，（且）能够及时清退所吸收资金"
+  type: "共有纯正则"
+  code: "1007"
+  positivepurerule:
+    - "主要用于正常的生产经营活动，（且）能够及时清退所吸收资金"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+jointCrimeAndRefundedInTimeextraction:
+  name: "为他人向社会公众非法吸收资金提供帮助，从中收取代理费、好处费、返点费、佣金、提成等费用，构成共同犯罪，能够及时退缴上述费用的"
+  type: "共有纯正则"
+  code: "1008"
+  positivepurerule:
+    - "为他人向社会公众非法吸收资金提供帮助，从中收取代理费、好处费、返点费、佣金、提成等费用，构成共同犯罪，能够及时退缴上述费用的"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:

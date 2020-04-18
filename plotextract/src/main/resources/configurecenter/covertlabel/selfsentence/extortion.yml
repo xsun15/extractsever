@@ -1,0 +1,184 @@
+extortionActionextraction:
+  name: "敲诈勒索动作"
+  code: "1001"
+  rule: "1001"
+disabledextraction:
+  name: "勒索残疾人"
+  code: "1002"
+  rule: "1002"
+elderextraction:
+  name: "勒索老年人"
+  code: "1003"
+  rule: "1003"
+lossLaborAbilityextraction:
+  name: "勒索丧失劳动能力的人"
+  code: "1004"
+  rule: "1004"
+minorextraction:
+  name: "勒索未成年人"
+  code: "1005"
+  rule: "1005"
+threatSetFireextraction:
+  name: "威胁放火"
+  code: "1006"
+  rule: "1006"
+threatExplosionextraction:
+  name: "威胁爆炸"
+  code: "1007"
+  rule: "1007"
+threatPublicSafetyextraction:
+  name: "威胁公共安全"
+  code: "1008"
+  rule: "1008"
+threatKillextraction:
+  name: "威胁杀人"
+  code: "1009"
+  rule: "1009"
+threatKidnapextraction:
+  name: "威胁绑架"
+  code: "1010"
+  rule: "1010"
+threatPersonRightextraction:
+  name: "威胁侵犯公民人身权利"
+  code: "1011"
+  rule: "1011"
+threatUnderworldextraction:
+  name: "黑社会"
+  code: "1012"
+  rule: "1012"
+pretendOfficialextraction:
+  name: "利用或冒充国家机关工作人员、军人、新闻工作者等特殊身份"
+  code: "1013"
+  rule: "1013"
+causingMentalDisorderextraction:
+  name: "造成被害人精神失常或其他严重后果"
+  code: "1014"
+  rule: "1014"
+affectProdutionextraction:
+  name: "严重影响生产经营"
+  code: "1015"
+  rule: "1015"
+victimSuicideextraction:
+  name: "被害人自杀"
+  code: "1016"
+  rule: "1016"
+forIllegalextraction:
+  name: "为违法活动而勒索"
+  code: "1017"
+  rule: "1017"
+affectWorkLifeextraction:
+  name: "导致被害人无法正常工作生活"
+  code: "1018"
+  rule: "1018"
+folkConflictextraction:
+  name: "民间纠纷引起"
+  code: "1019"
+  rule: "1019"
+forLiveextraction:
+  name: "生活所迫、学习、治病急需"
+  code: "1020"
+  rule: "1020"
+relativeextraction:
+  name: "勒索家庭成员或近亲属"
+  code: "1021"
+  rule: "1021"
+escalationOnPurposeextraction:
+  name: "故意扩大事态"
+  code: "1022"
+  rule: "1022"
+teachingAimAtMedicalStaffextraction:
+  name: "教唆他人实施针对医疗机构或者医务人员的敲诈勒索行为"
+  code: "1023"
+  rule: "1023"
+inTheNameOfMedicalDisputeextraction:
+  name: "以受他人委托处理医疗纠纷为名实施敲诈勒索"
+  code: "1024"
+  rule: "1024"
+numberofseriousinjuryextraction:
+  name: "被害人存在过错"
+  code: "1025"
+  rule: "1025"
+numberofseriousinjuryextract:
+  name: "重伤人数"
+  code: "1026"
+  rule: "1026"
+numberofdeathextract:
+  name: "死亡人数"
+  code: "1027"
+  rule: "1027"
+numberofminorinjuryextract:
+  name: "轻伤人数"
+  code: "1028"
+  rule: "1028"
+numberofsligthinjuryextract:
+  name: "轻微伤人数"
+  code: "1029"
+  rule: "1029"
+firstleveldisabilityextract:
+  name: "一级伤残人数"
+  code: "1030"
+  rule: "1030"
+secondleveldisabilityextract:
+  name: "二级伤残人数"
+  code: "1031"
+  rule: "1031"
+thirdleveldisabilityextract:
+  name: "三级伤残人数"
+  code: "1032"
+  rule: "1032"
+fourthleveldisabilityextract:
+  name: "四级伤残人数"
+  code: "1033"
+  rule: "1033"
+fifthleveldisabilityextract:
+  name: "五级伤残人数"
+  code: "1034"
+  rule: "1034"
+sixthleveldisabilityextract:
+  name: "六级伤残人数"
+  code: "1035"
+  rule: "1035"
+seventhleveldisabilityextract:
+  name: "七级伤残人数"
+  code: "1036"
+  rule: "1036"
+eigthleveldisabilityextract:
+  name: "八级伤残人数"
+  code: "1037"
+  rule: "1037"
+ninthleveldisabilityextract:
+  name: "九级伤残人数"
+  code: "1038"
+  rule: "1038"
+tenthleveldisabilityextract:
+  name: "十级伤残人数"
+  code: "1039"
+  rule: "1039"
+firstlevelseriousinjurynumberextract:
+  name: "重伤一级人数"
+  code: "1040"
+  rule: "1040"
+secondlevelseriousinjurynumberextract:
+  name: "重伤二级人数"
+  code: "1041"
+  rule: "1041"
+firstlevelminorinjurynumberextract:
+  name: "轻伤一级人数"
+  code: "1042"
+  rule: "1042"
+secondlevelminorinjurynumberextract:
+  name: "轻伤二级人数"
+  code: "1043"
+  rule: "1043"
+punishedbycourtextorsionextract:
+  name: "因敲诈勒索受过刑事处罚的"
+  code: "1044"
+  rule: "1044"
+punishedbygovernextorsionextract:
+  name: "一年内因敲诈勒索受过行政处罚的"
+  code: "1045"
+  rule: "1045"
+amountofmoneyextorsionextract:
+  name: "敲诈勒索数额"
+  code: "1046"
+  rule: "1046"

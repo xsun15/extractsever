@@ -1,0 +1,108 @@
+usingforcemethodextract:
+  name: "使用强制手段（暴力、胁迫、其他手段：麻醉）"
+  rule: "1001"
+suicide:
+  name: "引起他人自杀"
+  rule: "1004"
+affectLife:
+  name: "严重影响他人工作、生活、生产、经营"
+  rule: "1005"
+publicDisorder:
+  name: "造成公共场所秩序严重混乱"
+  rule: "1006"
+strongTake:
+  name: "强拿硬要的"
+  rule: "1007"
+damagedOccupied:
+  name: "任意损毁、占用公私财物的"
+  rule: "1008"
+escalationOnPurpose:
+  name: "故意扩大事态的"
+  rule: "1010"
+teachingAimAtMedicalStaff:
+  name: "教唆他人实施针对医疗机构或者医务人员"
+  rule: "1011"
+inTheNameOfMedicalDispute:
+  name: "以受他人委托处理医疗纠纷为名"
+  rule: "1012"
+underworld:
+  name: "带有黑社会性质的"
+  rule: "1013"
+organize:
+  name: "组织、控制他人寻衅滋事的"
+  rule: "1014"
+minor:
+  name: "组织、控制未成年人寻衅滋事的"
+  rule: "1015"
+beatAction:
+  name: "殴打他人的"
+  rule: "1016"
+withWeapon:
+  name: "持械"
+  rule: "1017"
+threatAction:
+  name: "追逐、拦截、辱骂、恐吓"
+  rule: "1018"
+vulnerableGroup:
+  name: "犯罪对象为弱势群体"
+  rule: "1019"
+numberofseriousinjuryextract:
+  name: "重伤人数"
+  rule: "1020"
+numberofdeathextract:
+  name: "死亡人数"
+  rule: "1021"
+numberofminorinjuryextract:
+  name: "轻伤人数"
+  rule: "1022"
+numberofsligthinjuryextract:
+  name: "轻微伤人数"
+  rule: "1023"
+firstleveldisabilityextract:
+  name: "一级伤残人数"
+  rule: "1024"
+secondleveldisabilityextract:
+  name: "二级伤残人数"
+  rule: "1025"
+thirdleveldisabilityextract:
+  name: "三级伤残人数"
+  rule: "1026"
+fourthleveldisabilityextract:
+  name: "四级伤残人数"
+  rule: "1027"
+fifthleveldisabilityextract:
+  name: "五级伤残人数"
+  rule: "1021"
+sixthleveldisabilityextract:
+  name: "六级伤残人数"
+  rule: "1028"
+seventhleveldisabilityextract:
+  name: "七级伤残人数"
+  rule: "1029"
+eigthleveldisabilityextract:
+  name: "八级伤残人数"
+  rule: "1030"
+ninthleveldisabilityextract:
+  name: "九级伤残人数"
+  rule: "1031"
+tenthleveldisabilityextract:
+  name: "十级伤残人数"
+  rule: "1032"
+firstlevelseriousinjurynumberextract:
+  name: "重伤一级人数"
+  rule: "1033"
+secondlevelseriousinjurynumberextract:
+  name: "重伤二级人数"
+  rule: "1034"
+firstlevelminorinjurynumberextract:
+  name: "轻伤一级人数"
+  rule: "1035"
+secondlevelminorinjurynumberextract:
+  name: "轻伤二级人数"
+  rule: "1036"
+punishedbycourtfindtroubleextract:
+  name: "因寻衅滋事受过刑事处罚的"
+  rule: "1037"
+punishedbygovernfindtroubleextract:
+  name: "一年内因寻衅滋事受过行政处罚的"
+  rule: "1038"

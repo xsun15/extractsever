@@ -1,0 +1,136 @@
+numberofminorrapeextract:
+    name: "轻伤人数"
+    rule: "1027"
+numberofslightrapeextract:
+    name: "轻微伤人数"
+    rule: "1028"
+numberofseverelyinjuriedrapeextract:
+    name: "重伤人数"
+    rule: "1025"
+useofcoercionrapeextract:
+    name: "使用强制手段"
+    rule: "1001"
+numberofrapedwomenrapeextract:
+    name: "强奸妇女人数"
+    rule: "1002"
+numberofrapedgirlrapeextract:
+    name: "强奸幼女人数"
+    rule: "1003"
+rapeinpublicplacesrapeextract:
+    name: "在公共场所当众强奸"
+    rule: "1004"
+rapebyturnsrapeextract:
+    name: "轮奸"
+    rule: "1005"
+causingdeathrapeextract:
+    name: "致使被害人死亡"
+    rule: "1006"
+withweaponrapeextract:
+    name: "携带凶器"
+    rule: "1007"
+insultingabuserapeextract:
+    name: "非法拘禁、捆绑、侮辱、虐待"
+    rule:
+      - "1008"
+      - "1009"
+      - "1010"
+      - "1011"
+usingprivilegerapeextract:
+    name: "利用教养、监护、职务关系"
+    rule: "1012"
+nationalstaffrapeextract:
+    name: "国家工作人员"
+    rule: "1014"
+posingasnationalstaffrapeextract:
+    name: "冒充国家工作人员"
+    rule: "1015"
+specialpersonrapeextract:
+    name: "对未成年人负有特殊职责的人员"
+    rule: "1016"
+rapeinminorhomerapeextract:
+    name: "进入未成年人住所、在学生集体宿舍强奸"
+    rule:
+      - "1017"
+      - "1018"
+flagrantcircumstancesrapeextract:
+    name: "强奸妇女、奸淫幼女情节恶劣的"
+    rule:
+multiplerapeonepersonrapeextract:
+    name: "对同一妇女强奸或者对同一幼女实施奸淫多次的"
+    rule:
+ruralleftbehindwomenrapeextract:
+    name: "农村留守妇女"
+    rule: "1019"
+rapedisadvantagedgroupsrapeextract:
+    name: "未成年人、幼女、不满12周岁的女童、农村留守女童、精神发育迟滞的未成年人、严重残疾的未成年人"
+    rule: "1020"
+multiplegangrapeextract:
+    name: "强奸妇女、奸淫幼女三人的"
+    rule:
+generaldisabilityrapeextract:
+    name: "一般伤残"
+    rule:
+      - "1038"
+      - "1037"
+      - "1036"
+      - "1035"
+severedisabilityrapeextract:
+    name: "严重伤残"
+    rule:
+      - "1034"
+      - "1033"
+      - "1032"
+      - "1031"
+particularlyseriousdisabilityrapeextract:
+    name: "特别严重伤残"
+    rule:
+      - "1030"
+      - "1029"
+multiplerapeextract:
+    name: "二人以上轮奸的"
+    rule:
+firstlevelseriousinjurynumberextract:
+  name: "重伤一级人数"
+  rule: "1021"
+secondlevelseriousinjurynumberextract:
+  name: "重伤二级人数"
+  rule: "1022"
+firstlevelminorinjurynumberextract:
+  name: "轻伤一级人数"
+  rule: "1023"
+secondlevelminorinjurynumberextract:
+  name: "轻伤二级人数"
+  rule: "1024"
+numberofdeathextract:
+  name: "死亡人数"
+  rule: "1026"
+firstleveldisabilityextract:
+  name: "一级伤残人数"
+  rule: "1029"
+secondleveldisabilityextract:
+  name: "二级伤残人数"
+  rule: "1030"
+thirdleveldisabilityextract:
+  name: "三级伤残人数"
+  rule: "1031"
+fourthleveldisabilityextract:
+  name: "四级伤残人数"
+  rule: "1032"
+fifthleveldisabilityextract:
+  name: "五级伤残人数"
+  rule: "1033"
+sixthleveldisabilityextract:
+  name: "六级伤残人数"
+  rule: "1034"
+seventhleveldisabilityextract:
+  name: "七级伤残人数"
+  rule: "1035"
+eigthleveldisabilityextract:
+  name: "八级伤残人数"
+  rule: "1036"
+ninthleveldisabilityextract:
+  name: "九级伤残人数"
+  rule: "1037"
+tenthleveldisabilityextract:
+  name: "十级伤残人数"
+  rule: "1038"

@@ -1,0 +1,45 @@
+pretendOfficialextract:
+  name: "冒充司法机关等国家机关工作人员实施诈骗"
+  rule: "1003"
+relativeextract:
+  name: "诈骗近亲属财物 (替换人名)"
+  rule: "1004"
+viaWebextract:
+  name: "利用电信网络技术手段实施诈骗"
+  rule: "1005"
+viaMediaextract:
+  name: "通过广播电视、报刊杂志等发布虚假信息"
+  rule: "1006"
+organizeextract:
+  name: "组织、指挥电信网络诈骗犯罪团伙(替换人名)"
+  rule: "1007"
+overseasextract:
+  name: "在境外实施电信网络诈骗"
+  rule: "1008"
+patientextract:
+  name: "诈骗重病患者及其亲属财物 (替换人名)"
+  rule: "1009"
+inNameOfCharityextract:
+  name: "以赈灾、募捐等社会公益、慈善名义实施诈骗"
+  rule: "1010"
+iterferencePoliceextract:
+  name: "利用电话追呼系统等技术手段严重干扰公安机关等部门工作"
+  rule: "1011"
+viaPhishingextract:
+  name: "利用“钓鱼网站”链接、“木马”程序链接、网络渗透等隐蔽技术手段实施诈骗"
+  rule: "1012"
+seriousConsequenceextract:
+  name: "导致被害人自杀、精神失常或者其他严重后果(替换人名)"
+  rule: "1013"
+leaderextract:
+  name: "属于诈骗集团首要分子 (替换人名)"
+  rule: "1014"
+amountofmoneyfraudextract:
+  name: "诈骗数额"
+  rule: "1015"
+punishedbycourtfraudextract:
+  name: "因诈骗受过刑事处罚的"
+  rule: "1016"
+punishedbygovernfraudextract:
+  name: "一年内因诈骗受过行政处罚的"
+  rule: "1017"

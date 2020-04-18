@@ -1,0 +1,88 @@
+amountextraction:
+  name: "犯罪数额"
+  type: "私有"
+  code: "1001"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+fraudDisasterReliefextraction:
+  name: "诈骗救灾、抢险、防汛、扶贫、医疗款物"
+  type: "共有纯正则"
+  code: "1002"
+  positivepurerule:
+      - "JWbHXhPribTmP/go0eIXWO9Zs92JQaqi79kBT6i5QVi2B0ZeWadVXzme6H7A5F3/SgeJni887Be3z7OA/av0IJ5dARsBg/ATB/pLEnE7hSltMa2Ols4WjJ0kyEhIFAsPW+88n2BThFsjyEzlnjmLIv0d1N1BJaZTLbPURjPmTb75g4J4yqOxe7V2lvAB0I72gJifXQV/p1lckusmC5grTLawRNX/HtZLY7hM/boxtcPDUOhQHWt8f6QmT5qqJuTW+EqV+Kh7SlF1CZEdy3DRM5lqSvi0MkjQy2VHQXDQWdUYSkhTsG/jI/kOG4bgGFxYY6cG03GjmWjrIXRwgbWHTZSoqAkJKQpyvJCWWaGsqzzF31A7jr+scVgWxyIME+Qlope4igQHx9xyIT9SDhs1Kv5qxJ9iaV6T0gSbec0stY0zfVQCk6fWS12wql3CRII+mk6cCGT68b78Mlf8NzU9OBoaoasGK5FbDfKTtuMgmNxaxHaRqHwutAzbhI7e4eaUQHRN/Zyoc2nZuVmcDcCr1lCgi7aSHvjlIfXw7M3Rs30Am/juPslUVGRei1eJ5qDKBAgkiRlaPbzoInRgL4m55uPQhyJEKkeHFByNoroL6VHAGk6vxUu59jsqCczptC1JYaXEkSrxVTomyWXbyVf4kTSeEIx0OEDIxBJAVlhg8zw="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+passingOffStateOrgansextraction:
+  name: "假冒国家机关或者公益性组织实施诈骗"
+  type: "共有纯正则"
+  code: "1003"
+  positivepurerule:
+      - "aaye/UwAAowB22H4NsZBKRPddUOPHs6kHMkQrxAlMeijC3bZ8nBia8R/NcIgl6Ym8yHK4tytTnPqmrUWwp824QM25/D2s65A6B27+TzbwgDGipccc/nFjEy2EI6KPES2QhQLj7BmLsYx5pxo2dXLZcXMToQdD++i2NvIcHuIUbwHKEH3Y2eG0yg94g0SQKqyDbRuJstq+q8vjmDRcAP9+MWfPzjv63322XWfbgt7yEF2Hvq4SM7okAvrBNQ2TSbTVxb/uHP1ykMSQN8DhXEDNWl8RI59ujtSnXn6YN5O6e3f+MVZ8iTiNa0kNL6Q05b77fFFLTnWyWqA8GCcVQwT2kgYc14NWxQSnjIOv+bsa9SKPcKprLNI0cMY6IgadUQyPt44ZL+eIChDCRaBDXBIdtgzzlq0oiv/kpTICnopU+/gB//g65igr0bXoaWc0bSiZkiyzFj+/U1rLwUR4K8qEOV9hXYfyPa5/Pp2FDCWJgIa+cwMGeHR2jRiTmyrXADC+VfNb9vORnGG2upnl+166qpQPLT1v9Y/XRxpe2CK0Ya19uWBk20TUgiCgSPFEJuFL/HzsomI+4JVmw/SiKuRmveVnP5CgvmHhiexTnCPgS8Jb50i5MP8QJjJDSUuI4n79Bfem9cCO1K6zQDCZBTgreUKFDAnBiFzJeVco7wHgck="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+theDisabledextraction:
+  name: "诈骗残疾人、老年人或者丧失劳动能力人的财物"
+  type: "共有纯正则"
+  code: "1004"
+  positivepurerule:
+      - "Qdm1Vku6j/K4J0SCJDLY71pt/PTvpDRYwGcev7H4t3+bzmki8+bT2oO2wogDZCLjWKcO9BhIFNi/JEtpsD1u1N0lcesjupTGsKwiJHXZm14RyPQ953FsEG3yT5YmuON+mi+qRps4iqaUtvS8jFKzLDWyZHqsfjMe2+SKnHgrtbSwlU6sWe7LBgXLUbIo5FJhmfJiRt8zyq4VhYatbIgAyrHMnLS+d2q8GISy/ffwKWEvqpmAmB8UYmK30JSxUuMX44xvkGJw/jBPSXqFrqdYgmb1lTM/WWE1fTiAWzDZW7IT+9MojiJ/0T+zmRBAVd1JiS2Eub2tU6uLxIa7t91iJ2CkljZUle7btvs2lDAopLL6wKH+PeY3P5bTBieL81fM4BKYkFyMYeBTauaAGV8qLynTrrH7XKwOmCGWm7X5JEBJ410bMC6hN9ozliFKtoqxjX/f+T4tgdWVz+knvKRVz6n5Idtvgqi376vlC726e+6cCJfKxClXBQMxIsQZaHILt1Duq0zTI5A/hdwwC01yd/tFOI2Ym7HYMzd5DAfnrYQRy/bLxuocS4dr1vOPnYDwdG/xzUz1qEcG8qCUpTrxWzzmvwrl0em8XWcPVBh9Bn5BMUt9O80D+AROUG/RlVNPcyhD6iSxKlzl/sdUvhjyDEQj3Rhy9ulkY+ZFrdpL/lo="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+CausingSuicideAndMentalDisorderextraction:
+  name: "造成被害人自杀、精神失常"
+  type: "共有纯正则"
+  code: "1005"
+  positivepurerule:
+      - "KaZja7iUrTFzs0HhH2uQ7ggQlAI5cznORoy7isJqF5XopDSHiaLtMdwZ10udUQa4gEa0qo9nPx+IKsjXGWjLgPyM5l3IXTZahVPRs4s9vcnkdjjRTKpFU3YVYGpPbnaqsA2u3PiAnaZGz5nRubsWPQAFcFzNp5bFU7r0jcL7yOPzR0gFEHesg8IKcOL7PoI1GBkT5F501OWbUbIhJLaTPwG5KtWYILp9g8G0/fdoSQkD6o+HmS6xYrh+hRVzU5KzjBSVo3IxoR1vgc8svjfNwNmAfcrB5WxFubsLwz3QtsH2bBb9dcX73cbuKJhzM7agioxcWnSdTv7+8MrzLdk1vdi9IpLJ3lLmJx56jXTlEN7bX4aQscml0MACZ+IsjihG/JOTdOqT30YVX5/HGh3Q3NxcvahO3wn1Goxoaw6Lv897AdbbQgK6yy14fXstb6EsE0+kaOUU2veLLMX3Wy68h+ESTl492Yf5b3TNdBSTDmDZOrzm1LA7K522crVAQ4NbrDgftu0W6EnSiwyucipIyi9iXkXN+lghRAe8icFGggwtCcEPUpwdvQ4ua1zgykCka9Be/986Vj0AmBBMI3TVUAzaAkwXEJ67PYM0QU9IKoVtxLWkAQKM2Vp/HgBKq6VevmvxsyK8NW4BTzs5M7VFGjdkj5BTnqNLa7BZCUslsV8="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+timesextract:
+  name: "实施次数：多次实施合同诈骗"
+  type: "私有"
+  code: "1006"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+RefuseToReturnextraction:
+  name: "有经济能力而拒绝退赃、退赔"
+  type: "共有纯正则"
+  code: "1007"
+  positivepurerule:
+      - "QwF3aLu2qvFXZc+z0GC1I/bt+3IQ0eqKGCFaNKl/JlfWN4EBJ/2+84qVG8Gf0POVnefSprc1W4RB0GFyPd9FKvFVt1c66TAUjvyUIuxT89AQASS5pvsAIucMZRxEMPs7tsa1NLFpPR9mw21M2af0ko76PR4/BFIK/TCEbHVmlmz2OLC4z9TGsB9mhWqz1qseFKHGm23xu4KVn5SGWlndXHKXm0ai7efjrBEMxJg5xhoKP9rYSPWiyZMS4elcMvASMgqT5j3vEugtCLGeZRLPmE5HZXFSY+Cw9Vh5BdWcFFvX2bMdtz+904PqCyzMST7FJjG/tCtd18E0hrH8l2GYA/eSUTfrcHpsswBq4X1on6VYLLBaMVJLLFabyJhSsGNm3QTGmtd3mOXER8/381DyR2qDz/agX6m0LkB3tEH3fXBUVdidqYlWmCDM/BkbZrMCZbEK9RXYhF8ABue6vFuMGaaBek7L408fKgeUqOARWwp9i4XCKt1sp6HYVAv/aNFkC7BYyRU/aq9bD/Pct7Mv3zvJ+n5ybyZJRlPCAT7PAYH+tFZxT9TRPmFR4tvT/FadNbcOHTwt158RpNAk6LEV7CFYVHbeYY1eUYGMW0TGTdWx/qBwCF/nWrvovQmnUuKbG2JWtU5ZNLbsjaqpdteN03YQoWJpJDdckvJ4KH6bQHY="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+forIllegalActivitiesextraction:
+  name: "为实施违法犯罪活动而进行合同诈骗或者将赃款用于非法活动"
+  type: "共有纯正则"
+  code: "1008"
+  positivepurerule:
+      - "TF2ddfcIZM65dFt5/JuvzUAzEqdHovG4qezJdefOAyFjNCdGgYSGlooDBQyeaKfcCHsu8PDXJp8NzAVqgA3cesHU3CY06acKj66L+5cPfSlf+M11OAU8537ZjZjV0beDjpiA4Q/1ItR3Qt1ulvVgenv2AqjZDVX+f+sFcPHFeVnFncDdLJj01JTRFAkPOJvKMQd0ZSaQwaJvLQwMP5H/rUATW7hIGE6tdZG6370eolWn7Qe30+Bj0CqlrQHN9R3h1iLrcdBmKsNQph7vQiaexYNQPKcifz4CcpAU1sF7hJMG2RBWNfgj6LyFuUoHecTCDRmveVsrXjiogQpgZ5N/5NJtLZJdwueZkqiqbFhjoG21adUQRiIjOz/5Z7RhRhlN9cQjOtOiqqtKrFJf/dhCSfSDYW98FeEDaZmx5Po8oooQyTxQBZhe2Z4v/ls0aNXu5jO3vgWG/cgQe7HNIM/ENY/ohfnTs9pk22VJWcOdCDOVQu5lWRymNK5VbPKkUB3b1zjnEoA0vkSDpqggFaQ6TBRxHykdHMcjvXDTn+jRQp4K6ND4bRxW4X8/JKWMmit91RDieYl8gV9ox+n3ES+lAvzPvcXMfaFaMLf+WFJ6Hvskiozgsoj640dQ1f763lkvywbxZDkupqVDOjJp2i/j8A0NSTLongL1a/WYT7IlmKE="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+ActiveReturnextraction:
+  name: "积极退赃退赔"
+  type: "共有纯正则"
+  code: "1009"
+  positivepurerule:
+      - "ObiQhSu7V0pr8jklylPKZg1AO9O/wLSIEkWHNdRPRvmZNygisKZiDDUqfE4dDEY+o7N1QSD0nHNXiSTOvf28UTBeaAzx+cJI4ingUVVGw4lXxdVtMJ/CUtWDajwzmHSmAbtwW4Goxav8fTAV5ur4db76MrDundwolfAtEZ18kPgcsrjU7IfSQCz+ili2HdQMPrffIF7HBrBS4U9bcoznEn2G2hRoSf+dEq2QYmT9GB8CoigbzJgm8OdJl9XaYSa1m+IQxCBBkdmyzRHkH6JUlM0jlSTGL6Oa2zlG8KJw5sFfLpK9eC9HYdkXcbjqKeJDoMPok3dnkaDEBVowUHQT1oa/VU0QTxFgYRYQ8tWRUY+cY4GgR5239Iy27fDFYirhIUMRx5PdNkGkp6SVrmPqbZYiCRmrFStix6lQj8Ueq1LkVw0XNCUL0M0EIktMLAGli/jHWO7KKn8WniX+WzokhCViy8IXyN5lFKv2AtOhn9jC/vjDEKA2ZPoFSHisEctEVWoZ+gqRvVBg5z8BfOClnMa8bLujY5aorI0DWfAGfLz6BpZeWblWO8K+/YQa9ndmmNNGiUx9ru04GtWXrdASwpN/0wYLvNuYpntNrckdbrInzgkGQ1Y3m52OUmOnpcnvV0fnGqqjW7wijYpS+pd45odT+0Afb1hBHgoxXZGgguA="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+NotParticipatingextraction:
+  name: "未参与分赃或分赃较少"
+  type: "共有纯正则"
+  code: "1010"
+  positivepurerule:
+      - "RbQa99MUUkGujeS5WL/JDl/+5a+2N/xgrnn/QaTjQjcyLhUIuwaLDFys8sw/p4d46+dl6shN1lkoJoWyikrP9suBJgAQu60l6cTy77TbCKF2y1DkjxS7NttVYbSJOKDrAub9r5KNgnqZrBoCtreLssz1Z2GSESpk1a+fxiPu4FOoyifpJ0lE2q4QTJUX/sIYJrSc+pYjfqyspIedhE2uhV3yr/MfRbZC0UDt2Ym6nhjPGVMRv9Zo0iKVkpLZMH77QoLSXzmtgl/Wdd8q4oOHFJk7qvleSIjWVLOHpmhJ19N0T+AGPBXi75/pjxEXEK1q0lgwnDitlTF+nSKEUWfJU5FFBLapAiC0iSQSswOvJ4Ecq6tGLJM0iJvoIofsLIel3zUWY4Ls+xwBozHxQx1ew0oGO5EYPXnOa0OI4CGPsf5eplb28UrrI7HUqY0h7NInVR5jNGDldN7mvuuSOtB+D5IIxopqug5hRsegTcgEVOjR8/YJF2/D8nEULdDbRLRlvORDNYzzCeyP6/ydjLjEWqRu/qDfMPjYy4gkCpBxwTpMAfdoVqtFKfUXN6ISCh7HsADdB87D9iBifpSBTP+QFs9y3181EQERpWBjOSo1MNa5HEraWwANXbpcA3h0e9t7qlkcPmngurWZGarLLkq0XDOOUGSLIahUY7Mu5dnWNjI="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:

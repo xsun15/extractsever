@@ -1,0 +1,5 @@
+liabilityextract:
+  name: "主要责任、全部责任、同等责任标签相互排斥"
+  casecause: "交通肇事罪"
+  rule:
+    - "1004 1005 1006"

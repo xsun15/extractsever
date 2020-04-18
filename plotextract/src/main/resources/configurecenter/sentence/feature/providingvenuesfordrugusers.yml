@@ -1,0 +1,72 @@
+timesextract:
+  name: "容留他人吸毒的次数"
+  type: "私有"
+  code: "1001"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+peoplesextract:
+  name: "容留他人吸毒的人数"
+  type: "私有"
+  code: "1002"
+  positivepurerule:
+      - "Zyx+jwL0yqmQldruvyWYvHZ2EcczUqVAze2Op2ZDHyUrJGDXQiUluPMLIaRXHfC8x1Y3eKHJ9oL/H0G0QdumN+Yguqnn1sCdwKzKFKXLhD7AN+zNs6SVjKJQUv464DhckYEM0Tp6lZ/dUxMucrzne67pO2epZheT0wNkw9J38MPoiOFsuGFFQmG6nIpyQLoUAPqOWngsgLLDUvvbtjgD1EHVcrt3X0bpAf+BtsjKxrjBM4wWXBlrexVEjk0Z0cKa9oAf2TSh3mrLhL7/fAicEuemvDMVjIHfyoHPznzVE3QvDjRmci0/X6HfC+gBh+gHSmV4d/1WKrLeP+oSapymGpNWAc7xoB2IXZSuaRlwEp0hwAQb9otOUuTiKOgeGN/bExUTmgzjD2dFIWM4A/euPfRflIFyn8KbUnhiqrHImHc3Y0AqAy7ayFHQIWS3CX+zfBL/AeMgj9xy8rh3zaOoVvjfmZ5nFi8UlrACJ4g6ipmBYQBall3TgF2IpanTHmiweQfeO4U+IlRPKFZB8IM9PFj7hkvqvzabvEhjSCk6v131L3YnNVvK5YpRJpn8hmSluwi3tMuX7Pc4OC8+/wooVFGTti/aIZrHSIP+ex6GDLiDipc3Wo5Ef8NSr/yF/HH7yCnKglj/1cGFNSxM/VCiiKnZBfWZuOyf/ivUrV674Ds="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+administrativePenaltyextract:
+  name: "行政处罚"
+  type: "私有"
+  code: "1003"
+  positivepurerule:
+      - "keuIj4wM3ueLQ25qRCLoTeliDcmGV02nW5KKhCx2GVRkY1xLaa8gP3S+0imV1nvZyR8V58bmpEvCdoNTJb59o7oKapS3wkUvnNlE8YXA/uC+CDiJHN97d8vuv3155iZp6nGOs9JojaPJqpFs6hAOEHMfrBCfp5/hjdkYgNuo0rYnxoPoIiVU2Uu6TA8n2bx3nmmkjb2L3bUBVhVf4WjDOk97km9qFoZSFQGHSKY4UawZtvm66fassRuG78ctqiQVNwGcf0oGHMiSRuLlVBGXjTlUMr36z8eWA7cBUoB626jX/eWOUykEaRJ94K36vKIfbWf5prS+S7Hqc6lDyz1aALTGOLvuCPWN4Fus924NMPQUrl3K2MMVKXAlZRPAz4YR8zq1jSegaA3IEHEkMsRAQe4REMIB+WoYIPVmCFocHDqJLFf7CQ80e/kmonI4bR5UvwXp0FalXoG8mS6kE5bbS7sPKrxp9XzEJH8Lu5rP2ofhn7dTVjIpXUKUtpvnT8kfK0qw2NP7ZK/3DbQlUxsDz5uZf80BKZMQyMNH0GRkm54L8PPbZKVTkxoYbyeJviqEGXcpwUTK2LAJKlH6TmudL8aEoABaqc66QacicRTrgct1Zi3Ec+9jiMQQRLgIadiSyyEPGQJPUldtHZwMGwdY6Y2EAeiHnXPQH3XK78YkXTc="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+minorsextract:
+  name: "容留未成年人"
+  type: "共有纯正则"
+  code: "1004"
+  positivepurerule:
+      - "QM6H4CTEjG6JFIMrOekfluFAfp4RRVLS5wlb4XVwy/D9viT9QxYBd31ggyXboVPBq2lvPrs8KS5UIonActIazEBdxRCA9RnA0ZqY+V2QWxsAZffEJ1WdTEpT51n3iNI6Ib6ZBW4nyIRxspmh9lWTaKV1mXBeVnqbFSBB2CtyGDaVn3fgrI34LPPl+xB/tNI468Zg3UxRzJe8Id3+wBwpC+3c3SeZb9t9htysQKcidU5nmIEBHSGlRhBD2lcfPWptfVj8hozGW7ktrld3Z1XsOGn+R6/QR7UNgYP1+EDMUrvEBDwf82c7b1jRsAldpl7Eogpxlkjxq+m7pCyZRZ0gV1S9M5iT7JrhGkkn57lL1gddy/nKtRcElMzjhlabDWjzll3qhDEk5EMV67+epOgrKTbklxCLqm7qtBfqu8aUU7tNFOWj2IpUSJ3AKE+ujPpywXkhitDwMNEQ9wNCMEjQwgLLPsyx/dcYEYRg/h4o75FSLB7mmW/WBMmJtBu+15qwS2CbCN+6NPbrejgyxfztElVrlOK6MarCchI2if6cPdqdDL97cdoPFMqxXWzvOrFuiiSHWnz7ypGOuozi5EMMRnNycw6o2dVYsrGM8XZYCbp+do5tZ/V5qGG4jOUb3HF9G0/P/QCnhuLCPrjYk+APVdhS/Vimxwa2G6fgfd27aUY="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+forProfitextract:
+  name: "以牟利为目的容留他人吸毒"
+  type: "共有纯正则"
+  code: "1005"
+  positivepurerule:
+      - "S2msaDrVQw3tHpGDwtbthMaEqukj9GKZBYb1c18Kzs9R7Sn/sZEDS0JNn2zOt+hAc/VFRMIkdJtNcbGZqlwGXHVCYnQ75Qy4z0vkhXOMo+6y7Ic6w2dimY/ti99Dol7LRQYoAxd2E1LqzWt2vwYBTZ9x6BKLoCJuj3kEKMxG3jtHyeDX7CfBlugIzs4Q8/MD+xPJ0aWj0KXJeRN7VOkNYj6bt/rkPjxkaUWh0Q6uMo9ecNzmcFRuKrm8E/tuBjqFXQB0h9zCTyMATSuUxCVuFSiFg1j9BmdAa1kOxWHaJ3DxcAxbOrEtXeCfImlilxMdsdVyIIihBenhswySkG8TWtcikD9t8nFUaZhY1qmT6ZbOqT6Zk2mulYSOtnzZ4B0NeDePM3xr/a5sJTks2/s27yRIr8oSq/F+3Z0ClmZt+HPwDubR0AUzz6xEfJJZqHl9I7ucXHEpTRGKnAWsGw8AYkFSaeTmt6gdMNzEunTXjWl3Ifap0vbb4oXj2S4U2x5dMde19SgieAqlDK+3i7arYQ/wfyot52n5SR74jXTpb3d35HYPnucHXzGXcRi1+wEMM6fJz6SwNlZeO6WYY4ars7uZ5/pOzLDdiddO9FiHzyykhW0gaBMF8dchH+btfQkGyIVD04xwIsoRyQpwRfBhM52khLKTnF7gNT24nqcSZiI="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+nationalStaffextract:
+  name: "国家工作人员容留吸毒"
+  type: "共有纯正则"
+  code: "1006"
+  positivepurerule:
+      - "b+tJjBFUEdsrEHn0iqhWDzMArovx2e/t/XuKH6Ij+dOm0pVBaXKZ2JDJRE8QSb94Y3M+5x2xkocl8MVMhdPjp02kUw7nY7FxeJiE6PpW5m8x7IQlosUtxBJ6ZS2I8LYgBUVikDdWaW0u9rK7NRYsmZ2Ww2uRQGP3D19A8SE8vZS0oYFwfESx5ILTXwh312e3SPdjk4LH2PsDQvArkjcyLFt2Kfa572D8hNrM6MEcPZef9cHyGnG5PhSkzh1dgMKyiRKDET62XTEK5AuvTw1z9W+e9jcqfzdceVCa2Sk61uYbo8s0JkdsnAix9Ft1cla/M4EStfolG9Wr69wulEgPatx8C3IuGTFKTgMqIQ7TtjnNfCoR5za50TUkUjbIeFZySU33+lMOvwBmn/LceF06scDJwY0zBnpjh6qHDYgiaRR1Z8Js1ddub6hDESHt7UJpWwgf9P54ByikQAdKgGOyxcGuu6NwtqJ5gB0ZRP8CVBsHPH6YtcDNH2SbMLlaYMOwU7B3N7I7lZLwgeIfGt/O0LEQTMUbZL1X5DTQTAC2LbYb+LyMCN5JubSKssEV64qIbrGY17OCqlGJrWrSZFnnEeJGCtXFb5sgGPEoDh3+VEhLWK53CPoA9bB2sXKNRYoytjmmuZXSB/7K7nUDmAlxg0KdQNcr1dH1FqHfxw71gd8="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+businessPlacesextract:
+  name: "利用所经营的旅馆、酒店、KTV等经营性场所容留他人吸毒"
+  type: "共有纯正则"
+  code: "1007"
+  positivepurerule:
+      - "iw4j6FLSq6K+nmX/K0+u9qNUN1f6ywxhNr3d1MQxGy0yfseWXj9gLepxEMCRiRhb2HMUrhhI/BaEDMcAUts1SLeiH6d9b+vpM4UujldNupSu/RUWNfdQMgV6fPZDv2f4KJH2J9JjcZduStxf5X1Aepq8nAW9oxE3nbvfiPkxjX+CCqW7i9w37EN0kOPmQo/LP+QEKcBNKxh7i8ruCwXf9AD7W67aoxWYKSzD0d4heZfDf+NZyAq8QaZtdhGgkBGio3Zrc+adI3fK0k4R5JNQ9hjP7wKxQToSPfQJ6p9xHPa39KLwcAhQ6/z5FEZU8nfH3asS0dxzW3lGLOGoU2Wvruj+Aauu1MAstaTx8gw9LrKU8iQxhS4bsH/iR5HdIZ7CBVF7cUr3mH7Cbo3UAxIvruYeRmUXgO1TilAR99GZ5CFmf3TlyqD+45HxGzzVP2yPXYkF20JPKk1Niuf5X6/N9/6bb6kyFKz4/gspwb4d3rdM9ME7OC41wFOS6aVLojdY/b1NcXgdZc+x58kXvJa3Vbw8Btge429cY3cb89OvZm/4h86Me+x/9AjBhmtnVIu2gNHjqzTPmn/AxJCkxXKhfS8PNqpPQphT1+uDp0EP9M4h0WY/p3wcz0d8K2kD3l/FhGIDEqIhNUCRBDecJyn+c5FrUV/clFkhXWxmgohzfs0="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+relativesextract:
+  name: "容留近亲属吸食、注射毒品"
+  type: "共有纯正则"
+  code: "1008"
+  positivepurerule:
+      - "CvJJiMnw2PBtyIfcTM4ixZm95JSSW85c1iLvMgoq6D8LhmemIH7MZKtlOD0ODG/kn4M+oKI1/Plk9oQ34YdEzUbXfJDhZkk+paC1mLrHbJYBUUqEC7Po6qIJqbTxVvQGX/cE64VAotKH4RfKr4SBdSMR4R0Hhq756medMovXO7W2nrPUMFDKmMHurhjo1ICW4hKMWfe/Uwhir3hupRpqplg+ZKRTdw4xkwY2UMABFv/vUHaNODAE0CF0uOCD7/e1QxW8cfqK4ffDJ/LiZIqMjXYYHP+ho96Mio1DXhtz7itsdn6GBSA+SmCV5xpX1S66/PDzkqnTZluV+fnwHr36tLpCB8sI0/JXmwDbM7FS+E2WLiRAZxQrOrGbxLiOvFSwAWjtFQNPB9bGSq2FWo1vfJwGvab0Jw+mb/yac9svrcSt23cRi4gz2/70w5y5chg/2pchvJMh6C7tA4pBu9nnFWA3WcXjiZBal/2EEsoBI8qLHe2yeV04FXfaxiFSouHVFlhfvR93hND206aZ7ypcg1FvT7lir7MC59ZNFYttDXOMlITbeqnqyHzyZJPty2wcWZeLtl4jtSGLWhg4qTl8oRoczfgCJzkxq3ReKz+Q98M0HCLYBYQ6EJbmCGHhInoKYAtkmiVzOHnzDPEz9PIAF+2hdGiEbs15/jvbvm2c350="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+

@@ -1,0 +1,153 @@
+againstWithViolenceExpListextract:
+  name: "暴力抗拒检查、拘留、逮捕"
+  rule: "1001"
+govEmplyeeInvolvedExpListextract:
+  name: "国家工作人员走私、贩卖、运输、制造毒品"
+  rule: "1002"
+internationalDrugReListextract:
+  name: "参与有组织的国际贩毒活动"
+  rule: "1003"
+punishedBeforeReListextract:
+  name: "毒品再犯"
+  rule: "1004"
+multipleCrimesReListextract:
+  name: "多次走私、贩卖、运输、制造毒品"
+  rule: "1005"
+poorQualityReListextract:
+  name: "毒品含量明显偏低"
+  rule: "1006"
+quantityLureReListextract:
+  name: "存在数量引诱情形"
+  rule: "1007"
+ringLeaderReListextract:
+  name: "走私、贩卖、运输、制造毒品集团首要分子"
+  rule: "1008"
+sell2multipleReListextract:
+  name: "向多人贩卖毒品"
+  rule: "1009"
+sell2studentsReListextract:
+  name: "向在校学生贩卖毒品"
+  rule: "1010"
+underInstigationReListextract:
+  name: "受指使、雇佣或者被诱骗运输毒品"
+  rule: "1012"
+utilizeSpecialsReListextract:
+  name: "组织、利用残疾人、严重疾病患者、怀孕或者正在哺乳自己婴儿的妇女"
+  rule: "1013"
+utilizeMinorsReListextract:
+  name: "向未成年人出售毒品"
+  rule: "1014"
+yapianextract:
+  name: "鸦片"
+  rule: "1015"
+hailuoyinextract:
+  name: "海洛因"
+  rule: "1016"
+jiajibinganextract:
+  name: "甲基苯丙胺"
+  rule: "1017"
+bingduextract:
+  name: "冰毒"
+  rule: "1018"
+kekayinextract:
+  name: "可卡因"
+  rule: "1019"
+benbinganextract:
+  name: "苯丙胺"
+  rule: "1020"
+mafeiextract:
+  name: "吗啡"
+  rule: "1021"
+fentainiextract:
+  name: "芬太尼"
+  rule: "1022"
+jiakaxitongextract:
+  name: "甲卡西酮"
+  rule: "1023"
+erlvaituofeiextract:
+  name: "二氢埃托啡"
+  rule: "1024"
+paitidingextract:
+  name: "1025"
+  rule: "1025"
+dulengdingextract:
+  name: "度冷丁"
+  rule: "1026"
+lvantongextract:
+  name: "氯胺酮"
+  rule: "1027"
+kfenextract:
+  name: "K粉"
+  rule: "1028"
+meishatongextract:
+  name: "美沙酮"
+  rule: "1029"
+qumaduoextract:
+  name: "曲马多"
+  rule: "1030"
+qiangdingsuanextract:
+  name: "γ-羟丁酸"
+  rule: "1031"
+damayouextract:
+  name: "大麻油"
+  rule: "1032"
+damayeextract:
+  name: "大麻叶"
+  rule: "1033"
+damayanextract:
+  name: "大麻烟"
+  rule: "1034"
+kedaiyinextract:
+  name: "可待因"
+  rule: "1035"
+dingbingnuofeiextract:
+  name: "丁丙诺啡"
+  rule: "1036"
+sancuolunextract:
+  name: "三唑仑"
+  rule: "1037"
+anmiantongextract:
+  name: "安眠酮"
+  rule: "1038"
+apucuolunextract:
+  name: "阿普唑仑"
+  rule: "1039"
+qiatecaoextract:
+  name: "恰特草"
+  rule: "1040"
+kafeiyinextract:
+  name: "咖啡因"
+  rule: "1041"
+yinsukeextract:
+  name: "罂粟壳"
+  rule: "1042"
+babituoextract:
+  name: "巴比妥"
+  rule: "1043"
+benbabituoextract:
+  name: "苯巴比妥"
+  rule: "1044"
+annakaextract:
+  name: "安钠咖"
+  rule: "1045"
+nimeixibanextract:
+  name: "尼美西泮"
+  rule: "1046"
+lvdanzhuoextract:
+  name: "氯氮卓"
+  rule: "1047"
+aisicuolunextract:
+  name: "艾司唑仑"
+  rule: "1048"
+dixibanextract:
+  name: "地西泮"
+  rule: "1049"
+xiuxibanextract:
+  name: "溴西泮"
+  rule: "1050"
+damaextract:
+  name: "大麻"
+  rule: "1051"
+maguextract:
+  name: "麻古"
+  rule: "1052"

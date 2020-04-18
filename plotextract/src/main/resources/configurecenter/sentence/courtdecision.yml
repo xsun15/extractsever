@@ -1,0 +1,48 @@
+imprisonmentextract:
+  name: "有期徒刑"
+  code: "1001"
+  positivepurerule:
+    - "有期徒刑(([0-9一二三四五六七八九十两]{1,4})(?!缓刑)年)?零?(([0-9一二三四五六七八九十两]{1,4})个?月)?零?(([一二三四五六七八九十两]{1,4})日)?"
+  negativepurerule:
+detentionextract:
+  name: "拘役"
+  code: "1002"
+  positivepurerule:
+    - "拘役(([0-9一二三四五六七八九十两]{1,4})(?!缓刑)年)?零?(([0-9一二三四五六七八九十两]{1,4})个?月)?零?(([一二三四五六七八九十两]{1,4})日)?"
+  negativepurerule:
+foreverextract:
+  name: "无期徒刑"
+  code: "1003"
+  positivepurerule:
+    - "无期徒刑"
+  negativepurerule:
+deadextract:
+  name: "死刑"
+  code: "1004"
+  positivepurerule:
+    - "死刑"
+  negativepurerule:
+innocencextract:
+  name: "无罪释放"
+  code: "1005"
+  positivepurerule:
+    - "无罪释放"
+  negativepurerule:
+immunitypunishmentextract:
+  name: "免于刑事处罚"
+  code: "1006"
+  positivepurerule:
+    - "免于刑事处罚"
+  negativepurerule:
+probationextract:
+  name: "缓刑"
+  code: "1007"
+  positivepurerule:
+    - "缓刑(([0-9一二三四五六七八九十两]{1,4})年)?零?(([0-9一二三四五六七八九十两]{1,4})个?月)?零?(([一二三四五六七八九十两]{1,4})日)?"
+  negativepurerule:
+finesextract:
+  name: "罚金"
+  code: "1008"
+  positivepurerule:
+    - "罚金[^。，；：].*?([0-9一二三四五六七八九十两].*?亿)?([0-9一二三四五六七八九两].*?千万)?([0-9一二三四五六七八九两].*?百万)?([0-9一二三四五六七八九两].*?十万)?([0-9一二三四五六七八九两].*?万)?([0-9一二三四五六七八九两].*?千)?([0-9一二三四五六七八九两].*?百)?([0-9一二三四五六七八九两].*?十)?([0-9一二三四五六七八九十两].*?)?元"
+  negativepurerule:

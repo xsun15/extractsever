@@ -1,0 +1,112 @@
+escapeaftertrafficaccidentextract:
+    name: "交通肇事后逃逸"
+    code: "1002"
+    rule: "1002"
+fullliabilityextract:
+    name: "全部责任"
+    code: "1004"
+    rule: "1004"
+primaryliabilityextract:
+    name: "主要责任"
+    code: "1005"
+    rule: "1005"
+equalliabilityextract:
+    name: "同等责任"
+    code: "1006"
+    rule: "1006"
+drunkdrivingextract:
+    name: "酒后驾驶"
+    code: "1007"
+    rule: "1007"
+drugdrivingextract:
+    name: "吸毒后驾驶"
+    code: "1008"
+    rule: "1008"
+disqualifiedfromdrivingextract:
+    name: "无驾驶资格驾驶"
+    code: "1009"
+    rule: "1009"
+drivingunsafevehiclesextract:
+    name: "明知安全装置不全驾驶"
+    code: "1010"
+    rule: "1010"
+seriousoverloadextract:
+    name: "严重超载驾驶"
+    code: "1011"
+    rule: "1011"
+drivingunlicensedvehiclesextract:
+    name: "驾驶无牌证车辆"
+    code: "1012"
+    rule: "1012"
+drivingendoflifevehicleextract:
+    name: "驾驶报废车辆"
+    code: "1013"
+    rule: "1013"
+chasedrivingextract:
+    name: "在道路上驾驶机动车追逐竞驶"
+    code: "1014"
+    rule: "1014"
+adversesocialimpactsextract:
+    name: "交通肇事造成恶劣社会影响"
+    code: "1015"
+    rule: "1015"
+protectthesiteextract:
+    name: "交通肇事后保护现场"
+    code: "1016"
+    rule: "1016"
+rescueinjuryextract:
+    name: "交通肇事后抢救伤者"
+    code: "1017"
+    rule: "1017"
+reporthepublicsecurityorganextract:
+    name: "交通肇事后向公安机关报告"
+    code: "1018"
+    rule: "1018"
+leavetheaccidentextract:
+    name: "为逃避法律追究逃离事故现场"
+    code: "1019"
+    rule: "1019"
+beingpubnishedfortrafficaccidentextract:
+    name: "曾因交通肇事罪受过刑事处罚"
+    code: "1020"
+    rule: "1020"
+drowsydrivingextract:
+    name: "疲劳驾驶"
+    code: "1021"
+    rule: "1021"
+numberofseriousinjuryextract:
+    name: "重伤人数"
+    code: "1022"
+    rule: "1022"
+numberofdeathextract:
+    name: "死亡人数"
+    code: "1023"
+    rule: "1023"
+numberofminorinjuryextract:
+    name: "轻伤人数"
+    code: "1024"
+    rule: "1024"
+numberofslightinjuryextract:
+    name: "轻微伤人数"
+    code: "1025"
+    rule: "1025"
+numberofescapecausingdeathextract:
+    name: "逃逸致死人数"
+    code: "1026"
+    rule: "1026"
+firstlevelseriousinjurynumberextract:
+    name: "重伤一级人数"
+    code: "1027"
+    rule: "1027"
+secondlevelseriousinjurynumberextract:
+    name: "重伤二级人数"
+    code: "1028"
+    rule: "1028"
+firstlevelminorinjurynumberextract:
+    name: "轻伤一级人数"
+    code: "1029"
+    rule: "1029"
+secondlevelminorinjurynumberextract:
+    name: "轻伤二级人数"
+    code: "1030"
+    rule: "1030"

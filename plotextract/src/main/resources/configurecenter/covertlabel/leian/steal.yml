@@ -1,0 +1,69 @@
+burglarystealextract:
+    name: "入户盗窃"
+    rule: "1001"
+withweaponstealextract:
+    name: "携带凶器盗窃"
+    rule: "1002"
+pursecuttingstealextract:
+    name: "扒窃"
+    rule: "1004"
+stealingpatientstealextract:
+    name: "在医院盗窃病人或者其亲友财物"
+    rule: "1003"
+atspecialstealextract:
+    name: "自然灾害、事故灾害、社会安全事件等突发事件期间"
+    rule:
+organizeunderagestealextract:
+    name: "组织、控制未成年人盗窃"
+    rule: "1006"
+administrativepenaltyfortheftwithinoneyearstealextract:
+    name: "一年内曾因盗窃受过行政处罚"
+    rule:
+forotherilegalactivitystealextract:
+    name: "吸毒、赌博等违法活动而盗窃"
+    rule: "1011"
+usingdestructivemeanstealextract:
+    name: "采用破坏性手段盗窃公私财物造成其他财物损毁"
+    rule: "1007"
+forlivingstealextract:
+    name: "因生活所迫、学习、治病急需而盗窃"
+    rule:
+returnbeforethecrimestealextract:
+    name: "案件被发现前主动将赃物放回原处或归还被害人"
+    rule: "1008"
+criminalpunishmentforstealextract:
+    name: "因盗窃受过刑事处罚"
+    rule:
+theftofcontrabandgoodstealextract:
+    name: "盗窃违禁品"
+    rule: "1009"
+theftofreliefmaterialstealextract:
+    name: "盗窃救灾、抢险、防汛、优抚、扶贫、移民、救济款物"
+    rule:
+theftofdisadvantagegroupstealextract:
+    name: "盗窃残疾人、孤寡老人、丧失劳动能力人的财物"
+    rule: "1010"
+familystealextract:
+    name: "盗窃家庭成员或者近亲属的财物"
+    rule: "1011"
+stealingtechnicalachievementsandotherbusinesssecretstealextract:
+    name: "盗窃技术成果等商业秘密"
+    rule: "1012"
+theftmanytimesintwoyearstealextract:
+    name: "二年内盗窃多次"
+    rule:
+numberofgeneralculturalrelicstealextract:
+    name: "盗窃一般文物"
+    rule: "1017"
+numberofthirdculturalrelicstealextract:
+    name: "盗窃三级文物"
+    rule: "1016"
+numberofsecondculturalrelicstealextract:
+    name: "盗窃二级文物"
+    rule: "1015"
+amountofstealextract:
+    name: "盗窃数额"
+    rule: "1018"
+numberofstealextract:
+    name: "盗窃次数"
+    rule: "1019"

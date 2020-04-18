@@ -1,0 +1,56 @@
+RehabilitationCentersextract:
+  name: "在戒毒场所、监管场所非法持有毒品"
+  type: "共有纯正则"
+  code: "1001"
+  positivepurerule:
+   - "在戒毒场所、监管场所非法持有毒品"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+usingAndAbettingMinorsextract:
+  name: "利用、教唆未成年人非法持有毒品"
+  type: "共有纯正则"
+  code: "1002"
+  positivepurerule:
+   - "利用、教唆未成年人非法持有毒品"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+nationalStaffextract:
+  name: "国家工作人员非法持有毒品"
+  type: "共有纯正则"
+  code: "1003"
+  positivepurerule:
+   - "国家工作人员非法持有毒品"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+drugsTypesextract:
+  name: "持有毒品的种类：鸦片、海洛因、甲基苯丙胺"
+  type: "私有"
+  code: "1004"
+  positivepurerule:
+   - "鸦片"
+   - "海洛因"
+   - "甲基苯丙胺"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+drugRecidivismextract:
+  name: "毒品再犯的（已评价为累犯的除外）"
+  type: "私有"
+  code: "1005"
+  positivepurerule:
+   - "毒品.{0,2}再犯"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+overdrawextract:
+  name: "毒品含量明显低于同类毒品正常纯度"
+  type: "私有"
+  code: "1006"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+

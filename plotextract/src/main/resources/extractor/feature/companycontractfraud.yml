@@ -1,0 +1,79 @@
+amountextraction:
+  name: "犯罪数额"
+  type: "私有"
+  code: "1001"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+fraudDisasterReliefextraction:
+  name: "诈骗救灾、抢险、防汛、扶贫、医疗款物"
+  type: "共有纯正则"
+  code: "1002"
+  positivepurerule:
+    - "诈骗救灾、抢险、防汛、扶贫、医疗款物"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+passingOffStateOrgansextraction:
+  name: "假冒国家机关或者公益性组织实施诈骗"
+  type: "共有纯正则"
+  code: "1003"
+  positivepurerule:
+    - "假冒国家机关或者公益性组织实施诈骗"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+theDisabledextraction:
+  name: "诈骗残疾人、老年人或者丧失劳动能力人的财物"
+  type: "共有纯正则"
+  code: "1004"
+  positivepurerule:
+    - "诈骗残疾人、老年人或者丧失劳动能力人的财物"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+CausingSuicideAndMentalDisorderextraction:
+  name: "造成被害人自杀、精神失常"
+  type: "共有纯正则"
+  code: "1005"
+  positivepurerule:
+    - "造成被害人自杀、精神失常"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+timesextract:
+  name: "实施次数：多次实施合同诈骗"
+  type: "私有"
+  code: "1006"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+forIllegalActivitiesextraction:
+  name: "为实施违法犯罪活动而进行合同诈骗或者将赃款用于非法活动"
+  type: "共有纯正则"
+  code: "1007"
+  positivepurerule:
+    - "为实施违法犯罪活动而进行合同诈骗或者将赃款用于非法活动"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+ActiveReturnextraction:
+  name: "积极退赃退赔"
+  type: "共有纯正则"
+  code: "1008"
+  positivepurerule:
+    - "积极退赃退赔"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+NotParticipatingextraction:
+  name: "未参与分赃或分赃较少"
+  type: "共有纯正则"
+  code: "1009"
+  positivepurerule:
+    - "未参与分赃或分赃较少"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
