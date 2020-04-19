@@ -31,6 +31,7 @@ public class ExtractApplication {
 		BeanFactoryConfig.extractFeatureConfig = new ExtractFeatureConfig();
 		BeanFactoryConfig.convertLabelConfig = new ConvertLabelConfig();
 		BeanFactoryConfig.checkLabelConfig = new CheckLabelConfig();
+		SentenceExtractor.init();
 		BeanFactoryExtract.init();
 	}
 }

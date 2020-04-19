@@ -79,7 +79,7 @@ others:
   factsplit: "/split/factsplit.yml"
   casecause: "/extractor/casecause/casecause.yml"
 endecrypt:
-  encrypt: "true"
+  encrypt: "false"
   encryptplace:
     lxfeature: "/configurecenter/sentence/feature/"
 

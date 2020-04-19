@@ -1,14 +1,11 @@
 package com.cjbdi.core.developcenter.factcrime;
 
 import com.alibaba.fastjson.JSONObject;
-import com.cjbdi.ldet.configurecentent.BeanFactoryConfig;
-import com.cjbdi.ldet.extractcenter.splitdocument.FactTextConfig;
-import com.cjbdi.ldet.extractcenter.utils.MatchRule;
+import com.cjbdi.core.configurecentent.BeanFactoryConfig;
+import com.cjbdi.core.extractcenter.utils.MatchRule;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class FactCrime {
     public static JSONObject run(String text) {
@@ -23,11 +20,11 @@ public class FactCrime {
                 return null;
             }
             for (int i=0; i<textList.size(); i++) {
-                if (MatchRule.IsMatch(textList.get(i), BeanFactoryConfig.factTextConfig.getCansize()) && count <2 && !iscrime) {
+                if (MatchRule.IsMatch(textList.get(i), BeanFactoryConfig.factTextConfig.getFactTextConfig().getCansize()) && count <2 && !iscrime) {
                     headerStart = i;
                     iscrime = true;
                 }
-                if (iscrime&&!MatchRule.IsMatch(textList.get(i), BeanFactoryConfig.factTextConfig.getCansize()) && count>textList.size()-3) {
+                if (iscrime&&!MatchRule.IsMatch(textList.get(i), BeanFactoryConfig.factTextConfig.getFactTextConfig().getCansize()) && count>textList.size()-3) {
                     tailStart = i;
                     break;
                 }

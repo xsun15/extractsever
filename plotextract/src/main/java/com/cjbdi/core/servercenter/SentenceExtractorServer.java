@@ -110,10 +110,7 @@ public class SentenceExtractorServer {
       }
    }
 
-   @RequestMapping(
-      value = {"/extract/sentence/feature/leianv1"},
-      produces = {"application/json;charset=UTF-8"}
-   )
+   @RequestMapping(value = {"/extract/sentence/feature/leianv1"}, produces = {"application/json;charset=UTF-8"})
    public String extractLeianV1Feature(@RequestBody JSONObject reqParam, @Context HttpServletRequest request) {
       if(reqParam.containsKey("fullText")) {
          String fullText = reqParam.getString("fullText");
@@ -151,10 +148,7 @@ public class SentenceExtractorServer {
       return "";
    }
 
-   @RequestMapping(
-      value = {"/extract/sentence/feature"},
-      produces = {"application/json;charset=UTF-8"}
-   )
+   @RequestMapping(value = {"/extract/sentence/feature"}, produces = {"application/json;charset=UTF-8"})
    public String extractSentenceFeature(@RequestBody JSONObject reqParam, @Context HttpServletRequest request) {
       long startTime1 = System.currentTimeMillis();
       if(reqParam.containsKey("fullText")) {
@@ -175,7 +169,6 @@ public class SentenceExtractorServer {
                   jsonArray = BeanFactoryExtract.sentenceExtractor.extract(docType, fullText, casecauseList);
                   return Json.encodePrettily(jsonArray);
                }
-
                jsonArray = BeanFactoryExtract.sentenceExtractor.extract(docType, fullText, casecauseList);
                long endTime1 = System.currentTimeMillis();
                System.out.println("代码运行时间：" + (endTime1 - startTime1) + "ms");
@@ -183,7 +176,6 @@ public class SentenceExtractorServer {
             }
          }
       }
-
       return "";
    }
 

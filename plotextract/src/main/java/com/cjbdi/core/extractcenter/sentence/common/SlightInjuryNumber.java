@@ -21,12 +21,12 @@ public class SlightInjuryNumber extends BasicSentenceFeatureClass {
    private List<Pattern> positivePurePattern;
    private List<Pattern> negativePurePattern;
 
-   public SlightInjuryNumber() {
-      init();
+   public SlightInjuryNumber(String code) {
+      init(code);
    }
    public void init(String code) {
       this.code = code;
-      this.feature = "numberofsligthinjuryextract";
+      this.feature = "slightinjurynumberextract";
       this.keyword = "轻微伤";
       this.noiseword = "死|轻伤|重伤";
       this.positivePurePattern = BeanFactoryConfig.extractFeatureConfig.getCommon().getFeatures().get(feature).getPositivepurePattern();

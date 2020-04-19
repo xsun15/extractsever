@@ -2,25 +2,21 @@ package com.cjbdi.core.developcenter;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.cjbdi.ldet.configurecentent.BeanFactoryConfig;
-import com.cjbdi.ldet.developcenter.factcrime.FactCrime;
-import com.cjbdi.ldet.developcenter.money.ExtractMoney;
-import com.cjbdi.ldet.developcenter.money.MoneyExtractorModel;
-import com.cjbdi.ldet.extractcenter.checklabel.CheckLabel;
-import com.cjbdi.ldet.extractcenter.sentence.InitExtractor;
-import com.cjbdi.ldet.extractcenter.sentence.common.money.MoneyConfig;
-import com.cjbdi.ldet.extractcenter.sentence.common.money.MoneyExtractor;
-import com.cjbdi.ldet.extractcenter.sentence.utils.*;
-import com.cjbdi.ldet.extractcenter.splitdocument.FactTextConfig;
-import com.cjbdi.ldet.extractcenter.splitdocument.FactTextSplit;
-import com.cjbdi.ldet.extractcenter.utils.*;
+import com.cjbdi.core.configurecentent.BeanFactoryConfig;
+import com.cjbdi.core.developcenter.money.MoneyExtractorModel;
+import com.cjbdi.core.extractcenter.sentence.InitExtractor;
+import com.cjbdi.core.extractcenter.sentence.common.money.MoneyConfig;
+import com.cjbdi.core.extractcenter.utils.CasecauseModel;
+import com.cjbdi.core.extractcenter.utils.CleanText;
+import com.cjbdi.core.extractcenter.utils.DefendantModel;
+import com.cjbdi.core.extractcenter.utils.HttpRequest;
 import io.vertx.core.logging.Logger;
 import io.vertx.core.logging.LoggerFactory;
 import org.apache.commons.lang.StringUtils;
-import org.checkerframework.checker.nullness.Opt;
 
-import java.time.LocalDate;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class SentenceExtractor {
     private static Logger logger = LoggerFactory.getLogger(SentenceExtractor.class);
@@ -32,8 +28,8 @@ public class SentenceExtractor {
         JSONObject reqPara = new JSONObject();
         reqPara.put("docType", docType);
         reqPara.put("fullText", doc);
-        String casePortrait = HttpRequest.sendPost(BeanFactoryConfig.portraitInterfaceConfig.getDocportray(), reqPara);
-        String dfkasjf = HttpRequest.sendPost(BeanFactoryConfig.portraitInterfaceConfig.getDocsplit(), reqPara);
+        String casePortrait = HttpRequest.sendPost(BeanFactoryConfig.interfaceConfig.getInterfacePortrait().getDocportray(), reqPara);
+        String dfkasjf = HttpRequest.sendPost(BeanFactoryConfig.interfaceConfig.getInterfacePortrait().getDocsplit(), reqPara);
         if (StringUtils.isNotEmpty(casePortrait)) {
             JSONArray casePortraitJson = JSONArray.parseArray(casePortrait);
             JSONArray caseDeepPortrait = new JSONArray();

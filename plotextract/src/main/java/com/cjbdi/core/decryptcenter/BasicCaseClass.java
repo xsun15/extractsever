@@ -45,12 +45,11 @@ public class BasicCaseClass extends PrivateKey {
             extractFeatureBasicConfig.setPositivemodelrule(DecryptRSA.run(extractFeatureBasicConfig.getPositivemodelrule(), this.privateKey));
             extractFeatureBasicConfig.setNegativepurerule(DecryptRSA.run(extractFeatureBasicConfig.getNegativepurerule(), this.privateKey));
             extractFeatureBasicConfig.setNegativemodelrule(DecryptRSA.run(extractFeatureBasicConfig.getNegativemodelrule(), this.privateKey));
-            extractFeatureBasicConfig.setPositivepurePattern(ExtractFeatureTools.toPattern(extractFeatureBasicConfig.getPositivepurerule()));
-            extractFeatureBasicConfig.setPositivemodelPattern(ExtractFeatureTools.toPattern(extractFeatureBasicConfig.getPositivemodelrule()));
-            extractFeatureBasicConfig.setNegativepurePattern(ExtractFeatureTools.toPattern(extractFeatureBasicConfig.getNegativepurerule()));
-            extractFeatureBasicConfig.setNegativemodelPattern(ExtractFeatureTools.toPattern(extractFeatureBasicConfig.getNegativemodelrule()));
          }
-
+         extractFeatureBasicConfig.setPositivepurePattern(ExtractFeatureTools.toPattern(extractFeatureBasicConfig.getPositivepurerule()));
+         extractFeatureBasicConfig.setPositivemodelPattern(ExtractFeatureTools.toPattern(extractFeatureBasicConfig.getPositivemodelrule()));
+         extractFeatureBasicConfig.setNegativepurePattern(ExtractFeatureTools.toPattern(extractFeatureBasicConfig.getNegativepurerule()));
+         extractFeatureBasicConfig.setNegativemodelPattern(ExtractFeatureTools.toPattern(extractFeatureBasicConfig.getNegativemodelrule()));
          String code = extractFeatureBasicConfig.getCode();
          this.features.put(code, extractFeatureBasicConfig);
       }

@@ -37,22 +37,18 @@ import com.cjbdi.core.extractcenter.sentence.share.ShareExtractor;
 import com.cjbdi.core.extractcenter.sentence.steal.StealExtractor;
 import com.cjbdi.core.extractcenter.sentence.traffic.TrafficExtractor;
 import com.cjbdi.core.extractcenter.sentence.transportationofhazardouschemical.TransportationOfHazardousChemicalExtractor;
-import com.cjbdi.core.extractcenter.sentence.utils.Age;
-import com.cjbdi.core.extractcenter.sentence.utils.Birthday;
-import com.cjbdi.core.extractcenter.sentence.utils.ExtractCrimeRecord;
-import com.cjbdi.core.extractcenter.sentence.utils.GenderExTractor;
-import com.cjbdi.core.extractcenter.sentence.utils.IdCardNumExtractor;
-import com.cjbdi.core.extractcenter.sentence.utils.VictimExtractor;
+import com.cjbdi.core.extractcenter.sentence.utils.*;
 import com.cjbdi.core.extractcenter.utils.CasecauseModel;
 import com.cjbdi.core.extractcenter.utils.DefendantModel;
 import com.cjbdi.core.servercenter.utils.Tools;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
 public class InitExtractor {
 
-   Map sentenceExtractors = new HashMap();
+   Map<String, LabelExtractor> sentenceExtractors = new HashMap();
 
    private DrunkDrivingExtractor drunkDrivingExtractor;
    private SchoolBusBusinessOrPassengerTransportationExtractor schoolBusBusinessOrPassengerTransportationExtractor;
@@ -297,7 +293,7 @@ public class InitExtractor {
       return courtDecisionExtracor;
    }
 
-   public Map getSentenceExtractors() {
+   public Map<String, LabelExtractor> getSentenceExtractors() {
       return this.sentenceExtractors;
    }
 

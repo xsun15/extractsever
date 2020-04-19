@@ -5,7 +5,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.cjbdi.core.configurecentent.BeanFactoryConfig;
 import com.cjbdi.core.developcenter.Feature;
 import com.cjbdi.core.developcenter.SentenceExtractor;
-import com.cjbdi.core.developcenter.SentenceMoneyExtractor;
 import com.cjbdi.core.extractcenter.sentence.utils.Label;
 import com.cjbdi.core.extractcenter.utils.*;
 import io.vertx.core.json.Json;
@@ -164,14 +163,6 @@ public class DevelopServer {
         String filename = jsonParam.getString("filename");
         if (fullText != null &&  fullText.length() > 0){
             List<String> casecauseList = new ArrayList<>();
-            if (casecauseList != null && casecauseList.size() ==1 ){
-                JSONObject result = SentenceMoneyExtractor.extract(fullText, casecauseList, purpose);
-                if (result!=null&&!result.isEmpty()) {
-                    result.put("案由", casecauseList.get(0));
-                    return Json.encodePrettily(result);
-                }
-                return "";
-            }
             fullText = CleanText.run(fullText);
             String docType = "刑事判决书";
             JSONObject reqPara = new JSONObject();
