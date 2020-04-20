@@ -1,0 +1,170 @@
+beijingshiextract:
+   code: "110000"
+   name: "北京市"
+   rule:
+      - "北京市"
+tianjinshiextract:
+   code: "120000"
+   name: "天津市"
+   rule:
+      - "天津市"
+hebeishengextract:
+   code: "130000"
+   name: "河北省"
+   rule:
+      - "河北省"
+shanxisheng2extract:
+   code: "140000"
+   name: "山西省"
+   rule:
+      - "山西省"
+neimengguzizhiquextract:
+   code: "150000"
+   name: "内蒙古自治区"
+   rule:
+      - "内蒙古自治区"
+liaoningshengextract:
+   code: "210000"
+   name: "辽宁省"
+   rule:
+      - "辽宁省"
+jilinshengextract:
+   code: "220000"
+   name: "吉林省"
+   rule:
+      - "吉林省"
+heilongjiangshengextract:
+   code: "230000"
+   name: "黑龙江省"
+   rule:
+      - "黑龙江省"
+shanghaishiextract:
+   code: "310000"
+   name: "上海市"
+   rule:
+      - "上海市"
+jiangsushengextract:
+   code: "320000"
+   name: "江苏省"
+   rule:
+      - "江苏省"
+zhejiangshengextract:
+   code: "330000"
+   name: "浙江省"
+   rule:
+      - "浙江省"
+anhuishengextract:
+   code: "340000"
+   name: "安徽省"
+   rule:
+      - "安徽省"
+fujianshengextract:
+   code: "350000"
+   name: "福建省"
+   rule:
+      - "福建省"
+jiangxishengextract:
+   code: "360000"
+   name: "江西省"
+   rule:
+      - "江西省"
+shandongshengextract:
+   code: "370000"
+   name: "山东省"
+   rule:
+      - "山东省"
+henanshengextract:
+   code: "410000"
+   name: "河南省"
+   rule:
+      - "河南省"
+hubeishengextract:
+   code: "420000"
+   name: "湖北省"
+   rule:
+      - "湖北省"
+hunanshengextract:
+   code: "430000"
+   name: "湖南省"
+   rule:
+      - "湖南省"
+guangdongshengextract:
+   code: "440000"
+   name: "广东省"
+   rule:
+      - "广东省"
+guangxizhuangzuzizhiquextract:
+   code: "450000"
+   name: "广西壮族自治区"
+   rule:
+      - "广西壮族自治区"
+hainanshengextract:
+   code: "460000"
+   name: "海南省"
+   rule:
+      - "海南省"
+zhongqingshiextract:
+   code: "500000"
+   name: "重庆市"
+   rule:
+      - "重庆市"
+sichuanshengextract:
+   code: "510000"
+   name: "四川省"
+   rule:
+      - "四川省"
+guizhoushengextract:
+   code: "520000"
+   name: "贵州省"
+   rule:
+      - "贵州省"
+yunnanshengextract:
+   code: "530000"
+   name: "云南省"
+   rule:
+      - "云南省"
+xizangzizhiquextract:
+   code: "540000"
+   name: "西藏自治区"
+   rule:
+      - "西藏自治区"
+shanxisheng1extract:
+   code: "610000"
+   name: "陕西省"
+   rule:
+      - "陕西省"
+gansushengextract:
+   code: "620000"
+   name: "甘肃省"
+   rule:
+      - "甘肃省"
+qinghaishengextract:
+   code: "630000"
+   name: "青海省"
+   rule:
+      - "青海省"
+ningxiahuizuzizhiquextract:
+   code: "640000"
+   name: "宁夏回族自治区"
+   rule:
+      - "宁夏回族自治区"
+xinjiangweiwuerzizhiquextract:
+   code: "650000"
+   name: "新疆维吾尔自治区"
+   rule:
+      - "新疆维吾尔自治区"
+taiwanshengextract:
+   code: "710000"
+   name: "台湾省"
+   rule:
+      - "台湾省"
+xianggangtebiexingzhengquextract:
+   code: "810000"
+   name: "香港特别行政区"
+   rule:
+      - "香港特别行政区"
+aomentebiexingzhengquextract:
+   code: "820000"
+   name: "澳门特别行政区"
+   rule:
+      - "澳门特别行政区"

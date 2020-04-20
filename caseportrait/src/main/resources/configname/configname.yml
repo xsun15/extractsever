@@ -1,0 +1,18 @@
+extraction:
+  province: "/extract/province/province.yml"
+  casecause: "/extract/casecause/casecause.yml"
+  personparty: "/extract/personparty/personparty.yml"
+  portray: "/extract/portray/portray.yml"
+structuration:
+  factsplit: "/split/factsplit.yml"
+  firsttrial: "/split/firsttrial.yml"
+  indicitopinion: "/split/indicitopinion.yml"
+  indictment: "/split/indictment.yml"
+  nopros: "/split/nopros.yml"
+  trialreport: "/split/trialreport.yml"
+others:
+  interfaceurl: "/interface/interface.yml"
+endecrypt:
+  encrypt: "false"
+  encryptplace:
+    lxfeature: "/configurecenter/sentence/feature/"
