@@ -132,6 +132,7 @@ public class DevelopServer {
                             label =  Feature.extract(defendantModel,casecauseModel,extractorType,extractorFrom,code);
                         }
                         if (label != null){
+                            System.out.println("有效数据");
                             JsonObject jsonObject = new JsonObject();
                             jsonObject.put("casecause",casecauseModel.getCasecause());
                             jsonObject.put("isaccurate","精确");
@@ -152,6 +153,7 @@ public class DevelopServer {
             }
             return "";
         } else {
+            System.out.println("原始文本为空");
             return "";
         }
     }

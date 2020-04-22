@@ -12,9 +12,9 @@ public class InitExtractor extends InitBasicExtractor {
 
    public InitExtractor() {
       this.init(this.casecause);
-      this.basicPrivateExtractors.add(new Money("1001"));
+//      this.basicPrivateExtractors.add(new Money("1001"));
       this.basicPrivateExtractors.add(new DefaultPeopleNumExtractor("1002"));
-      this.basicPrivateExtractors.add(new DefaultSpecialMoneyExtractor("DirectEconomicLossextraction"));
-      this.basicPrivateExtractors.add(new DefaultSpecialMoneyExtractor("AmountReturnedextraction"));
+//      this.basicPrivateExtractors.add(new DefaultSpecialMoneyExtractor("DirectEconomicLossextraction"));
+//      this.basicPrivateExtractors.add(new DefaultSpecialMoneyExtractor("AmountReturnedextraction"));
    }
 }

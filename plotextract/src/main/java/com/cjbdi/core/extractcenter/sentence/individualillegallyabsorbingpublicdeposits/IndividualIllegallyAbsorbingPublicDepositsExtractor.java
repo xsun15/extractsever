@@ -39,4 +39,12 @@ public class IndividualIllegallyAbsorbingPublicDepositsExtractor extends LabelEx
 
       return labelList;
    }
+
+   public IndividualIllegallyAbsorbingPublicDeposits getIndividualIllegallyAbsorbingPublicDeposits() {
+      return individualIllegallyAbsorbingPublicDeposits;
+   }
+
+   public InitExtractor getInitExtractor() {
+      return initExtractor;
+   }
 }

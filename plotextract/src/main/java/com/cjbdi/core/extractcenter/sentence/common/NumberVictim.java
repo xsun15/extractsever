@@ -69,7 +69,7 @@ public class NumberVictim {
             for (String content : targetContent) {
                NumberConfig numberConfig = matchPatternNumberConfig(content, positivePurePattern, negativePurePattern);
                if (numberConfig != null) {
-                  String number = ExtractNumber.run(WordfigureToNumber.run(numberConfig.target), "^[0-9]人");
+                  String number = ExtractNumber.run(WordfigureToNumber.run(numberConfig.target), "^[0-9]+");
                   if (StringUtils.isNotEmpty(number) && IsDigit.isInteger(number)) {
                      injuryNumber = injuryNumber + Integer.parseInt(number);
                   }

@@ -1,6 +1,7 @@
 package com.cjbdi.core.developcenter;
 
 import com.cjbdi.core.configurecentent.extractfeature.sentence.DrunkDriving;
+import com.cjbdi.core.configurecentent.extractfeature.sentence.IndividualIllegallyAbsorbingPublicDeposits;
 import com.cjbdi.core.configurecentent.extractfeature.sentence.Traffic;
 import com.cjbdi.core.decryptcenter.BasicCaseClass;
 import com.cjbdi.core.extractcenter.sentence.SentenceExtractor;
@@ -21,14 +22,16 @@ public class Feature {
     public static LinkedHashMap<String, BasicCaseClass> basicCaseClass = new LinkedHashMap<>();
     static {
         InitExtractor initExtractor = SentenceExtractor.initExtractor.getDrunkDrivingExtractor().getInitExtractor();
-        basicPrivateExtractors.put("危险驾驶罪（醉驾）",initExtractor.basicPrivateExtractors);
+        basicPrivateExtractors.put("危险驾驶罪（醉驾）",initExtractor.getBasicPrivateExtractors());
         basicPureRuleExtractors.put("危险驾驶罪（醉驾）",initExtractor.getBasicPureRuleExtractors());
-        basicPureRuleExtractors.put("交通肇事罪",initExtractor.getBasicPureRuleExtractors());
         DrunkDriving drunkDriving = new DrunkDriving();
-        Traffic traffic = new Traffic();
         basicCaseClass.put("危险驾驶罪（醉驾）",drunkDriving);
-        basicCaseClass.put("交通肇事罪",traffic);
 
+        com.cjbdi.core.extractcenter.sentence.individualillegallyabsorbingpublicdeposits.InitExtractor initExtractor1 = SentenceExtractor.initExtractor.getIndividualIllegallyAbsorbingPublicDepositsExtractor().getInitExtractor();
+        basicPrivateExtractors.put("非法吸收公众存款罪（个人）",initExtractor1.getBasicPrivateExtractors());
+        basicPureRuleExtractors.put("非法吸收公众存款罪（个人）",initExtractor.getBasicPureRuleExtractors());
+        IndividualIllegallyAbsorbingPublicDeposits individualIllegallyAbsorbingPublicDeposits = new IndividualIllegallyAbsorbingPublicDeposits();
+        basicCaseClass.put("非法吸收公众存款罪（个人）",individualIllegallyAbsorbingPublicDeposits);
     }
 
     public static Label extract(DefendantModel defendantModel, CasecauseModel casecauseModel, String extractorType, String extractorFrom, String code) {
@@ -37,6 +40,7 @@ public class Feature {
         if (extractorType.equals("私有")){
             if(extractorFrom.equals("本院认为")){
                 casecauseModel.setJustice("");
+                casecauseModel.setOpinion(casecauseModel.getOpinion().split("。")[0]);
                 if (basicPrivateExtractors.get(casecauseModel.getCasecause()) != null){
                     for(BasicSentenceFeatureClass basicSentenceFeatureClass :basicPrivateExtractors.get(casecauseModel.getCasecause())){
                         Label label = basicSentenceFeatureClass.run(defendantModel,casecauseModel, basicCaseClass.get(casecauseModel.getCasecause()));
