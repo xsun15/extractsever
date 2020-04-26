@@ -21,13 +21,13 @@ administrativepenaltyfortheftwithinoneyearstealextract:
     rule:
 forotherilegalactivitystealextract:
     name: "吸毒、赌博等违法活动而盗窃"
-    rule: "1011"
+    rule:
 usingdestructivemeanstealextract:
     name: "采用破坏性手段盗窃公私财物造成其他财物损毁"
     rule: "1007"
 forlivingstealextract:
     name: "因生活所迫、学习、治病急需而盗窃"
-    rule:
+    rule: "1020"
 returnbeforethecrimestealextract:
     name: "案件被发现前主动将赃物放回原处或归还被害人"
     rule: "1008"
