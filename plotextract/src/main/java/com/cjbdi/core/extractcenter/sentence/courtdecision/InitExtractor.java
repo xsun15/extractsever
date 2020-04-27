@@ -21,6 +21,7 @@ public class InitExtractor {
          String name = ((ExtractFeatureBasicConfig) BeanFactoryConfig.extractFeatureConfig.getCourtDecision().getFeatures().get(feature)).getName();
          List positivePureRule = ((ExtractFeatureBasicConfig) BeanFactoryConfig.extractFeatureConfig.getCourtDecision().getFeatures().get(feature)).getPositivepurePattern();
          List negativePureRule = ((ExtractFeatureBasicConfig) BeanFactoryConfig.extractFeatureConfig.getCourtDecision().getFeatures().get(feature)).getNegativepurePattern();
+
          PublicFeatureExtract publicFeaturePureRuleExtract = new PublicFeatureExtract(positivePureRule, negativePureRule, code, name);
          this.basicPureRuleExtractors.put(feature, publicFeaturePureRuleExtract);
       }

@@ -40,7 +40,6 @@ public class PublicFeatureExtract extends LabelExtractor {
          label.setValue("true");
          label.setChiname(this.name);
       }
-
       return label;
    }
 

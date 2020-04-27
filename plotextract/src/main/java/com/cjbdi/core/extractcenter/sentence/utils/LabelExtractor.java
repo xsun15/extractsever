@@ -79,7 +79,6 @@ public class LabelExtractor {
 
             if(!flag1) {
                Iterator var12 = reponseJson1.keySet().iterator();
-
                while(var12.hasNext()) {
                   String featureName = (String)var12.next();
                   if(featureName.contains(code1) && reponseJson1.get(featureName).toString().contains("1")) {

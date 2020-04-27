@@ -6,90 +6,59 @@ import com.cjbdi.core.configurecentent.BeanFactoryConfig;
 import com.cjbdi.core.configurecentent.converlabel.leianv1.utils.LeianBasicClass;
 import com.cjbdi.core.configurecentent.converlabel.utils.CalculateExpression;
 import com.cjbdi.core.extractcenter.utils.IsDigit;
+import org.apache.commons.lang.StringUtils;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import org.apache.commons.lang.StringUtils;
 
-public class ToLeianV1 {
+public class ToLeianV2 {
 
-   public static String run(JSONArray extractResult) {
+   public static String run(JSONArray extractResult, String fullText, String filename, String justice) {
       JSONArray caseDeepPortraitTarget = new JSONArray();
       JSONObject leian = new JSONObject();
-      JSONArray features = new JSONArray();
       JSONArray courtDecisions = new JSONArray();
       String casecause = "";
-      Iterator var6 = extractResult.iterator();
+      if (extractResult!=null) {
+         Iterator var6 = extractResult.iterator();
+         while (var6.hasNext()) {
+            Object obj = var6.next();
+            JSONObject defendantDeepPortrait = JSONObject.parseObject(obj.toString());
+            String accusedName = defendantDeepPortrait.getString("accusedName");
+            JSONObject defendantDeepPortraitTarget = new JSONObject();
+            JSONArray completeFeatures = defendantDeepPortrait.getJSONArray("completeList");
+            JSONArray completeFeaturesTarget = new JSONArray();
+            Iterator var13 = completeFeatures.iterator();
 
-      while(var6.hasNext()) {
-         Object obj = var6.next();
-         JSONObject defendantDeepPortrait = JSONObject.parseObject(obj.toString());
-         String accusedName = defendantDeepPortrait.getString("accusedName");
-         JSONObject defendantDeepPortraitTarget = new JSONObject();
-         JSONArray completeFeatures = defendantDeepPortrait.getJSONArray("completeList");
-         JSONArray completeFeaturesTarget = new JSONArray();
-         Iterator var13 = completeFeatures.iterator();
-
-         while(var13.hasNext()) {
-            Object obj1 = var13.next();
-            JSONObject percaseFetaures = JSONObject.parseObject(obj1.toString());
-            JSONObject percaseFetauresTarget = new JSONObject();
-            casecause = percaseFetaures.getString("caseCause");
-            JSONArray factLists = percaseFetaures.getJSONArray("factsList");
-            JSONArray factListsTarget = convert(casecause, factLists);
-            JSONArray plotList = percaseFetaures.getJSONArray("plotList");
-            JSONArray plotListTarget = convert("总则", plotList);
-            JSONArray courtDecisionTarget = percaseFetaures.getJSONArray("courtDecision");
-            percaseFetauresTarget.put("caseCause", casecause);
-            percaseFetauresTarget.put("factsList", factListsTarget);
-            percaseFetauresTarget.put("plotList", plotListTarget);
-            completeFeaturesTarget.add(percaseFetauresTarget);
-            int i;
-            JSONObject jsonObject;
-            if(factListsTarget != null && factListsTarget.size() > 0) {
-               for(i = 0; i < factListsTarget.size(); ++i) {
-                  jsonObject = new JSONObject();
-                  jsonObject.put("name", factListsTarget.getJSONObject(i).getString("name"));
-                  jsonObject.put("value", factListsTarget.getJSONObject(i).getString("value"));
-                  jsonObject.put("text", factListsTarget.getJSONObject(i).getString("text"));
-                  jsonObject.put("rule", factListsTarget.getJSONObject(i).getString("rule"));
-                  jsonObject.put("type", "犯罪事实");
-                  features.add(jsonObject);
+            while (var13.hasNext()) {
+               Object obj1 = var13.next();
+               JSONObject percaseFetaures = JSONObject.parseObject(obj1.toString());
+               JSONObject percaseFetauresTarget = new JSONObject();
+               casecause = percaseFetaures.getString("caseCause");
+               JSONArray courtDecisionTarget = percaseFetaures.getJSONArray("courtDecision");
+               percaseFetauresTarget.put("caseCause", casecause);
+               completeFeaturesTarget.add(percaseFetauresTarget);
+               if (courtDecisionTarget != null && courtDecisionTarget.size() > 0) {
+                  for (int i = 0; i < courtDecisionTarget.size(); ++i) {
+                     JSONObject jsonObject = new JSONObject();
+                     jsonObject.put("name", courtDecisionTarget.getJSONObject(i).getString("chiname"));
+                     jsonObject.put("value", courtDecisionTarget.getJSONObject(i).getString("value"));
+                     courtDecisions.add(jsonObject);
+                  }
                }
             }
-
-            if(plotListTarget != null && plotListTarget.size() > 0) {
-               for(i = 0; i < plotListTarget.size(); ++i) {
-                  jsonObject = new JSONObject();
-                  jsonObject.put("name", plotListTarget.getJSONObject(i).getString("name"));
-                  jsonObject.put("value", plotListTarget.getJSONObject(i).getString("value"));
-                  jsonObject.put("text", plotListTarget.getJSONObject(i).getString("text"));
-                  jsonObject.put("rule", plotListTarget.getJSONObject(i).getString("rule"));
-                  jsonObject.put("type", "从重情节");
-                  features.add(jsonObject);
-               }
-            }
-
-            if(courtDecisionTarget != null && courtDecisionTarget.size() > 0) {
-               for(i = 0; i < courtDecisionTarget.size(); ++i) {
-                  jsonObject = new JSONObject();
-                  jsonObject.put("name", courtDecisionTarget.getJSONObject(i).getString("chiname"));
-                  jsonObject.put("value", courtDecisionTarget.getJSONObject(i).getString("value"));
-                  jsonObject.put("text", courtDecisionTarget.getJSONObject(i).getString("text"));
-                  jsonObject.put("rule", courtDecisionTarget.getJSONObject(i).getString("usedRegx"));
-                  courtDecisions.add(jsonObject);
-               }
-            }
+            defendantDeepPortraitTarget.put("accusedName", accusedName);
+            defendantDeepPortraitTarget.put("completeList", completeFeaturesTarget);
+            caseDeepPortraitTarget.add(defendantDeepPortraitTarget);
          }
-         defendantDeepPortraitTarget.put("accusedName", accusedName);
-         defendantDeepPortraitTarget.put("completeList", completeFeaturesTarget);
-         caseDeepPortraitTarget.add(defendantDeepPortraitTarget);
-      }
 
-      leian.put("casecause", casecause);
-      leian.put("features", features);
-      leian.put("courtDecisons", courtDecisions);
+         leian.put("casecause", casecause);
+         leian.put("text", fullText);
+         leian.put("filename", filename);
+         leian.put("justice", justice);
+         leian.put("courtDecisons", courtDecisions);
+      }
       return leian.toJSONString();
    }
 

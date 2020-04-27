@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.cjbdi.core.configurecentent.BeanFactoryConfig;
 import com.cjbdi.core.convertlabelcenter.ConvertLabelFactory;
 import com.cjbdi.core.convertlabelcenter.utils.ToLeianV1;
+import com.cjbdi.core.convertlabelcenter.utils.ToLeianV2;
 import com.cjbdi.core.convertlabelcenter.utils.ToSelfSentence;
 import com.cjbdi.core.developcenter.good.ExtractGood;
 import com.cjbdi.core.extractcenter.BeanFactoryExtract;
@@ -15,6 +16,8 @@ import io.vertx.core.json.Json;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.StreamingOutput;
+
 import org.apache.commons.lang.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -144,7 +147,35 @@ public class SentenceExtractorServer {
             }
          }
       }
+      return "";
+   }
 
+   @RequestMapping(value = {"/extract/sentence/feature/leianv2"}, produces = {"application/json;charset=UTF-8"})
+   public String extractLeianV2Feature(@RequestBody JSONObject reqParam, @Context HttpServletRequest request) {
+      if(reqParam.containsKey("fullText")) {
+         String fullText = reqParam.getString("fullText");
+         String filename = reqParam.getString("filename");
+         if(org.apache.commons.lang3.StringUtils.isNotEmpty(fullText)) {
+            fullText = CleanText.run(fullText);
+            String docType = "";
+            if(reqParam.containsKey("docType")) {
+               docType = reqParam.getString("docType");
+            } else {
+               docType = Tools.extractDocType(fullText);
+            }
+            if(org.apache.commons.lang3.StringUtils.isNotEmpty(docType)) {
+               List casecauseList = (List)reqParam.getObject("casecause", List.class);
+               JSONArray jsonArray = BeanFactoryExtract.sentenceExtractor.extractCourtDecision(docType, fullText, casecauseList);
+               JSONObject reqPara = new JSONObject();
+               reqPara.put("fullText", fullText);
+               String docsplit = HttpRequest.sendPost(BeanFactoryConfig.interfaceConfig.getInterfacePortrait().getDocsplit(), reqPara);
+               JSONObject resultJson = JSONObject.parseObject(docsplit);
+               String justice = resultJson.getString("justice");
+               String result = ToLeianV2.run(jsonArray, fullText, filename, justice);
+               return result;
+            }
+         }
+      }
       return "";
    }
 

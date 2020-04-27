@@ -63,14 +63,15 @@ public class CheckLabel {
             ArrayList targetindex = new ArrayList();
 
             int saveIndex;
-            for(saveIndex = 0; saveIndex < factLists.size(); ++saveIndex) {
-               JSONObject priority = factLists.getJSONObject(saveIndex);
-               String removeIndex = priority.getString("flag");
-               if(checkrule.contains(removeIndex)) {
-                  targetindex.add(Integer.valueOf(saveIndex));
+            if (factLists!=null) {
+               for (saveIndex = 0; saveIndex < factLists.size(); ++saveIndex) {
+                  JSONObject priority = factLists.getJSONObject(saveIndex);
+                  String removeIndex = priority.getString("flag");
+                  if (checkrule.contains(removeIndex)) {
+                     targetindex.add(Integer.valueOf(saveIndex));
+                  }
                }
             }
-
             saveIndex = 0;
             if(targetindex != null && targetindex.size() > 1) {
                int var15 = 20;
