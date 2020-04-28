@@ -189,6 +189,74 @@ public class DevelopServer {
         }
     }
 
+    @RequestMapping(value = "/develop/extract/featurebool",produces = "application/json;charset=UTF-8")
+    public String extractBool(@RequestBody JSONObject jsonParam,@Context HttpServletRequest request) {
+        String fullText =jsonParam.getString("fullText");
+        String extractorType = jsonParam.getString("extractorType");
+        String extractorFrom = jsonParam.getString("extractFrom");
+        String code = jsonParam.getString("code");
+        String isBool = jsonParam.getString("isBool");
+
+        if (fullText != null &&  fullText.length() > 0){
+            fullText = CleanText.run(fullText);
+            JSONObject reqPara = new JSONObject();
+            reqPara.put("fullText", fullText);
+            String paraSplitter = HttpRequest.sendPost(BeanFactoryConfig.interfaceConfig.getInterfacePortrait().getDocsplit(), reqPara);
+            if (paraSplitter!=null&& StringUtils.isNotEmpty(paraSplitter)) {
+                JSONObject paraSplitterJson = JSONObject.parseObject(paraSplitter);
+
+                String casePortrait = HttpRequest.sendPost(BeanFactoryConfig.interfaceConfig.getInterfacePortrait().getDocportray(), reqPara);
+                //生成 defendantModel 和 casecauseModel
+                if (StringUtils.isNotEmpty(casePortrait)) {
+                    JSONArray casePortraitJson = JSONArray.parseArray(casePortrait);
+                    JSONObject defendantPortray = casePortraitJson.getJSONObject(0);
+                    DefendantModel defendantModel = new DefendantModel(defendantPortray);
+                    //保证单人单案
+//                if (defendantModel.getDefendantNameSet()==null || defendantModel.getDefendantNameSet().size()!=1) return null;
+//                if (defendantModel.getCasecauseSet()==null || defendantModel.getCasecauseSet().size()!=1) return null;
+                    if (defendantModel.getDefendantNameSet()==null) return null;
+                    if (defendantModel.getCasecauseSet()==null) return null;
+
+                    Set<String> casecauseSet = defendantModel.getCasecauseSet();
+                    Map<String, CasecauseModel> casecauseModelMap = defendantModel.getCasecauseModelMap();
+                    CasecauseModel casecauseModel =  null;
+                    for (String casecause : casecauseSet) {
+                        casecauseModel = casecauseModelMap.get(casecause);
+                    }
+                    Label label = null;
+                    //保证用户传入的案由和系统提取的案由相同
+                    if (casecauseModel.getCasecause().equals(jsonParam.getString("casecause"))){
+                        label = Feature.extractbool(defendantModel,casecauseModel,extractorType,extractorFrom,code,paraSplitter);
+                    }
+                    if (label != null){
+                        JsonObject jsonObject = new JsonObject();
+                        jsonObject.put("casecause",casecauseModel.getCasecause());
+                        jsonObject.put("feature",label.getChiname());
+                        jsonObject.put("UsedRegx",label.getUsedRegx());
+//                        jsonObject.put("isaccurate","精确");
+//                        jsonObject.put("effectText","");
+//                        jsonObject.put("invalidText","");
+//                        jsonObject.put("automarkDetail","");
+
+                        if (extractorFrom.contains("本院认为")){
+                            jsonObject.put("automark",label.getValue());
+                            jsonObject.put("本院", paraSplitterJson.get("opinion"));
+                        }else if(extractorFrom.contains("经审理查明")){
+                            jsonObject.put("extractmark",label.getValue());
+                            jsonObject.put("经审", paraSplitterJson.get("justice"));
+                        }
+                        return jsonObject.toString();
+                    }
+                }
+
+
+            }
+            return "";
+        } else {
+            return "";
+        }
+    }
+
 
     public String extractFixFeature(JSONObject jsonParam) {
         String fullText =jsonParam.getString("fullText");
