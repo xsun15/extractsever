@@ -111,10 +111,10 @@
 				<directory>src/main/resources</directory>
 				<filtering>true</filtering>
 				<includes>
-					<include>configname/*.yml</include>
-					<include>extract/*.yml</include>
-					<include>split/*.yml</include>
-					<include>interface/*yml</include>
+					<include>configname/**/*.yml</include>
+					<include>extract/**/*.yml</include>
+					<include>split/**/*.yml</include>
+					<include>interface/**/*yml</include>
 				</includes>
 			</resource>
 		</resources>

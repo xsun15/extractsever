@@ -3,10 +3,14 @@ package com.cjbdi.core.servercenter;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.cjbdi.core.configurecentent.BeanFactoryConfig;
+import com.cjbdi.core.convertlabelcenter.ConvertLabelFactory;
+import com.cjbdi.core.convertlabelcenter.utils.ToLeianV1;
 import com.cjbdi.core.developcenter.Feature;
 import com.cjbdi.core.developcenter.SentenceExtractor;
+import com.cjbdi.core.extractcenter.BeanFactoryExtract;
 import com.cjbdi.core.extractcenter.sentence.utils.Label;
 import com.cjbdi.core.extractcenter.utils.*;
+import com.cjbdi.core.servercenter.utils.Tools;
 import io.vertx.core.json.Json;
 import io.vertx.core.json.JsonObject;
 import org.apache.commons.lang.StringUtils;
@@ -94,6 +98,35 @@ public class DevelopServer {
         }
         return result;
     }
+
+    @RequestMapping(value = "/develop/extract/headbodytail",produces = "application/json;charset=UTF-8")
+    public String extractHeadBodyTail(@RequestBody JSONObject reqParam,@Context HttpServletRequest request) {
+        if(reqParam.containsKey("fullText")) {
+            String fullText = reqParam.getString("fullText");
+            if(org.apache.commons.lang3.StringUtils.isNotEmpty(fullText)) {
+                fullText = CleanText.run(fullText);
+                String docType = "";
+                if(reqParam.containsKey("docType")) {
+                    docType = reqParam.getString("docType");
+                } else {
+                    docType = Tools.extractDocType(fullText);
+                }
+                if(org.apache.commons.lang3.StringUtils.isNotEmpty(docType)) {
+                    List casecauseList = (List)reqParam.getObject("casecause", List.class);
+                    if(casecauseList != null && casecauseList.size() == 1) {
+                        JSONArray jsonArray = BeanFactoryExtract.sentenceExtractor.extractHeadBodyTail(docType, fullText, casecauseList);
+                        return jsonArray.toJSONString();
+                    }
+                    JSONArray jsonArray = BeanFactoryExtract.sentenceExtractor.extractHeadBodyTail(docType, fullText, casecauseList);
+                    if(jsonArray != null && jsonArray.size() == 1) {
+                        return jsonArray.toJSONString();
+                    }
+                }
+            }
+        }
+        return "";
+    }
+
     @RequestMapping(value = "/develop/extract/feature",produces = "application/json;charset=UTF-8")
     public String extractPeople(@RequestBody JSONObject jsonParam,@Context HttpServletRequest request) {
         String fullText =jsonParam.getString("fullText");
@@ -108,8 +141,6 @@ public class DevelopServer {
             String paraSplitter = HttpRequest.sendPost(BeanFactoryConfig.interfaceConfig.getInterfacePortrait().getDocsplit(), reqPara);
             if (paraSplitter!=null&& StringUtils.isNotEmpty(paraSplitter)) {
                 JSONObject paraSplitterJson = JSONObject.parseObject(paraSplitter);
-
-
                     String casePortrait = HttpRequest.sendPost(BeanFactoryConfig.interfaceConfig.getInterfacePortrait().getDocportray(), reqPara);
                     //生成 defendantModel 和 casecauseModel
                     if (StringUtils.isNotEmpty(casePortrait)) {

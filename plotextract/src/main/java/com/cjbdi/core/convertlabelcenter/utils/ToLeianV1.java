@@ -52,8 +52,6 @@ public class ToLeianV1 {
                   jsonObject = new JSONObject();
                   jsonObject.put("name", factListsTarget.getJSONObject(i).getString("name"));
                   jsonObject.put("value", factListsTarget.getJSONObject(i).getString("value"));
-                  jsonObject.put("text", factListsTarget.getJSONObject(i).getString("text"));
-                  jsonObject.put("rule", factListsTarget.getJSONObject(i).getString("rule"));
                   jsonObject.put("type", "犯罪事实");
                   features.add(jsonObject);
                }
@@ -64,8 +62,6 @@ public class ToLeianV1 {
                   jsonObject = new JSONObject();
                   jsonObject.put("name", plotListTarget.getJSONObject(i).getString("name"));
                   jsonObject.put("value", plotListTarget.getJSONObject(i).getString("value"));
-                  jsonObject.put("text", plotListTarget.getJSONObject(i).getString("text"));
-                  jsonObject.put("rule", plotListTarget.getJSONObject(i).getString("rule"));
                   jsonObject.put("type", "从重情节");
                   features.add(jsonObject);
                }
@@ -76,8 +72,6 @@ public class ToLeianV1 {
                   jsonObject = new JSONObject();
                   jsonObject.put("name", courtDecisionTarget.getJSONObject(i).getString("chiname"));
                   jsonObject.put("value", courtDecisionTarget.getJSONObject(i).getString("value"));
-                  jsonObject.put("text", courtDecisionTarget.getJSONObject(i).getString("text"));
-                  jsonObject.put("rule", courtDecisionTarget.getJSONObject(i).getString("usedRegx"));
                   courtDecisions.add(jsonObject);
                }
             }

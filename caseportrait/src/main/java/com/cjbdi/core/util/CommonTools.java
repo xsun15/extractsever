@@ -43,11 +43,13 @@ public class CommonTools {
     }
 
     public static boolean ismatch(String line, List<String> expPatternList) {
-        for (String exp : expPatternList) {
-            Pattern pattern = Pattern.compile(exp);
-            Matcher matcher = pattern.matcher(line);
-            if (matcher.find()) {
-                return true;
+        if (StringUtils.isNotEmpty(line)) {
+            for (String exp : expPatternList) {
+                Pattern pattern = Pattern.compile(exp);
+                Matcher matcher = pattern.matcher(line);
+                if (matcher.find()) {
+                    return true;
+                }
             }
         }
         return false;

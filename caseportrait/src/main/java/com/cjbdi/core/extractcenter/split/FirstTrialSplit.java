@@ -33,7 +33,7 @@ public class FirstTrialSplit extends BasicSplit {
             firstTrial.setDocType(contentList.get(2));
             firstTrial.setCourtCaseId(contentList.get(3));
             firstTrial.setProcuName(contentList.get(4));
-            Class c = Class.forName("com.cjbdi.portrait.configcenter.structurateConfig.utils.FirstTrialConfig");
+            Class c = Class.forName("com.cjbdi.core.configcenter.structurateConfig.utils.FirstTrialBasicConfig");
             Field[] fields = c.getDeclaredFields();
             boolean accessible = false;
             List<Integer> invalidIndex = new ArrayList<>();

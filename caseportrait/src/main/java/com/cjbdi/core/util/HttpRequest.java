@@ -20,16 +20,16 @@ public class HttpRequest {
 
     public static String sendPost(String url, MultivaluedMapImpl param) {
         try {
-            Client e = Client.create();
+            Client client = Client.create();
             URI u2 = new URI(url);
-            WebResource webResource = e.resource(u2);
-            ClientResponse clientResponse = (ClientResponse)webResource.type("application/x-www-form-urlencoded").post(ClientResponse.class, param);
-            String result = (String)clientResponse.getEntity(String.class);
+            WebResource webResource = client.resource(u2);
+            ClientResponse clientResponse = webResource.type("application/x-www-form-urlencoded").post(ClientResponse.class, param);
+            String result = clientResponse.getEntity(String.class);
             return result;
-        } catch (Exception var7) {
-            var7.printStackTrace();
-            return "";
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        return "";
     }
 
     public static String sendPost(String url, JSONObject param) {

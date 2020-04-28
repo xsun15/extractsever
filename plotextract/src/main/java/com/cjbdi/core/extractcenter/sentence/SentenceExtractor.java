@@ -11,6 +11,7 @@ import com.cjbdi.core.extractcenter.utils.DefendantModel;
 import com.cjbdi.core.extractcenter.utils.HttpRequest;
 import com.cjbdi.core.servercenter.utils.AssignAllFeatureTaskLevelFirst;
 import com.cjbdi.core.servercenter.utils.AssignCourtDecisionTask;
+import com.cjbdi.core.servercenter.utils.AssignHeadBodyTailTask;
 import com.cjbdi.core.servercenter.utils.ExtractCallable;
 import io.vertx.core.logging.Logger;
 import io.vertx.core.logging.LoggerFactory;
@@ -66,4 +67,21 @@ public class SentenceExtractor {
          return caseDeepPortrait;
       }
    }
+
+   public JSONArray extractHeadBodyTail(String docType, String doc, List cases) {
+      doc = CleanText.run(doc);
+      JSONObject reqPara = new JSONObject();
+      reqPara.put("docType", docType);
+      reqPara.put("fullText", doc);
+      String casePortrait = HttpRequest.sendPost(BeanFactoryConfig.interfaceConfig.getInterfacePortrait().getDocportray(), reqPara);
+      if(!StringUtils.isNotEmpty(casePortrait)) {
+         return null;
+      } else {
+         JSONArray casePortraitJson = JSONArray.parseArray(casePortrait);
+         AssignHeadBodyTailTask assignHeadBodyTailTask = new AssignHeadBodyTailTask();
+         JSONArray caseDeepPortrait = assignHeadBodyTailTask.extract(casePortraitJson);
+         return caseDeepPortrait;
+      }
+   }
+
 }
