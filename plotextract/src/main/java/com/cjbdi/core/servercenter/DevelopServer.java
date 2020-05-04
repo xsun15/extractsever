@@ -243,7 +243,7 @@ public class DevelopServer {
                             jsonObject.put("本院", paraSplitterJson.get("opinion"));
                         }else if(extractorFrom.contains("经审理查明")){
                             jsonObject.put("extractmark",label.getValue());
-                            jsonObject.put("经审", paraSplitterJson.get("justice"));
+                            jsonObject.put("经审",  casecauseModel.getJustice());
                         }
                         return jsonObject.toString();
                     }

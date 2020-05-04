@@ -88,47 +88,45 @@ public class Feature {
         }
         return null;
     }
+
     public static Label extractbool(DefendantModel defendantModel, CasecauseModel casecauseModel, String extractorType, String extractorFrom, String code,String Para) {
         Set<String> casecauseSet = defendantModel.getCasecauseSet();
-        if (extractorType.equals("私有")){
-            if(extractorFrom.equals("本院认为")){
+        if (extractorType.equals("私有")) {
+            if (extractorFrom.equals("本院认为")) {
                 casecauseModel.setJustice("");
 
 
-            }else if(extractorFrom.equals("经审理查明")) {
+            } else if (extractorFrom.equals("经审理查明")) {
                 casecauseModel.setOpinion("");
 
             }
 
-        }else if (extractorType.equals("共有纯正则")){
-            if(extractorFrom.equals("本院认为")){
+        } else if (extractorType.equals("共有纯正则")) {
+            if (extractorFrom.equals("本院认为")) {
                 casecauseModel.setJustice("");
-                if(basicPureRuleExtractors.get(casecauseModel.getCasecause())!=null) {
+                if (basicPureRuleExtractors.get(casecauseModel.getCasecause()) != null) {
                     if (basicPureRuleExtractors.get(casecauseModel.getCasecause()).get(code) != null) {
 //                    for(BasicSentenceFeatureClass basicSentenceFeatureClass :basicPrivateExtractors.get(casecauseModel.getCasecause())){
                         Label label = basicPureRuleExtractors.get(casecauseModel.getCasecause()).get(code).doExtract(casecauseModel.getOpinion());
-                                if (label != null && label.getFlag() == Long.valueOf(code)) {
-                                    return label;
-                                }
+                        if (label != null && label.getFlag() == Long.valueOf(code)) {
+                            return label;
+                        }
 
+                    }
+                }
+            } else if (extractorFrom.equals("经审理查明")) {
+                casecauseModel.setOpinion("");
+                if (basicPureRuleExtractors.get(casecauseModel.getCasecause()) != null) {
+                    if (basicPureRuleExtractors.get(casecauseModel.getCasecause()).get(code) != null) {
+//                    for(BasicSentenceFeatureClass basicSentenceFeatureClass :basicPrivateExtractors.get(casecauseModel.getCasecause())){
+                        Label label = basicPureRuleExtractors.get(casecauseModel.getCasecause()).get(code).doExtract(casecauseModel.getJustice());
+                        if (label != null && label.getFlag() == Long.valueOf(code)) {
+                            return label;
                         }
                     }
                 }
-            }else if(extractorFrom.equals("经审理查明")) {
-                casecauseModel.setOpinion("");
-                if(basicPureRuleExtractors.get(casecauseModel.getCasecause())!=null) {
-                    if (basicPureRuleExtractors.get(casecauseModel.getCasecause()).get(code) != null) {
-//                    for(BasicSentenceFeatureClass basicSentenceFeatureClass :basicPrivateExtractors.get(casecauseModel.getCasecause())){
-                         Label label = basicPureRuleExtractors.get(casecauseModel.getCasecause()).get(code).doExtract(casecauseModel.getJustice());
-                               if (label != null && label.getFlag() == Long.valueOf(code)) {
-                                 return label;
-                               }
-                         }
-                    }
-                }
-
+            }
+        }
         return null;
-    }
-
-
+   }
 }
