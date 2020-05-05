@@ -93,7 +93,7 @@ organizeotherstheftextract:
   positivepurerule:
     - "教唆"
     - "组织"
-    - "控制"
+    - "(?<!牵出)控制"
     - "指使"
     - "纠集"
     - "带领"
@@ -122,9 +122,10 @@ usingdestructivemethodtheftextract:
     - "[砸击剪扳掰敲割震划锯踹拆弄][碎坏破损裂断开烂毁卸下]"
     - "烧[坏毁]"
     - "焚烧"
-    - "爆破"
+    - "爆破(?!器材有限公司)"
     - "[割剪].{0,10}(电缆|铜管|铜线)"
     - "撬(开|碎|坏|车窗)"
+    - "用锣丝刀等工具盗"
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
@@ -203,10 +204,11 @@ seriousConsequencextract:
   type: "共有纯正则"
   code: "1013"
   positivepurerule:
-    - "(偷|盗|窃|扒|顺走).*?严重后果"
+    - "(偷|盗|窃|扒|顺走).*?(?<!(没有|未)造成(其他)?|未给被害人造成|避免特别|（八）因盗窃造成)严重后果(?!发生的，可以减轻处罚)"
     - "(偷|盗|窃|扒|顺走).*?后果严重"
   positivemodelrule:
   negativepurerule:
+    - "避免特别严重后果发生的，可以减轻处罚"
   negativemodelrule:
 firstlevelartifactextract:
   name: "一级文物数量"
