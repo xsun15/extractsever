@@ -7,6 +7,8 @@ import com.cjbdi.core.extractcenter.sentence.utils.SetLabel;
 import com.cjbdi.core.extractcenter.utils.CasecauseModel;
 import com.cjbdi.core.extractcenter.utils.DefendantModel;
 import com.cjbdi.core.extractcenter.utils.MatchRule;
+import org.apache.commons.lang.StringUtils;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -26,7 +28,11 @@ public class FirstCrimeExtractor {
    }
 
    protected Label doextract(DefendantModel defendantModel, CasecauseModel casecauseModel) {
-      String conclusion = casecauseModel.getOpinion().replaceAll(defendantModel.getName(), "被告人");
+
+      String conclusion = casecauseModel.getOpinion();
+      if (StringUtils.isNotEmpty(conclusion)) {
+         conclusion = conclusion.replaceAll(defendantModel.getName(), "被告人");
+      }
       BoolConfig boolConfig = MatchRule.matchPatternBoolConfig(conclusion, this.pPatternList, this.nPatternList);
       if(boolConfig != null) {
          Label crimeDate1 = SetLabel.run(boolConfig, this.code);

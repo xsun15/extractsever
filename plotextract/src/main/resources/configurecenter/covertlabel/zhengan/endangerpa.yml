@@ -1,0 +1,100 @@
+propertyLossextraction:
+  name: "毁损财物数额"
+  code: "1001"
+  rule: "1001"
+violentActionextraction:
+  name: "暴力袭击正在依法执行职务的人民警察的"
+  code: "1002"
+  rule: "1002"
+executionNotStandardizedextraction:
+  name: "因执行公务行为不规范而导致妨害公务犯罪的"
+  code: "1003"
+  rule: "1003"
+inciteextractionextraction:
+  name: "煽动群众阻碍依法执行职务、履行职责的"
+  code: "1004"
+  rule: "1004"
+badSocialImpactextraction:
+  name: "妨害公务造成恶劣社会影响的"
+  code: "1005"
+  rule: "1005"
+numberofseriousinjuryextract:
+  name: "重伤人数"
+  code: "1006"
+  rule: "1006"
+numberofdeathextract:
+  name: "死亡人数"
+  code: "1007"
+  rule: "1007"
+numberofminorinjuryextract:
+  name: "轻伤人数"
+  code: "1008"
+  rule: "1008"
+numberofsligthinjuryextract:
+  name: "轻微伤人数"
+  code: "1009"
+  rule: "1009"
+firstleveldisabilityextract:
+  name: "一级伤残人数"
+  code: "1010"
+  rule: "1010"
+secondleveldisabilityextract:
+  name: "二级伤残人数"
+  code: "1011"
+  rule: "1011"
+thirdleveldisabilityextract:
+  name: "三级伤残人数"
+  code: "1012"
+  rule: "1012"
+fourthleveldisabilityextract:
+  name: "四级伤残人数"
+  code: "1013"
+  rule: "1013"
+fifthleveldisabilityextract:
+  name: "五级伤残人数"
+  code: "1014"
+  rule: "1014"
+sixthleveldisabilityextract:
+  name: "六级伤残人数"
+  code: "1015"
+  rule: "1015"
+seventhleveldisabilityextract:
+  name: "七级伤残人数"
+  code: "1016"
+  rule: "1016"
+eigthleveldisabilityextract:
+  name: "八级伤残人数"
+  code: "1017"
+  rule: "1017"
+ninthleveldisabilityextract:
+  name: "九级伤残人数"
+  code: "1018"
+  rule: "1018"
+tenthleveldisabilityextract:
+  name: "十级伤残人数"
+  code: "1019"
+  rule: "1019"
+firstlevelseriousinjurynumberextract:
+  name: "重伤一级人数"
+  code: "1020"
+  rule: "1020"
+secondlevelseriousinjurynumberextract:
+  name: "重伤二级人数"
+  code: "1021"
+  rule: "1021"
+firstlevelminorinjurynumberextract:
+  name: "轻伤一级人数"
+  code: "1022"
+  rule: "1022"
+secondlevelminorinjurynumberextract:
+  name: "轻伤二级人数"
+  code: "1023"
+  rule: "1023"
+punishedbycourtrobberyextract:
+  name: "因妨害公务受过刑事处罚的"
+  code: "1024"
+  rule: "1024"
+punishedbygovernrobberyextract:
+  name: "一年内因妨害公务受过行政处罚的"
+  code: "1025"
+  rule: "1025"

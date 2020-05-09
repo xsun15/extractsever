@@ -1,14 +1,47 @@
 package com.cjbdi.core.util;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.cjbdi.core.configcenter.BeanConfigCenter;
 import com.cjbdi.core.configcenter.extractconfig.province.ProvinceBasicConfig;
+import com.cjbdi.core.extractcenter.model.CasecauseModel;
+import com.cjbdi.core.extractcenter.model.DefendantModel;
 import org.apache.commons.lang.StringUtils;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CommonTools {
+
+    public static JSONObject casePortraitToJusticePortrait(List<DefendantModel> defendantModelList) {
+        JSONObject result = new JSONObject();
+        if (defendantModelList!=null) {
+            JSONArray caseJusticePortrait = new JSONArray();
+            for (DefendantModel defendantModel : defendantModelList) {
+                Map<String, CasecauseModel> casecauseModelMap = defendantModel.getCasecauseModelMap();
+                JSONObject oneDefendant = new JSONObject();
+                JSONArray casecauseJustice = new JSONArray();
+                for (String casecause : casecauseModelMap.keySet()) {
+                    CasecauseModel casecauseModel = casecauseModelMap.get(casecause);
+                    JSONObject oneCase = new JSONObject();
+                    oneCase.put("caseCause", casecause);
+                    oneCase.put("basicContent", casecauseModel.getJustice());
+                    casecauseJustice.add(oneCase);
+                }
+                oneDefendant.put("accusedName", defendantModel.getName());
+                oneDefendant.put("contentList", casecauseJustice);
+                caseJusticePortrait.add(oneDefendant);
+            }
+            result.put("data", caseJusticePortrait);
+            result.put("status", 200);
+            result.put("desc", "success");
+        }
+        return result;
+    }
+
     public static LinkedHashMap<String, Integer> splitByCasecause(String line , List<String> casecauseList) {
         LinkedHashMap<String, Integer> result = new LinkedHashMap<>();
         if (StringUtils.isNotEmpty(line)&&!casecauseList.isEmpty()) {
@@ -30,6 +63,7 @@ public class CommonTools {
                 if (index>=indexList.get(i)) {
                     int start = 0;
                     if (i-1>=0) start = indexList.get(i-1);
+                    if (index<start) index=start;
                     String target = line.substring(start, index);
                     if (target.contains(defendant)) {
                         return true;
@@ -213,8 +247,32 @@ public class CommonTools {
         return null;
     }
 
+    public static Optional extractDate(String text, boolean isFirst) {
+        String rule = "\\d{4}年(\\d{1,2}月)?(\\d{1,2}日)?";
+        Pattern pattern = Pattern.compile(rule);
+        Matcher matcher = pattern.matcher(text);
+        Optional localDate = Optional.empty();
+
+        while(matcher.find()) {
+            String matchText = matcher.group();
+            Optional ldt = DateTimeExtractor.extract(matchText);
+            if(ldt.isPresent() && isFirst) {
+                return Optional.of(((LocalDateTime)ldt.get()).toLocalDate());
+            }
+
+            if(ldt.isPresent()) {
+                localDate = Optional.of(((LocalDateTime)ldt.get()).toLocalDate());
+            }
+        }
+
+        return localDate;
+    }
+
     public static boolean isJoinJusticeAccuse(String justice, String accuse) {
         if (justice!=null&&!justice.isEmpty()&&accuse!=null&&!accuse.isEmpty()) {
+            // 判断justice是否包含时间，如果不包含则合并
+            Optional<LocalDate> localDate= extractDate(justice, true);
+            if (!localDate.isPresent()) return true;
             Set<String> justiceSet = new HashSet<>();
             justiceSet.addAll(Arrays.asList(justice.trim().split("")));
             Set<String> accuseSet = new HashSet<>();
@@ -229,7 +287,7 @@ public class CommonTools {
             Set<String> unionSet = new HashSet<>();
             unionSet.addAll(justiceSet);
             unionSet.addAll(accuseSet);
-            if (Math.abs(unionSet.size() - interSet.size()) > Math.ceil(unionSet.size() * 0.7)) {
+            if (Math.abs(unionSet.size() - interSet.size()) > Math.ceil(unionSet.size() * 0.6)) {
                 return true;
             } else {
                 return false;

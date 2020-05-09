@@ -163,8 +163,8 @@ public class LeianV1ConfigPlace {
       this.concealci = concealci;
    }
 
-   public List getDrug() {
-      return drug;
+   public String getDrug() {
+      return StringUtils.strip(this.drug.toString(), "[]");
    }
 
    public void setDrug(List drug) {

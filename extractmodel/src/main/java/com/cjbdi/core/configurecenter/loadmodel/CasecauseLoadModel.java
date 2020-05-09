@@ -20,6 +20,7 @@ public class CasecauseLoadModel {
 		if (features!=null) {
 			for (String feature : features.keySet()) {
 				if (!feature.equals("type") && !feature.equals("moneysimple")) {
+					System.out.println(feature);
 					String path = BeanConfigCenter.configPlace.getFeatures().get(casecause).get(feature).get("path").toString();
 					String code = BeanConfigCenter.configPlace.getFeatures().get(casecause).get(feature).get("code").toString();
 					BasicLoadmodel basicLoadmodel = new BasicLoadmodel(path);

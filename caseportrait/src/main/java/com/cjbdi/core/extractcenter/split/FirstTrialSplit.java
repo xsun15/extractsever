@@ -105,7 +105,8 @@ public class FirstTrialSplit extends BasicSplit {
                         result += line + "\n";
                     }
                 }
-                firstTrial.setAccuse(result);
+                if (StringUtils.isNotEmpty(result))
+                    firstTrial.setAccuse(result);
             }
             // 抽取审判时间
             firstTrial.setJudgeDate(CommonTools.matchText(content, firstTrialBasicConfig.getJudgeDate()));

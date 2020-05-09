@@ -1,11 +1,6 @@
 package com.cjbdi.core.configurecentent.configplace;
 
-import com.cjbdi.core.configurecentent.configplace.utils.CheckLabelConfigPlace;
-import com.cjbdi.core.configurecentent.configplace.utils.EnDecryptConfigPlace;
-import com.cjbdi.core.configurecentent.configplace.utils.LeianV1ConfigPlace;
-import com.cjbdi.core.configurecentent.configplace.utils.LxFeatureConfigPlace;
-import com.cjbdi.core.configurecentent.configplace.utils.OthersConfigPlace;
-import com.cjbdi.core.configurecentent.configplace.utils.SelfSentenceConfigPlace;
+import com.cjbdi.core.configurecentent.configplace.utils.*;
 
 public class ConfigPlace {
 
@@ -14,6 +9,7 @@ public class ConfigPlace {
    private LxFeatureConfigPlace lxFeatureConfigPlace;
    private OthersConfigPlace othersConfigPlace;
    private SelfSentenceConfigPlace selfSentenceConfigPlace;
+   private ZhenganConfigPlace zhenganConfigPlace;
    private EnDecryptConfigPlace enDecryptConfigPlace;
 
 
@@ -22,6 +18,7 @@ public class ConfigPlace {
       this.checkLabelConfigPlace = new CheckLabelConfigPlace("checklabel", place);
       this.leianV1ConfigPlace = new LeianV1ConfigPlace("convertlabel.leianv1", place);
       this.selfSentenceConfigPlace = new SelfSentenceConfigPlace("convertlabel.selfsentence", place);
+      this.zhenganConfigPlace = new ZhenganConfigPlace("convertlabel.zhengan", place);
       this.lxFeatureConfigPlace = new LxFeatureConfigPlace("lxfeature", place);
       this.othersConfigPlace = new OthersConfigPlace("others", place);
       this.enDecryptConfigPlace = new EnDecryptConfigPlace("endecrypt", place);
@@ -73,5 +70,13 @@ public class ConfigPlace {
 
    public void setEnDecryptConfigPlace(EnDecryptConfigPlace enDecryptConfigPlace) {
       this.enDecryptConfigPlace = enDecryptConfigPlace;
+   }
+
+   public ZhenganConfigPlace getZhenganConfigPlace() {
+      return zhenganConfigPlace;
+   }
+
+   public void setZhenganConfigPlace(ZhenganConfigPlace zhenganConfigPlace) {
+      this.zhenganConfigPlace = zhenganConfigPlace;
    }
 }

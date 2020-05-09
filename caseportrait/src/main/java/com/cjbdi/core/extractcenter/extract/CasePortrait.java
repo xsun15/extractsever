@@ -2,8 +2,7 @@ package com.cjbdi.core.extractcenter.extract;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cjbdi.core.configcenter.BeanConfigCenter;
-import com.cjbdi.core.extractcenter.model.CasecauseModel;
-import com.cjbdi.core.extractcenter.model.DefendantModel;
+import com.cjbdi.core.extractcenter.model.*;
 import com.cjbdi.core.util.CommonTools;
 import com.cjbdi.core.util.HttpRequest;
 import org.apache.commons.lang.StringUtils;
@@ -12,6 +11,76 @@ import java.util.*;
 
 
 public class CasePortrait {
+    public static JudgmentModel shallowRun(List<DefendantModel> defendantModelList, IndicitmentModel indicitmentModel) {
+        JudgmentModel judgmentModel = new JudgmentModel();
+        judgmentModel.setDocType(indicitmentModel.getDocType());
+        judgmentModel.setCaseID(indicitmentModel.getProcuCaseId());
+        judgmentModel.setCaseTitle("");
+        judgmentModel.setProsecutionOrgan(indicitmentModel.getProcuName());
+        List<JudgmentPaperModel> judgmentPaperModelList = new ArrayList<>();
+        for (DefendantModel defendantModel : defendantModelList) {
+            Map<String, CasecauseModel> casecauseModelMap = defendantModel.getCasecauseModelMap();
+            JudgmentPaperModel judgmentPaperModel = new JudgmentPaperModel();
+            judgmentPaperModel.setAccusedName(defendantModel.getName());
+            List<JudgmentPaperContentModel> contentList = new ArrayList<>();
+            for (String casecause : casecauseModelMap.keySet()) {
+                JudgmentPaperContentModel judgmentPaperContentModel = new JudgmentPaperContentModel();
+                judgmentPaperContentModel.setCaseCause(casecause);
+                judgmentPaperContentModel.setBasicContent(indicitmentModel.getJustice());
+                judgmentPaperContentModel.setEvidence(indicitmentModel.getEvidence());
+                judgmentPaperContentModel.setAdvice("");
+                judgmentPaperContentModel.setCounselOfDefendant("");
+                judgmentPaperContentModel.setCounselOfVictim("");
+                judgmentPaperContentModel.setAppraiser("");
+                judgmentPaperContentModel.setTranslator("");
+                judgmentPaperContentModel.setVictim("");
+                judgmentPaperContentModel.setWitness("");
+                judgmentPaperContentModel.setLegalOfDefendant("");
+                judgmentPaperContentModel.setLegalOfVictim("");
+                contentList.add(judgmentPaperContentModel);
+            }
+            judgmentPaperModel.setContentList(contentList);
+            judgmentPaperModelList.add(judgmentPaperModel);
+        }
+        judgmentModel.setPaper(judgmentPaperModelList);
+        return judgmentModel;
+    }
+
+    public static JudgmentModel shallowRun(List<DefendantModel> defendantModelList, FirstTrialModel firstTrialModel) {
+        JudgmentModel judgmentModel = new JudgmentModel();
+        judgmentModel.setDocType(firstTrialModel.getDocType());
+        judgmentModel.setCaseID(firstTrialModel.getCourtCaseId());
+        judgmentModel.setCaseTitle("");
+        judgmentModel.setProsecutionOrgan(firstTrialModel.getProcuName());
+        List<JudgmentPaperModel> judgmentPaperModelList = new ArrayList<>();
+        for (DefendantModel defendantModel : defendantModelList) {
+            Map<String, CasecauseModel> casecauseModelMap = defendantModel.getCasecauseModelMap();
+            JudgmentPaperModel judgmentPaperModel = new JudgmentPaperModel();
+            judgmentPaperModel.setAccusedName(defendantModel.getName());
+            List<JudgmentPaperContentModel> contentList = new ArrayList<>();
+            for (String casecause : casecauseModelMap.keySet()) {
+                JudgmentPaperContentModel judgmentPaperContentModel = new JudgmentPaperContentModel();
+                judgmentPaperContentModel.setCaseCause(casecause);
+                judgmentPaperContentModel.setBasicContent(firstTrialModel.getJustice());
+                judgmentPaperContentModel.setEvidence(firstTrialModel.getEvidence());
+                judgmentPaperContentModel.setAdvice("");
+                judgmentPaperContentModel.setCounselOfDefendant("");
+                judgmentPaperContentModel.setCounselOfVictim("");
+                judgmentPaperContentModel.setAppraiser("");
+                judgmentPaperContentModel.setTranslator("");
+                judgmentPaperContentModel.setVictim("");
+                judgmentPaperContentModel.setWitness("");
+                judgmentPaperContentModel.setLegalOfDefendant("");
+                judgmentPaperContentModel.setLegalOfVictim("");
+                contentList.add(judgmentPaperContentModel);
+            }
+            judgmentPaperModel.setContentList(contentList);
+            judgmentPaperModelList.add(judgmentPaperModel);
+        }
+        judgmentModel.setPaper(judgmentPaperModelList);
+        return judgmentModel;
+    }
+
     public static List<DefendantModel> run(String conclusion, String factText, String accuse, String transfer, String background, Set<String> defendantSet, List<String> caseList) {
         List<DefendantModel> defendantModelList = defendantCasecause(conclusion, transfer, background, defendantSet, caseList);
         if (CommonTools.isJoinJusticeAccuse(factText, accuse)) factText = accuse + factText;

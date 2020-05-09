@@ -11,4 +11,12 @@ public class CasecauseModel {
 		modelMap.put("抢劫罪", new CasecauseLoadModel("robbery"));
 		modelMap.put("抢夺罪", new CasecauseLoadModel("seizing"));
 	}
+
+	public Map<String, CasecauseLoadModel> getModelMap() {
+		return modelMap;
+	}
+
+	public void setModelMap(Map<String, CasecauseLoadModel> modelMap) {
+		this.modelMap = modelMap;
+	}
 }

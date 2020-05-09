@@ -7,6 +7,7 @@ import com.cjbdi.core.convertlabelcenter.ConvertLabelFactory;
 import com.cjbdi.core.convertlabelcenter.utils.ToLeianV1;
 import com.cjbdi.core.convertlabelcenter.utils.ToLeianV2;
 import com.cjbdi.core.convertlabelcenter.utils.ToSelfSentence;
+import com.cjbdi.core.convertlabelcenter.utils.ToZhengan;
 import com.cjbdi.core.developcenter.good.ExtractGood;
 import com.cjbdi.core.extractcenter.BeanFactoryExtract;
 import com.cjbdi.core.extractcenter.utils.CleanText;
@@ -111,6 +112,36 @@ public class SentenceExtractorServer {
       } else {
          return Tools.packingResult("500", "请求参数缺少fullText");
       }
+   }
+
+   @RequestMapping(value = {"/getlabels"}, produces = {"application/json;charset=UTF-8"})
+   public String extractZhengan(@RequestBody JSONObject reqParam, @Context HttpServletRequest request) {
+      if(reqParam.containsKey("content")) {
+         String fullText = reqParam.getString("content");
+         if (org.apache.commons.lang3.StringUtils.isNotEmpty(fullText)) {
+            fullText = CleanText.run(fullText);
+            String docType = "";
+            if (reqParam.containsKey("docType")) {
+               docType = reqParam.getString("docType");
+            } else {
+               docType = Tools.extractDocType(fullText);
+            }
+            if (org.apache.commons.lang3.StringUtils.isNotEmpty(docType)) {
+               List casecauseList = (List) reqParam.getObject("casecause", List.class);
+               JSONArray jsonArray;
+               if (casecauseList != null && casecauseList.size() != 0) {
+                  jsonArray = BeanFactoryExtract.sentenceExtractor.extract(docType, fullText, casecauseList);
+                  jsonArray = ToZhengan.run(jsonArray);
+                  return jsonArray.toJSONString();
+               } else {
+                  jsonArray = BeanFactoryExtract.sentenceExtractor.extract(docType, fullText, casecauseList);
+                  jsonArray = ToZhengan.run(jsonArray);
+                  return jsonArray.toJSONString();
+               }
+            }
+         }
+      }
+      return "";
    }
 
    @RequestMapping(value = {"/extract/sentence/feature/leianv1"}, produces = {"application/json;charset=UTF-8"})

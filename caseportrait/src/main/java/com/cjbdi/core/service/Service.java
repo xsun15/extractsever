@@ -5,6 +5,7 @@ import com.cjbdi.core.develop.FactCrime;
 import com.cjbdi.core.extractcenter.BeanExtractCenter;
 import com.cjbdi.core.extractcenter.extract.CasePortrait;
 import com.cjbdi.core.extractcenter.extract.CaseSplit;
+import com.cjbdi.core.extractcenter.extract.CharacterExtract;
 import com.cjbdi.core.extractcenter.model.*;
 import com.cjbdi.core.util.CommonTools;
 import com.cjbdi.core.util.RemoveSpecialChar;
@@ -16,13 +17,37 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.Context;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @RestController
 public class Service extends RemoveSpecialChar {
+
+    @RequestMapping(value = "/extract/character", produces = "application/json;charset=UTF-8", method = RequestMethod.POST)
+    public String extractCharacter(@RequestBody JSONObject jsonParam, @Context HttpServletRequest request) {
+        if (jsonParam.containsKey("fullText")) {
+            String fullText = jsonParam.getString("fullText");
+            if (StringUtils.isNotEmpty(fullText)) {
+                fullText = clean(fullText);
+                String docType = "";
+                if (jsonParam.containsKey("docType")) docType = jsonParam.getString("docType");
+                else docType = CommonTools.extractDocType(fullText);
+                if (StringUtils.isEmpty(docType)) return "";
+                if (docType.equals("刑事判决书")) {
+                    FirstTrialModel firstTrialModel= BeanExtractCenter.firstTrialSplit.split(fullText);
+                    Set<String> defendantSet = BeanExtractCenter.defendantExtract.extract(firstTrialModel.getDefendant());
+                    CharacterExtract.run(fullText, firstTrialModel.getJustice(), defendantSet);
+                    return JSONObject.toJSONString(firstTrialModel);
+                } else if (docType.equals("起诉书")) {
+                    IndicitmentModel indicitmentModel = BeanExtractCenter.indicitmentSplit.split(fullText);
+                    Set<String> defendantSet = BeanExtractCenter.defendantExtract.extract(indicitmentModel.getDefendant());
+                    CharacterExtract.run(fullText, indicitmentModel.getJustice(), defendantSet);
+                    return JSONObject.toJSONString(indicitmentModel);
+                }
+            }
+        }
+        return "";
+    }
+
     @RequestMapping(value = "/document/split/raw", produces = "application/json;charset=UTF-8", method = RequestMethod.POST)
     public String splitraw(@RequestBody JSONObject jsonParam, @Context HttpServletRequest request) {
         if (jsonParam.containsKey("fullText")) {
@@ -137,6 +162,51 @@ public class Service extends RemoveSpecialChar {
         return false;
     }
 
+    @RequestMapping(value = "/document/portrait/justice", produces = "application/json;charset=UTF-8", method = RequestMethod.POST)
+    public String portraitJustice(@RequestBody JSONObject jsonParam, @Context HttpServletRequest request) {
+
+        if (jsonParam.containsKey("fullText")) {
+            String fullText = jsonParam.getString("fullText");
+            if (StringUtils.isNotEmpty(fullText)) {
+                fullText = clean(fullText);
+                String docType = "";
+                if (jsonParam.containsKey("docType")) docType = jsonParam.getString("docType");
+                else docType = CommonTools.extractDocType(fullText);
+                if (StringUtils.isEmpty(docType)) return "";
+                else if (docType.equals("刑事判决书")) {
+                    FirstTrialModel firstTrialModel = BeanExtractCenter.firstTrialSplit.split(fullText);
+                    Set<String> defendantSet = BeanExtractCenter.defendantExtract.extract(firstTrialModel.getDefendant());
+                    List<String> caseList = BeanExtractCenter.firstTrialSplit.findCasecause(firstTrialModel.getDefendant(), firstTrialModel.getCourtOpinion(), firstTrialModel.getJustice());
+                    List<DefendantModel> defendantModelList = CasePortrait.run(firstTrialModel.getCourtOpinion(), firstTrialModel.getJustice(), firstTrialModel.getAccuse(),
+                            firstTrialModel.getSue(), firstTrialModel.getDefendant(), defendantSet, caseList);
+                    JSONObject result = CommonTools.casePortraitToJusticePortrait(defendantModelList);
+                    return JSONObject.toJSONString(result);
+                } else if (docType.equals("起诉书")) {
+                    //分段
+                    IndicitmentModel indicitmentModel = BeanExtractCenter.indicitmentSplit.split(fullText);
+                    //从被告人段中得到所有被告人
+                    Set<String> defendantSet = BeanExtractCenter.defendantExtract.extract(indicitmentModel.getDefendant());
+                    //抽取案由
+                    List<String> caseList = BeanExtractCenter.indicitmentSplit.findCasecause(indicitmentModel.getDefendant(), indicitmentModel.getProcuOpinion(), indicitmentModel.getJustice());
+                    List<DefendantModel> defendantModelList = CasePortrait.run(indicitmentModel.getProcuOpinion(), indicitmentModel.getJustice(), "",
+                            indicitmentModel.getInvestigate(), indicitmentModel.getDefendant(), defendantSet, caseList);
+                    JSONObject result = CommonTools.casePortraitToJusticePortrait(defendantModelList);
+                    return JSONObject.toJSONString(result);
+                } else if (docType.equals("不起诉决定书")) {
+                    //分段
+                    NoprosModel noprosModel = BeanExtractCenter.noprosSplit.split(fullText);
+                    //从被告人段中得到所有被告人
+                    Set<String> defendantSet = BeanExtractCenter.defendantExtract.extract(noprosModel.getDefendant());
+                    //调用模型预测案由
+                    List<String> caseList = BeanExtractCenter.noprosSplit.findCasecause(noprosModel.getDefendant(), noprosModel.getProcuOpinion(), noprosModel.getJustice());
+                    return "";
+                }
+            }
+        }
+        return "";
+    }
+
+
     @RequestMapping(value = "/document/portrait", produces = "application/json;charset=UTF-8", method = RequestMethod.POST)
     public String portrait(@RequestBody JSONObject jsonParam, @Context HttpServletRequest request) {
 
@@ -217,6 +287,49 @@ public class Service extends RemoveSpecialChar {
                 resultJson.put("caseTitle", title);
                 resultJson.put("docType", docType);
                 return resultJson.toString();
+            }
+        }
+        return "";
+    }
+
+    @RequestMapping(value = "/paperwork", produces = "application/json;charset=UTF-8", method = RequestMethod.POST)
+    public String acquireSplitContent(@RequestBody JSONObject jsonParam, @Context HttpServletRequest request) {
+        if (jsonParam.containsKey("fullText")) {
+            String fullText = jsonParam.getString("fullText");
+            if (StringUtils.isNotEmpty(fullText)) {
+                fullText = clean(fullText);
+                String docType = "";
+                if (jsonParam.containsKey("docType")) docType = jsonParam.getString("docType");
+                else docType = CommonTools.extractDocType(fullText);
+                if (StringUtils.isEmpty(docType)) return "";
+                else if (docType.equals("刑事判决书")) {
+                    FirstTrialModel firstTrialModel = BeanExtractCenter.firstTrialSplit.split(fullText);
+                    Set<String> defendantSet = BeanExtractCenter.defendantExtract.extract(firstTrialModel.getDefendant());
+                    List<String> caseList = BeanExtractCenter.firstTrialSplit.findCasecause(firstTrialModel.getDefendant(), firstTrialModel.getCourtOpinion(), firstTrialModel.getJustice());
+                    List<DefendantModel> defendantModelList = CasePortrait.run(firstTrialModel.getCourtOpinion(), firstTrialModel.getJustice(), firstTrialModel.getAccuse(),
+                            firstTrialModel.getSue(), firstTrialModel.getDefendant(), defendantSet, caseList);
+                    JudgmentModel judgmentModel = CasePortrait.shallowRun(defendantModelList, firstTrialModel);
+                    return JSONObject.toJSONString(judgmentModel);
+                } else if (docType.equals("起诉书")) {
+                    //分段
+                    IndicitmentModel indicitmentModel = BeanExtractCenter.indicitmentSplit.split(fullText);
+                    //从被告人段中得到所有被告人
+                    Set<String> defendantSet = BeanExtractCenter.defendantExtract.extract(indicitmentModel.getDefendant());
+                    //抽取案由
+                    List<String> caseList = BeanExtractCenter.indicitmentSplit.findCasecause(indicitmentModel.getDefendant(), indicitmentModel.getProcuOpinion(), indicitmentModel.getJustice());
+                    List<DefendantModel> defendantModelList = CasePortrait.run(indicitmentModel.getProcuOpinion(), indicitmentModel.getJustice(), "",
+                            indicitmentModel.getInvestigate(), indicitmentModel.getDefendant(), defendantSet, caseList);
+                    JudgmentModel judgmentModel = CasePortrait.shallowRun(defendantModelList, indicitmentModel);
+                    return JSONObject.toJSONString(judgmentModel);
+                } else if (docType.equals("不起诉决定书")) {
+                    //分段
+                    NoprosModel noprosModel = BeanExtractCenter.noprosSplit.split(fullText);
+                    //从被告人段中得到所有被告人
+                    Set<String> defendantSet = BeanExtractCenter.defendantExtract.extract(noprosModel.getDefendant());
+                    //调用模型预测案由
+                    List<String> caseList = BeanExtractCenter.noprosSplit.findCasecause(noprosModel.getDefendant(), noprosModel.getProcuOpinion(), noprosModel.getJustice());
+                    return "";
+                }
             }
         }
         return "";

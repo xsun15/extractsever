@@ -12,12 +12,12 @@ import java.util.Iterator;
 public class Injury extends LeianBasicClass {
 
    public Injury() {
-      ArrayList featureNameList = GetFeatureName.run(BeanFactoryConfig.configPlace.getSelfSentenceConfigPlace().getInjury());
+      ArrayList featureNameList = GetFeatureName.run(BeanFactoryConfig.configPlace.getLeianV1ConfigPlace().getInjury());
       Iterator var2 = featureNameList.iterator();
 
       while(var2.hasNext()) {
          String feature = (String)var2.next();
-         this.features.put(feature, new LeianBasicConfig(feature, BeanFactoryConfig.configPlace.getSelfSentenceConfigPlace().getInjury()));
+         this.features.put(feature, new LeianBasicConfig(feature, BeanFactoryConfig.configPlace.getLeianV1ConfigPlace().getInjury()));
       }
 
    }

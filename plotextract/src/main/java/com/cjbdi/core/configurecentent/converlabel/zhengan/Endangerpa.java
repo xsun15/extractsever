@@ -1,23 +1,24 @@
-package com.cjbdi.core.configurecentent.converlabel;
+package com.cjbdi.core.configurecentent.converlabel.zhengan;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.cjbdi.core.configurecentent.BeanFactoryConfig;
-import com.cjbdi.core.configurecentent.converlabel.leianv1.LeianBasicConfig;
-import com.cjbdi.core.configurecentent.converlabel.leianv1.utils.LeianBasicClass;
+import com.cjbdi.core.configurecentent.converlabel.BasicConfig;
+import com.cjbdi.core.configurecentent.converlabel.sentence.utils.BasicClass;
 import com.cjbdi.core.configurecentent.utils.GetFeatureName;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Robbery extends LeianBasicClass {
+public class Endangerpa extends BasicClass {
 
-   public Robbery() {
-      ArrayList featureNameList = GetFeatureName.run(BeanFactoryConfig.configPlace.getSelfSentenceConfigPlace().getRobbery());
+   public Endangerpa() {
+      ArrayList featureNameList = GetFeatureName.run(BeanFactoryConfig.configPlace.getZhenganConfigPlace().getEndangerpa());
       Iterator var2 = featureNameList.iterator();
 
       while(var2.hasNext()) {
          String feature = (String)var2.next();
-         this.features.put(feature, new LeianBasicConfig(feature, BeanFactoryConfig.configPlace.getSelfSentenceConfigPlace().getRobbery()));
+         this.features.put(feature, new BasicConfig(feature, BeanFactoryConfig.configPlace.getZhenganConfigPlace().getEndangerpa()));
       }
 
    }

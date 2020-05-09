@@ -12,12 +12,12 @@ import java.util.Iterator;
 public class Fraud extends LeianBasicClass {
 
    public Fraud() {
-      ArrayList featureNameList = GetFeatureName.run(BeanFactoryConfig.configPlace.getSelfSentenceConfigPlace().getFraud());
+      ArrayList featureNameList = GetFeatureName.run(BeanFactoryConfig.configPlace.getLeianV1ConfigPlace().getFraud());
       Iterator var2 = featureNameList.iterator();
 
       while(var2.hasNext()) {
          String feature = (String)var2.next();
-         this.features.put(feature, new LeianBasicConfig(feature, BeanFactoryConfig.configPlace.getSelfSentenceConfigPlace().getFraud()));
+         this.features.put(feature, new LeianBasicConfig(feature, BeanFactoryConfig.configPlace.getLeianV1ConfigPlace().getFraud()));
       }
 
    }

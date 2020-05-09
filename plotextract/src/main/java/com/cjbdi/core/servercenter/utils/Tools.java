@@ -101,23 +101,25 @@ public class Tools {
    }
 
    public static Optional extractDate(String text, boolean isFirst) {
-      String rule = "\\d{4}年(\\d{1,2}月)?(\\d{1,2}日)?";
-      Pattern pattern = Pattern.compile(rule);
-      Matcher matcher = pattern.matcher(text);
       Optional localDate = Optional.empty();
+      if (StringUtils.isNotEmpty(text)) {
+         if (StringUtils.isNotEmpty(text)) {
+            String rule = "\\d{4}年(\\d{1,2}月)?(\\d{1,2}日)?";
+            Pattern pattern = Pattern.compile(rule);
+            Matcher matcher = pattern.matcher(text);
+            while (matcher.find()) {
+               String matchText = matcher.group();
+               Optional ldt = DateTimeExtractor.extract(matchText);
+               if (ldt.isPresent() && isFirst) {
+                  return Optional.of(((LocalDateTime) ldt.get()).toLocalDate());
+               }
 
-      while(matcher.find()) {
-         String matchText = matcher.group();
-         Optional ldt = DateTimeExtractor.extract(matchText);
-         if(ldt.isPresent() && isFirst) {
-            return Optional.of(((LocalDateTime)ldt.get()).toLocalDate());
-         }
-
-         if(ldt.isPresent()) {
-            localDate = Optional.of(((LocalDateTime)ldt.get()).toLocalDate());
+               if (ldt.isPresent()) {
+                  localDate = Optional.of(((LocalDateTime) ldt.get()).toLocalDate());
+               }
+            }
          }
       }
-
       return localDate;
    }
 

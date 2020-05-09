@@ -1,5 +1,5 @@
 modelextract:
-  ip: "http://192.168.24.75:5010"
+  ip: "http://192.168.24.75:5000"
   predictcasecausermdl: "/model/predict/casecause"
   predictcaselistrmdl: "/model/predict/casecauseList"
   predictfeaturermdl: "/model/inner/getlabels"

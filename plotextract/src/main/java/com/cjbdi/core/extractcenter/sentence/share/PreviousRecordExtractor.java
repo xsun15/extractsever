@@ -8,6 +8,8 @@ import com.cjbdi.core.extractcenter.sentence.utils.SetLabel;
 import com.cjbdi.core.extractcenter.utils.CasecauseModel;
 import com.cjbdi.core.extractcenter.utils.DefendantModel;
 import com.cjbdi.core.extractcenter.utils.MatchRule;
+import org.apache.commons.lang.StringUtils;
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -28,14 +30,17 @@ public class PreviousRecordExtractor {
    }
 
    protected Label doextract(DefendantModel defendantModel, CasecauseModel casecauseModel) {
-      String conclusion = casecauseModel.getOpinion().replaceAll(defendantModel.getName(), "被告人");
-      if(!defendantModel.getDefendantNameSet().isEmpty() && defendantModel.getDefendantNameSet().size() == 1) {
-         BoolConfig criminalPunishmentLabelExtractor = MatchRule.matchPatternBoolConfig(conclusion, this.pPatternList, this.nPatternList);
-         if(criminalPunishmentLabelExtractor != null) {
-            Label recordsOpt1 = SetLabel.run(criminalPunishmentLabelExtractor, this.code);
-            recordsOpt1.setParaText(casecauseModel.getOpinion());
-            recordsOpt1.setParaName("本院认为");
-            return recordsOpt1;
+      String conclusion = casecauseModel.getOpinion();
+      if (StringUtils.isNotEmpty(conclusion)) {
+         conclusion = conclusion.replaceAll(defendantModel.getName(), "被告人");
+         if (!defendantModel.getDefendantNameSet().isEmpty() && defendantModel.getDefendantNameSet().size() == 1) {
+            BoolConfig criminalPunishmentLabelExtractor = MatchRule.matchPatternBoolConfig(conclusion, this.pPatternList, this.nPatternList);
+            if (criminalPunishmentLabelExtractor != null) {
+               Label recordsOpt1 = SetLabel.run(criminalPunishmentLabelExtractor, this.code);
+               recordsOpt1.setParaText(casecauseModel.getOpinion());
+               recordsOpt1.setParaName("本院认为");
+               return recordsOpt1;
+            }
          }
       }
 

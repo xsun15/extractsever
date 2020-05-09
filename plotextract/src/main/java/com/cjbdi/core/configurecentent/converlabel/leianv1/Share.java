@@ -12,12 +12,12 @@ import java.util.Iterator;
 public class Share extends LeianBasicClass {
 
    public Share() {
-      ArrayList featureNameList = GetFeatureName.run(BeanFactoryConfig.configPlace.getSelfSentenceConfigPlace().getShare());
+      ArrayList featureNameList = GetFeatureName.run(BeanFactoryConfig.configPlace.getLeianV1ConfigPlace().getShare());
       Iterator var2 = featureNameList.iterator();
 
       while(var2.hasNext()) {
          String feature = (String)var2.next();
-         this.features.put(feature, new LeianBasicConfig(feature, BeanFactoryConfig.configPlace.getSelfSentenceConfigPlace().getShare()));
+         this.features.put(feature, new LeianBasicConfig(feature, BeanFactoryConfig.configPlace.getLeianV1ConfigPlace().getShare()));
       }
 
    }

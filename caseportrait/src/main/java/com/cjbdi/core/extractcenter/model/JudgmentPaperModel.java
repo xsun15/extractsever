@@ -1,10 +1,10 @@
 package com.cjbdi.core.extractcenter.model;
 
-import java.util.LinkedList;
+import java.util.List;
 
 public class JudgmentPaperModel {
     private String accusedName;
-    private LinkedList<JudgmentPaperContentModel> contentList;
+    private List<JudgmentPaperContentModel> contentList;
 
     public String getAccusedName() {
         return accusedName;
@@ -14,11 +14,11 @@ public class JudgmentPaperModel {
         this.accusedName = accusedName;
     }
 
-    public LinkedList<JudgmentPaperContentModel> getContentList() {
-        return contentList == null ? new LinkedList<JudgmentPaperContentModel>() : contentList;
+    public List<JudgmentPaperContentModel> getContentList() {
+        return contentList;
     }
 
-    public void setContentList(LinkedList<JudgmentPaperContentModel> contentList) {
+    public void setContentList(List<JudgmentPaperContentModel> contentList) {
         this.contentList = contentList;
     }
 }

@@ -1,0 +1,144 @@
+vehicleWordsextract:
+  name: "驾驶机动车、非机动车抢夺的"
+  code: "1001"
+  rule: "1001"
+drugWordsextract:
+  name: "抢夺毒品的"
+  code: "1002"
+  rule: "1002"
+drugExpressionsextract:
+  name: "为吸毒、赌博等违法活动而抢夺的"
+  code: "1003"
+  rule: "1003 or 1004"
+deathCountExpListextract:
+  name: "抢夺致人死亡"
+  code: "1005"
+  rule: "1005"
+suicideCountExpListextract:
+  name: "自杀人数"
+  code: "1006"
+  rule: "1006"
+inDisasterExpListextract:
+  name: "自然灾害、事故灾害、社会安全事件等突发事件期间，在事件发生地抢夺的"
+  code: "1007"
+  rule: "1007"
+minorLabelVerbWordsextract:
+  name: "结伙抢夺的"
+  code: "1008"
+  rule: "1008"
+minorLabelExpressionsextract:
+  name: "组织、控制未成年人抢夺的"
+  code: "1009"
+  rule: "1009"
+driveActionWordsextract:
+  name: "抢夺老年人、未成年人、孕妇、携带婴幼儿的人、残疾人、丧失劳动能力人的财物的"
+  code: "1010"
+  rule: "1010"
+specialFundsAndMaterialsExpListextract:
+  name: "抢夺救灾、抢险、防汛、优抚、扶贫、移民、救济款物的"
+  code: "1011"
+  rule: "1011"
+patientExpListextract:
+  name: "在医院抢夺病人或者其亲友财物的"
+  code: "1012"
+  rule: "1012"
+forLivingExpListextract:
+  name: "因生活所迫、学习、治病急需而抢夺的"
+  code: "1013"
+  rule: "1013"
+weaponWordListextract:
+  name: "携带凶器抢夺的"
+  code: "1014"
+  rule: "1014"
+givebackbeforeexposuredextract:
+  name: "在案发前自动归还被害人财物的"
+  code: "1015"
+  rule: "1015"
+numberofseriousinjuryextract:
+  name: "重伤人数"
+  code: "1016"
+  rule: "1016"
+numberofdeathextract:
+  name: "死亡人数（人）"
+  code: "1017"
+  rule: "1017"
+numberofminorinjuryextract:
+  name: "轻伤人数（人）"
+  code: "1018"
+  rule: "1018"
+numberofsligthinjuryextract:
+  name: "轻微伤人数（人）"
+  code: "1019"
+  rule: "1019"
+firstleveldisabilityextract:
+  name: "一级伤残人数"
+  code: "1020"
+  rule: "1020"
+secondleveldisabilityextract:
+  name: "二级伤残人数"
+  code: "1021"
+  rule: "1021"
+thirdleveldisabilityextract:
+  name: "三级伤残人数"
+  code: "1022"
+  rule: "1022"
+fourthleveldisabilityextract:
+  name: "四级伤残人数"
+  code: "1023"
+  rule: "1023"
+fifthleveldisabilityextract:
+  name: "五级伤残人数"
+  code: "1024"
+  rule: "1024"
+sixthleveldisabilityextract:
+  name: "六级伤残人数"
+  code: "1025"
+  rule: "1025"
+seventhleveldisabilityextract:
+  name: "七级伤残人数"
+  code: "1026"
+  rule: "1026"
+eigthleveldisabilityextract:
+  name: "八级伤残人数"
+  code: "1027"
+  rule: "1027"
+ninthleveldisabilityextract:
+  name: "九级伤残人数"
+  code: "1028"
+  rule: "1028"
+tenthleveldisabilityextract:
+  name: "十级伤残人数"
+  code: "1029"
+  rule: "1029"
+firstlevelseriousinjurynumberextract:
+  name: "重伤一级人数"
+  code: "1031"
+  rule: "1031"
+secondlevelseriousinjurynumberextract:
+  name: "重伤二级人数"
+  code: "1032"
+  rule: "1032"
+firstlevelminorinjurynumberextract:
+  name: "轻伤一级人数"
+  code: "1033"
+  rule: "1033"
+secondlevelminorinjurynumberextract:
+  name: "轻伤二级人数"
+  code: "1034"
+  rule: "1034"
+punishedbycourtsezingyextract:
+  name: "曾因抢劫、抢夺或者聚众哄抢受过刑事处罚的"
+  code: "1035"
+  rule: "1035"
+punishedbygovernseizingextract:
+  name: "一年内因抢夺受过行政处罚的"
+  code: "1036"
+  rule: "1036"
+amountofmoneyseizingextract:
+  name: "抢夺数额"
+  code: "1037"
+  rule: "1037"
+timesextract:
+  name: "抢夺次数"
+  code: "1038"
+  rule: "1038"

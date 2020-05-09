@@ -4,21 +4,6 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.cjbdi.core.configurecentent.BeanFactoryConfig;
 import com.cjbdi.core.configurecentent.casecause.BasicConfig;
-import com.cjbdi.core.configurecentent.converlabel.Robbery;
-import com.cjbdi.core.configurecentent.converlabel.leianv1.Affary;
-import com.cjbdi.core.configurecentent.converlabel.leianv1.Concealci;
-import com.cjbdi.core.configurecentent.converlabel.leianv1.Dutyencroachment;
-import com.cjbdi.core.configurecentent.converlabel.leianv1.Endangerpa;
-import com.cjbdi.core.configurecentent.converlabel.leianv1.Extortion;
-import com.cjbdi.core.configurecentent.converlabel.leianv1.FindTrouble;
-import com.cjbdi.core.configurecentent.converlabel.leianv1.Fraud;
-import com.cjbdi.core.configurecentent.converlabel.leianv1.IllegalDetension;
-import com.cjbdi.core.configurecentent.converlabel.leianv1.Injury;
-import com.cjbdi.core.configurecentent.converlabel.leianv1.Rape;
-import com.cjbdi.core.configurecentent.converlabel.leianv1.Seizing;
-import com.cjbdi.core.configurecentent.converlabel.leianv1.Share;
-import com.cjbdi.core.configurecentent.converlabel.leianv1.Steal;
-import com.cjbdi.core.configurecentent.converlabel.leianv1.Traffic;
 
 public class LeianV1 {
 
@@ -37,6 +22,7 @@ public class LeianV1 {
    private Affary affary = new Affary();
    private FindTrouble findtrouble = new FindTrouble();
    private Concealci concealci = new Concealci();
+   private Drug drug = new Drug();
 
 
    public JSONArray toJson() {
@@ -56,6 +42,7 @@ public class LeianV1 {
       jsonObject.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("affaryextract")).getName(), this.affary);
       jsonObject.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("findtroubleextract")).getName(), this.findtrouble);
       jsonObject.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("concealextract")).getName(), this.concealci);
+      jsonObject.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("drugextract")).getName(), this.drug);
       jsonObject.put("总则", this.share);
       jsonArray.add(jsonObject);
       return jsonArray;

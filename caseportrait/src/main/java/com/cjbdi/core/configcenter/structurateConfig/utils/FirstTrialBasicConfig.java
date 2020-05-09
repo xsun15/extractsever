@@ -23,7 +23,7 @@ public class FirstTrialBasicConfig {
 		this.accuse = YamlPropertySourceFactoryUser.loadConfig(featureName + ".accuse", sourceName);
 		this.justice = YamlPropertySourceFactoryUser.loadConfig( featureName + ".justice", sourceName);
 		this.evidence = YamlPropertySourceFactoryUser.loadConfig(featureName + ".evidence", sourceName);
-		this.courtOpinion = YamlPropertySourceFactoryUser.loadConfig(featureName + ".courtOpinion", sourceName);
+		this.courtOpinion = YamlPropertySourceFactoryUser.loadConfig(featureName + ".courtopinion", sourceName);
 		this.chief = YamlPropertySourceFactoryUser.loadConfig( featureName + ".chief", sourceName);
 		this.judge = YamlPropertySourceFactoryUser.loadConfig(featureName + ".judge", sourceName);
 		this.recorder = YamlPropertySourceFactoryUser.loadConfig(featureName + ".recorder", sourceName);

@@ -11,6 +11,7 @@ import org.deeplearning4j.text.tokenization.tokenizer.preprocessor.CommonPreproc
 import org.deeplearning4j.text.tokenization.tokenizerfactory.DefaultTokenizerFactory;
 import org.deeplearning4j.text.tokenization.tokenizerfactory.TokenizerFactory;
 import org.deeplearning4j.bagofwords.vectorizer.TfidfVectorizer.Builder;
+import org.nd4j.linalg.api.ndarray.INDArray;
 
 import java.io.File;
 import java.net.URL;
