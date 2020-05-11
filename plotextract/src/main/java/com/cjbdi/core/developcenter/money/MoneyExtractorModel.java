@@ -157,7 +157,9 @@ public class MoneyExtractorModel extends BasicSentenceFeatureClass {
                 return extractMoneyFromBodytemp(casecause,justice);
             }else if (purpose.equals("排列组合方式生成数据")){
                 return generateDataCombinationMode(opinion,justice);
-            }
+            } else if (purpose.equals("复杂数据")){
+            return generateComplexData(justice);
+        }
         }
 
 
@@ -171,6 +173,32 @@ public class MoneyExtractorModel extends BasicSentenceFeatureClass {
 //            }
         return result;
     }
+    public JSONObject generateComplexData(String justice){
+        FactTextConfig factTextConfig = FactTextSplit.run(justice);
+        if (StringUtils.isNotEmpty(factTextConfig.header)) return null;
+        if (StringUtils.isNotEmpty(factTextConfig.tail)) return null;
+        if (StringUtils.isNotEmpty(justice)){
+            System.out.println("找到");
+            justice=Tools.deleteDigitDot(justice);
+            List<MoneyConfig> allmoney = MatchRule.matchMoney(justice,moneyRatioList);
+            if (allmoney.size() > 5){
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("content",justice);
+                ArrayList<String> moneList = new ArrayList();
+                for (MoneyConfig moneyConfig: allmoney){
+                    if (moneyConfig.sentence.contains("x")){
+                        return null;
+                    }
+                    moneList.add(moneyConfig.sentence);
+                }
+                jsonObject.put("automarkDetail",moneList);
+                return jsonObject;
+            }
+
+        }
+        return null;
+
+    }
 
     public JSONObject generateDataCombinationMode(String opinion ,String justice){
 
@@ -178,15 +206,22 @@ public class MoneyExtractorModel extends BasicSentenceFeatureClass {
         if (StringUtils.isNotEmpty(factTextConfig.header)) return null;
         if (StringUtils.isNotEmpty(factTextConfig.tail)) return null;
         if (StringUtils.isNotEmpty(opinion)){
-
-            MoneyConfig sum = onlyOneTime(opinion.split("判决如下")[0], firstPureRuleList, moneyRatioList);
+            String pureOpinion = "";
+            //对本院认为段进行清洗
+            for (String sentence : opinion.split("判决如下")[0].split("。|；")){
+                if (!Pattern.compile("辩护人|不予|公诉机关|更正|有误").matcher(sentence).find()){
+                    pureOpinion += sentence + "。";
+                }
+            }
+            MoneyConfig sum = onlyOneTime(pureOpinion, firstPureRuleList, moneyRatioList);
             if (sum != null){
                 justice=Tools.deleteDigitDot(justice);
                 List<MoneyConfig> allmoney = MatchRule.matchMoney(justice,moneyRatioList);
                 Map<String, List<MoneyConfig>> combineInvalidOrValid = CommonTools.combineInvalidMoney(sum,allmoney);
                 if (combineInvalidOrValid != null && combineInvalidOrValid.size() > 0){
                     JSONObject jsonObject = new JSONObject();
-                    jsonObject.put("原始文本",justice);
+                    jsonObject.put("经审理查明",justice);
+                    jsonObject.put("本院认为",pureOpinion);
                     List<String> valid = new ArrayList<>();
                     for (MoneyConfig moneyConfig : combineInvalidOrValid.get("有效")){
                         valid.add(moneyConfig.sentence);
@@ -196,8 +231,19 @@ public class MoneyExtractorModel extends BasicSentenceFeatureClass {
                     for (MoneyConfig moneyConfig : combineInvalidOrValid.get("无效")){
                         invalid.add(moneyConfig.sentence);
                     }
-                    jsonObject.put("有效文本",valid);
+                    jsonObject.put("无效文本",invalid);
                     return jsonObject;
+
+                }else {
+                    JSONObject jsonObject = new JSONObject();
+                    jsonObject.put("经审理查明",justice);
+                    jsonObject.put("本院认为",pureOpinion);
+                    List<String> invalid = new ArrayList<>();
+                    for (MoneyConfig moneyConfig :allmoney){
+                        invalid.add(moneyConfig.sentence);
+                    }
+                    jsonObject.put("所有钱",invalid);
+
 
                 }
 
@@ -217,15 +263,26 @@ public class MoneyExtractorModel extends BasicSentenceFeatureClass {
             List<MoneyConfig> valid = new ArrayList<>();
             List<MoneyConfig> invalid = new ArrayList<>();
             if (allmoney != null && allmoney.size() >=1){
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("ascertain",factTextConfig.body);
                 for (MoneyConfig moneyConfig : allmoney){
-                    if (MatchRule.matchPatternsBool(moneyConfig.sentence, firstPureRuleList)){
+                    String setence = moneyConfig.sentence;
+                    jsonObject.put("sencenceWithOneMoney",setence);
+                    String money = HttpRequest.sendPost("http://192.168.24.25:8765/moneyrecognize",jsonObject);
+                    if (money.contains("1")){
                         value += moneyConfig.value;
                         valid.add(moneyConfig);
-                    }else{
+                    }else if (money.contains("0")){
                         invalid.add(moneyConfig);
 
+                    }else if (money.contains("-1")){
+                        if (MatchRule.matchPatternsBool(moneyConfig.sentence, firstPureRuleList)){
+                            value += moneyConfig.value;
+                            valid.add(moneyConfig);
+                        }else {
+                            invalid.add(moneyConfig);
 
-
+                        }
                     }
 
                 }
@@ -252,13 +309,24 @@ public class MoneyExtractorModel extends BasicSentenceFeatureClass {
         JSONObject result = new JSONObject();
         FactTextConfig factTextConfig = FactTextSplit.run(justice);
 
+        if (StringUtils.isNotEmpty(factTextConfig.header)) return null;
+        if (StringUtils.isNotEmpty(factTextConfig.tail)) return null;
+
+        String pureOpinion = "";
+        //对本院认为段进行清洗
+        for (String sentence : opinion.split("判决如下")[0].split("。|；")){
+            if (!Pattern.compile("辩护人|不予|公诉机关|更正|有误").matcher(sentence).find()){
+                pureOpinion += sentence + "。";
+            }
+        }
+
         //从本院认为
         if (StringUtils.isNotEmpty(opinion)) {
-            MoneyConfig effectMoney = onlyOneTime(opinion.split("判决如下")[0], firstPureRuleList, moneyRatioList);
+            MoneyConfig effectMoney = onlyOneTime(pureOpinion.split("判决如下")[0], firstPureRuleList, moneyRatioList);
             if (effectMoney != null && effectMoney.isaccurate.equals("精确")) {
 
                 result.put("automark", String.valueOf(effectMoney.value));
-                result.put("content", opinion);
+                result.put("content", pureOpinion);
                 result.put("isaccurate", effectMoney.isaccurate);
                 result.put("casecause", casecause);
                 result.put("effectText", CommonTools.moneyPosition(effectMoney));

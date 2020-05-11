@@ -1,6 +1,7 @@
 package com.cjbdi.core.developcenter.utils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Combination {
@@ -11,6 +12,11 @@ public class Combination {
         }
 
         List<List<Double>> result = new ArrayList();
+
+        if (m == 0){
+            result.add(Arrays.asList(a));
+            return result;
+        }
 
         Double[] bs = new Double[n];
         for (int i = 0; i < n; i++) {
@@ -92,5 +98,9 @@ public class Combination {
             }
             System.out.println();
         }
+    }
+    public static void main(String[] args){
+        Double[] a = {1.0,2.0,3.0,4.0};
+        System.out.println(combine(a,0));
     }
 }

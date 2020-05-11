@@ -25,7 +25,7 @@ public class DefaultPeopleNumExtractor extends BasicSentenceFeatureClass {
 
    public Label run(DefendantModel defendantModel, CasecauseModel casecauseModel, BasicCaseClass basicCaseClass) {
       NumberVictim numberVictim = new NumberVictim(this.positivePurePattern, null);
-      NumberConfig numberConfig = numberVictim.doextract(defendantModel, casecauseModel, "人|名|吸收", "。");
+      NumberConfig numberConfig = numberVictim.doextract(defendantModel, casecauseModel, "吸收|集资", "。|，|；|,|;");
       if(numberConfig != null) {
          Label label = SetLabel.run(numberConfig, this.code);
          return label;

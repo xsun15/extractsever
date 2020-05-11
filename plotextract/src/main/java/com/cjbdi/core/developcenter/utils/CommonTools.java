@@ -47,20 +47,22 @@ public class CommonTools {
         List<MoneyConfig> validMoneyConfig = new ArrayList<>();
         List<MoneyConfig> invalidMoneyConfig = new ArrayList<>();
         List<Double> moneyValueList = new ArrayList<>();
+        List<Double> moneyValueCombineList = new ArrayList<>();//待排列组合的数据
         for (MoneyConfig moneyConfig: allMoney){
-            //只对比最大金额小的进行组合
-            if ((maxMoney.value-moneyConfig.value)>0.001) {
                 moneyValueList.add(moneyConfig.value);
-            }
+                //只对比总金额小的进行排列组合
+                if (maxMoney.value >= moneyConfig.value ){
+                    moneyValueCombineList.add(moneyConfig.value);
+                }
         }
-        Double[] moneyValueArray = moneyValueList.toArray(new Double[moneyValueList.size()]);
         Set<Double> moneValueSet = new HashSet<>(moneyValueList);
         List<List<Double>> equalCombines = new ArrayList<>();
-        //去重
+        //原始数据去重
         if (moneValueSet.size() == moneyValueList.size()){
             int equalCount = 0;
-            for (int i=0;i<moneyValueList.size();i++){
-                List<List<Double>> combines = Combination.combine(moneyValueArray,i);
+
+            for (int i=0;i< moneyValueCombineList.size();i++){
+                List<List<Double>> combines = Combination.combine(moneyValueCombineList.toArray(new Double[moneyValueCombineList.size()]),i);
                 for (List<Double> combine : combines ){
                     if ( Math.abs(CommonTools.listsum(combine) - maxMoney.value) < 0.01){
                         equalCount += 1;
@@ -69,6 +71,7 @@ public class CommonTools {
                 }
             }
             if (equalCount ==1){
+                System.out.println("排列组合数据找到");
                 for (MoneyConfig moneyConfig : allMoney){
 //                    if (Math.abs(moneyConfig.value-maxMoney.value)<0.001) {
 //                        List<MoneyConfig> tmp = new ArrayList<>();
