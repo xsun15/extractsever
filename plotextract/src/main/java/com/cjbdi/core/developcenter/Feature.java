@@ -40,6 +40,8 @@ public class Feature {
         basicPureRuleExtractors.put("交通肇事罪",initExtractor_traffic.getBasicPureRuleExtractors());
         com.cjbdi.core.extractcenter.sentence.steal.InitExtractor initExtractor_steal =new com.cjbdi.core.extractcenter.sentence.steal.InitExtractor();
         basicPureRuleExtractors.put("盗窃罪", initExtractor_steal.getBasicPureRuleExtractors());
+        com.cjbdi.core.extractcenter.sentence.extortion.InitExtractor initExtractor_extortion = new com.cjbdi.core.extractcenter.sentence.extortion.InitExtractor();
+        basicPureRuleExtractors.put("敲诈勒索罪", initExtractor_extortion.getBasicPureRuleExtractors());
 
         Traffic traffic = new Traffic();
         basicCaseClass.put("交通肇事罪",traffic);

@@ -233,10 +233,12 @@ public class DevelopServer {
                         jsonObject.put("casecause",casecauseModel.getCasecause());
                         jsonObject.put("feature",label.getChiname());
                         jsonObject.put("UsedRegx",label.getUsedRegx());
-//                        jsonObject.put("isaccurate","精确");
-//                        jsonObject.put("effectText","");
-//                        jsonObject.put("invalidText","");
-//                        jsonObject.put("automarkDetail","");
+                        jsonObject.put("isaccurate","精确");
+                        jsonObject.put("content",casecauseModel.getOpinion());
+                        jsonObject.put("effectText","");
+                        jsonObject.put("invalidText","");
+                        jsonObject.put("automarkDetail","");
+                        jsonObject.put("extractDetail","");
 
                         if (extractorFrom.contains("本院认为")){
                             jsonObject.put("automark",label.getValue());
@@ -244,8 +246,19 @@ public class DevelopServer {
                         }else if(extractorFrom.contains("经审理查明")){
                             jsonObject.put("extractmark",label.getValue());
                             jsonObject.put("经审",  casecauseModel.getJustice());
+                            jsonObject.put("extractContent",  casecauseModel.getJustice());
                         }
                         return jsonObject.toString();
+//                    }else{
+//                        JsonObject jsonObject = new JsonObject();
+//                        jsonObject.put("casecause",casecauseModel.getCasecause());
+//                        jsonObject.put("effectText","");
+//                        jsonObject.put("invalidText","");
+//                        jsonObject.put("automarkDetail","");
+//                        jsonObject.put("extractDetail","");
+//                        jsonObject.put("extractContent",  casecauseModel.getJustice());
+//                        jsonObject.put("extractmark","false");
+//                        return jsonObject.toString();
                     }
                 }
 
