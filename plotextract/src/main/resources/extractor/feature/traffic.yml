@@ -161,7 +161,6 @@ drivingunlicensedvehiclesextract:
     - "挪用(牌照|号牌)"
     - "车牌号不符"
     - "变造号牌"
-    - "变造号牌"
     - "(没有|未)[^。；！？]*?(?<!所有权转移|变更|过户)(登记|注册)"
   positivemodelrule:
   negativepurerule:

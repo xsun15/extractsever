@@ -42,10 +42,28 @@ public class Feature {
         basicPureRuleExtractors.put("盗窃罪", initExtractor_steal.getBasicPureRuleExtractors());
         com.cjbdi.core.extractcenter.sentence.extortion.InitExtractor initExtractor_extortion = new com.cjbdi.core.extractcenter.sentence.extortion.InitExtractor();
         basicPureRuleExtractors.put("敲诈勒索罪", initExtractor_extortion.getBasicPureRuleExtractors());
-
-        Traffic traffic = new Traffic();
-        basicCaseClass.put("交通肇事罪",traffic);
-
+        com.cjbdi.core.extractcenter.sentence.injury.InitExtractor initExtractor_injure = new com.cjbdi.core.extractcenter.sentence.injury.InitExtractor();
+        basicPureRuleExtractors.put("故意伤害罪", initExtractor_injure.getBasicPureRuleExtractors());
+        com.cjbdi.core.extractcenter.sentence.fraud.InitExtractor initExtractor_fraud = new com.cjbdi.core.extractcenter.sentence.fraud.InitExtractor();
+        basicPureRuleExtractors.put("诈骗罪", initExtractor_fraud.getBasicPureRuleExtractors());
+        com.cjbdi.core.extractcenter.sentence.findtrouble.InitExtractor initExtractor_findtrouble = new com.cjbdi.core.extractcenter.sentence.findtrouble.InitExtractor();
+        basicPureRuleExtractors.put("寻衅滋事罪",initExtractor_findtrouble.getBasicPureRuleExtractors());
+        com.cjbdi.core.extractcenter.sentence.robbery.InitExtractor initExtractor_robbery = new com.cjbdi.core.extractcenter.sentence.robbery.InitExtractor();
+        basicPureRuleExtractors.put("抢劫罪",initExtractor_robbery.getBasicPureRuleExtractors());
+        com.cjbdi.core.extractcenter.sentence.endangerpa.InitExtractor initExtractor_endangerpa = new com.cjbdi.core.extractcenter.sentence.endangerpa.InitExtractor();
+        basicPureRuleExtractors.put("妨害公务罪", initExtractor_endangerpa.getBasicPureRuleExtractors());
+        com.cjbdi.core.extractcenter.sentence.falseimprison.InitExtractor initExtractor_falseimprison = new com.cjbdi.core.extractcenter.sentence.falseimprison.InitExtractor();
+        basicPureRuleExtractors.put("非法拘禁罪",initExtractor_falseimprison.getBasicPureRuleExtractors());
+        com.cjbdi.core.extractcenter.sentence.affray.InitExtractor initExtractor_affray = new com.cjbdi.core.extractcenter.sentence.affray.InitExtractor();
+        basicPureRuleExtractors.put("聚众斗殴罪", initExtractor_affray.getBasicPureRuleExtractors());
+        com.cjbdi.core.extractcenter.sentence.seizing.InitExtractor initExtractor_seizing = new com.cjbdi.core.extractcenter.sentence.seizing.InitExtractor();
+        basicPureRuleExtractors.put("抢夺罪", initExtractor_seizing.getBasicPureRuleExtractors());
+        com.cjbdi.core.extractcenter.sentence.dutyencroachment.InitExtractor initExtractor_dutyencroachment = new com.cjbdi.core.extractcenter.sentence.dutyencroachment.InitExtractor();
+        basicPureRuleExtractors.put("职务侵占罪",initExtractor_dutyencroachment.getBasicPureRuleExtractors());
+        com.cjbdi.core.extractcenter.sentence.rape.InitExtractor initExtractor_rape = new com.cjbdi.core.extractcenter.sentence.rape.InitExtractor();
+        basicPureRuleExtractors.put("强奸罪",initExtractor_rape.getBasicPureRuleExtractors());
+        com.cjbdi.core.extractcenter.sentence.concealci.InitExtractor initExtractor_concealci = new com.cjbdi.core.extractcenter.sentence.concealci.InitExtractor();
+        basicPureRuleExtractors.put("掩饰、隐瞒犯罪所得、犯罪所得收益罪",initExtractor_concealci.getBasicPureRuleExtractors());
     }
 
     public static Label extract(DefendantModel defendantModel, CasecauseModel casecauseModel, String extractorType, String extractorFrom, String code) {
