@@ -274,7 +274,8 @@ drowsydrivingextract:
   type: "共有纯正则"
   code: "1021"
   positivepurerule:
-    - "疲劳驾驶"
+    - "疲劳[^。！；：]*?驾驶"
+    - "(因|由于)(过度)?疲劳[^。！；：]*?(驾车|行驶)"
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
