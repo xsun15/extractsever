@@ -1,74 +1,48 @@
 package com.cjbdi.core.extractcenter.split;
 
+import com.alibaba.fastjson.JSONObject;
 import com.cjbdi.core.configcenter.BeanConfigCenter;
-import com.cjbdi.core.configcenter.structurateConfig.utils.TrialReportBasicConfig;
 import com.cjbdi.core.extractcenter.model.TrialReportModel;
+import com.cjbdi.core.util.CommonTools;
 
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class TrialReportSplit extends BasicSplit {
 
-    private TrialReportModel trialReport = null;
-    private TrialReportBasicConfig trialReportBasicConfig = BeanConfigCenter.structurateConfig.getTrialReportConfig().getTrialReport();
-    public static Field[] getDeclaredField(Object object){
-        Field[] field = null ;
+    private TrialReportModel trialReportModel = new TrialReportModel();
+    private HashMap<Integer, HashMap<String, Object>> trialReportConfig = BeanConfigCenter.structurateConfig.getTrialReportConfig().getFeatures();
 
-        Class<?> clazz = object.getClass() ;
-
-        for(; clazz != Object.class ; clazz = clazz.getSuperclass()) {
-            try {
-                field = clazz.getDeclaredFields() ;
-                return field ;
-            } catch (Exception e) {
+    public TrialReportModel split(String content) {
+        if (trialReportConfig!=null) {
+            for (int order = 1; order <= trialReportConfig.size(); order++) {
+                Object object = trialReportConfig.get(order).get("rule");
+                if (object!=null) {
+                    List<String> ruleList1 = (List<String>) object;
+                    int start = CommonTools.matchOrderIndex(content, ruleList1);
+                    int end = CommonTools.rowsNumber(content);
+                    if (order <=2 ) end = start;
+                    else if (order < trialReportConfig.size() - 1 && order > 2) {
+                        object = trialReportConfig.get(order + 1).get("rule");
+                        if (object != null) {
+                            List<String> ruleList2 = (List<String>) object;
+                            end = CommonTools.matchOrderIndex(content, ruleList2);
+                        }
+                    }
+                    String text = CommonTools.getRangeText(content, start, end);
+                    trialReportModel.setModel(order, text);
+                }
             }
+            splitEvidence(trialReportModel.getJustice());
+            return trialReportModel;
         }
-
         return null;
     }
 
-    public TrialReportModel split(String content)  {
-        List<Integer> partList = new ArrayList<>();
-        trialReport = new TrialReportModel();
-        List<String> contentList = docProc(content);
-        List<String> fieldExc = new ArrayList<String>();
-        try{
-            Class c = Class.forName("com.cjbdi.portrait.configcenter.TrialReportConfig");
-            Field[] fields = c.getDeclaredFields();
-            boolean accessible = false;
-            for(Field field : fields){
-                accessible = field.isAccessible();
-                field.setAccessible(true);
-                int index = -1;
-                if("extract/casecause".equalsIgnoreCase(field.getName())){
-                    fieldExc.add(field.getName());
-                    trialReport.setCasecause(getParaContent(contentList, (List<String>) field.get(trialReportBasicConfig)));
-                }else if("caseno".equalsIgnoreCase(field.getName())){
-                    fieldExc.add(field.getName());
-                    trialReport.setCaseno(getParaContent(contentList, (List<String>) field.get(trialReportBasicConfig)));
-                }else {
-                    index = getParaIndex(contentList, (List<String>) field.get(trialReportBasicConfig));
-                    if (index == -1) fieldExc.add(field.getName());
-                    else partList.add(index);
-                }
-                field.setAccessible(accessible);
-            }
-            Field[] fields1 = trialReport.getClass().getDeclaredFields();
-            int i = 0;
-            for(Field field : fields1){
-                if(i >= partList.size()) continue;
-                accessible = field.isAccessible();
-                field.setAccessible(true);
-                if(fieldExc.contains(field.getName())) continue;
-                field.set(trialReport, getParaByReport(partList.get(i), getNextIndex(partList.get(i), partList, contentList.size()), contentList));
-                field.setAccessible(accessible);
-                i++;
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return trialReport;
+    public void splitEvidence(String content) {
+        JSONObject evidenceConfig = new JSONObject((HashMap)trialReportConfig.get(7).get("evidence"));
+        List<String> rules = evidenceConfig.getObject("rule", List.class);
+        int start = CommonTools.matchOrderIndex(content, rules);
+        String text = CommonTools.getRangeText(content, 0, start-1);
+        trialReportModel.setJustice(text);
     }
-
 }

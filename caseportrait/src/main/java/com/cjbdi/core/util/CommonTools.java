@@ -100,6 +100,7 @@ public class CommonTools {
         return false;
     }
 
+
     public static String matchText(String line, List<String> expPatternList) {
         if (line!=null&&!line.isEmpty()) {
             List<String> list = Arrays.asList(line.split("\n"));
@@ -115,6 +116,49 @@ public class CommonTools {
         }
         return "";
     }
+
+    public static Integer matchOrderIndex(String line, List<String> expPatternList) {
+        if (line!=null&&!line.isEmpty() && expPatternList!=null) {
+            List<String> list = Arrays.asList(line.split("\n"));
+            int count = 0;
+            for (String str : list) {
+                str = str.trim().replaceAll("\\s+", "");
+                for (String exp : expPatternList) {
+                    Pattern pattern = Pattern.compile(exp);
+                    Matcher matcher = pattern.matcher(str);
+                    if (matcher.find()) {
+                        return count;
+                    }
+                }
+                count++;
+            }
+        }
+        return 0;
+    }
+
+    public static Integer rowsNumber(String content) {
+        if (content!=null&&!content.isEmpty()) {
+            List<String> list = Arrays.asList(content.split("\n"));
+            return list.size();
+        }
+        return 0;
+    }
+
+    public static String getRangeText(String content, int start, int end) {
+        if (content!=null&& end >= start) {
+            String result = "";
+            List<String> list = Arrays.asList(content.split("\n"));
+            if (end>=list.size()) end = list.size()-1;
+            if (start<0) start = 0;
+            if (end>start) end = end - 1;
+            for (int i=start; i<=end; i++) {
+                result += list.get(i).trim().replaceAll("\\s+", "") + "\n";
+            }
+            return result;
+        }
+        return "";
+    }
+
     public static String matchText(String text, String rule, int part) {
         if(text != null && !text.isEmpty() && rule != null && !rule.isEmpty()) {
             Pattern pattern = Pattern.compile(rule);
@@ -191,9 +235,11 @@ public class CommonTools {
     public static String extractDocType(String fullText) {
         if (StringUtils.isNotEmpty(fullText)) {
             List<String> rules = new ArrayList<>();
-            rules.add("起诉书");
+            rules.add("审结报告");
+            rules.add("审查报告");
             rules.add("刑事判决书");
-            rules.add("审理报告");
+            rules.add("起诉书");
+            rules.add("起诉意见书");
             List<String> factTextList = Arrays.asList(fullText.split("\n"));
             for (String line : factTextList) {
                 for (String rule : rules) {

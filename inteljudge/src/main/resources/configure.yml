@@ -1,0 +1,11 @@
+summary:
+  traffic: "/summary/summary.yml"
+train:
+  stopword: "/summary/stopWord.txt"
+  traffic:
+    rawdata: "/summary/trafficRaw.txt"
+    keyword: "/summary/trafficKeyword.txt"
+storeEs:
+  indexEs: "/store/index.yml"
+  data:
+    - "/store/traffic"

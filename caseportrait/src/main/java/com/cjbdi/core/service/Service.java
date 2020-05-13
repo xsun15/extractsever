@@ -92,6 +92,9 @@ public class Service extends RemoveSpecialChar {
                 } else if (docType.equals("审理报告")) {
                     TrialReportModel trialReportModel = BeanExtractCenter.trialReportSplit.split(fullText);
                     return JSONObject.toJSONString(trialReportModel);
+                } else if (docType.equals("审查报告")) {
+                    ReviewReportModel reviewReportModel = BeanExtractCenter.reviewReportSplit.split(fullText);
+                    return JSONObject.toJSONString(reviewReportModel);
                 }
             }
         }
@@ -121,7 +124,7 @@ public class Service extends RemoveSpecialChar {
             return jsonObject.toString();
         } else if (docType.equals("审理报告")){
             TrialReportModel trialReportModel = BeanExtractCenter.trialReportSplit.split(content);
-            JSONObject jsonObject = FactCrime.run(trialReportModel.getCaseTrial());
+            JSONObject jsonObject = FactCrime.run(trialReportModel.getBothsides());
             return jsonObject.toString();
         }
         return "";
@@ -243,6 +246,28 @@ public class Service extends RemoveSpecialChar {
                     //调用模型预测案由
                     List<String> caseList = BeanExtractCenter.noprosSplit.findCasecause(noprosModel.getDefendant(), noprosModel.getProcuOpinion(), noprosModel.getJustice());
                     return "";
+                } else if (docType.equals("审查报告")) {
+                    ReviewReportModel reviewReportModel = BeanExtractCenter.reviewReportSplit.split(fullText);
+                    Set<String> defendantSet = reviewReportModel.getDefendantSet();
+                    if (defendantSet.size()==0) defendantSet = BeanExtractCenter.defendantExtract.extract(reviewReportModel.getBasiclitigant());
+                    List<String> caseList = BeanExtractCenter.reviewReportSplit.findCasecause(reviewReportModel.getCasecause(), reviewReportModel.getProcopiniondetail(), reviewReportModel.getFacts());
+                    List<DefendantModel> defendantModelList = CasePortrait.run(reviewReportModel.getProcopiniondetail(), reviewReportModel.getFacts(), "",
+                            reviewReportModel.getInvestopinion(), reviewReportModel.getDefendant(), defendantSet, caseList);
+                    return JSONObject.toJSONString(defendantModelList);
+                } else if (docType.equals("审结报告")) {
+                    TrialReportModel trialReportModel = BeanExtractCenter.trialReportSplit.split(fullText);
+                    Set<String> defendantSet = BeanExtractCenter.defendantExtract.extract(trialReportModel.getBothsides());
+                    List<String> caseList = BeanExtractCenter.trialReportSplit.findCasecause(trialReportModel.getBothsides(), trialReportModel.getCourtopinion(), trialReportModel.getJustice());
+                    List<DefendantModel> defendantModelList = CasePortrait.run(trialReportModel.getCourtopinion(), trialReportModel.getJustice(), "",
+                            trialReportModel.getAccusDefendDetail(), trialReportModel.getBothsides(), defendantSet, caseList);
+                    return JSONObject.toJSONString(defendantModelList);
+                } else if (docType.equals("起诉意见书")) {
+                    IndictOpinionModel indictOpinionModel = BeanExtractCenter.indictOpinionSplit.split(fullText);
+                    Set<String> defendantSet = BeanExtractCenter.defendantExtract.extract(indictOpinionModel.getDefendant());
+                    List<String> caseList = BeanExtractCenter.indictOpinionSplit.findCasecause(indictOpinionModel.getDefendant(), indictOpinionModel.getPoliceOpinion(), indictOpinionModel.getInvestigate());
+                    List<DefendantModel> defendantModelList = CasePortrait.run(indictOpinionModel.getPoliceOpinion(), indictOpinionModel.getInvestigate(), "",
+                            "", indictOpinionModel.getDefendant(), defendantSet, caseList);
+                    return JSONObject.toJSONString(defendantModelList);
                 }
             }
         }

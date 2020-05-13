@@ -9,18 +9,14 @@ public class CleanText {
 
    public static String run(String content) {
       content = content.replaceAll("＊", "某");
-      content = content.replaceAll("[^0-9a-zA-Z\\u4e00-\\u9fa5.，,、。？“”：*×＊\\n《》（）/]+", "");
-      List contentList = Arrays.asList(content.split("\n"));
+      content = content.replaceAll("[^0-9a-zA-Z\\u4e00-\\u9fa5.，,、。？“”：:*×\\n《》（）Oo〇]+","");
+      String[] contentList = content.split("\n");
       String result = "";
-      Iterator var3 = contentList.iterator();
-
-      while(var3.hasNext()) {
-         String line = (String)var3.next();
-         if(StringUtils.isNotEmpty(line.trim().replaceAll("\\s+", ""))) {
-            result = result + line + "\n";
+      for (String line : contentList) {
+         if (! "".equals(line.trim().replaceAll("\\s+", ""))) {
+            result += line + "\n";
          }
       }
-
       return result.trim();
    }
 }

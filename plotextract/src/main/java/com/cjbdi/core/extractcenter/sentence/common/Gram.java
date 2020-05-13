@@ -36,11 +36,11 @@ public class Gram extends BasicSentenceFeatureClass {
    public Gram(ExtractFeatureBasicConfig extractFeatureBasicConfig) {
       this.keyword = ((GramBasicConfig)BeanFactoryConfig.extractFeatureConfig.getGram().getFeatures().get("gramextract")).getKeyword();
       this.noiseword = ((GramBasicConfig)BeanFactoryConfig.extractFeatureConfig.getGram().getFeatures().get("gramextract")).getNoiseword();
-      this.firstPatternList = (List)((GramBasicConfig)BeanFactoryConfig.extractFeatureConfig.getGram().getFeatures().get("gramextract")).getPositivepurePattern().get("firstPattern");
-      this.secondPatternList = (List)((GramBasicConfig)BeanFactoryConfig.extractFeatureConfig.getGram().getFeatures().get("gramextract")).getPositivepurePattern().get("secondPattern");
-      this.thirdPatternList = (List)((GramBasicConfig)BeanFactoryConfig.extractFeatureConfig.getGram().getFeatures().get("gramextract")).getPositivepurePattern().get("thirdPattern");
+      this.firstPatternList = (List)((GramBasicConfig)BeanFactoryConfig.extractFeatureConfig.getGram().getFeatures().get("gramextract")).getPositivepurePattern().get("firstrule");
+      this.secondPatternList = (List)((GramBasicConfig)BeanFactoryConfig.extractFeatureConfig.getGram().getFeatures().get("gramextract")).getPositivepurePattern().get("secondrule");
+      this.thirdPatternList = (List)((GramBasicConfig)BeanFactoryConfig.extractFeatureConfig.getGram().getFeatures().get("gramextract")).getPositivepurePattern().get("thirdrule");
       this.gramRatioBasicList = ((GramBasicConfig)BeanFactoryConfig.extractFeatureConfig.getGram().getFeatures().get("ratioextract")).getGramRatioBasic();
-      this.firstInvalidPatternList = (List)((GramBasicConfig)BeanFactoryConfig.extractFeatureConfig.getGram().getFeatures().get("gramextract")).getNegativepurePattern().get("firstPattern");
+      this.firstInvalidPatternList = (List)((GramBasicConfig)BeanFactoryConfig.extractFeatureConfig.getGram().getFeatures().get("gramextract")).getNegativepurePattern().get("firstrule");
       this.keyword = this.keyword.replaceAll("placeholder", extractFeatureBasicConfig.getName());
       this.thirdPatternList = GramTools.replaceHolder(this.thirdPatternList, extractFeatureBasicConfig.getName());
       this.noisewordList = new ArrayList(Arrays.asList(this.noiseword.split("@")));

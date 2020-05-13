@@ -8,29 +8,25 @@ public class TrialReportModel {
     //案由
     private String casecause;
     //案号
-    private String caseno;
+    private String caseid;
     //控辩双方基本情况
-    private String bothDefendant;
-    //案件由来
-    private String caseSource;
-    //审理经过
-    private String caseTrial;
-    //侦破揭发
-    private String caseDetected;
-    //控辩事实内容
-    private String factFinding;
-    //证据
-    private String evidence;
-    //定性
-    private String qualitative;
-    //说明问题
+    private String bothsides;
+    //案件的由来和审理经过
+    private String originproc;
+    //案件的侦破、揭发情况
+    private String invest;
+    //控辩双方的主要内容
+    private String accusDefendDetail;
+    //审理查明的事实和证据
+    private String justice;
+    //需要说明的问题
     private String explain;
-    //量刑
-    private String quantum;
-    //结果
-    private String judicalResult;
+    //处理意见和理由
+    private String courtopinion;
     //承办人
-    private String agent;
+    private String judge;
+    //文书制作日期
+    private String makedate;
 
     public String getCasecause() {
         return casecause;
@@ -40,60 +36,52 @@ public class TrialReportModel {
         this.casecause = casecause;
     }
 
-    public String getCaseno() {
-        return caseno;
+    public String getCaseid() {
+        return caseid;
     }
 
-    public void setCaseno(String caseno) {
-        this.caseno = caseno;
+    public void setCaseid(String caseid) {
+        this.caseid = caseid;
     }
 
-    public String getBothDefendant() {
-        return bothDefendant;
+    public String getBothsides() {
+        return bothsides;
     }
 
-    public void setBothDefendant(String bothDefendant) {
-        this.bothDefendant = bothDefendant;
+    public void setBothsides(String bothsides) {
+        this.bothsides = bothsides;
     }
 
-    public String getCaseSource() {
-        return caseSource;
+    public String getOriginproc() {
+        return originproc;
     }
 
-    public void setCaseSource(String caseSource) {
-        this.caseSource = caseSource;
+    public void setOriginproc(String originproc) {
+        this.originproc = originproc;
     }
 
-    public String getCaseTrial() {
-        return caseTrial;
+    public String getInvest() {
+        return invest;
     }
 
-    public void setCaseTrial(String caseTrial) {
-        this.caseTrial = caseTrial;
+    public void setInvest(String invest) {
+        this.invest = invest;
     }
 
-    public String getFactFinding() {
-        return factFinding;
+    public String getAccusDefendDetail() {
+        return accusDefendDetail;
     }
 
-    public void setFactFinding(String factFinding) {
-        this.factFinding = factFinding;
+    public void setAccusDefendDetail(String accusDefendDetail) {
+        this.accusDefendDetail = accusDefendDetail;
     }
 
-    public String getEvidence() {
-        return evidence;
+    public String getJustice() {
+        return justice;
     }
 
-    public void setEvidence(String evidence) {
-        this.evidence = evidence;
-    }
-
-    public String getQualitative() {
-        return qualitative;
-    }
-
-    public void setQualitative(String qualitative) {
-        this.qualitative = qualitative;
+    public void setJustice(String justice) {
+        this.justice = justice;
     }
 
     public String getExplain() {
@@ -104,54 +92,65 @@ public class TrialReportModel {
         this.explain = explain;
     }
 
-    public String getQuantum() {
-        return quantum;
+    public String getCourtopinion() {
+        return courtopinion;
     }
 
-    public void setQuantum(String quantum) {
-        this.quantum = quantum;
+    public void setCourtopinion(String courtopinion) {
+        this.courtopinion = courtopinion;
     }
 
-    public String getJudicalResult() {
-        return judicalResult;
+    public String getJudge() {
+        return judge;
     }
 
-    public void setJudicalResult(String judicalResult) {
-        this.judicalResult = judicalResult;
+    public void setJudge(String judge) {
+        this.judge = judge;
     }
 
-    public String getAgent() {
-        return agent;
+    public String getMakedate() {
+        return makedate;
     }
 
-    public void setAgent(String agent) {
-        this.agent = agent;
+    public void setMakedate(String makedate) {
+        this.makedate = makedate;
     }
 
-    public String getCaseDetected() {
-        return caseDetected;
-    }
-
-    public void setCaseDetected(String caseDetected) {
-        this.caseDetected = caseDetected;
-    }
-
-    @Override
-    public String toString() {
-        Map<String, String> map = new LinkedHashMap<>();
-        map.put("extract/casecause", this.casecause);
-        map.put("caseno", this.caseno);
-        map.put("bothDefendant", this.bothDefendant);
-        map.put("caseSource", this.caseSource);
-        map.put("caseTrial", this.caseTrial);
-        map.put("caseDetected", this.caseDetected);
-        map.put("factFinding", this.factFinding);
-        map.put("evidence", this.evidence);
-        map.put("qualitative", this.qualitative);
-        map.put("explain", this.explain);
-        map.put("quantum", this.quantum);
-        map.put("judicalResult", this.judicalResult);
-        map.put("agent", this.agent);
-        return map.toString();
+    public void setModel(int order, String content) {
+        switch (order) {
+            case 1:
+                this.casecause = content;
+                break;
+            case 2:
+                this.caseid = content;
+                break;
+            case 3:
+                this.bothsides = content;
+                break;
+            case 4:
+                this.originproc = content;
+                break;
+            case 5:
+                this.invest = content;
+                break;
+            case 6:
+                this.accusDefendDetail = content;
+                break;
+            case 7:
+                this.justice = content;
+                break;
+            case 8:
+                this.explain = content;
+                break;
+            case 9:
+                this.courtopinion = content;
+                break;
+            case 10:
+                this.judge = content;
+                break;
+            case 11:
+                this.makedate = content;
+                break;
+        }
     }
 }

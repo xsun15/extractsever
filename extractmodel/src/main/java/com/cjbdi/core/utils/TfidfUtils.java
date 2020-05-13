@@ -17,9 +17,7 @@ import java.util.*;
  */
 public class TfidfUtils {
 
-	public static List<Double> run(String target, List<String> textList, int max_nb_words) {
-		List<String> bagwords = genBagWords(textList, max_nb_words);
-		LinkedHashMap<String, Double> idf = idf(textList, bagwords);
+	public static List<Double> run(String target, List<String> bagwords, LinkedHashMap<String, Double> idf) {
 		LinkedHashMap<String, Integer> tf = tf(target, bagwords);
 		List<Double> matrix = new ArrayList<>();
 		for (String word : idf.keySet()) {
@@ -53,7 +51,7 @@ public class TfidfUtils {
 		for (String text : textList) {
 			List<String> words = Arrays.asList(text.split(" "));
 			for (String word : words){
-				if (!bagwords.contains(word)) bagwords.add(word);
+				if (!bagwords.contains(word) && word.length()>=2 && !Tools.isStopChar(word)) bagwords.add(word);
 				if (bagwords.size() >= max_nb_words) {
 					return bagwords;
 				}

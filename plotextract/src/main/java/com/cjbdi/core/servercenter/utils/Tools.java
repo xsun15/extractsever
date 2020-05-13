@@ -56,9 +56,11 @@ public class Tools {
    public static String extractDocType(String fullText) {
       if(StringUtils.isNotEmpty(fullText)) {
          ArrayList rules = new ArrayList();
-         rules.add("起诉书");
+         rules.add("审结报告");
+         rules.add("审查报告");
          rules.add("刑事判决书");
-         rules.add("审理报告");
+         rules.add("起诉书");
+         rules.add("起诉意见书");
          List fullTextList = Arrays.asList(fullText.split("\n"));
          Iterator var3 = fullTextList.iterator();
 

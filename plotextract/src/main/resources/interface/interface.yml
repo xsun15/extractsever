@@ -9,7 +9,7 @@ modelextract:
   recognizemoney: "/model/recognize/money"
   recognizemoneypb: "/model/recognize/money/pbmodel"
 portraitextract:
-  ip: "http://123.124.130.22:8762"
+  ip: "http://localhost:5001"
   docsplitraw: "/document/split/raw"
   docsplit: "/document/split"
   docportray: "/document/portrait"

@@ -1,6 +1,8 @@
 package com.cjbdi.core.configurecenter.loadmodel;
 
 import com.cjbdi.core.configurecenter.BeanConfigCenter;
+import com.cjbdi.core.utils.TfidfUtils;
+import com.cjbdi.core.utils.Tools;
 import org.bytedeco.opencv.presets.opencv_core;
 import org.deeplearning4j.bagofwords.vectorizer.TfidfVectorizer;
 import org.deeplearning4j.nn.modelimport.keras.KerasModelImport;
@@ -17,13 +19,15 @@ import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class BasicLoadmodel {
 	private List<MultiLayerNetwork> model = new ArrayList<>();
-	private  TfidfVectorizer vectorizer;
+	private LinkedHashMap<String, Double> idf= new LinkedHashMap<>();
+	private List<String> bagwords = new ArrayList<>();
 
-	public BasicLoadmodel(String path) {
+	public BasicLoadmodel(String path, int max_words) {
 		URL url = this.getClass().getClassLoader().getResource("application.properties");
 		List<String> list = Arrays.asList(url.getPath().split("classes"));
 		String absolutePath = list.get(0) + "classes" + path;
@@ -38,15 +42,12 @@ public class BasicLoadmodel {
 				}
 			} else if (tempList[i].getName().contains("x_train")) {
 				try {
-					TokenizerFactory t = new DefaultTokenizerFactory();
-					t.setTokenPreProcessor(new CommonPreprocessor());
-					String filePath = tempList[i].getAbsolutePath();
-					SentenceIterator iter = new BasicLineIterator(filePath);
-					 vectorizer= new Builder()
-							.setIterator(iter)
-							.setTokenizerFactory(t)
-							.build();
-					vectorizer.fit();
+					List<String> trainData = Tools.getFileContext(tempList[i].getAbsolutePath());
+					for (String line : trainData) {
+						String [] arrays = line.split("\t");
+						idf.put(arrays[0].trim(), Double.parseDouble(arrays[1].replaceAll("\n", "").trim()));
+						bagwords.add(arrays[0].trim());
+					}
 				}catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -62,11 +63,19 @@ public class BasicLoadmodel {
 		this.model = model;
 	}
 
-	public TfidfVectorizer getVectorizer() {
-		return vectorizer;
+	public LinkedHashMap<String, Double> getIdf() {
+		return idf;
 	}
 
-	public void setVectorizer(TfidfVectorizer vectorizer) {
-		this.vectorizer = vectorizer;
+	public void setIdf(LinkedHashMap<String, Double> idf) {
+		this.idf = idf;
+	}
+
+	public List<String> getBagwords() {
+		return bagwords;
+	}
+
+	public void setBagwords(List<String> bagwords) {
+		this.bagwords = bagwords;
 	}
 }

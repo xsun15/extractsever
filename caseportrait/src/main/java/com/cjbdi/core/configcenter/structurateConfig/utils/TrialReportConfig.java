@@ -1,26 +1,28 @@
 package com.cjbdi.core.configcenter.structurateConfig.utils;
 
-import com.cjbdi.core.configcenter.BeanConfigCenter;
-import com.cjbdi.core.configcenter.utils.GetFeatureName;
+import org.yaml.snakeyaml.Yaml;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class TrialReportConfig {
-    private TrialReportBasicConfig trialReport;
+    private HashMap<Integer, HashMap<String, Object>> features = new HashMap<>();
 
     public TrialReportConfig() {
-        ArrayList<String> featureNameList = GetFeatureName.run(BeanConfigCenter.configPlace.getStructurationConfigPlace().getTrialreport());
-        for (String feature : featureNameList) {
-            TrialReportBasicConfig trialReportBasicConfig = new TrialReportBasicConfig(feature, BeanConfigCenter.configPlace.getStructurationConfigPlace().getTrialreport());
-            trialReport=trialReportBasicConfig;
+        Yaml yaml = new Yaml();
+        HashMap<String, HashMap<String, Object>>  hashMap = yaml.load(ReviewReportConfig.class.getResourceAsStream("/split/trialreport.yml"));
+        if (hashMap!=null) {
+            for (String feature : hashMap.keySet()) {
+                int order = Integer.parseInt(hashMap.get(feature).get("order").toString());
+                features.put(order, hashMap.get(feature));
+            }
         }
     }
 
-    public TrialReportBasicConfig getTrialReport() {
-        return trialReport;
+    public HashMap<Integer, HashMap<String, Object>> getFeatures() {
+        return features;
     }
 
-    public void setTrialReport(TrialReportBasicConfig trialReport) {
-        this.trialReport = trialReport;
+    public void setFeatures(HashMap<Integer, HashMap<String, Object>> features) {
+        this.features = features;
     }
 }

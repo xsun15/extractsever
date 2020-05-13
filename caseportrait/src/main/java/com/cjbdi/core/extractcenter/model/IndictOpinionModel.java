@@ -3,64 +3,40 @@ package com.cjbdi.core.extractcenter.model;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class IndictOpinionModel extends CommonModel{
-    // 检察院
-    private String procuName;
-    // 文书种类
-    private String docType;
+public class IndictOpinionModel {
+    // 公安机关
+    private String policename;
     // 案号
-    private String procuCaseId;
+    private String caseid;
     // 被告人段
     private String defendant;
-    //犯罪经历
-    private String experience;
     // 公安机关侦查段
     private String investigate;
-    // 审理段
-    private String justice;
-    // 本院认为段
-    private String procuOpinion;
+    // 侦查机关认为段
+    private String policeOpinion;
     // 敬礼段
     private String salute;
-    // 移送法院
-    private String court;
-    // 检察员
-    private String procurator;
-    // 审判日期
-    private String judgeDate;
+    // 移送检察院
+    private String procu;
+    // 移交起诉日期
+    private String makedate;
     // 附录
     private String append;
 
-    public String getExperience() {
-        return experience;
+    public String getPolicename() {
+        return policename;
     }
 
-    public void setExperience(String experience) {
-        this.experience = experience;
+    public void setPolicename(String policename) {
+        this.policename = policename;
     }
 
-    public String getProcuName() {
-        return procuName;
+    public String getCaseid() {
+        return caseid;
     }
 
-    public void setProcuName(String procuName) {
-        this.procuName = procuName;
-    }
-
-    public String getDocType() {
-        return docType;
-    }
-
-    public void setDocType(String docType) {
-        this.docType = docType;
-    }
-
-    public String getProcuCaseId() {
-        return procuCaseId;
-    }
-
-    public void setProcuCaseId(String procuCaseId) {
-        this.procuCaseId = procuCaseId;
+    public void setCaseid(String caseid) {
+        this.caseid = caseid;
     }
 
     public String getDefendant() {
@@ -79,20 +55,12 @@ public class IndictOpinionModel extends CommonModel{
         this.investigate = investigate;
     }
 
-    public String getJustice() {
-        return justice;
+    public String getPoliceOpinion() {
+        return policeOpinion;
     }
 
-    public void setJustice(String justice) {
-        this.justice = justice;
-    }
-
-    public String getProcuOpinion() {
-        return procuOpinion;
-    }
-
-    public void setProcuOpinion(String procuOpinion) {
-        this.procuOpinion = procuOpinion;
+    public void setPoliceOpinion(String policeOpinion) {
+        this.policeOpinion = policeOpinion;
     }
 
     public String getSalute() {
@@ -103,28 +71,20 @@ public class IndictOpinionModel extends CommonModel{
         this.salute = salute;
     }
 
-    public String getCourt() {
-        return court;
+    public String getProcu() {
+        return procu;
     }
 
-    public void setCourt(String court) {
-        this.court = court;
+    public void setProcu(String procu) {
+        this.procu = procu;
     }
 
-    public String getProcurator() {
-        return procurator;
+    public String getMakedate() {
+        return makedate;
     }
 
-    public void setProcurator(String procurator) {
-        this.procurator = procurator;
-    }
-
-    public String getJudgeDate() {
-        return judgeDate;
-    }
-
-    public void setJudgeDate(String judgeDate) {
-        this.judgeDate = judgeDate;
+    public void setMakedate(String makedate) {
+        this.makedate = makedate;
     }
 
     public String getAppend() {
@@ -135,21 +95,35 @@ public class IndictOpinionModel extends CommonModel{
         this.append = append;
     }
 
-    @Override
-    public String toString() {
-        Map<String, String> map = new LinkedHashMap<>();
-        map.put("procuName", this.procuName);
-        map.put("docType", this.docType);
-        map.put("procuCaseId", this.procuCaseId);
-        map.put("defendant", this.defendant);
-        map.put("investigate", this.investigate);
-        map.put("justice", this.justice);
-        map.put("procuOpinion", this.procuOpinion);
-        map.put("salute", this.salute);
-        map.put("court", this.court);
-        map.put("procurator",this.procurator);
-        map.put("judgeDate", this.judgeDate);
-        map.put("append", this.append);
-        return map.toString();
+    public void setModel(int order, String content) {
+        switch (order) {
+            case 1:
+                this.policename = content;
+                break;
+            case 2:
+                this.caseid = content;
+                break;
+            case 3:
+                this.defendant = content;
+                break;
+            case 4:
+                this.investigate = content;
+                break;
+            case 5:
+                this.policeOpinion = content;
+                break;
+            case 6:
+                this.salute = content;
+                break;
+            case 7:
+                this.procu = content;
+                break;
+            case 8:
+                this.makedate = content;
+                break;
+            case 9:
+                this.append = content;
+                break;
+        }
     }
 }

@@ -11,6 +11,7 @@ import com.cjbdi.core.convertlabelcenter.utils.ToZhengan;
 import com.cjbdi.core.developcenter.good.ExtractGood;
 import com.cjbdi.core.extractcenter.BeanFactoryExtract;
 import com.cjbdi.core.extractcenter.utils.CleanText;
+import com.cjbdi.core.extractcenter.utils.CommonTools;
 import com.cjbdi.core.extractcenter.utils.HttpRequest;
 import com.cjbdi.core.servercenter.utils.Tools;
 import io.vertx.core.json.Json;
@@ -22,15 +23,13 @@ import javax.ws.rs.core.StreamingOutput;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class SentenceExtractorServer {
 
-   @RequestMapping(
-      value = {"/extract/good"},
-      produces = {"application/json;charset=UTF-8"}
-   )
+   @RequestMapping(value = {"/extract/good"}, produces = {"application/json;charset=UTF-8"})
    public String extractGood(@RequestBody JSONObject jsonParam, @Context HttpServletRequest request) {
       if(jsonParam.containsKey("fullText")) {
          String fullText = jsonParam.getString("fullText");
@@ -41,10 +40,7 @@ public class SentenceExtractorServer {
       }
    }
 
-   @RequestMapping(
-      value = {"/split/document"},
-      produces = {"application/json;charset=UTF-8"}
-   )
+   @RequestMapping(value = {"/split/document"}, produces = {"application/json;charset=UTF-8"})
    public String split(@RequestBody JSONObject jsonParam, @Context HttpServletRequest request) {
       if(jsonParam.containsKey("fullText")) {
          String fullText = jsonParam.getString("fullText");
@@ -72,10 +68,7 @@ public class SentenceExtractorServer {
       return "";
    }
 
-   @RequestMapping(
-      value = {"/extract/sentence/feature/selfsentence"},
-      produces = {"application/json;charset=UTF-8"}
-   )
+   @RequestMapping(value = {"/extract/sentence/feature/selfsentence"}, produces = {"application/json;charset=UTF-8"})
    public JSONObject extractSelfSentenceFeature(@RequestBody JSONObject reqParam, @Context HttpServletRequest request) {
       if(reqParam.containsKey("fullText")) {
          String fullText = reqParam.getString("fullText");
@@ -210,6 +203,28 @@ public class SentenceExtractorServer {
       return "";
    }
 
+   @RequestMapping(value = {"/extract/court/decision"}, produces = {"application/json;charset=UTF-8"})
+   public String extractCourtDecision(@RequestBody JSONObject reqParam, @Context HttpServletRequest request) {
+      if(reqParam.containsKey("fullText")) {
+         String fullText = reqParam.getString("fullText");
+         if(StringUtils.isNotEmpty(fullText)) {
+            fullText = CleanText.run(fullText);
+            String docType = "";
+            if(reqParam.containsKey("docType")) {
+               docType = reqParam.getString("docType");
+            } else {
+               docType = Tools.extractDocType(fullText);
+            }
+            if(StringUtils.isNotEmpty(docType)) {
+               List casecauseList = (List)reqParam.getObject("casecause", List.class);
+               JSONArray jsonArray = BeanFactoryExtract.sentenceExtractor.extractCourtDecision(docType, fullText, casecauseList);
+               return jsonArray.toJSONString();
+            }
+         }
+      }
+      return "";
+   }
+
    @RequestMapping(value = {"/extract/sentence/feature"}, produces = {"application/json;charset=UTF-8"})
    public String extractSentenceFeature(@RequestBody JSONObject reqParam, @Context HttpServletRequest request) {
       long startTime1 = System.currentTimeMillis();
@@ -241,12 +256,26 @@ public class SentenceExtractorServer {
       return "";
    }
 
-   @RequestMapping(
-      value = {"/predict/basicInfo"},
-      produces = {"application/json;charset=UTF-8"}
-   )
+   @RequestMapping(value = {"/predict/basicInfo"}, produces = {"application/json;charset=UTF-8"})
    public String predBasicInfo(@RequestBody JSONObject reqParam, @Context HttpServletRequest request) {
       String result = HttpRequest.sendPost(BeanFactoryConfig.interfaceConfig.getInterfacePortrait().getBasicinfo(), reqParam);
       return result;
+   }
+
+   @RequestMapping(value = "/doctype", produces = "application/json;charset=UTF-8", method = RequestMethod.POST)
+   public String gainDocType(@RequestBody JSONObject jsonParam, @Context HttpServletRequest request) {
+      if (jsonParam.containsKey("fullText")) {
+         String fullText = jsonParam.getString("fullText");
+         if (StringUtils.isNotEmpty(fullText)) {
+            fullText = CleanText.run(fullText);
+            String docType = "";
+            if (jsonParam.containsKey("docType")) docType = jsonParam.getString("docType");
+            else docType = Tools.extractDocType(fullText);
+            JSONObject result = new JSONObject();
+            result.put("doctype", docType);
+            return result.toJSONString();
+         }
+      }
+      return "";
    }
 }

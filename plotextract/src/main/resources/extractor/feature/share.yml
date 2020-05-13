@@ -586,8 +586,8 @@ recidivismextract:
   type: "共有纯正则"
   code: "1049"
   positivepurerule:
-    - "(被告人|被不起诉人)[^。；][是系为]累犯"
-    - "(被告人|被不起诉人)[^。；]刑满释放后五年内再犯"
+    - "(被告人|被不起诉人|犯罪嫌疑人)[^。；].*?[是系为]累犯"
+    - "(被告人|被不起诉人|犯罪嫌疑人)[^。；].*?[是系为]刑满释放后五年内再犯"
   positivemodelrule:
   negativepurerule:
   negativemodelrule:

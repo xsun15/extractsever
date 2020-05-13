@@ -4,6 +4,7 @@ personpartyextract:
     - "被不起诉人(.*?)[（，。；]"
     - "罪犯(.*?)[（，。；]"
     - "被执行人(.*?)[（，。；]"
+    - "犯罪嫌疑人(.*?)[（，。；]"
   indictee:
     - "被告人?placeholder"
   victim:

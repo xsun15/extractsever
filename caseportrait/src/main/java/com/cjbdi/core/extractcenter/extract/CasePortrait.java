@@ -94,7 +94,7 @@ public class CasePortrait {
 
     // 被告人－罪名－案件其他段落组合
     public static List<DefendantModel> defendantPortray(List<DefendantModel> defendantModelList, String background, String transfer, String conclusion) {
-        if (StringUtils.isNotEmpty(background)) {
+        if (StringUtils.isNotEmpty(background) && defendantModelList!=null) {
             List<String> backgroundList = Arrays.asList(background.split("\n"));
             for (DefendantModel defendantModel : defendantModelList) {
                 String defendant = defendantModel.getName();
@@ -116,7 +116,7 @@ public class CasePortrait {
 
     // 被告人－罪名－事实组合
     public static List<DefendantModel> defendantCasecauseJusticeFact(List<DefendantModel> defendantModelList, Map<String, CasecausePortray> casecausePortrayMap, Set<String> defendantSet) {
-        if (casecausePortrayMap.isEmpty()||defendantModelList.isEmpty()) {
+        if (casecausePortrayMap==null || defendantModelList==null|| casecausePortrayMap.isEmpty()||defendantModelList.isEmpty()) {
             return defendantModelList;
         } else {
             for (DefendantModel defendantModel : defendantModelList) {

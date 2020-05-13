@@ -9,6 +9,7 @@ public class StructurateConfig {
 	private NoprosConfig noprosConfig = new NoprosConfig();
 	private TrialReportConfig trialReportConfig = new TrialReportConfig();
 	private IndicitmentConfig indicitmentConfig = new IndicitmentConfig();
+	private ReviewReportConfig reviewReportConfig = new ReviewReportConfig();
 
 	public FactSplitConfig getFactSplitConfig() {
 		return factSplitConfig;
@@ -56,5 +57,13 @@ public class StructurateConfig {
 
 	public void setIndicitmentConfig(IndicitmentConfig indicitmentConfig) {
 		this.indicitmentConfig = indicitmentConfig;
+	}
+
+	public ReviewReportConfig getReviewReportConfig() {
+		return reviewReportConfig;
+	}
+
+	public void setReviewReportConfig(ReviewReportConfig reviewReportConfig) {
+		this.reviewReportConfig = reviewReportConfig;
 	}
 }

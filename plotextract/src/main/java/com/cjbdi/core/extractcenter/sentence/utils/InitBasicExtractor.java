@@ -3,6 +3,7 @@ package com.cjbdi.core.extractcenter.sentence.utils;
 import com.cjbdi.core.configurecentent.BeanFactoryConfig;
 import com.cjbdi.core.configurecentent.extractfeature.ExtractFeatureBasicConfig;
 import com.cjbdi.core.decryptcenter.BasicCaseClass;
+import com.cjbdi.core.extractcenter.sentence.common.Gram;
 import com.cjbdi.core.extractcenter.utils.PublicFeatureExtract;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -25,6 +26,7 @@ public class InitBasicExtractor {
          String type = ((ExtractFeatureBasicConfig)featuresMap.get(feature)).getType();
          String name = ((ExtractFeatureBasicConfig)featuresMap.get(feature)).getName();
          String code = ((ExtractFeatureBasicConfig)featuresMap.get(feature)).getCode();
+         String ptype = ((ExtractFeatureBasicConfig)featuresMap.get(feature)).getPtype();
          List positivePureRule = ((ExtractFeatureBasicConfig)featuresMap.get(feature)).getPositivepurePattern();
          List negativePureRule = ((ExtractFeatureBasicConfig)featuresMap.get(feature)).getNegativepurePattern();
          PublicFeatureExtract publicFeaturePureRuleExtract;
@@ -40,6 +42,9 @@ public class InitBasicExtractor {
             publicFeatureExtractList.add(publicFeaturePureRuleExtract);
             publicFeatureExtractList.add(publicFeatureModelRuleExtract);
             this.basicModelRuleExtractors.put(code, publicFeatureExtractList);
+         } else if (ptype.equals("克数")) {
+            ExtractFeatureBasicConfig extractFeatureBasicConfig = (ExtractFeatureBasicConfig)featuresMap.get(feature);
+            this.basicPrivateExtractors.add(new Gram(extractFeatureBasicConfig));
          }
       }
 

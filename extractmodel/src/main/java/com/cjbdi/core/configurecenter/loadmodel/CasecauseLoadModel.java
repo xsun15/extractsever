@@ -4,33 +4,35 @@ import com.cjbdi.core.configurecenter.BeanConfigCenter;
 import org.deeplearning4j.bagofwords.vectorizer.TfidfVectorizer;
 import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class CasecauseLoadModel {
 	private Map<String, List<MultiLayerNetwork>> boolModelMap = new HashMap<>();
-	private Map<String, TfidfVectorizer> boolVectorizerMap = new HashMap<>();
+	private Map<String, LinkedHashMap<String, Double>> boolIDFMap = new HashMap<>();
+	private Map<String, List<String>> boolBagwordsMap = new HashMap<>();
 	private List<MultiLayerNetwork> moneyModelSimpleList;
-	private TfidfVectorizer moneyTfidfVectorizer;
+	private LinkedHashMap<String, Double> moneyIDF = new LinkedHashMap<>();
+	private List<String> moneyBagwords = new ArrayList<>();
 
 	public CasecauseLoadModel(String casecause) {
 		Map<String, HashMap<String, Object>> features = BeanConfigCenter.configPlace.getFeatures().get(casecause);
 		if (features!=null) {
 			for (String feature : features.keySet()) {
-				if (!feature.equals("type") && !feature.equals("moneysimple")) {
-					System.out.println(feature);
+				if (!feature.equals("type")) {
 					String path = BeanConfigCenter.configPlace.getFeatures().get(casecause).get(feature).get("path").toString();
 					String code = BeanConfigCenter.configPlace.getFeatures().get(casecause).get(feature).get("code").toString();
-					BasicLoadmodel basicLoadmodel = new BasicLoadmodel(path);
-					boolModelMap.put(code, basicLoadmodel.getModel());
-					boolVectorizerMap.put(code, basicLoadmodel.getVectorizer());
-				} else if (feature.equals("moneysimple")) {
-					String path = BeanConfigCenter.configPlace.getFeatures().get(casecause).get(feature).get("path").toString();
-					BasicLoadmodel basicLoadmodel = new BasicLoadmodel(path);
-					moneyModelSimpleList = basicLoadmodel.getModel();
-					moneyTfidfVectorizer = basicLoadmodel.getVectorizer();
+					int max_words = Integer.parseInt(BeanConfigCenter.configPlace.getFeatures().get(casecause).get(feature).get("max_words").toString());
+					if (!feature.equals("moneysimple")) {
+						BasicLoadmodel basicLoadmodel = new BasicLoadmodel(path, max_words);
+						boolModelMap.put(code, basicLoadmodel.getModel());
+						boolIDFMap.put(code, basicLoadmodel.getIdf());
+						boolBagwordsMap.put(code, basicLoadmodel.getBagwords());
+					} else if (feature.equals("moneysimple")) {
+						BasicLoadmodel basicLoadmodel = new BasicLoadmodel(path, max_words);
+						moneyModelSimpleList = basicLoadmodel.getModel();
+						moneyIDF = basicLoadmodel.getIdf();
+						moneyBagwords = basicLoadmodel.getBagwords();
+					}
 				}
 			}
 		}
@@ -44,14 +46,6 @@ public class CasecauseLoadModel {
 		this.boolModelMap = boolModelMap;
 	}
 
-	public Map<String, TfidfVectorizer> getBoolVectorizerMap() {
-		return boolVectorizerMap;
-	}
-
-	public void setBoolVectorizerMap(Map<String, TfidfVectorizer> boolVectorizerMap) {
-		this.boolVectorizerMap = boolVectorizerMap;
-	}
-
 	public List<MultiLayerNetwork> getMoneyModelSimpleList() {
 		return moneyModelSimpleList;
 	}
@@ -60,11 +54,35 @@ public class CasecauseLoadModel {
 		this.moneyModelSimpleList = moneyModelSimpleList;
 	}
 
-	public TfidfVectorizer getMoneyTfidfVectorizer() {
-		return moneyTfidfVectorizer;
+	public Map<String, LinkedHashMap<String, Double>> getBoolIDFMap() {
+		return boolIDFMap;
 	}
 
-	public void setMoneyTfidfVectorizer(TfidfVectorizer moneyTfidfVectorizer) {
-		this.moneyTfidfVectorizer = moneyTfidfVectorizer;
+	public void setBoolIDFMap(Map<String, LinkedHashMap<String, Double>> boolIDFMap) {
+		this.boolIDFMap = boolIDFMap;
+	}
+
+	public LinkedHashMap<String, Double> getMoneyIDF() {
+		return moneyIDF;
+	}
+
+	public void setMoneyIDF(LinkedHashMap<String, Double> moneyIDF) {
+		this.moneyIDF = moneyIDF;
+	}
+
+	public Map<String, List<String>> getBoolBagwordsMap() {
+		return boolBagwordsMap;
+	}
+
+	public void setBoolBagwordsMap(Map<String, List<String>> boolBagwordsMap) {
+		this.boolBagwordsMap = boolBagwordsMap;
+	}
+
+	public List<String> getMoneyBagwords() {
+		return moneyBagwords;
+	}
+
+	public void setMoneyBagwords(List<String> moneyBagwords) {
+		this.moneyBagwords = moneyBagwords;
 	}
 }
