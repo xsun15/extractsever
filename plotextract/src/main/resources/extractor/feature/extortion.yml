@@ -24,6 +24,7 @@ disabledextraction:
     - "被害人[^。；！？]*?(系|属于)[^。；！？]*?残疾"
   positivemodelrule:
   negativepurerule:
+    - "对未成年人、残疾人、老年人或者丧失劳动能力人敲诈勒索的"
   negativemodelrule:
 elderextraction:
   name: "勒索老年人"
@@ -34,13 +35,14 @@ elderextraction:
     - "(向|对|找)[^。；！？]*?老年?人[^。；]*?(敲诈|勒索|实施犯罪|索要|索取)"
     - "(选择|以|对)[^。；！？]*?老年?人[^。；！？]*?(犯罪对象|作案目标|犯罪)"
     - "老年被害人"
-    - "(被害人|索要)[^。；！？]*?老年?人）"
+    - "(被害人|索要)[^。；！？]*?老年?人"
     - "被害人[^。；！？]*?系老年?人"
     - "[6-9][0-9]周?岁"
     - "1[0-9][0-9]周?岁"
     - "[六七八九]十[一二三四五六七八九十]?周?岁"
   positivemodelrule:
   negativepurerule:
+    - "对未成年人、残疾人、老年人或者丧失劳动能力人敲诈勒索的"
   negativemodelrule:
 lossLaborAbilityextraction:
   name: "勒索丧失劳动能力的人"
@@ -55,6 +57,7 @@ lossLaborAbilityextraction:
     - "被害人[^。；！？]*?系丧失劳动能力"
   positivemodelrule:
   negativepurerule:
+    - "对未成年人、残疾人、老年人或者丧失劳动能力人敲诈勒索的"
   negativemodelrule:
 minorextraction:
   name: "勒索未成年人"
@@ -71,6 +74,7 @@ minorextraction:
     - "尚未(18|十八)周?岁"
   positivemodelrule:
   negativepurerule:
+    - "对未成年人、残疾人、老年人或者丧失劳动能力人敲诈勒索的"
   negativemodelrule:
 threatSetFireextraction:
   name: "威胁放火"
@@ -217,7 +221,9 @@ victimSuicideextraction:
     - "被害人自杀"
     - "被害人有自杀行为"
     - "敲诈勒索行为[^。；！？]*?导致[^。；！？]*?自杀"
-    - "(致使|造成|导致|迫于)[^。；！？]*?(因恐惧|被害人|心理压力)[^。；！？]*?自杀"
+    - "(致使|造成|导致|迫于|感到|无法承受)[^。；！？]*?(因恐惧|被害人|(心理)?压力)[^。；！？]*?自杀"
+    - "被害人[^。；！？]*?(因恐惧|(心理)?压力|被迫)[^。；！？]*?(自杀|刀片割腕)"
+    - "将自己脖子割破[^。；！？]*?(自杀|死亡)"
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
@@ -291,8 +297,9 @@ relativeextraction:
     - "(索要|敲诈|威胁|勒索|恐吓|逼迫|要挟)[^，。；]*?(家庭|近亲属)成员"
     - "(索要|敲诈|威胁|勒索|恐吓|逼迫|要挟)[^，。；]*?亲属财物"
     - "被告人[^，。；]*?与被害人[^，。；]*?[是为系](夫妻|[父母][子女]|姑嫂|[兄姐姊][弟妹]|婆媳)关系"
-    - "(被告人|被害人)[^，。；]*?[是系为](被害人|被告人)[^，。；]*?[父母子女兄弟姊姐妹公婆媳婿伯叔舅姨侄甥]"
-    - "(索要|敲诈|威胁|勒索|恐吓|逼迫|要挟)[^，。；]*?(其母|其父)"
+    - "(被告人)[^，。；]*?[是系为](被害人)[^，。；]*?[父母子女兄弟姊姐妹公婆媳婿伯叔舅姨侄甥](?!安|诉|司)"
+    - "(被害人)[^，。；]*?[是系为](被告人)[^，。；]*?[父母子女兄弟姊姐妹公婆媳婿伯叔舅姨侄甥](?!安|诉|司)"
+#    - "(索要|敲诈|威胁|勒索|恐吓|逼迫|要挟)[^，。；]*?(其母|其父)"
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
@@ -305,6 +312,7 @@ escalationOnPurposeextraction:
     - "(妄图|故意).{0,10}扩大事态"
   positivemodelrule:
   negativepurerule:
+    - "引发事态升级[^。；！？]{0,5}触犯法律"
   negativemodelrule:
 teachingAimAtMedicalStaffextraction:
   name: "教唆他人实施针对医疗机构或者医务人员的敲诈勒索行为"
