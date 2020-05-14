@@ -234,7 +234,7 @@ public class DevelopServer {
                         jsonObject.put("feature",label.getChiname());
                         jsonObject.put("UsedRegx",label.getUsedRegx());
                         jsonObject.put("isaccurate","精确");
-                        jsonObject.put("content",casecauseModel.getOpinion());
+                        jsonObject.put("content",label.getText() + usedRegx(label.getUsedRegx()));
                         jsonObject.put("effectText","");
                         jsonObject.put("invalidText","");
                         jsonObject.put("automarkDetail","");
@@ -246,7 +246,7 @@ public class DevelopServer {
                         }else if(extractorFrom.contains("经审理查明")){
                             jsonObject.put("extractmark",label.getValue());
                             jsonObject.put("经审",  casecauseModel.getJustice());
-                            jsonObject.put("extractContent",  casecauseModel.getJustice());
+                            jsonObject.put("extractContent",  label.getText() + usedRegx(label.getUsedRegx()));
                         }
                         return jsonObject.toString();
 //                    }else{
@@ -268,6 +268,10 @@ public class DevelopServer {
         } else {
             return "";
         }
+    }
+    public String usedRegx(String regx){
+
+       return "<span style=\"line-height:48px\">" + regx + "</span>";
     }
 
 
