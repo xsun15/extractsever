@@ -242,10 +242,10 @@ public class DevelopServer {
 
                         if (extractorFrom.contains("本院认为")){
                             jsonObject.put("automark",label.getValue());
-                            jsonObject.put("本院", paraSplitterJson.get("opinion"));
+                            jsonObject.put("本院", label.getText());
                         }else if(extractorFrom.contains("经审理查明")){
                             jsonObject.put("extractmark",label.getValue());
-                            jsonObject.put("经审",  casecauseModel.getJustice());
+                            jsonObject.put("经审",  label.getText());
                             jsonObject.put("extractContent",  label.getText() + usedRegx(label.getUsedRegx()));
                         }
                         return jsonObject.toString();
