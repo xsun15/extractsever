@@ -131,8 +131,8 @@ threatPublicSafetyextraction:
     - "要放火点燃[^。？！]{0,10}房屋"
     - "不给钱就[^。？！]{0,15}房子点着"
     - "因未得逞[^。；！？]*?烧焦了"
-    positivemodelrule:
-    negativepurerule:
+  positivemodelrule:
+  negativepurerule:
     - "最高人民法院关于审理非法制造、买卖、运输枪支、弹药、爆炸物等刑事案件具体应用法律若干问题的解释"
     - "以向公安机关自首说被害人参与放火为要挟"
     - "盗窃的炸药、雷管放利用工作便利盗取雷管后向煤矿索要要挟[^。；！？]*?因私藏炸药"
