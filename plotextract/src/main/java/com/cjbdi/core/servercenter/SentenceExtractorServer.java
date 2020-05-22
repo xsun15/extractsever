@@ -88,12 +88,12 @@ public class SentenceExtractorServer {
                if(casecauseList != null && casecauseList.size() != 0) {
                   jsonArray = BeanFactoryExtract.sentenceExtractor.extract(docType, fullText, casecauseList);
                   var10000 = ConvertLabelFactory.toSelfSentence;
-                  jsonArray = ToSelfSentence.run(jsonArray);
+                  jsonArray = ToSelfSentence.run(jsonArray, fullText);
                   return Tools.packingResult("200", jsonArray);
                } else {
                   jsonArray = BeanFactoryExtract.sentenceExtractor.extract(docType, fullText, casecauseList);
                   var10000 = ConvertLabelFactory.toSelfSentence;
-                  jsonArray = ToSelfSentence.run(jsonArray);
+                  jsonArray = ToSelfSentence.run(jsonArray, fullText);
                   return Tools.packingResult("200", jsonArray);
                }
             } else {

@@ -274,3 +274,7 @@ noharmextract:
   name: "没有损害后果"
   code: "2069"
   rule: "1031"
+pleadedguiltytoforfeitextract:
+  name: "认罪认罚"
+  code: "2070"
+  rule: "1061"

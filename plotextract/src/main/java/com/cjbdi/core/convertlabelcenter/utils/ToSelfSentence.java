@@ -10,11 +10,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+
+import com.cjbdi.core.servercenter.utils.Tools;
 import org.apache.commons.lang.StringUtils;
 
 public class ToSelfSentence {
 
-   public static JSONArray run(JSONArray extractResult) {
+   public static JSONArray run(JSONArray extractResult, String fullText) {
       JSONArray caseDeepPortraitTarget = new JSONArray();
       if(extractResult != null && !extractResult.isEmpty()) {
          Iterator var2 = extractResult.iterator();
@@ -38,6 +40,20 @@ public class ToSelfSentence {
                JSONArray factListsTarget = convert(casecause, factLists, order);
                JSONArray plotList = percaseFetaures.getJSONArray("plotList");
                JSONArray plotListTarget = convert("总则", plotList, "25");
+               String docType = "";
+               for (int i = 0; i < plotListTarget.size(); i++) {
+                  JSONObject jsonObj = plotListTarget.getJSONObject(i);
+                  if(jsonObj.getString("name").equals("认罪认罚")){
+                     percaseFetauresTarget.put("pleadedguilty", plotListTarget.getJSONObject(i));
+                     docType = Tools.extractDocType(fullText);
+                     JSONObject pleadedguiltyjsonObj = percaseFetauresTarget.getJSONObject("pleadedguilty");
+                     if(pleadedguiltyjsonObj.getString("value").equals("true")){
+                        if(docType.equals("起诉意见书")) pleadedguiltyjsonObj.put("value", "1");
+                        else if(docType.equals("审查报告") || docType.equals("起诉书")) pleadedguiltyjsonObj.put("value", "2");
+                        else if(docType.equals("审结报告") ||  docType.equals("刑事判决书")) pleadedguiltyjsonObj.put("value", "3");
+                     }
+                  }
+               }
                percaseFetauresTarget.put("caseCause", casecause);
                percaseFetauresTarget.put("factsList", factListsTarget);
                percaseFetauresTarget.put("plotList", plotListTarget);

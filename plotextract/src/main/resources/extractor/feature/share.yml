@@ -707,3 +707,13 @@ rescueaftercrimeextract:
   negativepurerule:
   negativemodelrule:
   negativecasecause:
+pleadedguiltytoforfeitextract:
+  name: "认罪认罚"
+  type: "共有纯正则"
+  code: "1061"
+  positivepurerule:
+    - "认罪认罚"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
