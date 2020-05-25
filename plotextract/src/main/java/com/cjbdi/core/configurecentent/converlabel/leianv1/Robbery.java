@@ -13,12 +13,12 @@ import java.util.Iterator;
 public class Robbery extends LeianBasicClass {
 
    public Robbery() {
-      ArrayList featureNameList = GetFeatureName.run(BeanFactoryConfig.configPlace.getLeianV1ConfigPlace().getRape());
+      ArrayList featureNameList = GetFeatureName.run(BeanFactoryConfig.configPlace.getLeianV1ConfigPlace().getRobbery());
       Iterator var2 = featureNameList.iterator();
 
       while(var2.hasNext()) {
          String feature = (String)var2.next();
-         this.features.put(feature, new LeianBasicConfig(feature, BeanFactoryConfig.configPlace.getLeianV1ConfigPlace().getRape()));
+         this.features.put(feature, new LeianBasicConfig(feature, BeanFactoryConfig.configPlace.getLeianV1ConfigPlace().getRobbery()));
       }
 
    }
