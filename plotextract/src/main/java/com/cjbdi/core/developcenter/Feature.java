@@ -5,6 +5,7 @@ import com.cjbdi.core.configurecentent.extractfeature.sentence.IndividualIllegal
 import com.cjbdi.core.configurecentent.extractfeature.sentence.Traffic;
 import com.cjbdi.core.decryptcenter.BasicCaseClass;
 import com.cjbdi.core.extractcenter.sentence.SentenceExtractor;
+import com.cjbdi.core.extractcenter.sentence.common.time.StringUtil;
 import com.cjbdi.core.extractcenter.sentence.drunkdriving.InitExtractor;
 import com.cjbdi.core.extractcenter.sentence.utils.BasicSentenceFeatureClass;
 import com.cjbdi.core.extractcenter.sentence.utils.Label;
@@ -12,11 +13,13 @@ import com.cjbdi.core.extractcenter.sentence.utils.LabelExtractor;
 import com.cjbdi.core.extractcenter.utils.CasecauseModel;
 import com.cjbdi.core.extractcenter.utils.DefendantModel;
 import com.cjbdi.core.extractcenter.utils.PublicFeatureExtract;
+import org.apache.commons.lang.StringUtils;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 public class Feature {
     public static LinkedHashMap<String,LinkedHashMap<String, PublicFeatureExtract>> basicPureRuleExtractors = new LinkedHashMap<>();
@@ -38,6 +41,7 @@ public class Feature {
 
         com.cjbdi.core.extractcenter.sentence.traffic.InitExtractor initExtractor_traffic = new com.cjbdi.core.extractcenter.sentence.traffic.InitExtractor();
         basicPureRuleExtractors.put("交通肇事罪",initExtractor_traffic.getBasicPureRuleExtractors());
+        basicPrivateExtractors.put("交通肇事罪",initExtractor_traffic.getBasicPrivateExtractors());
         com.cjbdi.core.extractcenter.sentence.steal.InitExtractor initExtractor_steal =new com.cjbdi.core.extractcenter.sentence.steal.InitExtractor();
         basicPureRuleExtractors.put("盗窃罪", initExtractor_steal.getBasicPureRuleExtractors());
         com.cjbdi.core.extractcenter.sentence.extortion.InitExtractor initExtractor_extortion = new com.cjbdi.core.extractcenter.sentence.extortion.InitExtractor();
@@ -72,7 +76,7 @@ public class Feature {
         if (extractorType.equals("私有")){
             if(extractorFrom.equals("本院认为")){
                 casecauseModel.setJustice("");
-                casecauseModel.setOpinion(casecauseModel.getOpinion().split("。")[0]);
+                casecauseModel.setOpinion( Clean(casecauseModel.getOpinion().split("判决如下")[0]));//去除判决如下，并且去除不予采纳的内容。
                 if (basicPrivateExtractors.get(casecauseModel.getCasecause()) != null){
                     for(BasicSentenceFeatureClass basicSentenceFeatureClass :basicPrivateExtractors.get(casecauseModel.getCasecause())){
                         Label label = basicSentenceFeatureClass.run(defendantModel,casecauseModel, basicCaseClass.get(casecauseModel.getCasecause()));
@@ -107,6 +111,21 @@ public class Feature {
 
         }
         return null;
+    }
+    public static String Clean(String text){
+        String key = "(更正|不予)";
+        Pattern pattern =  Pattern.compile(key);
+        String res = "";
+        if (StringUtils.isNotEmpty(text)){
+            String[] paragraphArray = text.split("。|；");
+            for (int i = 0;i < paragraphArray.length; i++){
+                if (!pattern.matcher(paragraphArray[i]).find()){
+                    res += paragraphArray[i] + "。";
+                }
+            }
+
+        }
+        return res;
     }
 
     public static Label extractbool(DefendantModel defendantModel, CasecauseModel casecauseModel, String extractorType, String extractorFrom, String code,String Para) {

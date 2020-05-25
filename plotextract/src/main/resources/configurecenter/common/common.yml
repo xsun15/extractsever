@@ -73,7 +73,8 @@ minorinjurynumberextract:
   name: "轻伤人数"
   positivepurerule:
     - "[0-9零一二三四五六七八九十两]人轻伤"
-    - "(鉴定|构成|属于|致|评定|造成|属|被害人|受害人|系|打|达|成|为)[^。；！？未]*?(?<!未达到)轻伤"
+#    - "(鉴定|构成|属于|致|评定|造成|属|被害人|受害人|系|打|达|成|为)[^。；！？未]*?(?<!未达到)轻伤"
+    - "[^，。；,.;]*?轻伤"
   positivemodelrule:
   negativepurerule:
   negativemodelrule:

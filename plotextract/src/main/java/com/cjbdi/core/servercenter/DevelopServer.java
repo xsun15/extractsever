@@ -131,7 +131,7 @@ public class DevelopServer {
     public String extractPeople(@RequestBody JSONObject jsonParam,@Context HttpServletRequest request) {
         String fullText =jsonParam.getString("fullText");
         String extractorType = jsonParam.getString("extractorType");
-        String extractorFrom = jsonParam.getString("extractorTypeFrom");
+        String extractorFrom = jsonParam.getString("extractorFrom");
         String code = jsonParam.getString("code");
         String isBool = jsonParam.getString("isBool");
         if (fullText != null &&  fullText.length() > 0){
