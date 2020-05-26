@@ -31,8 +31,15 @@ public class Main {
 					JSONObject resultJson = JSONObject.parseObject(result);
 					if (resultJson != null) {
 						if (resultJson.containsKey("justice") && resultJson.containsKey("opinion")) {
-							String one = resultJson.getString("justice").replaceAll("\n", "") + resultJson.getString("opinion").replaceAll("\n", "")  + "\n";
-							sum += name.split("test/")[1] + "@@" + one;
+							String opinion = resultJson.getString("opinion").replaceAll("\n", "")  + "\n";
+							int end = 20;
+							if (opinion.indexOf("刑法") > opinion.indexOf("判决")) end = opinion.indexOf("判决");
+							else if (opinion.indexOf("刑法") < opinion.indexOf("判决")) end = opinion.indexOf("刑法");
+							if (end < opinion.length()) {
+								opinion = opinion.substring(0, end);
+								String one = resultJson.getString("justice").replaceAll("\n", "") + opinion;
+								sum += name.split("test/")[1] + "@@" + one + "\n";
+							}
 							if (count %1000 == 0) {
 								saveAsFileWriter(savepath, sum);
 								sum = "";

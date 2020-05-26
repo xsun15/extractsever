@@ -89,7 +89,7 @@ public class SentenceExtractorServer {
                   System.out.println("-------------提取结果--------------");
                   System.out.println(jsonArray.toJSONString());
                   var10000 = ConvertLabelFactory.toSelfSentence;
-                  jsonArray = ToSelfSentence.run(jsonArray);
+                  jsonArray = ToSelfSentence.run(jsonArray, fullText);
                   System.out.println("-------------标签转换--------------");
                   System.out.println(jsonArray.toJSONString());
                   return Tools.packingResult("200", jsonArray);
@@ -98,7 +98,7 @@ public class SentenceExtractorServer {
                   System.out.println("-------------提取结果--------------");
                   System.out.println(jsonArray.toJSONString());
                   var10000 = ConvertLabelFactory.toSelfSentence;
-                  jsonArray = ToSelfSentence.run(jsonArray);
+                  jsonArray = ToSelfSentence.run(jsonArray, fullText);
                   System.out.println("-------------标签转换--------------");
                   System.out.println(jsonArray.toJSONString());
                   return Tools.packingResult("200", jsonArray);
