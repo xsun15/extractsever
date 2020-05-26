@@ -3,6 +3,8 @@ package com.cjbdi.core.extractcenter.utils;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+
+import com.cjbdi.core.servercenter.utils.Tools;
 import org.apache.commons.lang.StringUtils;
 
 public class CleanText {
@@ -17,6 +19,7 @@ public class CleanText {
             result += line + "\n";
          }
       }
+      result = Tools.deleteDigitDot(result);
       return result.trim();
    }
 }

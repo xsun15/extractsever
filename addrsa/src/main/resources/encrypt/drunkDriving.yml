@@ -1,0 +1,133 @@
+bloodAlcoholContentextract:
+  name: "血液酒精含量"
+  type: "私有"
+  code: "1001"
+  positivepurerule:
+      - "PEv8vnE74oz++JDuGrXS3BZnsVo8hKs+epXsCzv57IZmtDsfuG23fVUvjSOFpDgPccz5RIleGOxTLU5+Ebwb86kYpRa9LU+DQ4IB0FGuqsZcpE1PUobJ+DslF5lnYycBBnOmIrqgOLhfd15PcflI0PLWQ8xLIxuLcxXQMdtnXWXGveD5fEvg/vsV0s4ho0LkHEzZK+GKIaE8Y8Lsl/h/5eKUZ6XfYMsW7yQcTP1Zw0NPl7DLsoEVnSH+TKf2I8B/Hs989KZjP4NimwGXCcHPbjq+alJsyTGBfeVnCJvTIm6dAaBmERKJApPtHXaKzFHgWsPrCYy9Y/xksxw/Tz56VA68yByFGhI3yMiMVl27YalN5buPwX4NmBMEx5XvkI0eIo+Q7eMmpMBFAghMFA82TZYYX2PRC91TKfSPexJwf1C7Ug3zhoRLoJUbUKA7lvwTXjvgMlcyD9aeBlLp0lwHk9lPBhPwln6GfxZ3Hmb/B2+hX7NTOEOKU8EElWzixzKWJg+UsA+1zB2NRrBia8Z4vU4Fq3l1H3szlynbbM5zbNVfUajK9ET5bouD4I5BZvA5PQMLeEqSURHfNMfaRev0laFTB8eyKsy7urCQVsXAVyRudy9ayuTvdLBVLhigKLUboW37OmL2NVP8CNlxdqfcO7HcT3wO3FAp1R391GZnNEI="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+primaryliabilityextract:
+  name: "主要责任"
+  type: "共有纯正则"
+  code: "1002"
+  positivepurerule:
+      - "QnIgu+5ZlAOd1y7OiTm+OZxb/0E1zLDk9h7wrht39Cl3ov1aQFMlLcE8n9/uII6RCfRA+GJsj088tt441Fj3OsjBcRChJf2AXKbhwD1TqEFhq4N3j6p05y0sRMqEwh7ahelET+NoceJIsY4RLPw0KraQYF7CGxj9M3xVu+s4d6zRIAbtfvcgDsu9TvNVvdZdMUut74RiTyr1XCN7ZcY6d3m1OEy9Kw8sXQwASxdo0eHCDMZgNHYD7nRdHyGTOwhOIY2gPGlxH/kdW4SS/3+hiZ07laOeMp4+RURXQGWsPqyI49dzsJ90MWkFjymFZJd2lhur40tHpaj/ntES3u69H3xXwAOIOjJ+pt6g7Be7FJAOkFdSenR6efmb22/TuK/dBl29AcD4wmFB8vWQuL+3cE4uhdyQxgDvQ1UaGuhkRhdrug75DmJnMB7MmQEpojqAvYAAhZTZQ85DTkzydVlqI+g83sgvqtV7vaH6AEalXp9O/ahRew0pUEMPrtXZ1UcZJCzE7znDWKhrxAK8A4qrb2iO9IfEh7h/sXcT8RvbkaFsqdmWhBpBm3u96SNo0pLUlEH3MocDow7Lj4LnUhDbqLU2GD2JnbQrSVhswfcMSflVnUikKtFhQa1BeLluvkYK5xD+OmWQgam81odIhaG9+CtF63ca1zF9ybNvuhyM3JA="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+fullliabilityextract:
+  name: "全部责任"
+  type: "共有纯正则"
+  code: "1003"
+  positivepurerule:
+      - "Xg8qEGnWjSorsFoMocR+dFDS2slL7zGK2Md5OZqZvV55rJzmxVAq1tF9b2/4pgFLQp7SdxOPY+y2T5yh7+1rFUdIEvZQMxa0DNAczeZeypp4Gr81ttm8vfklKLty66Gh6cv4CzL3KciPUGoX9RA8fhelG0w6sP5WZRuGfN6jSnh6WKF/ynrF/5UtWkBJoMz2HiFIWT1Ur6p3pD4fAWeDC3WDjAj5TJuO7G9xKP7qxsi4VZ8x0SqyX+ub+bcX8Bn6cT6NEThcS988+vFTzG1v0GjmC/ol/p0l6D0cLhn1Tf1PIUuHpMmKHMImU7tA3tZ6XMSzoXzpPyEqD1LNxdLhHl+eq3dRtL4DXmWZuaeUv1rU1u0XR0Mga9jRG4tA9x55leSsvyC6CPoMVqqXUo+arHeC37q7ibDSOBYVOwUXnltFKS0wl0GQtG2Vwl6Cts8LXqZ0DHbF37C1qaqG7VEVNzD0oAahr/3WkJLoaf/iel6M6nSwmWpOZ7A5UWe+FR25r4vqXZYxJvoRUUTR6UBwpMYwpK/xtcFYC+98XwMhWtRX7ZEq58E3Xg8Q9rld2qtts0i6ZTxTbT90nEY+d5qXaO+vwB0m1amxfXdD2/HbnK1mZVfCyWWLO+vO8UqVvTlCK4PKgPLqfDLdvoLf2w4v//UNqHb1jjU5KQrNfEfH26o="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+escapeextract:
+  name: "逃逸"
+  type: "共有纯正则"
+  code: "1004"
+  positivepurerule:
+      - "aUyj7AzE8weS8fA8Ib5gNWHD6j766XFHzPlhuErri6smmIZCsfa8Ejl00lyxBvmu8QrROhZ7Zp5Zk6zbePWft0YOuCtB5+ECFfh/TBn+Ut/4nTXkSTZJruwu4NnNJamCyPpvKrLvdIlfArA1Exq0JHMsbPvepmPfiK8D8bMjQmQCBpqtBPRk3xs3F7N7opwlrx/eC5/84a/Ei2MnJrn1IVXqlyfdb02SQcEac9rZt83/VhTq9GrDsk0yzbvDyWkkB06PYQkkSBvIaAWkEg2xti8zv2Qs+H8cGVdysWLmkhfhEPbTtntOLqblb4nJR2q830dCMFnlhxb6z5SYAjGRiLUMqQbB57U0vzomwKIegtOQemin/tpgPCKBSX+QW+ZpSzazEPLNGLHCASMdf62e3G7XYezLFgO9TpgBc6ylHCOfb9h9eLpv682wr6QanCOqD+yr47GThoxR6Gj0jCl5xo+xTYKEoH2Zsfosukf79GN31M1fG4p8vw8fU/TZB4MbUiXOt9olUukwlOfmWxPA2XYc3/Iljf9KMrfFgyTVChVRYDNswbUS6GzO/1RFiwDAYG2DtVtW9EpDYvZQAFF6xzzLf4CJ7EiCvv3zLBm1Kza0aPcTJb/9De9xBHPGyL3D4YYiPRwzZOp/0HR/UcdI8CP6iGxPYlglupc4nlM/7c4="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+numberofsligthinjuryextract:
+  name: "轻微伤人数"
+  type: "私有"
+  code: "1005"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+numberofminorinjuryextract:
+  name: "轻伤人数"
+  type: "私有"
+  code: "1006"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+numberofseriousinjuryextract:
+  name: "重伤人数"
+  type: "共有纯正则"
+  code: "1007"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+economicLossextract:
+  name: "经济损失"
+  type: "共有纯正则"
+  code: "1008"
+  positivepurerule:
+      - "kphYufKshOCvdFCdvPurrexDT65VVsDDCxq0PRDGbyDn3hZskq19aRlXKQMNbBfbijB7eO0oZ0z6o1XoD2HM0NxUfmX7/81+PYngGTGS+uTi3+pwvB5uTZvTKJb90AcDAJdHfIRZLDEEV7lNGzrAwRy+lxOVMpZwQHqrwOwcH0AArBEaTC5DXgV2as9QHxSolwjRnBJQO1MmWxBR532KpPjmcRSQTc4SOCk2w5+oOXfu/ywSFPJg8KoegRbBxPvA5f68cNQi5uzhZhcSa9OMS3IPz4a0QL7CYQLpgbeGrpRK3n8cQnNT5Cugb0K2H3b+sn3YYPheMINVKq4HpzQZVU13llbvV8MymTUUU7XOJtm3VcWXw5cY52QFN8jdDK8FlUkyD0A8FCs9nRmYIb9QYQrShQ37qVnHOVABCJ7BjawLS/hJWJbwwQiVI2AIfnSAW4XZL+t2eqguUd31oR40gAZqjd+c+VyeuGfIunSC1cm8fqiNwKXrSzRIxJd8HC0XFDjUVcc9fNTl5MCeg9eAbHxqI4z3q3utbMql9j8XgEfOZZn/n4ZLfu4ttEpmRHtGexVXZrBWby0JLQUZT1gJpphcqSw40TvYKu6/GNzmlzFreIRmfo9itShJwZdX8f2mVRFQi1td6KZcvCyDrF54WMnH8+bf3Lft36h0RL8dCnQ="
+  positivemodelrule:
+  negativepurerule:
+      - "ILsV68TfHDGJLNFTkmfsQtUG0EWcSFwqVF8MquSQf8gpPq3G7SlQYjAsvczHsequeG4B0qerwzietyNHoZ/Ia11nrfYwDZwC4zA7h06FOvpA5No1egORCXwusr/ewBO+5Sx65SCRz2Oufj3JUdTwtMgNfAoL31FhH5MghvfCg4Kd4H5xLNoXhWPi6K37PjfUSpdvBlyjNfNTXyddfHIywZIBEiU1/GtZSH77MjiiYTKywma5DaFdJa2r+SzoNjE1txtWzb40ofQevA45fKfv/4NO8r6i0t/BCjRzCPT7Ail3ox/XEzqM+/Gn/kC5ONHrTPghxn/IkHoJKPz+sc+av7Qw8Xx/mvyhTNF0o++2HGjFQYjp4b1Zvamr4M4ZWpk43Cq6vFQg9Hdx5w64qSSX85Dv5n1Law1NF3fIIsCCFJb/otcwqlyH3mzUzqWApRTMrS4r+iwK//DNlmyHKaQwxjfEQHya7shJR8geHzgrve0F5ASEK8tmC82+fMRlwF9+gb7+nSdZiaft2GHZYnvbObQwLxxGDSlsj3CScNJpplQTDegzRCdouWUNWbYZrXEgoINnNwL0njy9tItHY1TYNjtGMrDcLvfxrJ9EfG8/Og5qWxBGP2Etit99SpdEqKNmuiC4LrXg7AFbJnRrPi71ZBRldrDmwKEtNRUskMUjwZs="
+  negativemodelrule:
+motorVehiclesCarryingPassengersextract:
+  name: "机动车类型：载有乘客的营运机动车"
+  type: "共有纯正则"
+  code: "1009"
+  positivepurerule:
+      - "Blwc+1dG76QitCR9xUTuLQAVaDu3RqzIv4GLfAGfic8+d+JDrNPXPV4pwa6wd5a+jspspkYSPW73RGYbe5AW2lM5a/sMb7IttmOG4NiZ8oAt/PBnFLe08dGpuy082oeB5pmePRrhb5fhD35oM14Hl1Ex8izQDTvJtWbhf+36ta342NewytqrNO+okDkP7gbKZ2q6BQTgWpouBDYSz0XJ0uR3du3pzN8q7AFtDv/azqpA3O0mw+TFZ2KmZb0Sb3xEDptn5UOPaW0yM1AZHuQnLRpZoo7ZZ7BqimhZuvnhXd2/f1iaDGOjy0yMorwRj8CWJTqOcCi3mQtZhvQSGhn24DEm01DZTxC8zqn9hvH6UQWIdJqRWItOBbJ6oYzhtSfOV0qPXvaTBJ7jRBXK9kbR/ZercZbS7CmKPauY+B2c8gz2q+c0xru5sTK04m6WzM9oz60gAGqJhgdZbmQukFUoHByd4VTTguj6EP7ULNr5bVEuI9bF2ICxwOiJpVK0+jcEv+d9jeudXsfBTejje5Uv0IrxmWLbKTWQtfZiH2ZKE/yr0rUZDQCooPja/ZEL/sYmEzeQI/j6oSIiVvXAELikrRYtgyoYomSG4WjhTdESUj6RFumvBamWCmHdxqVo8ShszVpIp2g3k2c+M2waFx3OnLiQGrvOOVWrW6giFHER+VY="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+drivingEnvironmentextract:
+  name: "车辆行驶环境：高速公路、城市快速路"
+  type: "共有纯正则"
+  code: "1010"
+  positivepurerule:
+      - "QMw40lD+Ykj7kxDRpbJeOvdyOB5a6SxgE1kJfuXAEQQG4gUf0KWsB5xWYn5A1nUHBREAKYnkQtKRq/+IETxei6tY92iERDzwfVzCePzd63MEILZnhhJCUYiY3ySwLagAyTayu0QTdvDCS9u3FI0pZXJWaTJtAwC8KXZ8Z5aW7153uZERuufo1gTnu6vBUL3JDfpUlFvwJobS7Ej/OQ0WTk7Tv7tDTUHPJgxCiviI81ZGu8151gp6s/87iQbN6YjJR+B4prLarFKMVMnzzzSSliS92t2637JomqnK37rBE2n8f1YkyM5tGdbxIbo3JDE1s1/uAiuPuyrhQuUZKlR5tHaoIM7sBtcCH2op03mktzR00QggRtMyTu1cohGrFerDRmAWx7xaxFZdGAjOA5JrkN2WpFBkj0al+urc2JkDsDKAgLlqoYa+sjZiPSxmkMYTcb/ntp+wRaP21RYHlxwWL1uZBPqKYLzjAVd3wYubHBzFNbWS+xDeJfFun6JtIJfNYHfVebQ4VLLWnA4+4K7PLjJgbUNbfp7w7eVwSb2hMtfJZk2TlO1CiT8WhRAQbfjSZ8KiT7CPVDG5BFdV09T+kes3wKjZRH/EXnbVQIHkOrqHX3BXNIu+rDKysh47W65sbZWhe1b2w/dUKRDT0mtqpH8TgSW5SAatxmua1R2neh8="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+overloadingAndSpeedingAndSoonextract:
+  name: "严重违反道路交通安全法的行为：严重超员、超载或者超速驾驶，无驾驶资格驾驶机动车，使用伪造或者变造的机动车牌证"
+  type: "共有纯正则"
+  code: "1011"
+  positivepurerule:
+      - "HBKnVtjJqu3/g2wRQnvMwlQ+ej4keqF5OfAgx/lxpSIK78X7N0ocnjYQAY5YbOFafFqWxqjmpNQroesZml8u6mNk++OWgncv53uF7deyDCbLyuInvaHAuaynfTb260/cVbJRlpCV7QAxh65cIA6PQBtYLrP7ddflQE3fSv8o9l5z8feD3alwCyyA29Twzb6Tbpuuv0blrQA8c8VPx9HdLY3V3DVIe1ZGqCBgYqTEaIKu0tGkhQ5Ok6+RnNv92YqcJSxdCazxwSOzl+mW7jeTxQ1+kSKg3QOmntzweFPM6Ht5NiP0AzSYuUmjxjQ+ShTLg+SPynXlDmFlu+jIdcaSfcISqI3J/PoMdnmpdN2oVqGy1IyaSpQNBNCUnBxPvrgHaMzJJ32BpoaFct9JGc/PIJWuv0I44SKhyg41FZEzq8zd574xuPduzcZWaW1GA951KAeHIAz1ZxCeRsANlf5nG3nkhlUAokJL2WIwf7aW2mDf+Yqh65j4gFfEfc/NS9+zwRaZr7OK3QPBT/4Yj4WwJJxJ7IPedXgk9lA+Z01kSJTqu8shiD2udKeRLd35UF2fzit3sXgij8wUV9EwgOLLih3W+Zn02/4m/aBWBY1qXB1xEiw54RnLIbXy7/JS2IiVbwyzpCV/VxTPmOOmkSplBwd9mFD5xQs+qjqsBe9HFkM="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+evasionCheckextract:
+  name: "逃避检查：逃避公安机关依法检查，或者拒绝、阻碍公安机关依法检查"
+  type: "共有纯正则"
+  code: "1012"
+  positivepurerule:
+      - "AGpkyeieSBmbtSZineLxs6BIpI1/mrT7fVBKiCKaizDqQ7iPb9a5oOP/nJCN5b5hneo6IrFZ8WPNroN0mp4Em3BY1OxWkLjVscSEzIGa6hTNRycBajY2LCDsAOKGJvvWnSchreCQie2+73FKexmz4MQpNokJ0N0o6NSHkn62qJWn0vDIpxP0pKC9aC/TkYkikUCcLd+CZs6fFrOV6UYEu29tS2dKF2NOwv90yzQ871HN9F/znm5f9Zj6OvHhhVBgnP9Dl60/pSQoW1fELhqSlHo4J1I0slEp/SWHCF5t40Omvbb0TaD+4t9xqdCfp1+vGt15CUwFonWsR+zNUhkWl8EpcDQR18I6PLzrusW/4UVodNwyIRKQW9lDpS4PQOwhVdAcDeVpmEHq8/ND3uOCSVd9l09a6junotkO7+tFCXF8a7cZwXJWeWuo4CamnSb/pPe20jcAro7NAH2Lr4zkBCBofUMVlf5GFys6orLnjufG70KUfEhwCVmKqBpZa9Gn/+3Sq8eaBUASRZnEAV1AzIFYctJ+0K+eQTib0uA2Aqj+DzMxUn5PebpKkAt+FprIaJxDZfXgf3O5AQCY4IKOwXlsemvQVIm/KtjVE6FMmGVIwiPk+1l3SA75bzu45CAldopfG9SEzc/Sxis2rpsTKgEJolob2diAQOrIkrcmMGg="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+administrativeSanctionextract:
+  name: "行政处罚"
+  type: "私有"
+  code: "1013"
+  positivepurerule:
+      - "IrWDbBU3cUVVWiMhHphvyznRZFgo6ilvLbS7QTFB7aJN7fB9gDRZu0gL2ePFmzZGVeNRpblIoS9xrnfaNsQ7RFexB2Wo7h7zAfASN1uBqGXxRNqd2Vj/cLRuNx0IL9K3Utktc+Wa1CDfkguImEj6JSEW8DEWPKfRv1fzuzceFvW6lNson7iWiIVCs0BBSrlsOtWFzqX0MTrFyFYXOJmTpuk8wpl/6YLN+PBDJfg9m15etMTqeneDnxHO6/GrHMFvvBPW+GP9XhQ+NfWFxLuvTE+O6ZbgJiO4fRTiln0fMiovo+uclXN4O/4NPsMxi3/n5N/WbIz6pZdN9UIEh5WI92pyilHD9olAk6RIQDXFN9pbUbdYWCuKpb22p59BJCHOvGnlGDz6TgbA2JPGnIbpzs/sT+MLt3o5Zy0VB29YSRTvO6EnnH1WDlxECCgOm9F5QO6zBEp7hw6YlZxnYccseKy3IrZkVkphXbMjkoi/HsARrP1X6QK1+4JYssxeER9TktmVpIpiVEAWPnwwvrVNaH03I7dnEtVpaxpUiq6vHy4L5DptGGupsSYdPqy5YhbiQwv2AC5c1oke47qoOh/pN9bqgxu0eQwEMsmB5cXVSptyuR5yecpxuMcQyqfODGLO1DoW5kf6YzeemO3n6WnWOyaQxCj++Q575vJbqKJkIeI="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+criminalInvestigationextract:
+  name: "刑事追究"
+  type: "私有"
+  code: "1014"
+  positivepurerule:
+      - "aBeFPF9GL36n9T90q/h1OnzEELxdfti/YtplyH5dho03C8rqLv1k8XsBryUyQ7lauKrA4/mhyxyD9fr4wBZCwBMzWzy2agDxvVC/jpF+XvmqHVOEH39C0fwcs3UwldjUDEmcc6LLjuughNzurAme7nM7347MmV5xvfVbOIbgfRCOHRhDPMg2FTKdNZS5VPd6UeIsmKrCgbXPimZi19/Qz/+hZNv28q2WrrglrbkQwCacbTSaVD/6YcSNpSqWStGns3UgEh9/GOtLyczUBh3WhvYjRh72TZtT58e3zeX30ic0SvyArV8OQk4Dg7WdRqLQL/f9qb3lGLetiIPMcuXFqUT60Px2e6bizxlCzl/FYfY3v+SZDPKEpPdGiJ7VrKDDbr9lBObyK9QEPjxWlFbJ2YnmQWyy63NB9MoJeZoErCIGmo3uXHnGbhPKs3hQw+oP3NGBGtmuLufHuSGx+O7zhnPYH9LpAqnQ9M6k0Np3HGeSN/rp1gggW6EvQp76gqNb94ZeBfa9lF6sgFCepkL7Fx5ia7g3jyvPl+ggZAbhdIaHXoYSrqWP3Fdl48iNBmQhQpLn+IEUJkM8fYnNbsHI9o73WhtXPxXzWrnup6oAXV8Qwyl71WtCqgOM+wRa/sp25K6GJZZoJPzXP40DKbSvsctWFyS78tEbQ5W1whzMPds="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+obstructionOfCriminalProceedingsextract:
+  name: "妨碍刑事诉讼：在诉讼期间拒不到案、逃跑"
+  type: "共有纯正则"
+  code: "1015"
+  positivepurerule:
+      - "B1KumQKPFdVo5wLqfaqw6CATAEsYZNM46KwCE1/4orcpiNaIvqX1LPLmLTseaHNSzog/cBt+aiV1cLp4lSQrl5V8do5q6isVUdGHJphoYJeHjaljrSWPJ8//vzRNG4ZbB90OeEGmBxg8YEEQ+dqlMNB9CrZrL/yvXoEYKfqDaGVZBej3/ppl3V4lEGfP1F8kLzG+GFhs8UkitddKfeC+uViI0Qt8Do1hfNSw/rPPdfBCKvFEy5zvkJ7/OCJk3dsinONbaaL2PfGRaFg625qBLRS36VX7XIawB1lDuJKlmWdjSl/8zTrRXonpZwDis9Cdog6EG1R4vZiD/xZhuhl1lLYRWfhWetRHl4t1IAovsmMPTWT6JoeyZB2frZT14dYas2MD0+wNnL+ri/ViQHXZiquIIy7b3nByup+VgfcY7ghUAlo7WrEyqa9bY6rpiIQ1ZhVziLeHvoEXZQ286IFRSSkIbKLO+vFVXSJPCLYzxKtFjFMAKV7bwn8+A2QWnBiq8wEmbguIZec7dmRuwuGPkLAh/d+Bbk1oz4AEylro0XRW9gjo5kFRRJY46utWaX80WoLrYZwBFE5XC9Pj8Fd6CmKy2zS9KA9t+Mj/UtLDcqw3MqGgxF2isnH9zHc9DPVz7Vi8rVQeJU4DuG67m/d4yX4KQ2sx7hP5/Ui7t2fX7Ug="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:

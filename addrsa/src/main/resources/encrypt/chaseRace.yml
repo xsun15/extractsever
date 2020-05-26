@@ -1,0 +1,88 @@
+numberOfPeopleextract:
+  name: "引诱、容留、介绍他人卖淫的人数"
+  type: "私有"
+  code: "1001"
+  positivepurerule:
+      - "RFcKu0FkH17ZR+HysBcif78yYniWJmfXZWn7HMW3jypq7kTZnkHoGHH+OTFzQzlkDczmVYIgjhI53zbnsCfkEmRLCD/dXbvfnI0Yr0PlbkBo4gSkihutpcKFsXWWO8ZgVg+0KFDEK5a6NnvHoh+n+lds7gzBIjztc2v7GGMXP0xyHZMBtX7IjiMgsjOGDNPCttNdTcGLQRaoPrdoX3NYhd1+XCaVLqIVr64VTixmaPfYyHolAAexAem+yLDBEwnNjcPT0rlUY91ZWrxMTI80mZtWDYwNnM4Zwu+Mewx/ZAXgtdF3WEOaKt5novOw0BVDf1JYfBX4JdZRcCfZUrfF7XYe7dgMbhNRngBYPaRN0KcDg42k/vrxYUrq2VqG0lqErWS7vnqQ08TZjkwYvpdg2wLKLI47v4wMQk/ud1e+QdSzqKHGGn+YKZjVM3g2aA3k3gwnTquTGdNYT6ls2Ql6SOvaxbRGrAqmMn5PuPTuZAnhrUZtGY3/XA2P5Netf+NntZIlRXotfFLHjsMFO1bVNJFRiKlGiG/gOqc6RpNEW+nniOgMYZchGq2C7BqahfvhLnldYLoYcXo4XzfeuR/6JKtTLZ06mC2DyXPDJG6jrK8E4bUL9ldYlc9lhfD8VSt3mfW4j4H/jCf8PWQpvr4OhI22doQ3KSNbWVwtzknnD+E="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+IllegalProfitAmountextract:
+  name: "非法获利数额"
+  type: "私有"
+  code: "1002"
+  positivepurerule:
+      - "Y0zDcejSUq0w6BhzcnyfSpRMeShvvxmsxTFZhGeCTKlZ5D+d2tEjlavpzp3b77fH5CDO/uCAMDs1EvJon27rnDD9RykomV1sOolvTFihrrHbTwmWIWwn35e0dn6YV9TXoxh00xvYcpYXjWNrzLgfgXNi3voiF3aSw0jKyGWh1IELY6/3IaQEPCie+TmGoS/MPADs5T7UluCfBwqgwD+6VHW54seha89PlVOra1XLtrbKhd+jlOCwuC8ZhTSxlJMsFt4r6TUEGeh+Z/lDcwn52uORFwKfLQxsqB6dA2qInwEsOHr0EjSb8zbU+ytcir2hwiz1j+E0O0y11+u4iZrb9ZUuKmWm1j/+YZnj8odd1sQ6tBcbAvv86/q8H6MUNfCq5/Ai66n7+ZBMcAf7UG6KWU3A9LDlG3J6C7uqJP1H9IH3zr+GknWKZvZsq+P3nf3ouuiQrOusvNuxLPVSk2VSjhtO2vv3HOP+LSprUPaG43JmgDAelM0Hkt0pL6eYb+i9B6/FT6IG6CiIbb/VHvNoYTAlupETUtEtJxuxDSzptfE4kL6Rgg8eq8qUbqjeCSYISK8UAKDJuR7MS0ZyzsRD+fpPGP7oeAU/aOKCWbA6fMmoYqLtZttQBllD2kBtaHW9v8bNp9OcR7gnKD6qRBdDrUYgk64I1Uj9pcw8JBySr3A="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+Minorsextract:
+  name: "引诱、容留、介绍未成年人、孕妇、智障人员、患有严重性病的人卖淫"
+  type: "共有纯正则"
+  code: "1003"
+  positivepurerule:
+      - "HIebIueXfkkbTozsXWNJAviWAARNTqKXVaozKrHiWHCLm+Sk+hZOQn5ekfTxkbXZ+BmTqzmIBakGmCQC4F9zZkgxLPi6yALg8flvm6B21nERMZlrV9T30i99IQgMj+VPSGhmjQhe3ZpeyzkijS4QGuuJz5hYED749WG7Wc794PSBtA4PsY7MlrMmteKBruAn4hFPe4oT6uv9Q5JcfPfL8KOzQKb62KxHxf5ru/YuDmONBKe9b648YiB4zZkPl9GqfIYkLmBVtTLAXtFbRCGjQI3yUt4F/WLPdt9SFcTB5LeOZTqtkzP0ZVNdWFqs1wZLEe7WmollP5/qigIrokgNBZf40NCbIUf8EhDQXgMuwnIKSfeVR5uCOXZciPpry93KG5W1aDIPb9cE3gdidx5JIz7ltIlhAsRfV38JZa1PjLT7NFdB2s3zsM4RaqRKQCjJ00hPEfoHfTqvSq44O2cAio8QMjMuN0388fqI39U/yopwt2h+peP149EXN0Ww8qK91HFFhyaJjFyWSovOUzEvdfWIJt+16Mfxhcd/oZGI64RcuTP7xFBDXxnT50i92NmxJmUODIdMP5KWqgbnqonoOuGECwp2R7COdyZmesPMUJ/VUwMXdtnbPXANwF09vJAhZ9RJ1s8bQdhuKWCMiCgPYldRsGTMbXw2TeK7OXz0u2M="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+AdministrativePenaltyextract:
+  name: "一年内曾因引诱、容留、介绍卖淫行为被行政处罚，又实施容留、介绍卖淫行为"
+  type: "私有"
+  code: "1004"
+  positivepurerule:
+      - "XmmmJkdp5HzPA4GYicIEtyM59bKwvKxTB6SkNCworElfbBUcNXBe8ou77IDq9Xq6puCxmfBr92t1vz7B6LvRp18Vt7Qi3Osr0jsyeRf6P6yPFbkSrPdE3UQCgVSBGBNzNEK9oLYRv7Qp8HvMD5wMe//N/Y7QCuO7ID2vyasMWtDzXWbfsW4vkFF5q1CtG+Rbw3bnParNqLvCkjQeGqLRwwdAwoh8jjLNDle1Sg7dXuR/12UzZeulnQonfxJXplzBBflGAtrgUWU/+nkl60C89wJqWjhx5jD5xK7tRQWhcr6HOx+MzJKuY6btp1+tgWbXhBNzodZ+aCkl65cnTn2s+07S8kHKDAMdR/PWPls7XWbWWW0Jh9J9tS6zKRz8n255iccRwtvp1sOsQnRWwmavGdrkEkAoGYbWdCO1XMy1M9md+wc7NIkeucyPwiReVjJpweUC35H9oLr6ZK7CrgCDBsxoS7H52bYXUrWoAeTLIBTQms7YdKQDH7TPXJMiiibAwCfcZo2pmgN2m7kfCqiUP4nMNnBAIjSjGpfX8M1vk6BbVSyTKZIGTSrK8XLbevpsLZOjAy7GCuGtjmhPquFxzzlh526Nue2pqES+HP7VdcaDEQ5BW/s2TpDNToa7jX6qBO1W/tc6vx5URMghVrPe2VQ9MHn+RsvbrsymSYEtmFs="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+timesextract:
+  name: "同一人员卖淫的次数"
+  type: "私有"
+  code: "1005"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+NumberOfMultipleProstitutionByTheSamePersonextract:
+  name: "同一人员多次卖淫行为的人数"
+  type: "私有"
+  code: "1006"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+UsingTheUnitConditionsextract:
+  name: "从事旅馆业、饮食服务业、文化娱乐业、出租汽车业等单位的人员，利用本单位的条件，引诱、容留、介绍他人卖淫"
+  type: "共有纯正则"
+  code: "1007"
+  positivepurerule:
+      - "a/ob3gIs0jpBjIXbvzpSEN7qPubnFXUFafLfsioi4fkGT6TovmDiPifNO7QDYlXHz9ozzBb1fWJ7CNif/Pcw7sazj2KVxf2agCgqrCJ0km4ktAoTdgZuup1Ynho1Z0AlaJg1h19gnLug5Q5o0PB5SfhC79Kp3tq1ZG31wYe1IlxXol2Dx9OhywfR89oN4INHSmfjxWkaYn46qTQJucPYZiX4YJk3RMYhZGWIyypoVHSouraoyJQ0kfvSL9uFeU5+EjQgWZwMmjBPZPxTY9mgu2m3p1Y9Z5GpAaHlV+A38bWqh//LKUzsbSig1/Vwd/G3zjaUnw9fRtIq9cBmFtxfyXFLR2KNna/fbe0ZBJI8Z7z7HplOUzSi/R5COgSlL7xZ2i3pz9C1gLeqoI6EpgZQTZ6+OMXGNI3sneOsYIno/a/0k9CPOnSh6K0GWvO4JWIE106jXtjX+zEaIK4B2jbitYjcpteIkvk6I/7xkR8cMR+xwoRtb52Ub4EZKExY8bYw24JMQn9jucE9Mc8mYpTWQBUTwfzAFNAUqhzmDkSUhWcptgfY+aNiZbv3FPd74RKuwJSLqiaHk7rXsI/ugiBMNzobNCStXKNNahFaBkyVAdCiH9l/26Pz/8Fu+v73atf+5XBWzXEvoRbiq2p7yHzl7rCfhoLnDEPCSOa1oscGpvc="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+UsingNetworkInformationextract:
+  name: "利用信息网络发布招嫖信息，不构成其他犯罪"
+  type: "共有纯正则"
+  code: "1008"
+  positivepurerule:
+      - "Hlxp9lcEpiS56cnwq3luMkaxEgTPNZkZILcw8cPIMw6qY0SqB6RU+mm6lHXWb2aaDtcM70j0dsDMAHVmYLhqhMDTsjFsaLq7rK6zks3PuWGeNTKCuwbJ+KfbkDyq4WcP6xWBdb2XfYHj4OFQF2dbQJQNX6rL9Mlj6XAy8v9N8666aE/chIQYraExUBFJQsHsVlZY0eHZAloRbokyK+9oHrRqqZsHPe4CtZKcX6EMQ8iEWMZNNvN7O7OhD77F3Nw4RNNUXf8jgODLnQ1Gzb0hAs9Nc/qOPim3mRnT2pN1ySAHCdzkft6E8LKA84rBOf5NcoH6Rx+ref3EsdoK00inpOCVhrn6R4vpWUlMKMy6rXpCy15hqpecmneGAgdPRTT9AD2ZhK3vIpZgLF4eh8tKis01gOjfAIrXXAJ+BCO/7iu3tZaqSdDh5EQjh1EfOxXpMAElMEqPuvQNpJI7XF9KusZVMfW+qYr5zDjTdcpAmhx1c+JiyWZNI5Bl+/bTpgg01Mu3wsTTYJsiX8PvfithU6Vw959rdJTE7FJPBZe9dTE41lYQNWLIupG+DM11uhajtPnuAyCKjspEeOlXG8uw9+lPeldERZ8HytUk28qypraUxshp+kcuCN9laIZqbc8X7ADlV2PcQ31trnKGuN2agbLuNv1c2fZOntrYcG14Q9M="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+abroadextract:
+  name: "引诱、介绍、容留境内人员到境外卖淫"
+  type: "共有纯正则"
+  code: "1009"
+  positivepurerule:
+      - "JwCiLdL0W+b6nlH9XKhiIbL4SKOwjePgJvOcxy/dSJ8vCyC+9IHKAkB3wTQALOSzE6RlOf/JYAJTnpiw1roqNHJCtsLmTxrzw6clVepINX1CYDsxGKQyZc1LPkFoNxNmPY1pT4SC8BPr1uWzKq0NMLoFf1FEGswS9Wi8L5a0yN27wuqAkxVFXirl4ymrz5vyQQtc1VOs2errgX3Ry6clWnbNAEcDTnI54x0aDyGD4q0TVftcUtHbTAg08Sx1CkW8Y6hGzsLByOtqY8Ntrocv6ldnZuX/Vi3oz3BBVbqdFGYmP0iyrHVXIp7D3i9DUYbVDpSF0ogNxsdViOufyQCT/+SpI3kSekdKUz5Z1GWw0JqdOrHgw8vB3JMl/ixTcv0fQ5f4cplHD/2+sr+RhWTfKeaeI/VoXQRq2JXee8HQp2u78XbSb6bwfhRfxnIFu2joqyg1sUlspDOAp7UuTR1A+9nky7JZ9qTgvOB36oELGIy31AcMFClJm9p7HB/Jrx4IfANJ0q18P7sq0K3tBoav3beCbHNF4tPsBXwsykibSLYho8eykcJ9D8r1e7rnBa1MQyUnpleTjfnhcgtjmsaKQel1YwYHy7V+OkhWH1nbQjjjRJTf01dLThIHSKNY4MJ09WLfKXf/Vxfk9Nw7/nJryU8PWaJ9CGm4ESlBrpaKN6U="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+InChinaextract:
+  name: "引诱、介绍、容留境外人员到境内卖淫"
+  type: "共有纯正则"
+  code: "1010"
+  positivepurerule:
+      - "KFMnLjRO1gqNKiRWVnxl0KyvJ1euX+TIsdYSgwT15iqd9w08evGJaxZ2wevFOxICqqyRnz7hwXdd50e3aCiy88kAxQVLabCa1ERS/PflX6/2wUvTTTZFhs8bOtuop4hR06WoZKc0TBWjqJbimt+bMW9lqD3srG2GarOtsOo5WBfklfV4TfEMyyyNvUjzWnEO4XKOCZrLvZ+PQqXvLEM7VZmttfGVFonknW8qGBRiIroHbHvz67fM3JSln3ZaaQlmY+lF1dlr0p/OMaA51v2Z2isVcHBZOc8svFzsxNQ31ljon0nVSyVlQemesqJAEwubaBNMlpnR+C3FXxUpuDYFMmx07+v8tPVuhIDXTIl3X/gwBEz9kLMchSbAxwV5H59fG7rebo/MZTl6mmKtM4rfw3EGfqInHXR/q8e01VwYWT8/yBurlGDNvsmZ+PanHI2v7VAGss9fAug/EMfQwgxbkFxcMBuIlyzHOdJGSVp7Z/LceZwOYB7CdzsMZVi/cvf8Ja7Z3ZM805ynPqlFxq5M9irvT3eDwFLKVqz2cxVzaA0kLor5QCDTZOzs6FKiC9ecSHgI/3yJuzOanqQdr1SViX3unv7Mez6s5YjSOEbh1/Xo/xT0ALs6i4ux+zadXvf0sGg67KMVcBcky+YzhdZcAf/2gUN2DPVdrXMi+MofoUc="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:

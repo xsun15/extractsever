@@ -1,0 +1,227 @@
+propertyLossextraction:
+  name: "损毁财物数额"
+  type: "私有"
+  code: "1001"
+  positivepurerule:
+    - "维修费[^，。；]*?(元|人民币)"
+    - "医药费[^，。；]*?(元|人民币)"
+    - "(价值|价格|价款)[^，。；]*?(元|人民币)"
+    - "(鉴定|认定)[^，。；]*?(元|人民币)"
+    - "(车损|损失|损毁|撞毁|撞坏)[^，。；]*?(元|人民币)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+violentActionextraction:
+  name: "暴力袭击袭击警察或国家工作人员的"
+  type: "共有纯正则"
+  code: "1002"
+  positivepurerule:
+    - "(袭击|打|踢|跺|踹|撞|扇耳光|掌掴|推[搡扯]|抡倒|夹.{0,5}[脖颈]|围堵|围攻|持刀)[^，。；]*?(民交协辅处]警|警察|公安人员|公安机关|派出所)"
+    - "暴力(方法)?阻[止碍][^，。；]*?(民交协辅处]警|警察|公安人员|公安机关|派出所)"
+    - "(袭击|打|踢|跺|踹|撞|扇耳光|掌掴|推[搡扯]|抡倒|夹.{0,5}[脖颈]|围堵|围攻|持刀)[^，。；]*?(执法|停车检查|取证|执行[公职]务|处警)"
+    - "暴力(方法)?阻[止碍][^，。；]*?(执法|停车检查|取证|执行[公职]务|处警)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+executionNotStandardizedextraction:
+  name: "因执行公务行为不规范而导致妨害公务犯罪"
+  type: "共有纯正则"
+  code: "1003"
+  positivepurerule:
+    - "(处警|执法|执行[公职]务).{0,10}不规范"
+    - "(处警|执法|执行[公职]务).{0,10}违反规定"
+    - "(处警|执法|执行[公职]务|程序).{0,10}存在.{0,10}(过错|瑕疵|缺陷)"
+    - "(处警|职务行为|程序|执法).{0,10}(没有|无|不)合法性?"
+    - "不(规范|文明)执法"
+    - "国家工作人员((?!被告).{0,10})非法行为"
+    - "([民协交]警|警察|执法人员).{0,10}[未不].{0,10}(出示.{0,10}证件|佩戴)"
+    - "滥用职权"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+inciteextractionextraction:
+  name: "煽动群众阻碍依法执行职务、履行职责"
+  type: "共有纯正则"
+  code: "1004"
+  positivepurerule:
+    - "(煽动|纠集|带头|组织|指使|起哄)[^。]*?(阻碍|妨害|阻止|砸|拦|逃[跑脱]|推搡|无法执行公务)"
+    - "(引发|引起|吸引)[^。]*?(群众|民众|村民|工人|他人)(围观|起哄)"
+    - "(喊|谎称).{0,10}(警察|[民交辅处]警|公安).{0,10}打[人他]"
+    - "不明真相的.{0,10}(群众|民众|村民|工人)"
+    - "(误导|煽动)[^。]*?(群众|民众|村民|工人|他人|其他)"
+    - "煽动性的?(言论|口号)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+badSocialImpactextraction:
+  name: "造成恶劣社会影响"
+  type: "共有纯正则"
+  code: "1005"
+  positivepurerule:
+    - "造成[^，。；]*?(恶劣|严重)[^，。；]*?影响"
+    - "社会(印象|影响)[^，。；]*?(恶劣|极坏)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+numberofseriousinjuryextract:
+  name: "重伤人数"
+  type: "私有"
+  code: "1006"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+numberofdeathextract:
+  name: "死亡人数"
+  type: "私有"
+  code: "1007"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+numberofminorinjuryextract:
+  name: "轻伤人数"
+  type: "私有"
+  code: "1008"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+numberofsligthinjuryextract:
+  name: "轻微伤人数"
+  type: "私有"
+  code: "1009"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+firstleveldisabilityextract:
+  name: "一级伤残人数"
+  type: "私有"
+  code: "1010"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+secondleveldisabilityextract:
+  name: "二级伤残人数"
+  type: "私有"
+  code: "1011"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+thirdleveldisabilityextract:
+  name: "三级伤残人数"
+  type: "私有"
+  code: "1012"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+fourthleveldisabilityextract:
+  name: "四级伤残人数"
+  type: "私有"
+  code: "1013"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+fifthleveldisabilityextract:
+  name: "五级伤残人数"
+  type: "私有"
+  code: "1014"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+sixthleveldisabilityextract:
+  name: "六级伤残人数"
+  type: "私有"
+  code: "1015"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+seventhleveldisabilityextract:
+  name: "七级伤残人数"
+  type: "私有"
+  code: "1016"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+eigthleveldisabilityextract:
+  name: "八级伤残人数"
+  type: "私有"
+  code: "1017"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+ninthleveldisabilityextract:
+  name: "九级伤残人数"
+  type: "私有"
+  code: "1018"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+tenthleveldisabilityextract:
+  name: "十级伤残人数"
+  type: "私有"
+  code: "1019"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+firstlevelseriousinjurynumberextract:
+  name: "重伤一级人数"
+  type: "私有"
+  code: "1020"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+secondlevelseriousinjurynumberextract:
+  name: "重伤二级人数"
+  type: "私有"
+  code: "1021"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+firstlevelminorinjurynumberextract:
+  name: "轻伤一级人数"
+  type: "私有"
+  code: "1022"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+secondlevelminorinjurynumberextract:
+  name: "轻伤二级人数"
+  type: "私有"
+  code: "1023"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+punishedbycourtrobberyextract:
+  name: "因妨害公务受过刑事处罚的"
+  type: "共有纯正则"
+  code: "1024"
+  positivepurerule:
+    - "因妨害公务受过刑事处罚"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+punishedbygovernrobberyextract:
+  name: "一年内因妨害公务受过行政处罚的"
+  type: "共有纯正则"
+  code: "1025"
+  positivepurerule:
+    - "因妨害公务受过行政处罚"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:

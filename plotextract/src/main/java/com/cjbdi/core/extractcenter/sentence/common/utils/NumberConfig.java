@@ -9,6 +9,5 @@ public class NumberConfig {
    public int startcolor = 0;
    public int endcolor = 0;
    public String colorTarget = "";
-
-
+   public String paraName;
 }

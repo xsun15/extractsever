@@ -8,6 +8,4 @@ public class BoolConfig {
    public int startcolor;
    public int endcolor;
    public String colorTarget;
-
-
 }

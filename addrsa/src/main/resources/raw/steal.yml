@@ -1,0 +1,309 @@
+theftinhomeextract:
+  name: "入户盗窃"
+  type: "共有模型正则"
+  code: "1001"
+  positivepurerule:
+    - "入户盗窃"
+    - "入(户|室)"
+    - "进入.*?出租房"
+    - "[进至到窜在侵潜入在从将].{0,20}(房内|房间|家|家中|家里|屋里|屋内|住处|院内|室内|卧室|房间|房里|客厅|\\d{0,4}室)"
+    - "在户内"
+    - "溜门"
+    - "翻墙|爬窗"
+    - "趁.{0,10}(不在家|家中无人|家无人|无人)"
+    - "攀爬至.{0,20}内"
+    - "同住"
+    - "开锁"
+    - "撬门入室|撬门进入|撞门入内|[翻爬钻]入室|撬开防盗门"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+theftwithweaponextract:
+  name: "携带凶器盗窃"
+  type: "共有模型正则"
+  code: "1002"
+  positivepurerule:
+  positivemodelrule:
+    - "刀"
+    - "凶器"
+    - "匕首"
+    - "弓"
+    - "弩"
+    - "钢管"
+    - "铁钻子"
+    - "斧"
+    - "棍"
+    - "锤"
+    - "凿子"
+    - "管制物品"
+    - "高压电筒"
+    - "铁剪"
+    - "水管钳"
+    - "镊子"
+    - "液压钳"
+    - "撬棍"
+    - "弩"
+    - "毒针"
+    - "螺纹钢"
+    - "铁锥"
+    - "扳手"
+    - "液压剪"
+    - "撬棒"
+    - "钢锯条"
+  negativepurerule:
+  negativemodelrule:
+theftinhospitalextract:
+  name: "在医院盗窃"
+  type: "共有模型正则"
+  code: "1003"
+  positivepurerule:
+  positivemodelrule:
+    - "医院"
+    - "病室"
+    - "住院部"
+    - "卫生院"
+    - "中医会馆"
+    - "病房"
+    - "保健院"
+    - "病床"
+    - "卫生服务中心"
+    - "急诊室"
+    - "医大"
+    - "门诊"
+    - "血液科"
+    - "住院"
+    - "重症监护室"
+    - "神经外科走廊"
+    - "骨科.*?(诊室|病房)"
+    - "内科诊室"
+  negativepurerule:
+  negativemodelrule:
+pickpocketextract:
+  name: "扒窃"
+  type: "共有模型正则"
+  code: "1004"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+organizeotherstheftextract:
+  name: "组织或伙同他人盗窃"
+  type: "共有纯正则"
+  code: "1005"
+  positivepurerule:
+    - "教唆"
+    - "组织"
+    - "(?<!牵出)控制"
+    - "指使"
+    - "纠集"
+    - "带领"
+    - "召集"
+    - "伙同"
+    - "搭载"
+    - "结伙"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+organizeunderagetheftextract:
+  name: "组织、控制未成年人盗窃"
+  type: "共有纯正则"
+  code: "1006"
+  positivepurerule:
+    - "(教唆|组织|(?<!（三）组织、)控制(?!力)|指使|纠集|利用|带领|召集|搭载)[^。！？；：]*?(未成年|[1-9]周?岁|[一二三四五六七八九十]周?岁|1[0-7]周?岁|(?<!六|七|八|九)十[一二三四五六七]周?岁|[不未]满(18|十八)周?岁|尚未(18|十八)周?岁|[无|未达到]刑事责任)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+usingdestructivemethodtheftextract:
+  name: "采用破坏性手段进行盗窃"
+  type: "共有纯正则"
+  code: "1007"
+  positivepurerule:
+    - "破坏性.{0,5}手段"
+    - "[砸击剪扳掰敲割震划锯踹拆弄][碎坏破损裂断开烂毁卸下]"
+    - "烧[坏毁]"
+    - "焚烧"
+    - "爆破(?!器材有限公司)"
+    - "[割剪].{0,10}(电缆|铜管|铜线)"
+    - "撬(开|碎|坏|车窗)"
+    - "用锣丝刀等工具盗"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+givebackbeforeexposuredextract:
+  name: "案发前主动归还"
+  type: "共有纯正则"
+  code: "1008"
+  positivepurerule:
+    - "(破案|案发|措施|归案|挡获|案发|发现|索要)之?前[^。！？；：]{0,20}[归交退送放][还回]"
+    - "(案发|措施|归案|挡获|案发|发现)之?前[^。！？；：]{0,20}还[回给]"
+    - "(报警)之?前[^。！？；：]{0,20}[归交退送放][还回]"
+    - "同(月|日)[^。！？；：]{0,20}主动[^。！？；：]{0,30}投案[^。！？；：]{0,30}[归交退送放][还回]"
+    - "(?<!案发后)主动[携|带|拿|将][^。！？；：]{0,20}[归交退放送回还]"
+    - "将盗窃所得[^。！？；：]{0,20}[还回][^。！？；：]{0,20}同(月|日)[^。！？；：]{0,20}主动[^。！？；：]{0,30}投案"
+    - "因害怕被抓[^。！？；：]{0,20}将盗走的[^。！？；：]{0,20}[归交退放送回还]"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+theftcontrabandextract:
+  name: "盗窃违禁品"
+  type: "共有纯正则"
+  code: "1009"
+  positivepurerule:
+    - "(偷|盗|窃|扒|顺走)[^。！？；：]{0,40}(?<!非|应当及时返还|作案工具扳手、小剪刀，)违禁物?品"
+    - "(偷|盗|窃|扒|顺走)[^。！？；：]{0,40}走私车"
+    - "(偷|盗|窃|扒|顺走)[^。！？；：]{0,40}气枪"
+    - "(偷|盗|窃|扒|顺走)[^。！？；：]{0,40}(?<!持有((以火药为动力的|二支)?非制式|具有杀伤力的)?)(枪支|火药枪)(?!罪|而非法持有|(、弹药|弹药的)?管理((的法律)?规定|制度|法规))"
+    - "(偷|盗|窃|扒|顺走)毒品"
+    - "(偷|盗|窃|扒|顺走)[^。！？；：]{0,40}(?<!携带(的)?)管制刀具"
+    - "(偷|盗|窃|扒|顺走)[^。！？；：]{0,40}(?<!制造)爆炸物"
+    - "(偷|盗|窃|扒|顺走)[^。！？；：]{0,40}淫秽物品"
+    - "(偷|盗|窃|扒|顺走)[^。！？；：]{0,40}罂粟"
+    - "(偷|盗|窃|扒|顺走)[^。！？；：]{0,40}红豆杉树"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+disabledpersonextract:
+  name: "盗窃残疾人、孤寡老人、丧失劳动能力人等弱势群体"
+  type: "共有纯正则"
+  code: "1010"
+  positivepurerule:
+    - "(偷|盗|窃(取)?|扒|顺走)(聋|哑|盲|失明|(丧失|没有|无)劳动能力|孤寡老人|残[疾障](?!人、孤寡老人、丧失劳动能力人的财物的)|老人（且残疾）|他人（残疾人）)"
+    - "(犯罪|盗窃)对象(为|有)(残[疾障]|聋|哑|盲|失明|(丧失|没有|无)劳动能力|孤寡老人|老人（且残疾）|六十周岁以上老人)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+stealfamilyextract:
+  name: "盗窃家庭成员或近亲属财物的"
+  type: "共有纯正则"
+  code: "1011"
+  positivepurerule:
+    - "(盗|窃|偷).{0,10}(家庭|近亲属)成员(?!财物的辩护意见)"
+    - "(盗|窃|偷).{0,10}(?<!病人(及(其)?)?)亲属(的)?财物"
+    - "被告人[^。！？；：]{0,10}与被害人.{0,10}[是为系](夫妻|[父母][子女]|姑嫂|[兄姐姊][弟妹]|婆媳)关系"
+    - "(被告人)[^。！？；：]{0,10}[是系为](被害人)[^。！？；：]{0,10}[父母子女兄弟姊姐妹公婆媳婿伯叔舅姨侄甥](?!安|诉|司)"
+    - "(被害人)[^。！？；：]{0,10}[是系为](被告人)[^。！？；：]{0,10}[父母子女兄弟姊姐妹公婆媳婿伯叔舅姨侄甥](?!安|诉|司)"
+    - "(盗|窃|偷)[^。！？；：]{0,10}(?<!因为|用于给|根据|告知)(其母|其父)(?!(母)?扭送至公安机关|(母)?已与被害人达成)"
+    - "(被告人|被害人)[^。！？；：]*?(偷|盗|窃|扒|顺走)[^。！？；：]*?(堂兄|亲戚|儿子|侄儿|侄女|继父|姨夫|堂弟|堂妹|堂姐|爷爷|奶奶|继母|姑|姑父)[^。！？；：]*?(财物)"
+    - "(偷|盗|窃|扒|顺走)[^。！？；：]*?(其父|其母|舅舅|舅妈|姨父|姨|哥|姐|其妹|其弟|(?<!李)伯|叔|婶|堂姊妹|弟媳|嫂子|孙子|女儿|孙媳|女婿|媳妇|孙女)[^。！？；：]*?(财物)"
+    - "(偷|盗|窃|扒|顺走)[^。！？；：]*?(孙媳妇|孙女婿|侄媳|侄女婿|外甥|外甥女|岳父|岳母|小舅子|外祖母|外祖夫|姥姥|女朋友|男朋友|叔叔)[^。！？；：]*?(财物)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+stealsecretextract:
+  name: "技术成果或商业秘密"
+  type: "共有纯正则"
+  code: "1012"
+  positivepurerule:
+    - "(偷|盗|窃|扒|顺走).*?技术成果"
+    - "(偷|盗|窃|扒|顺走).*?商业秘密"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+seriousConsequencextract:
+  name: "严重后果"
+  type: "共有纯正则"
+  code: "1013"
+  positivepurerule:
+    - "(偷|盗|窃|扒|顺走).*?(?<!(没有|未)造成(其他)?|未给被害人造成|避免特别|（八）因盗窃造成)严重后果(?!发生的，可以减轻处罚)"
+    - "(偷|盗|窃|扒|顺走).*?后果严重"
+  positivemodelrule:
+  negativepurerule:
+    - "避免特别严重后果发生的，可以减轻处罚"
+  negativemodelrule:
+firstlevelartifactextract:
+  name: "一级文物数量"
+  type: "私有"
+  code: "1014"
+  keyword: "一级文物"
+  noiseword: "一般文物|二级文物|三级文物"
+  positivepurerule:
+    - "[1一]级文物[^，。；]{0,3}[一二三四五六七八九十百千万\\d]+[个件]"
+    - "[一二三四五六七八九十百千万\\d]+[个件][1一]级文物"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+secondlevelartifactextract:
+  name: "二级文物数量"
+  type: "私有"
+  code: "1015"
+  keyword: "二级文物"
+  noiseword: "一级文物|一般文物|三级文物"
+  positivepurerule:
+    - "[2二]级文物[^，。；]{0,3}[一二三四五六七八九十百千万\\d]+[个件]"
+    - "[一二三四五六七八九十百千万\\d]+[个件][2二]级文物"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+thirdlevelartifactextract:
+  name: "三级文物数量"
+  type: "私有"
+  code: "1016"
+  keyword: "三级文物"
+  noiseword: "一级文物|二级文物|一般文物"
+  positivepurerule:
+    - "[3三]级文物[^，。；]{0,3}[一二三四五六七八九十百千万\\d]+[个件]"
+    - "[一二三四五六七八九十百千万\\d]+[个件][3三]级文物"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+commonartifactextract:
+  name: "一般文物数量"
+  type: "私有"
+  code: "1017"
+  keyword: "一般文物"
+  noiseword: "一级文物|二级文物|三级文物"
+  positivepurerule:
+    - "一般文物[^，。；]{0,3}[一二三四五六七八九十百千万\\d]+[个件]"
+    - "[一二三四五六七八九十百千万\\d]+[个件]一般文物"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+amountofmoneytheftextract:
+  name: "盗窃数额"
+  type: "私有"
+  code: "1018"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+timesextract:
+  name: "盗窃次数"
+  type: "私有"
+  code: "1019"
+  positivepurerule:
+    - "盗窃([0-9一二三四五六七八九十〇壹贰两叁肆陆柒捌玖拾零]+次)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+forlivetheftextract:
+  name: "因生活所迫盗窃他人的"
+  type: "共有纯正则"
+  code: "1020"
+  positivepurerule:
+    - "生活.{0,5}所需"
+    - "因生活所迫"
+    - "家庭困难"
+    - "个人投资失败"
+    - "家[中里]有事"
+    - "家[庭里].{0,10}急需"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+punishedbycourttheftextract:
+  name: "因盗窃受过刑事处罚的"
+  type: "私有"
+  code: "1021"
+  positivepurerule:
+    - "因盗窃受过刑事处罚"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+punishedbygoverntheftextract:
+  name: "一年内因盗窃受过行政处罚的"
+  type: "私有"
+  code: "1022"
+  positivepurerule:
+    - "因盗窃受过行政处罚"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:

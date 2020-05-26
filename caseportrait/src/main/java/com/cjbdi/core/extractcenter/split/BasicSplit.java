@@ -5,12 +5,56 @@ import com.cjbdi.core.configcenter.extractconfig.cascause.CasecauseBasicConfig;
 import com.cjbdi.core.util.CommonTools;
 import com.cjbdi.core.util.HttpRequest;
 import com.sun.jersey.core.util.MultivaluedMapImpl;
+import org.apache.commons.lang.StringUtils;
 
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class BasicSplit {
+
+    public String extractProvince(String  content, String fullText) {
+        if (StringUtils.isNotEmpty(content)) {
+            // 先按照省份搜索
+            for (String province: BeanConfigCenter.extractConfig.getProvinceConfig().getProvince().keySet()) {
+               List<String> rule = BeanConfigCenter.extractConfig.getProvinceConfig().getProvince().get(province);
+               if (CommonTools.ismatch(content, rule)) {
+                   return province;
+               }
+            }
+            // 再按照市搜索
+            for (String province: BeanConfigCenter.extractConfig.getProvinceConfig().getCity().keySet()) {
+                List<String> rule = BeanConfigCenter.extractConfig.getProvinceConfig().getCity().get(province);
+                if (CommonTools.ismatch(content, rule)) {
+                    return province;
+                }
+            }
+            // 最后根据县区搜索
+            for (String province: BeanConfigCenter.extractConfig.getProvinceConfig().getCounty().keySet()) {
+                List<String> rule = BeanConfigCenter.extractConfig.getProvinceConfig().getCounty().get(province);
+                if (CommonTools.ismatch(content, rule) && StringUtils.isNotEmpty(fullText) && fullText.contains(province)) {
+                    return province;
+                }
+            }
+        }
+        return null;
+    }
+
+    public String extractCasetype(String  content) {
+        if (StringUtils.isNotEmpty(content)) {
+            if (content.contains("检察院") || content.contains("公诉机关")) {
+                return "刑事";
+            } else if (content.contains("民事起诉") || content.contains("民事诉讼法")) {
+                return "民事";
+            } else if (content.contains("行政起诉") || content.contains("行政诉讼法")) {
+                return "行政";
+            } else {
+                return "其它";
+            }
+        }
+        return null;
+    }
+
     public int getParaIndex(List<String> contentList, List<String> expPatternList) {
         int count = 0;
         for (String line : contentList) {

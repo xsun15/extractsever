@@ -111,7 +111,7 @@ public class FirstTrialSplit extends BasicSplit {
             // 抽取审判时间
             firstTrial.setJudgeDate(CommonTools.matchText(content, firstTrialBasicConfig.getJudgeDate()));
             // 抽取省份
-            firstTrial.setProvince(CommonTools.extractProvince(firstTrial.getCourtName()));
+            firstTrial.setProvince(extractProvince(firstTrial.getCourtName(), content));
         }catch (Exception e){
             e.printStackTrace();
         }

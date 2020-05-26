@@ -1,0 +1,379 @@
+vehicleWordsextract:
+  name: "驾驶机动车、非机动车抢夺的"
+  type: "共有纯正则"
+  code: "1001"
+  positivepurerule:
+    - "(驾驶|骑着|骑乘|驾车)[^，。]*?摩托车"
+    - "(驾驶|骑着|骑乘|驾车)[^，。]*?二轮摩托车"
+    - "(驾驶|骑着|骑乘|驾车)[^，。]*?助力车"
+    - "(驾驶|骑着|骑乘|驾车)[^，。]*?自行车"
+    - "(驾驶|骑着|骑乘|驾车)[^，。]*?机动三轮车"
+    - "(驾驶|骑着|骑乘|驾车)[^，。]*?机动车"
+    - "(驾驶|骑着|骑乘|驾车)[^，。]*?电动车"
+    - "(驾驶|骑着|骑乘|驾车)[^，。]*?电瓶车"
+    - "(驾驶|骑着|骑乘|驾车)[^，。]*?轿车"
+    - "飞车[^，。]*?抢夺"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+drugWordsextract:
+  name: "抢夺毒品的"
+  type: "共有纯正则"
+  code: "1002"
+  positivepurerule:
+    - "(夺|抢)[^，。]*?毒品"
+    - "(夺|抢)[^，。]*?毒资"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+drugExpressionsextract:
+  name: "为吸毒而抢夺的"
+  type: "共有纯正则"
+  code: "1003"
+  positivepurerule:
+    - "吸.{0,10}毒"
+    - "获.{0,10}毒.{0,10}资"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+betExpressionsextract:
+  name: "为赌博而抢夺的"
+  type: "共有纯正则"
+  code: "1004"
+  positivepurerule:
+    - "被告人.{0,10}还.{0,10}赌债"
+    - "被告人.{0,10}因欠.{0,10}赌债"
+    - "被告人.{0,10}因赌博"
+    - "赃款.{0,10}用于.{0,10}赌博"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+deathCountExpListextract:
+  name: "抢夺致人死亡"
+  type: "共有纯正则"
+  code: "1005"
+  positivepurerule:
+    - "造成*死亡"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+suicideCountExpListextract:
+  name: "抢夺致人自杀"
+  type: "共有纯正则"
+  code: "1006"
+  positivepurerule:
+    - "致使*自杀"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+inDisasterExpListextract:
+  name: "在灾害期间抢夺的"
+  type: "共有纯正则"
+  code: "1007"
+  positivepurerule:
+    - "在[自然灾害|事故灾害|社会安全(事件)?|突发(事件)?]期间(?![,，]在事件发生地抢夺的)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+minorLabelVerbWordsextract:
+  name: "结伙抢夺的"
+  type: "共有纯正则"
+  code: "1008"
+  positivepurerule:
+    - "(参与|结伙|伙同|相约).*?抢夺"
+    - "被告人[与同和、][^。；：]*?抢夺"
+    - "被告人.{0,10}等人[^，。；]*?抢夺"
+    - "实施抢夺的被告人.{0,10}等人"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+minorLabelExpressionsextract:
+  name: "组织、控制未成年人抢夺"
+  type: "私有"
+  code: "1009"
+  positivepurerule:
+    - "教唆.*?(未成年|1-9周?岁|[一二三四五六七八九十]周?岁|1[0-7]周?岁|十[一二三四五六七]周?岁|[不未]满(18|十八)周?岁|尚未(18|十八)周?岁|[无|未达到]刑事责任)"
+    - "组织.*?(未成年|1-9周?岁|[一二三四五六七八九十]周?岁|1[0-7]周?岁|十[一二三四五六七]周?岁|[不未]满(18|十八)周?岁|尚未(18|十八)周?岁|[无|未达到]刑事责任)"
+    - "控制.*?(未成年|1-9周?岁|[一二三四五六七八九十]周?岁|1[0-7]周?岁|十[一二三四五六七]周?岁|[不未]满(18|十八)周?岁|尚未(18|十八)周?岁|[无|未达到]刑事责任)"
+    - "指使.*?(未成年|1-9周?岁|[一二三四五六七八九十]周?岁|1[0-7]周?岁|十[一二三四五六七]周?岁|[不未]满(18|十八)周?岁|尚未(18|十八)周?岁|[无|未达到]刑事责任)"
+    - "纠集.*?(未成年|1-9周?岁|[一二三四五六七八九十]周?岁|1[0-7]周?岁|十[一二三四五六七]周?岁|[不未]满(18|十八)周?岁|尚未(18|十八)周?岁|[无|未达到]刑事责任)"
+    - "利用.*?(未成年|1-9周?岁|[一二三四五六七八九十]周?岁|1[0-7]周?岁|十[一二三四五六七]周?岁|[不未]满(18|十八)周?岁|尚未(18|十八)周?岁|[无|未达到]刑事责任)"
+    - "带领.*?(未成年|1-9周?岁|[一二三四五六七八九十]周?岁|1[0-7]周?岁|十[一二三四五六七]周?岁|[不未]满(18|十八)周?岁|尚未(18|十八)周?岁|[无|未达到]刑事责任)"
+    - "召集.*?(未成年|1-9周?岁|[一二三四五六七八九十]周?岁|1[0-7]周?岁|十[一二三四五六七]周?岁|[不未]满(18|十八)周?岁|尚未(18|十八)周?岁|[无|未达到]刑事责任)"
+    - "伙同.*?(未成年|1-9周?岁|[一二三四五六七八九十]周?岁|1[0-7]周?岁|十[一二三四五六七]周?岁|[不未]满(18|十八)周?岁|尚未(18|十八)周?岁|[无|未达到]刑事责任)"
+    - "搭载.*?(未成年|1-9周?岁|[一二三四五六七八九十]周?岁|1[0-7]周?岁|十[一二三四五六七]周?岁|[不未]满(18|十八)周?岁|尚未(18|十八)周?岁|[无|未达到]刑事责任)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+driveActionWordsextract:
+  name: "抢夺老年人、未成年人、孕妇、携带婴幼儿的人、残疾人、丧失劳动能力人的财物的"
+  type: "共有纯正则"
+  code: "1010"
+  positivepurerule:
+    - "(夺|抢).*?残[疾障]"
+    - "(夺|抢).*?孤寡老人"
+    - "(夺|抢).*?聋"
+    - "(夺|抢).*?哑"
+    - "(夺|抢).*?盲"
+    - "(夺|抢).*?失明"
+    - "(夺|抢).*?(丧失|没有|无)劳动能力"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+specialFundsAndMaterialsExpListextract:
+  name: "抢夺救灾、抢险、防汛、优抚、扶贫、移民、救济款物"
+  type: "共有纯正则"
+  code: "1011"
+  positivemodelrule:
+    - "抢夺(救灾|抢险|防汛|优抚|扶贫|移民|救济)款物"
+  negativepurerule:
+  negativemodelrule:
+patientExpListextract:
+  name: " 在医院抢夺病人或其亲友财物"
+  type: "共有纯正则"
+  code: "1012"
+  positivepurerule:
+    - ".{0,10}住院的.{0,10}"
+    - ".{0,10}照看病人的.{0,10}"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+forLivingExpListextract:
+  name: "生活所迫、学习、治病急需而抢夺"
+  type: "共有纯正则"
+  code: "1013"
+  positivepurerule:
+    - ".{0,30}因生活所迫而犯罪"
+    - ".{0,30}家庭困难"
+    - ".{0,30}病急需用钱"
+    - ".{0,30}治病"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+weaponWordListextract:
+  name: "携带凶器抢夺的"
+  type: "私有"
+  code: "1014"
+  positivepurerule:
+    - "弹簧刀"
+    - "折叠刀"
+    - "刀具"
+    - "刀"
+    - "水果刀"
+    - "剪刀"
+    - "美工刀"
+    - "尖刀"
+    - "匕首"
+    - "跳刀"
+    - "菜刀"
+    - "羊角锤"
+    - "斧子"
+    - "持刀"
+    - "凶器"
+    - "电棒"
+    - "羊角锤"
+    - "铁榔头"
+    - "砍刀"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+givebackbeforeexposuredextract:
+  name: "案发前主动归还的"
+  type: "共有纯正则"
+  code: "1015"
+  positivepurerule:
+    - "(破案|案发|措施|归案|挡获|案发|发现|索要)之?前.{0,20}[归交退送放][还回]"
+    - "(案发|措施|归案|挡获|案发|发现)之?前.{0,20}还[回给]"
+    - "(报警)之?前.{0,20}[归交退送放][还回]"
+    - "主动.{0,30}投案.{0,30}[归交退送放][还回]"
+    - "主动[携|带|拿|将].{0,20}[投案|送回]"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+numberofseriousinjuryextract:
+  name: "重伤人数"
+  type: "私有"
+  code: "1016"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+numberofdeathextract:
+  name: "死亡人数"
+  type: "私有"
+  code: "1017"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+numberofminorinjuryextract:
+  name: "轻伤人数"
+  type: "私有"
+  code: "1018"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+numberofsligthinjuryextract:
+  name: "轻微伤人数"
+  type: "私有"
+  code: "1019"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+firstleveldisabilityextract:
+  name: "一级伤残人数"
+  type: "私有"
+  code: "1020"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+secondleveldisabilityextract:
+  name: "二级伤残人数"
+  type: "私有"
+  code: "1021"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+thirdleveldisabilityextract:
+  name: "三级伤残人数"
+  type: "私有"
+  code: "1022"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+fourthleveldisabilityextract:
+  name: "四级伤残人数"
+  type: "私有"
+  code: "1023"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+fifthleveldisabilityextract:
+  name: "五级伤残人数"
+  type: "私有"
+  code: "1024"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+sixthleveldisabilityextract:
+  name: "六级伤残人数"
+  type: "私有"
+  code: "1025"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+seventhleveldisabilityextract:
+  name: "七级伤残人数"
+  type: "私有"
+  code: "1026"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+eigthleveldisabilityextract:
+  name: "八级伤残人数"
+  type: "私有"
+  code: "1027"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+ninthleveldisabilityextract:
+  name: "九级伤残人数"
+  type: "私有"
+  code: "1028"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+tenthleveldisabilityextract:
+  name: "十级伤残人数"
+  type: "私有"
+  code: "1029"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+pretendpoliceextract:
+  name: "冒充军警"
+  type: "公用纯正则"
+  code: "1030"
+  positivepurerule:
+    - "冒充军警"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+firstlevelseriousinjurynumberextract:
+  name: "重伤一级人数"
+  type: "私有"
+  code: "1031"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+secondlevelseriousinjurynumberextract:
+  name: "重伤二级人数"
+  type: "私有"
+  code: "1032"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+firstlevelminorinjurynumberextract:
+  name: "轻伤一级人数"
+  type: "私有"
+  code: "1033"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+secondlevelminorinjurynumberextract:
+  name: "轻伤二级人数"
+  type: "私有"
+  code: "1034"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+punishedbycourtsezingyextract:
+  name: "因抢夺受过刑事处罚的"
+  type: "共有纯正则"
+  code: "1035"
+  positivepurerule:
+    - "因抢夺受过刑事处罚"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+punishedbygovernseizingextract:
+  name: "一年内因抢夺受过行政处罚的"
+  type: "共有纯正则"
+  code: "1036"
+  positivepurerule:
+    - "因抢夺受过行政处罚"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+amountofmoneyseizingextract:
+  name: "抢夺数额"
+  type: "私有"
+  code: "1037"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+timesextract:
+  name: "抢夺次数"
+  type: "私有"
+  code: "1038"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:

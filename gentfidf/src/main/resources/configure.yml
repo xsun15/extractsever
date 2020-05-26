@@ -1,0 +1,24 @@
+train:
+  stopword: "/stopwords/common"
+  traffic:
+    rawdata: "/rawdata/traffic"
+    keyword: "/keyword/traffic/words"
+    bagword: "/keyword/traffic/bagwords"
+    idf: "/keyword/traffic/idf"
+    config: "/config/traffic.yml"
+  steal:
+    rawdata: "/rawdata/steal"
+    keyword: "/keyword/steal/words"
+    bagword: "/keyword/steal/bagwords"
+    idf: "/keyword/steal/idf"
+    config: "/config/steal.yml"
+  robbery:
+    rawdata: "/rawdata/robbery"
+    keyword: "/keyword/robbery/words"
+    bagword: "/keyword/robbery/bagwords"
+    idf: "/keyword/robbery/idf"
+    config: "/config/robbery.yml"
+storeEs:
+  indexEs: "/store/index.yml"
+  data:
+    - "/store/traffic"

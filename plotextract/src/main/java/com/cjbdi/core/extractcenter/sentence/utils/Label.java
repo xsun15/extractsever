@@ -1,9 +1,15 @@
 package com.cjbdi.core.extractcenter.sentence.utils;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Label {
 
    long flag;
+   List<Integer> startpos = new ArrayList<>();
+   List<String> rawText = new ArrayList<>();
+   List<String> paras = new ArrayList<>();
    String value;
    String text;
    String paraText;
@@ -88,5 +94,29 @@ public class Label {
 
    public void setParaName(String paraName) {
       this.paraName = paraName;
+   }
+
+   public List<Integer> getStartpos() {
+      return startpos;
+   }
+
+   public void setStartpos(List<Integer> startpos) {
+      this.startpos = startpos;
+   }
+
+   public List<String> getRawText() {
+      return rawText;
+   }
+
+   public void setRawText(List<String> rawText) {
+      this.rawText = rawText;
+   }
+
+   public List<String> getParas() {
+      return paras;
+   }
+
+   public void setParas(List<String> paras) {
+      this.paras = paras;
    }
 }

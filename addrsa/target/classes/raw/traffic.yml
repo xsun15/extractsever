@@ -1,0 +1,353 @@
+escapeaftertrafficaccidentextract:
+  name: "交通肇事后逃逸"
+  type: "共有模型正则"
+  code: "1002"
+  positivepurerule:
+    - "(事故|肇事|撞|作案|案发).{0,15}(后|且)[^。]{0,70}(逃逸|逃离|离开|驶离|继续(行驶|驾车)|去向不明)"
+    - "(非|不构成|不属于).{0,15}逃逸.{0,15}(之辩|辩解|辩护|理由|意见).{0,15}不予以(采纳|采信|支持)"
+    - "有逃逸.{0,15}(故意|情节|行为)"
+    - "(符合|认定).{0,15}肇事.{0,15}逃逸"
+    - "逃逸.{0,15}(致|造成).{0,15}死亡"
+    - "(造成|致|将).{0,15}死.{0,15}(后|并|被告人).{0,15}(逃逸|逃离|离开)"
+    - "不影响逃逸的成立"
+    - "(?<!不属于交通)(弃车|驾车|肇事).{0,15}逃逸"
+    - "谎称.{0,15}拨打.{0,15}(110|120)"
+    - "未拨打[^。；]*?(逃离|离开.{0,10}现场)"
+    - "(驾车|欲)逃离"
+    - "系逃逸"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+fullliabilityextract:
+  name: "全部责任"
+  type: "共有纯正则"
+  code: "1004"
+  positivepurerule:
+    - "(负|承担|为|确定)[^。；！？]*?全部责任"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+primaryliabilityextract:
+  name: "主要责任"
+  type: "共有纯正则"
+  code: "1005"
+  positivepurerule:
+    - "(负|承担|为|确定)[^。；！？]*?主要责任"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+equalliabilityextract:
+  name: "同等责任"
+  type: "共有纯正则"
+  code: "1006"
+  positivepurerule:
+    - "(负|承担|为|确定)[^。；！？]*?同等责任"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+drunkdrivingextract:
+  name: "酒后驾驶"
+  type: "共有模型正则"
+  code: "1007"
+  positivepurerule:
+    - "(?<!曾因(饮)?)(酒后|醉酒|酒醉).{0,15}驾[车驶驭]"
+    - "(?<!曾因(饮)?)(酒后|醉酒|酒醉).{0,15}(违反交通|事故|肇事|超速)"
+    - "(?<!曾因(饮)?)酒驾"
+    - "(?<!曾因(饮)?)醉驾"
+    - "(?<!曾因(饮)?)饮酒的?(事实|过量)"
+    - "已达.{0,15}(醉酒标准|酒精含量定量标准)"
+    - "(属|系)醉酒"
+    - "血液[^，。；]*?(酒精|乙醇)[^。；]*?含量为\\d+(.\\d+)?mg[/／]\\d+ml"
+  positivemodelrule:
+    - "酒|乙醇"
+  negativepurerule:
+    - "(非|没有|未|不是)(酒后|醉酒|酒醉).{0,15}驾[车驶驭]"
+  negativemodelrule:
+    - "(非|没有|未|不是)(酒后|醉酒|酒醉).{0,15}驾[车驶驭]"
+drugdrivingextract:
+  name: "吸毒后驾驶"
+  type: "共有纯正则"
+  code: "1008"
+  positivepurerule:
+    - "(案发|事发(发生)?|驾驶)前.{0,15}(吸毒|吸食了?毒品)(?!后驾驶机动车辆的|劣迹)"
+    - "(注射(毒品|海洛因)|吸毒)(?!后驾驶机动车辆的|劣迹)[^。；]{0,30}(驾驶|驾车|肇事|驾套牌车辆|驾驭车辆)(?!机动车辆的)"
+    - "(吸食了?(毒(品)?|冰毒|“麻果”|“K粉”|“冰毒”|小麻)|服用国家管制(的精神)?药品后)(?!后驾驶机动车辆的|劣迹)[^。；]{0,30}(驾驶|驾车|肇事|驾套牌车辆|驾驭车辆)(?!机动车辆的)"
+    - "(吸毒|吸食了?(毒(品)?|冰毒))[^。；！？]*?呈阳性"
+    - "(血|尿)(液|样|检)[^。；！？]*?(冰毒|甲基苯丙胺|甲基安非他命)[^。；！？]*?呈阳性"
+    - "(血|尿)(液|样|检)[^。！？]*?呈(冰毒|甲基苯丙胺|甲基安非他命)阳性"
+    - "(血|尿)(液|样|检)[^。；！？]{0,5}检(测|验|出)?[^。！？]*?(冰毒|甲基苯丙胺|甲基安非他命|呈[^。；！？]{0,6}阳性)"
+    - "服用甲基苯丙胺后[^。；！？]*?(驾驶|驾车|肇事|驾套牌车辆|驾驭车辆)"
+    - "(血|尿)?样[^。；！？]{0,2}检出(苯丙胺|甲基苯丙胺|甲基安非他命)"
+    - "于[^。；！？]{0,10}日[^。；！？]{0,5}吸食了毒品"
+    - "(事故|肇事)?前[^。；！？]{0,10}有吸毒行为"
+    - "经检验[^。；！？]{0,10}(血|尿)液中含有(苯丙胺|甲基苯丙胺|甲基安非他命)"
+  positivemodelrule:
+  negativepurerule:
+    - "曾因*吸.{0,3}毒品[受|被].{1,30}处罚"
+  negativemodelrule:
+disqualifiedfromdrivingextract:
+  name: "无驾驶资格驾驶"
+  type: "共有纯正则"
+  code: "1009"
+  positivepurerule:
+    - "(?<!被害人)(无|未(依法)?取得|不具有|吊销|不具备|没有(?!第一时间)|丧失|未办理|未具有|不符合|失去)[^。；！？]{0,20}(驾驶|准驾)(?!人)[^。；！？]*?(资格|证(?!人|据|词|明|实))"
+    - "(?<!被害人)(无|未取得)资格驾驶"
+    - "(?<!被害人)无驾驶[^。；！？]*?(车辆|机动车)资格"
+    - "被告人[^。；！？]*?无(证|照)(?!据)"
+    - "(?<!被害人)驾驶资格与[^。；！？]*?车型不符"
+    - "(?<!被害人)(无|不具备|未办理|未取得)(道路)?(运输|客运|货运)从业资格"
+    - "(?<!被害人)未办理从业运输资格"
+    - "(?<!被害人)无装载机操作资格"
+    - "(?<!被害人)驾驶资格证被注销"
+    - "(?<!被害人)准驾车型不符"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+drivingunsafevehiclesextract:
+  name: "明知安全装置不全驾驶"
+  type: "共有纯正则"
+  code: "1010"
+  positivepurerule:
+    - "安全(装置|设施|设置|措施|设备)不全(?!或者安全机件失灵)"
+    - "(未安装|没有|无)[^。；！？]*?(雨刮器|防护栏|制动|刮水器|反光标识|防护装置|前照灯|制动|灯光)"
+    - "具有安全隐患"
+    - "(灯组|装置|灯|动力|肇事车辆|车身附件)[^。；！？]*?(损坏|不全|失效|(?<!仍有)不足(?!部分应)|不亮|不合格|不良|失灵|脱开|故障)(?!或者安全机件失灵)"
+    - "(反光标识|机件|制动|刹车|栏板|锁扣|雨刮器|牵引)[^。；！？]*?(损坏|不全|失效|(?<!仍有)不足(?!部分应)|不亮|不合格|不良|失灵|脱开|故障)(?!或者安全机件失灵)"
+    - "(肇事车辆|车身附件|装置|反光标识|机件|制动|机动车)[^。；！？]*?不符合[^。；！？]*?(要求|标准|规定|技术条件)"
+    - "(改装)|(非法拼装)"
+    - "(安全|设施)[^。；！？]*?不全(?!或者安全机件失灵)"
+    - "不符合[^。；！？]*?(安全行驶要求|技术标准|技术要求)"
+    - "到期未年检"
+    - "逾期未检验"
+    - "不符合[^。；！？]*?(技术条件|技术要求|技术标准)"
+    - "有安全隐患"
+    - "(制动|性能)[^。；！？]*?不符合[^。；！？]*?(要求|规定)"
+    - "未年检"
+    - "检验为不合格"
+    - "改装"
+    - "已报废"
+    - "保险[^。；！？]*?已失效"
+  negativerule:
+  negativepurerule:
+  negativemodelrule:
+seriousoverloadextract:
+  name: "严重超载驾驶"
+  type: "共有模型正则"
+  code: "1011"
+  positivepurerule:
+    - "严重超[载过](?!驾驶的)"
+    - "超载率"
+    - "(超载|超过核定载质量|超过|核载质量)[^。；！？]*?([3-9][0-9]|[0-9]{3})(\\.\\d+)?(%|℅|％)"
+    - "[3-9][0-9]+(\\.)?[0-9]+%的?超载率"
+    - "超载率[3-9][0-9]+(\\.)?[0-9]+%"
+    - "超载[^。；！？]*?核定载质量30%以上"
+    - "超载严重"
+    - "超载[1-9][0-9]{1,2}(\\.\\d+)?余?倍"
+    - "载.{0,20}[0-9]+(\\.)?[0-9]+.{0,20}载.{0,20}[0-9]+(\\.)?[0-9]+.{0,20}"
+    - "核载.*?实载.*?"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+drivingunlicensedvehiclesextract:
+  name: "驾驶无牌证车辆"
+  type: "私有"
+  code: "1012"
+  positivepurerule:
+    - "(无|没有|假|伪造)(机动车|车|号)?(牌|照|号|车牌|号牌|牌照|牌)"
+    - "(没有|未)(取得|登记|悬挂|挂|上)(机动车|车)?(号|车牌|号牌|牌照|照|牌)"
+    - "套牌"
+    - "车辆牌照与(肇事|投保)车辆牌照不一致"
+    - "挪用(牌照|号牌)"
+    - "车牌号不符"
+    - "变造号牌"
+    - "变造号牌"
+    - "(没有|未)[^。；！？]*?(?<!所有权转移|变更|过户)(登记|注册)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+drivingendoflifevehicleextract:
+  name: "驾驶报废车辆"
+  type: "共有纯正则"
+  code: "1013"
+  positivepurerule:
+    - "(?<!不属于)已(达|过|注销|经)[^。；！？]*?(?<!不属于|拼装车、已达到|拼装或者已达到|未达到(强制)?)报废(?!的机动车辆而驾驶的|为止|残值)"
+    - "(?<!不属于)(达到|驾驶)[^。；！？]*?(?<!不属于|拼装车、已达到|拼装或者已达到|未达到(强制)?)报废(?!的机动车辆而驾驶的|为止|残值)"
+    - "(?<!不属于)(系|是|属|为)[^。；！？]*?(?<!不属于|拼装车、已达到|拼装或者已达到|未达到(强制)?)报废(?!的机动车辆而驾驶的|为止|残值)"
+    - "(明知|肇事车辆)[^。；！？]*?(?<!不属于|拼装车、已达到|拼装或者已达到|未达到(强制)?)报废(?!的机动车辆而驾驶的|为止|残值)"
+    - "购买[^，。；]*?(?<!不属于|拼装车、已达到|拼装或者已达到|未达到(强制)?)报废汽车"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+chasedrivingextract:
+  name: "在道路上驾驶机动车追逐竞驶"
+  type: "共有纯正则"
+  code: "1014"
+  positivepurerule:
+    - "(?<!事故后)追逐"
+    - "竞速"
+    - "竞驶(?!，情节恶劣的，或者在道路上醉酒驾驶机动车的)"
+    - "(?<!事故后)追赶[^。；]*?致[^。；]*?(受伤|死亡)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+adversesocialimpactsextract:
+  name: "交通肇事造成恶劣社会影响"
+  type: "共有纯正则"
+  code: "1015"
+  positivepurerule:
+    - "(?<!未对侦查机关侦破此案|不会)造成[^，。；]*?(恶劣|严重)[^，。；]*?影响"
+    - "社会(印象|影响)[^，。；]*?(恶劣|极坏)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+protectthesiteextract:
+  name: "交通肇事后保护现场"
+  type: "共有纯正则"
+  code: "1016"
+  positivepurerule:
+    - "(?<!未((尽|尽报警|及时报警、抢救伤者|立即停车)?(，|、|和|并)?)?|应当(立即停车、)?|没有((立即停车|报警)?(，|、|和|并)?)?)保护(事故|了)?现场"
+    - "(?<!未(尽)?|没有)对现场进行保护"
+    - "(?<!未(尽)?(留在)?|没有(留在)?)(现场|案发地)[^。；！？]*?(等待|等候)"
+    - "(?<!未(尽)?|没有)留在现场"
+    - "(?<!未(尽)?|没有)在现场等候"
+    - "(?<!未(尽)?|没有)协助救治"
+    - "(?<!未(尽)?|没有)打[^，。；]*?1[12]0[^。；]*?在现场"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+rescueinjuryextract:
+  name: "交通肇事后抢救伤者"
+  type: "共有纯正则"
+  code: "1017"
+  positivepurerule:
+    - "被告人[^。；]*?现场积极[^，。；]*?救"
+    - "(被告人|案发后|肇事后|犯罪后|主动|及时|事故(发生)?后|立即)[^。；！？]*?(打|报)[^。；！？]*?(120|急救电话|救助电话)"
+    - "对受害人采取抢救措施"
+    - "对伤者进行抢救"
+    - "(通知|打)120[^。；！？]*?(救治|抢救)"
+    - "(被告人|案发后|肇事后|犯罪后|主动|及时|事故(发生)?后|立即)[^。；]*?[将对][^，。；]*?(送[至往]?医院|救)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+reporthepublicsecurityorganextract:
+  name: "交通肇事后向公安机关报告"
+  type: "共有纯正则"
+  code: "1018"
+  positivepurerule:
+    - "(?<!没有|辩护人提出|未)(被告人|案发后|肇事后|犯罪后|主动|及时|事故(发生)?后)[^。；！？]*?(?<!没有及时|不具备交通肇事罪中|不具有)(报警|报案|投案|自首(?!的三要素))"
+    - "(?<!没有|辩护人提出|未)(被告人|案发后|肇事后|犯罪后|主动|及时|事故(发生)?后|立即)[^。；！？]*?(打|报)[^。；！？]*?(110|122|报案电话)"
+    - "(?<!没有|辩护人提出|未)向公安机关(如实)?(报告|报警|投案|报案)"
+    - "(?<!没有|辩护人提出|未)到公安机关归案"
+    - "(?<!没有|辩护人提出|未)到[^。；！？]*?公安[^。；！？]*?投案"
+    - "(?<!没有|辩护人提出|未)(现场|案发地)[^。；！？]*?(等待|等候)"
+    - "(?<!没有|辩护人提出|未)[自主]动投案"
+    - "(?<!没有|辩护人提出|未)等待(公安机关|交警部门)处理"
+    - "(?<!没有|辩护人提出|未)报警并接受公安机关的处理"
+    - "(?<!没有|辩护人提出|未)留在现场"
+    - "(?<!没有|辩护人提出|未)被告人[^。；！？]*?及时向(“110”|“122”)[^。；！？]{0,10}报警"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+leavetheaccidentextract:
+  name: "为逃避法律追究逃离事故现场"
+  type: "共有纯正则"
+  code: "1019"
+  positivepurerule:
+    - "(事故|肇事|撞|作案|案发).{0,15}(后|且).{0,15}(?<!未|没有)(逃离|离开)"
+    - "(造成|致|将).{0,15}死.{0,15}(后|并|被告人).{0,15}(?<!未|没有)(逃离|离开)"
+    - "(?<!未|没有)逃离.{0,15}事故现场"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+beingpubnishedfortrafficaccidentextract:
+  name: "曾因交通肇事罪受过刑事处罚"
+  type: "私有"
+  code: "1020"
+  comment: "该情节提取不在此处"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+drowsydrivingextract:
+  name: "疲劳驾驶"
+  type: "共有纯正则"
+  code: "1021"
+  positivepurerule:
+    - "疲劳驾驶"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+numberofseriousinjuryextract:
+  name: "重伤人数"
+  type: "私有"
+  code: "1022"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+numberofdeathextract:
+  name: "死亡人数"
+  type: "私有"
+  code: "1023"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+numberofminorinjuryextract:
+  name: "轻伤人数"
+  type: "私有"
+  code: "1024"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+numberofslightinjuryextract:
+  name: "轻微伤人数"
+  type: "私有"
+  code: "1025"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+numberofescapecausingdeathextract:
+  name: "逃逸致死人数"
+  type: "私有"
+  code: "1026"
+  positivepurerule:
+    - "(?<!不构成交通肇事)(逃逸)[^。？！;]*?(鉴定|构成|属于|致|评定|造成|属|被害人|受害人|系|打|达|成)[^。；！？未]*?[0-9零一二三四五六七八九十两]人(?<!当场)死亡"
+    - "(?<!不构成交通肇事)(逃逸)[^。？！;]*?(鉴定|构成|属于|致|评定|造成|属|被害人|受害人|系|打|达|成)[^。；！？未]*?(?<!当场)死亡"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+firstlevelseriousinjurynumberextract:
+  name: "重伤一级人数"
+  type: "私有"
+  code: "1027"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+secondlevelseriousinjurynumberextract:
+  name: "重伤二级人数"
+  type: "私有"
+  code: "1028"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+firstlevelminorinjurynumberextract:
+  name: "轻伤一级人数"
+  type: "私有"
+  code: "1029"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+secondlevelminorinjurynumberextract:
+  name: "轻伤二级人数"
+  type: "私有"
+  code: "1030"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:

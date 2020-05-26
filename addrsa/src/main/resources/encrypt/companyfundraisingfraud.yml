@@ -1,0 +1,61 @@
+amountextraction:
+  name: "诈骗数额"
+  type: "私有"
+  code: "1001"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+passingOffStateOrgansextraction:
+  name: "假冒国家机关或者公益性组织"
+  type: "共有纯正则"
+  code: "1002"
+  positivepurerule:
+      - "QklPjMPfA8CrQGQof8qj0nDuYERb9zsifUbt6JIXtAsnNny80sl/J5PajKRCyt3e7D7mOK8d1y+0TKOoCZeMcrohBDwlVyyHX2izVD9XPvI0yoojqkab3s8iXH8OI27hxCQkGwD867rnD+tcbK1gWodVfjF2AIi0rQAXok1ER2xMudeT8qBfv1zQEl8LpiXSc+K0ccdCmjLqzyd45JDPgcBf5mpO6L0bWmrcNxh0ynJnI7+b1zHE83S75v3QwRk3RpR+lBJLnlG/Tlh7MFcF6vOec4aEVO+Y8727qNuvTzoOW99nI5cGP4x6yDe5GG19Z+bUScsORzAgh3vYYsueAvbKH2n9ELjbPG2+EG/gP/8icsCbpX4DsMPJCX973PYijDsQIuW+sNytQFmRMWfbo3dUtNMr8/FPSoWemgeJ0qYqzt0A2wU38r8EtZzsKQEMATHCM5Vji1teDU/BvcYDmQVPQ208cFNbtyoN7Iyb5nKM37PM1VIp42Ak10PAQWbzGWAx5rBMPKhuXhTFat75cFVGTuR/MIgmR2t7ozmuqXqhsiSc9Sz5IsNMEc017xw5BL/kn02MyzKCh4BU/7eb+zZZWTtrg/FCLG+RCWj00BUHtjOgOl7RoHUM3Jq4JMCi5VJNJQ9u2+sQ/kCsNKW2Wz0lJMKJHuYDihV6irTnFt8="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+CausingSuicideAndMentalDisorderextraction:
+  name: "造成被害人自杀、精神失常"
+  type: "共有纯正则"
+  code: "1003"
+  positivepurerule:
+      - "QDsJAIMnVhftzu6UO3Vi4q7+NwPvyknYWnZJngtpdmjZL/2oRThHkrTDHsJwcromdIYeCbpcvIIWmu0rNp7sZlGpshgGJkyZFXymNKnyesVKYD+zxjcvxhVnzbKQLB5OfFmWYlcA0aesu/XtB2A/BGJK3WHTIg9O5TZibCsQjJ6ZaO8yUJiy7pOLutoJk4Rlf/BDvnCkv+jvtniEjWLLZzZQMp0hajIBm8B6+86NtJ1voewQJ4TlpQ0QeZf9J3W3oAGpzZHGJytOGvvCADEekKBoDJc2rJ1zZIE4mUre1UixD/0gWIVgSGYSF0fNW0StbUvhtpsK8thHpV7LN6TeU5IQkwYkAuFeEdqFYr0TLJI7SpA6gMnQIOhH7DWS5GdmRv46YChp+erMb13fWDohgeqO86OqeR3+6uUfvfFyKcBS/OujfMkwlgEFh4ITG57mAOhLmYsBreIz1bn02+2JT7vohruh3V5zusBSRUF/c0tyvp5cbdmr/bLIaFzzMcyK7us/QLnOQgER+gqhKfeayTQKbsyK2fGegnu2FCKFoWn8OrxA29LRtazShu2cqTmrI65+MmCP2LgQJvJA8ExAuaj2YlhppkL7V5ZSx+zJ2jjiVsB18cts0+HhoOC9Di5Ae0sBBJ4Zkrw6y8PrdNrKXJaPm/38R0JT7ctPF8oxAYI="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+theDisabledextraction:
+  name: "被害人主要为残疾人、老年人或者丧失劳动能力人"
+  type: "共有纯正则"
+  code: "1004"
+  positivepurerule:
+      - "H9D1r1lsC+9fUFqccZjXpec7G1KtTwlR46m8WBRTOIIqWkM9+rX7K6mFMw4flh4XxAAyb2kWwgBzsCWgKc8UFO+GkXs4NtZdGeQQ9HBce9H6c6Zrp9m7kCpLXNuV4lFT88/j4jMRMU24qOfvGx3XdFHuPfHSfGRE6iGmCmT5kwVNd7VSC1I8YyyGt57neaDKghk2oez4JRIcKsT/eVXzyQXRs8jur0sGjqiTiQvJ0IN7HXPqyhAGUmWZPWW9LWTQMmo9lSJc+wrQG2kEvSW6QajLWgUOupAJlVmbe2eBpSgMz5+ZMf1OoEV7+fyOPByL8hzQIK+pNn+TTJfXHb+z3AVagvCQAF7GXvBiUNIIpXfOEPowpGa7bIB9pdI8J4q4v5JYDZpcKUIM1x3jP6Fxhl0asRrRXN8na4GD8krag1o1HycgnKxuu1zuqPDnsVaU4QuKXtYFZES2fylW2ly4/7mD7oFaQBLgsk/6NbO+oYh2Ke+08E/LLPlbqbQGTyo+D+YvRp6OgXY5HsE5waq/3yrDCDgd2fQX2cMjKZc4XKsidlCi/2W/GGAKPrTEtGTSv49Q2FA2nSqWxO/ZA2TQsNRCFKR5hzwUCcfRjSX7wQDK473e5qyK9jBQ5b6Du8fPlOcAyxnphYmbw21YDH/ERJBOAGG5Gamc65AbSr1RAAU="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+peopleextraction:
+  name: "诈骗人数"
+  type: "私有"
+  code: "1005"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+forIllegalActivitiesextraction:
+  name: "为实施违法犯罪活动而进行集资诈骗或者将赃款用于非法活动"
+  type: "共有纯正则"
+  code: "1006"
+  positivepurerule:
+      - "TxX8xXADzrAi698AYYZjz2AFl/8KZdkq2+3gSdpdfUVhae4rxggL0XBCUI4WCN2viX5UqPVUNuzorVRh69GdsuwdPKbjE0HlHKMuXORJwc8qI/qrv1EXKFiOARg3E5fvk7eDBLQXYZW13arkByCvrqA7SXy/UYY89C+5YWRFRayCZcvwMxD76yb2oV1CdZAQn+aMQCEFToRoncPAOFz3ycRQPzt/fsTPOO22WCandeVolYcCyTQQu0gfp4JWCVWTlM0uJHJGTCegLn2n5FJ+HfaR4lCt5lSPNh+LA4hYbcX1loGJaxZKtgjzfWldMBGCfGu3m5MYc8CLT1Pj5pexpSvCws9WeB5IlZm+f53SeIMJ2SrM8iPXkMZySpqbH/y1YFPhLHI7lh95LLWhEhpsMyUgwmGK51/o8hn3OmqXVyZe2r7jThNmGmviqiZRc6o6P48q8pGAhprqdC2uA/eRmibCjlIZcVVzgsKdcUXEGimTDVOoH4+gcjqyNWxExPDA7Njgb+LgncDRgpBWFWMEsrzhjliPmAHXBWX14ix70fXZLoV0Kx+ocAJehBUgNszgHMlHoHA3owuvEgM1XQqD/DTY56MMC47sj6a738DPEmAkXu1QVJZadzXUbwHXRraTS4rLUxkYgSJXUqbMVrrBzGLWddBBlIA61KfWmmDsO/M="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+lossesWereRecoveredextraction:
+  name: "案发后涉案赃款、赃物被司法机关扣押，被害人损失绝大部分被挽回"
+  type: "共有纯正则"
+  code: "1007"
+  positivepurerule:
+      - "GU9LExY8xFef12C11KpCHkY9ZcQBg4z46TvLGwtqmmbQNVdPlGPA8yqoR097JkKdju9AaXDNiOh304ZUbD8+48S8jT4Jm2c+L0pAIsK5UUcUVYQqsm3Jmb79C17RmSIVYOlkmPusF0oHzPnFQgF96vZ99+vUROfgOiv4AsVitsDHmBrgKiRBkZY2SkZFzEcjVnuUEv6T7IA9ctJ6H4N6iym/lIZMjFSAS3BvKYNS7T3TcjkNuSPrPDr5nxrmsvcdKcUWBFjuysHjTw17Bm+xROvKXdo6FKrRvizr8E8fklmgFTpXEXEdyZEs6F3rMSnDKfeYImyho2ZrA859aorXfy9ej+nW7+R9R2XW6Z1PonV7AQRzWNml6qeK+I2LKegRNb3QBkRTA+Ye7SjQijX+aNat8wD5KOdREncKZcbg4D7cFAWOxhD0z7v1R7JaB3fOC5PcObxaSwD3mFBCC69etXxtmYHq3dKHoG1NX3Yn2i8z7gx0U6sKOYdD+FFB5jK5REcVq4HWoTTDmI5R5TRgaAb2YdM6B/35Yg30zZVO/c8oSzAYS4TgnpBTbyOqQI1TwmUOxQWL0kiwwekw4kBS+LuNUiX1Yb/IRpzHYIDLJDCVK9YdAPqmEFD0QAcEPviZBh+O9RsltPc5dQ+HXRK5qhNQj5ozMLgO3TO1XpoGSXg="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:

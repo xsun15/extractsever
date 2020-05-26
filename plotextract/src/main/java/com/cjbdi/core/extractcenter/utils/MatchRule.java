@@ -1,6 +1,7 @@
 package com.cjbdi.core.extractcenter.utils;
 
 import com.cjbdi.core.configurecentent.extractfeature.sentence.utils.MoneyRatioBasic;
+import com.cjbdi.core.developcenter.utils.CommonTools;
 import com.cjbdi.core.extractcenter.sentence.common.money.MoneyConfig;
 import com.cjbdi.core.extractcenter.sentence.common.utils.BoolConfig;
 import com.cjbdi.core.extractcenter.sentence.common.utils.NumberConfig;
@@ -9,6 +10,7 @@ import com.cjbdi.core.extractcenter.utils.ColorTextConfig;
 import com.cjbdi.core.extractcenter.utils.ExtractNumber;
 import com.cjbdi.core.extractcenter.utils.IsDigit;
 import com.cjbdi.core.extractcenter.utils.WordfigureToNumber;
+import com.cjbdi.core.servercenter.utils.Tools;
 import com.hankcs.hanlp.HanLP;
 import com.hankcs.hanlp.seg.Segment;
 import com.hankcs.hanlp.seg.common.Term;
@@ -160,14 +162,13 @@ public class MatchRule {
             pattern = (Pattern)var3.next();
             matcher = pattern.matcher(text);
             if(matcher.find()) {
-               text = text.replaceAll(matcher.group(), "");
+               text = text.replaceAll(matcher.group(), CommonTools.copystr("x", matcher.group().length()));
             }
          }
       }
 
       if(text != null && !text.isEmpty()) {
          var3 = pruleList.iterator();
-
          while(var3.hasNext()) {
             pattern = (Pattern)var3.next();
             matcher = pattern.matcher(text);

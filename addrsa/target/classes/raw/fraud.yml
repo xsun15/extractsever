@@ -1,0 +1,214 @@
+fraudActionextract:
+  name: "诈骗动作"
+  type: "私有"
+  code: "1001"
+  positivepurerule:
+    - "骗"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+contextActionextract:
+  name: "作案(根据上下文)"
+  type: "私有"
+  code: "1002"
+  positivepurerule:
+    - "作案"
+    - "针对"
+    - "侵[犯害]"
+    - "以.{0,20}为犯罪对象"
+    - "犯罪.{0,3}对象.{0,3}[是系为有]"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+pretendOfficialextract:
+  name: "冒充司法机关等国家机关工作人员实施诈骗"
+  type: "共有纯正则"
+  code: "1003"
+  positivepurerule:
+    - "(换上|穿|着|佩戴)[^，。；]*?(警(制|制式)?服|军服|军装|军衔)"
+    - "(换上|穿|着|佩戴)[^，。；]*?武警[^，。；]*?标识"
+    - "印有(警徽|警察五角星)标志"
+    - "冒充[^，。；]*?(军队|军区|军分区|警察|人民警察|军警|军人|参谋|军医|司法(工作)?人|军官|军衔|民警|刑警|士官|部队领导|空军|少校|营长|政府[^，。；]*?工作人员)"
+    - "警察[^，。；]*?的(语气|口吻)"
+    - "开着[^，。；]*?警灯[^，。；]*?车"
+    - "(携带|持有|用|拿|扣押|购)(警用伸缩棍|警棍|迷彩服|手铐|反光衣|仿制手枪|枪套|警用武装带|迷彩车牌套|军官证|军服|军委|军装|警官证)"
+    - "佩戴警用装备"
+    - "假警察证件"
+    - "(说|谎称|自称)[^，。；]*?[是系有][^，。；]*?(军队|军区|军分区|警察|人民警察|军警|军人|参谋|军医|司法(工作)?人|军官|军衔|民警|刑警|士官|部队领导|空军|少校|营长|政府[^，。；]*?工作人员)"
+    - "宣称其警察身份"
+    - "以[^，。；]*?军人[^，。；]*?的身份"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+relativeextract:
+  name: "诈骗近亲属财物 (替换人名)"
+  type: "共有纯正则"
+  code: "1004"
+  positivepurerule:
+    - "骗[^，。；]*?(家庭|近亲属)成员"
+    - "骗[^，。；]*?亲属财物"
+    - "被告人[^，。；]*?与被害人[^，。；]*?[是为系](夫妻|[父母][子女]|姑嫂|[兄姐姊][弟妹]|婆媳)关系"
+    - "(被告人|被害人)[^，。；]*?[是系为](被害人|被告人)[^，。；]*?[父母子女兄弟姊姐妹公婆媳婿伯叔舅姨侄甥]"
+    - "骗[^，。；]*?([父母子女兄弟姊姐妹公婆媳婿伯叔舅姨侄甥])"
+    - "向[^，。；]*?([父母子女兄弟姊姐妹公婆媳婿伯叔舅姨侄甥]|亲属)[^，。；]*?骗取财物"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+viaWebextract:
+  name: "利用电信网络技术手段实施诈骗"
+  type: "共有纯正则"
+  code: "1005"
+  positivepurerule:
+    - "木马|病毒|钓鱼网站|钓鱼软件|网络渗透|伪基站|黑广播|诈骗电话|诈骗短信|撞库|盗号|电话变音软件|变号软件|电信诈骗"
+    - "入侵[^，。；]*?服务器[^，。；]*?窃取[^，。；]*?个人信息"
+    - "盗[^，。；]*?QQ号"
+    - "诱导[^，。；]*?安装病毒app"
+    - "(淘宝|微信)[^。；]*?骗取"
+    - "(利用|开设)互联网[^。；]*?虚构"
+    - "通过qq[^。；]*?骗至"
+    - "电话[^，。；]*?冒充"
+    - "电话联系[^。；]*?网贷[^，。；]*?骗取"
+    - "利用被害人[^，。；]*?信息[^，。；]*?贷款"
+    - "利用网络技术手段"
+    - "通过电话[^。；]*?虚构[^。；]*?骗取"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+viaMediaextract:
+  name: "通过广播电视、报刊杂志等发布虚假信息"
+  type: "共有纯正则"
+  code: "1006"
+  positivepurerule:
+    - "(广播|电视|报刊|杂志|广告牌|宣传栏|报纸|刊物)[^，。；]*?(虚假|虚构|刊登|投放)[^。；]*?(信息|消息|广告)[^。；](诈骗)?"
+    - "从[^，。；]*?搜索[^。；]*?骗"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+organizeextract:
+  name: "组织、指挥电信网络诈骗犯罪团伙(替换人名)"
+  type: "共有纯正则"
+  code: "1007"
+  positivepurerule:
+    - "被告人[^。；]*?(组织|指挥)[^，。；]*?(诈骗|犯罪)"
+    - "被告人[^。；]*?雇佣被告人"
+    - "被告人[^。；]*?[是系]首要分子"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+overseasextract:
+  name: "在境外实施电信网络诈骗"
+  type: "共有纯正则"
+  code: "1008"
+  positivepurerule:
+    - "在境外[^，。；]*?(网络|电信)诈骗"
+    - "在(柬埔寨|菲律宾|越南|老挝|马来西亚|印尼|印度|新加坡|缅甸|日本|韩国|肯尼亚)[^。；]*?(虚假|虚构)[^。；]*?(信息|消息|广告)"
+    - "在(柬埔寨|菲律宾|越南|老挝|马来西亚|印尼|印度|新加坡|缅甸|日本|韩国|肯尼亚)[^。；]*?诈骗"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+patientextract:
+  name: "诈骗重病患者及其亲属财物 (替换人名)"
+  type: "共有纯正则"
+  code: "1009"
+  positivepurerule:
+    - "被告人[^，。；]*?诈骗[^，。；]*?(病|症)患者"
+    - "被告人[^。；]*?对[^，。；]*?(病|症)患者[^，。；]*?诈骗"
+    - "诈骗对象[^，。；]*?(病|症)患者(亲属)?"
+    - "以[^，。；]*?(病|症)患者(亲属)?[^，。；]*?诈骗对象"
+    - "疾病补助[^。；]*?(虚假|虚构)[^，。；]*?(信息|消息|广告)"
+    - "冒充[^，。；]*?康复中心[^。；]*?诈骗"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+inNameOfCharityextract:
+  name: "以赈灾、募捐等社会公益、慈善名义实施诈骗"
+  type: "共有纯正则"
+  code: "1010"
+  positivepurerule:
+    - "(虚构|虚假|伪造)[^，。；]*?(慈善|公益|募捐|救助资料|病历|医药费)"
+    - "虚构[^，。；]*?无钱医治[^。；]*?骗"
+    - "[借以](公益|慈善|赈灾|募捐|救治|修建[^，。；]*?寺|看病)[^，。；]*?(为名|为幌子|名义)"
+    - "没有委托被告人[^，。；]*?募捐"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+iterferencePoliceextract:
+  name: "利用电话追呼系统等技术手段严重干扰公安机关等部门工作"
+  type: "共有纯正则"
+  code: "1011"
+  positivepurerule:
+    - "利用.{0,20}干扰(公安|部门|警察|执法)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+viaPhishingextract:
+  name: "利用“钓鱼网站”链接、“木马”程序链接、网络渗透等隐蔽技术手段实施诈骗"
+  type: "共有纯正则"
+  code: "1012"
+  positivepurerule:
+    - "利用隐蔽技术手段[^。；]*?骗"
+    - "木马|病毒|钓鱼网站|钓鱼软件|网络渗透|撞库|盗号|虚假[^，。；]*?链接"
+    - "入侵[^，。；]*?服务器[^，。；]*?窃取[^，。；]*?个人信息"
+    - "盗[^，。；]*?QQ号"
+    - "诱导[^，。；]*?安装病毒app"
+    - "替换[^，。；]*?付款链接"
+    - "改变支付指向功能"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+seriousConsequenceextract:
+  name: "导致被害人自杀、精神失常或者其他严重后果(替换人名)"
+  type: "共有纯正则"
+  code: "1013"
+  positivepurerule:
+    - "未造成[^，。；]*?严重后果[^，。；]*?不予认可"
+    - "(造成|导致)被害人[^，。；]*?(自杀|死亡|精神失常)"
+    - "造成[^，。；]*?严重后果"
+    - "被害人[^，。；]*?自杀"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+leaderextract:
+  name: "属于诈骗集团首要分子 (替换人名)"
+  type: "共有纯正则"
+  code: "1014"
+  positivepurerule:
+    - "被告人.{0,10}[是系为]首要分子"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+amountofmoneyfraudextract:
+  name: "诈骗数额"
+  type: "私有"
+  code: "1015"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+punishedbycourtfraudextract:
+  name: "因诈骗受过刑事处罚的"
+  type: "共有纯正则"
+  code: "1016"
+  positivepurerule:
+    - "因诈骗受过刑事处罚"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+punishedbygovernfraudextract:
+  name: "一年内因诈骗受过行政处罚的"
+  type: "共有纯正则"
+  code: "1017"
+  positivepurerule:
+    - "因诈骗受过行政处罚"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+timesextract:
+  name: "诈骗次数"
+  type: "私有"
+  code: "1018"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+

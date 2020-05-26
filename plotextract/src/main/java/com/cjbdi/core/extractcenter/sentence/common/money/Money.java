@@ -42,7 +42,6 @@ public class Money extends MoneyExtractor {
       JSONObject result = new JSONObject();
       List allmoney;
       if(StringUtils.isNotEmpty(opinion)) {
-         opinion = Tools.deleteDigitDot(opinion);
          allmoney = this.extractMoneyUsedModel(opinion, casecause, this.modelRuleList, this.firstInvalidPureRuleList, this.secondInvalidPureRuleList, this.convertRuleList, this.moneyRatioList);
          if(this.isOneEffectMoney(allmoney, opinion, colorTextConfig, result)) {
             return result;
@@ -50,7 +49,6 @@ public class Money extends MoneyExtractor {
       }
 
       if(StringUtils.isNotEmpty(justice)) {
-         justice = Tools.deleteDigitDot(justice);
          allmoney = this.extractMoneyUsedModel(justice, casecause, this.modelRuleList, this.firstInvalidPureRuleList, this.secondInvalidPureRuleList, this.convertRuleList, this.moneyRatioList);
          if(allmoney == null || allmoney.size() == 0) {
             return result;

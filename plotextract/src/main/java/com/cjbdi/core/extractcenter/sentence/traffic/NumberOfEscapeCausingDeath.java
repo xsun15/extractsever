@@ -10,6 +10,8 @@ import com.cjbdi.core.extractcenter.sentence.utils.Label;
 import com.cjbdi.core.extractcenter.sentence.utils.SetLabel;
 import com.cjbdi.core.extractcenter.utils.CasecauseModel;
 import com.cjbdi.core.extractcenter.utils.DefendantModel;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -31,6 +33,9 @@ public class NumberOfEscapeCausingDeath extends BasicSentenceFeatureClass {
       NumberConfig numberConfig = this.doextract(defendantModel, casecauseModel, this.keyword, this.noiseword);
       if(numberConfig != null) {
          Label label = SetLabel.run(numberConfig, ((ExtractFeatureBasicConfig)basicCaseClass.getFeatures().get(this.code)).getCode());
+         List<String> paras = new ArrayList<>();
+         paras.add("本院认为");
+         label.setParas(paras);
          return label;
       } else {
          return null;

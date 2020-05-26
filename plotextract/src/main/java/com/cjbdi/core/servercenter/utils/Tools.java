@@ -7,6 +7,8 @@ import com.cjbdi.core.extractcenter.sentence.utils.DateTimeExtractor;
 import com.cjbdi.core.extractcenter.utils.CleanText;
 import com.cjbdi.core.extractcenter.utils.HttpRequest;
 import com.cjbdi.core.extractcenter.utils.MatchRule;
+
+import java.io.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -141,6 +143,21 @@ public class Tools {
       return string;
    }
 
+   public static String extractCasetype(String  content) {
+      if (StringUtils.isNotEmpty(content)) {
+         if (content.contains("检察院") || content.contains("公诉机关")) {
+            return "刑事";
+         } else if (content.contains("民事起诉") || content.contains("民事诉讼法")) {
+            return "民事";
+         } else if (content.contains("行政起诉") || content.contains("行政诉讼法")) {
+            return "行政";
+         } else {
+            return "其它";
+         }
+      }
+      return null;
+   }
+
    public static String clean(String content) {
       content = content.replaceAll("[^0-9a-zA-Z\\u4e00-\\u9fa5.，,、。？“”：:*×\\n《》（）Oo〇]+", "");
       String[] contentList = content.split("\n");
@@ -179,5 +196,35 @@ public class Tools {
       }
 
       return content;
+   }
+
+   public static void getAllFileName(String path,ArrayList<String> listFileName){
+      File file = new File(path);
+      File [] files = file.listFiles();
+      String [] names = file.list();
+      if(names != null){
+         String [] completNames = new String[names.length];
+         for(int i=0;i<names.length;i++){
+            completNames[i]=path+names[i];
+         }
+         listFileName.addAll(Arrays.asList(completNames));
+      }
+   }
+   //打开文件
+   public static void readFile(String m) {
+      String pathname = m;
+      File file=new File(pathname);
+      BufferedReader br=null;
+      try {
+         br = new BufferedReader(new InputStreamReader(new FileInputStream(file),"utf-8"));
+         String line;
+         //网友推荐更加简洁的写法
+         while ((line = br.readLine()) != null) {
+            // 一次读入一行数据
+            System.out.println(line);
+         }
+      } catch (IOException e) {
+         e.printStackTrace();
+      }
    }
 }

@@ -11,7 +11,7 @@ useofcoercionrapeextract:
     name: "使用强制手段"
     rule: "1001"
 numberofrapedwomenrapeextract:
-    name: "强奸妇女人数"
+    name: "妇女人数"
     rule: "1002"
 numberofrapedgirlrapeextract:
     name: "强奸幼女人数"

@@ -1,132 +1,198 @@
 imprisonDurationextract:
-  name: 非法拘禁时间
+  name: "非法拘禁时间"
+  datatype: "float"
+  type: "1"
   code: '1003'
   rule: '1003'
 beatenextract:
-  name: 殴打
+  name: "殴打"
+  datatype: "bool"
+  type: "1"
   code: '1008'
   rule: '1008'
 insultedextract:
-  name: 侮辱
+  name: "侮辱"
+  datatype: "bool"
+  type: "1"
   code: '1009'
   rule: '1009'
 abuseextract:
-  name: 虐待
+  name: "虐待"
+  datatype: "bool"
+  type: "1"
   code: '1011'
   rule: '1011'
 legalDebtextract:
-  name: 索取合法债务
+  name: "索取合法债务"
+  datatype: "bool"
+  type: "1"
   code: '1012'
   rule: '1012'
 pretendJudicialextract:
-  name: 冒充司法人员
+  name: "冒充司法人员"
+  datatype: "bool"
+  type: "1"
   code: '1013'
   rule: '1013'
 pretendarmyextract:
-  name: 冒充军警人员
+  name: "冒充军警人员"
+  datatype: "bool"
+  type: "1"
   code: '1014'
   rule: '1014'
 officialAbuseextract:
-  name: 国家工作人员利用职权非法拘禁他人的
+  name: "国家工作人员利用职权非法拘禁他人的"
+  datatype: "bool"
+  type: "1"
   code: '1015'
   rule: '1015'
 withGunextract:
-  name: 持枪抢夺的
+  name: "持枪"
+  datatype: "bool"
+  type: "1"
   code: '1016'
   rule: '1016'
 withChopperextract:
-  name: 持管制刀具
+  name: "持管制刀具"
+  datatype: "bool"
+  type: "1"
   code: '1017'
   rule: '1017'
 withOtherWeaponextract:
-  name: 持其它凶器
+  name: "持其它凶器"
+  datatype: "bool"
+  type: "1"
   code: '1018'
   rule: '1018'
 pyramidSaleextract:
-  name: 因传销非法拘禁他人
+  name: "因传销非法拘禁他人"
+  datatype: "bool"
+  type: "1"
   code: '1019'
   rule: '1019'
 legalRightsextract:
-  name: 为争取合法权益
+  name: "为争取合法权益"
+  datatype: "bool"
+  type: "1"
   code: '1020'
   rule: '1020'
 illegalDebtextract:
-  name: 索取非法债务
+  name: "索取非法债务"
+  datatype: "bool"
+  type: "1"
   code: '1021'
   rule: '1021'
 numberofseriousinjuryextract:
   name: "重伤人数"
+  datatype: "float"
+  type: "1"
   code: '1022'
   rule: "1022"
 numberofdeathextract:
   name: "死亡人数"
+  datatype: "float"
+  type: "1"
   code: '1023'
   rule: "1023"
 numberofminorinjuryextract:
   name: "轻伤人数"
+  datatype: "float"
+  type: "1"
   code: '1024'
   rule: "1024"
 numberofsligthinjuryextract:
   name: "轻微伤人数"
+  datatype: "float"
+  type: "1"
   code: '1025'
   rule: "1025"
 firstleveldisabilityextract:
   name: "一级伤残人数"
+  datatype: "float"
+  type: "1"
   code: '1026'
   rule: "1026"
 secondleveldisabilityextract:
   name: "二级伤残人数"
+  datatype: "float"
+  type: "1"
   code: '1027'
   rule: "1027"
 thirdleveldisabilityextract:
   name: "三级伤残人数"
+  datatype: "float"
+  type: "1"
   code: '1028'
   rule: "1028"
 fourthleveldisabilityextract:
   name: "四级伤残人数"
+  datatype: "float"
+  type: "1"
   code: '1029'
   rule: "1029"
 fifthleveldisabilityextract:
   name: "五级伤残人数"
+  datatype: "float"
+  type: "1"
   code: '1030'
   rule: "1030"
 sixthleveldisabilityextract:
   name: "六级伤残人数"
+  datatype: "float"
+  type: "1"
   code: '1031'
   rule: "1031"
 seventhleveldisabilityextract:
   name: "七级伤残人数"
+  datatype: "float"
+  type: "1"
   code: '1032'
   rule: "1032"
 eigthleveldisabilityextract:
   name: "八级伤残人数"
+  datatype: "float"
+  type: "1"
   code: '1033'
   rule: "1033"
 ninthleveldisabilityextract:
   name: "九级伤残人数"
+  datatype: "float"
+  type: "1"
   code: '1034'
   rule: "1034"
 tenthleveldisabilityextract:
   name: "十级伤残人数"
+  datatype: "float"
+  type: "1"
   code: '1035'
   rule: "1035"
 firstlevelseriousinjurynumberextract:
   name: "重伤一级人数"
+  datatype: "float"
+  type: "1"
   code: '1036'
   rule: "1036"
 secondlevelseriousinjurynumberextract:
   name: "重伤二级人数"
+  datatype: "float"
+  type: "1"
   code: '1037'
   rule: "1037"
 firstlevelminorinjurynumberextract:
   name: "轻伤一级人数"
+  datatype: "float"
+  type: "1"
   code: '1038'
   rule: "1038"
 secondlevelminorinjurynumberextract:
   name: "轻伤二级人数"
+  datatype: "float"
+  type: "1"
   code: '1039'
   rule: "1039"
 victimnumberextract:
   name: "被害人数"
+  datatype: "float"
+  type: "1"
   code: '1040'
   rule: "1040"

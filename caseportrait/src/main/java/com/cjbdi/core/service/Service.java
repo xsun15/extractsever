@@ -7,6 +7,7 @@ import com.cjbdi.core.extractcenter.extract.CasePortrait;
 import com.cjbdi.core.extractcenter.extract.CaseSplit;
 import com.cjbdi.core.extractcenter.extract.CharacterExtract;
 import com.cjbdi.core.extractcenter.model.*;
+import com.cjbdi.core.extractcenter.split.BasicSplit;
 import com.cjbdi.core.util.CommonTools;
 import com.cjbdi.core.util.RemoveSpecialChar;
 import org.apache.commons.lang.StringUtils;
@@ -21,6 +22,35 @@ import java.util.*;
 
 @RestController
 public class Service extends RemoveSpecialChar {
+
+    @RequestMapping(value = "/extract/province", produces = "application/json;charset=UTF-8", method = RequestMethod.POST)
+    public String extractProvince(@RequestBody JSONObject jsonParam, @Context HttpServletRequest request) {
+        if (jsonParam.containsKey("fullText")) {
+            String fullText = jsonParam.getString("fullText");
+            if (StringUtils.isNotEmpty(fullText)) {
+                fullText = clean(fullText);
+                BasicSplit basicSplit = new BasicSplit();
+                String province = basicSplit.extractProvince(fullText, fullText);
+                return province;
+            }
+        }
+        return null;
+    }
+
+    @RequestMapping(value = "/extract/casetype", produces = "application/json;charset=UTF-8", method = RequestMethod.POST)
+    public String extractCasetype(@RequestBody JSONObject jsonParam, @Context HttpServletRequest request) {
+        if (jsonParam.containsKey("fullText")) {
+            String fullText = jsonParam.getString("fullText");
+            if (StringUtils.isNotEmpty(fullText)) {
+                fullText = clean(fullText);
+                BasicSplit basicSplit = new BasicSplit();
+                String casetype = basicSplit.extractCasetype(fullText);
+                return casetype;
+            }
+        }
+        return null;
+    }
+
 
     @RequestMapping(value = "/extract/character", produces = "application/json;charset=UTF-8", method = RequestMethod.POST)
     public String extractCharacter(@RequestBody JSONObject jsonParam, @Context HttpServletRequest request) {
@@ -212,7 +242,7 @@ public class Service extends RemoveSpecialChar {
 
     @RequestMapping(value = "/document/portrait", produces = "application/json;charset=UTF-8", method = RequestMethod.POST)
     public String portrait(@RequestBody JSONObject jsonParam, @Context HttpServletRequest request) {
-
+        System.out.println(jsonParam.getString("fullText"));
         if (jsonParam.containsKey("fullText")) {
             String fullText = jsonParam.getString("fullText");
             if (StringUtils.isNotEmpty(fullText)) {
@@ -227,6 +257,8 @@ public class Service extends RemoveSpecialChar {
                     List<String> caseList = BeanExtractCenter.firstTrialSplit.findCasecause(firstTrialModel.getDefendant(), firstTrialModel.getCourtOpinion(), firstTrialModel.getJustice());
                     List<DefendantModel> defendantModelList = CasePortrait.run(firstTrialModel.getCourtOpinion(), firstTrialModel.getJustice(), firstTrialModel.getAccuse(),
                             firstTrialModel.getSue(), firstTrialModel.getDefendant(), defendantSet, caseList);
+                    System.out.println("---------------进来了-----------------");
+                    System.out.println(JSONObject.toJSONString(defendantModelList));
                     return JSONObject.toJSONString(defendantModelList);
                 } else if (docType.equals("起诉书")) {
                     //分段
@@ -237,6 +269,8 @@ public class Service extends RemoveSpecialChar {
                     List<String> caseList = BeanExtractCenter.indicitmentSplit.findCasecause(indicitmentModel.getDefendant(), indicitmentModel.getProcuOpinion(), indicitmentModel.getJustice());
                     List<DefendantModel> defendantModelList = CasePortrait.run(indicitmentModel.getProcuOpinion(), indicitmentModel.getJustice(), "",
                             indicitmentModel.getInvestigate(), indicitmentModel.getDefendant(), defendantSet, caseList);
+                    System.out.println("-------------进来了-------------------");
+                    System.out.println(JSONObject.toJSONString(defendantModelList));
                     return JSONObject.toJSONString(defendantModelList);
                 } else if (docType.equals("不起诉决定书")) {
                     //分段
@@ -277,6 +311,7 @@ public class Service extends RemoveSpecialChar {
 
     @RequestMapping(value = "/predict/basicInfo", produces = "application/json;charset=UTF-8", method = RequestMethod.POST)
     public String predBasicInfo(@RequestBody JSONObject reqParam, @Context HttpServletRequest request) {
+        System.out.println(reqParam.getString("fullText"));
         if (reqParam.containsKey("fullText")) {
             String fullText = reqParam.getString("fullText");
             if (StringUtils.isNotEmpty(fullText)) {
@@ -289,17 +324,20 @@ public class Service extends RemoveSpecialChar {
                 String caseID = "";
                 Set<String> defendantSet = new HashSet<>();
                 List<String> caseList = new ArrayList<>();
+                String province = "";
                 if (docType.equals("刑事判决书")) {
                     FirstTrialModel firstTrialModel = BeanExtractCenter.firstTrialSplit.split(fullText);
                     caseID = firstTrialModel.getCourtCaseId();
                     defendantSet = BeanExtractCenter.defendantExtract.extract(firstTrialModel.getDefendant());
                     caseList = BeanExtractCenter.firstTrialSplit.findCasecause(firstTrialModel.getDefendant(), firstTrialModel.getCourtOpinion(), firstTrialModel.getJustice());
+                    province = firstTrialModel.getProvince();
                 } else if (docType.equals("起诉书")) {
                     IndicitmentModel indicitmentModel = BeanExtractCenter.indicitmentSplit.split(fullText);
                     caseID = indicitmentModel.getProcuCaseId();
                     //从被告人段中得到所有被告人
                     defendantSet = BeanExtractCenter.defendantExtract.extract(indicitmentModel.getDefendant());
                     //抽取案由
+                    province = indicitmentModel.getProvince();
                     caseList = BeanExtractCenter.indicitmentSplit.findCasecause(indicitmentModel.getDefendant(), indicitmentModel.getProcuOpinion(), indicitmentModel.getJustice());
                 }
                 for (String defendant : defendantSet) {
@@ -311,6 +349,7 @@ public class Service extends RemoveSpecialChar {
                 resultJson.put("casecasue", caseList);
                 resultJson.put("caseTitle", title);
                 resultJson.put("docType", docType);
+                resultJson.put("province", province);
                 return resultJson.toString();
             }
         }
@@ -319,6 +358,7 @@ public class Service extends RemoveSpecialChar {
 
     @RequestMapping(value = "/paperwork", produces = "application/json;charset=UTF-8", method = RequestMethod.POST)
     public String acquireSplitContent(@RequestBody JSONObject jsonParam, @Context HttpServletRequest request) {
+        System.out.println(jsonParam.getString("fullText"));
         if (jsonParam.containsKey("fullText")) {
             String fullText = jsonParam.getString("fullText");
             if (StringUtils.isNotEmpty(fullText)) {

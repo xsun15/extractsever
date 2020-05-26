@@ -1,0 +1,70 @@
+amountextraction:
+  name: "犯罪数额"
+  type: "私有"
+  code: "1001"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+NumberOfDepositorsextraction:
+  name: "存款人数量"
+  type: "私有"
+  code: "1002"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+DirectEconomicLossextraction:
+  name: "给存款人造成的直接经济损失数额"
+  type: "私有"
+  code: "1003"
+  positivepurerule:
+      - "L6zlrKM0agf60DmTqwioszEZNi34JesttjSMOPrBcd5wABcdO094X3Leow7VrgDIp1Nj9nyn+wcczJBH2vzZDUyUHiK/WbkupeMY8aTR7cy6atQ1HwY2nUXzQrq5YWd8HfHcKKp6U2C5xbWq6XWW4YJh1IHTwVHzRn/vfFMDXtjwrDgZy5DvFEQxBzZIM5lYx2QuPxhHEOveidIlOpIDa51ATJS0QgJh8Y0C8u7pOX485yy8xuxqURBR7mTwQ2R96vxXCsuhpG2wTqbHZNlnsKrkgGZM1ZjTsPQgJymHNwANaOVz2dUtvKgcCd+MmebJgJs56cjqZuSPu++Gf9BvN+o9FhAHheK/RwlMDVtlsR0fD1BAGTlKXO/ZY+88CLQWX1jJhRrpsKqo1HTEVR7jxTSP8bkH1RIerfK0a9e2P0Iynl9esE28hJSx8EvqLj6OeEG9u3AuIj4kZknoLg8qVm+GcPTeEhiDT1DgIDpLTu2EyID5CQA7Jy5VYAbHcEs6mXh9JqK1N+UT2DGosoZE2Au6eSTa1lu6ZnBq2D+Co9vTNpSANIGemRiFLV7y776kvdUjNcZHmKeCmjbsQ3TjBsuGsiSoCSExpWnPvqcD0foUqhfucncEuzfBY/ihlBt2I8rmJOFCByYjESBA93R8IqTNJYQkuFNOiiJMJmj/SL4="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+BadSocialImpactextraction:
+  name: "造成恶劣社会影响"
+  type: "共有纯正则"
+  code: "1004"
+  positivepurerule:
+      - "Tkz7AjWfssXxIpb3/V59ECntMRv8XzX9C6cpHzxOUpHY4/krpTQB0suR/uIqDjLsCyf9HIEPj9HTGkj0bx7wvnU3rPVG+mwQlDt8/haSY4+DYVxPqZZIZa8BNYNgzmTN0UwPV3FdM2kdb9Myj+gF+/aVIlkC1lIKJmLxf6+HDsl1/OqOIuKA7b1UOGIWVYyd6hrTJFoTCsPfJzXRr7js1j+8t3VaMO2p8d9sG0wRHBFmd6kACiXl3UWChedYVqaslGc9s1cbofg9bMojD6Tn/hPzNN5KVNwLPYCrzgjm2QKgWpJdpFxXbDnl+92xuN9YVtJM2Nk9duzagGzXBtfTfzSsaM53vY6QUB48WPT0RV7zFFa/hvxnenJ6WAZ+0QXYgGu+CP7WLApPH89d0EQLmjDSIlk0nqviItoTVN+mDY9CGU6RCNvOUhvS1gnQDO2kj8WcjYCJhX1MFxQ+8oMB9q4Id+JLqzpXRzN5Vzu7ViG7byKESWnyVD9tWvu97lvWw9TEicw7p25w9OvshLSYKB+HXJusqwCOATHlbSpc8weTCSQG/jMdts7ZjPtOAZUBFTnUOiu+WejPpFCnkpzQ8sXBVaNwnLDNKg/co3l6gTtyRkroLC1eD+WuwrCL7KhZFRLE1hoqMaSwSaToAN6X80SMOdzW3tDaf7AJqbiqLK0="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+CausingSuicideAndMentalDisorderextraction:
+  name: "集资参与人自杀、精神失常等严重后果"
+  type: "私有"
+  code: "1005"
+  positivepurerule:
+      - "Dx1F8u2f5Vki7Dei1CT3DtXtH3CYfjOTFtEX8d/m53G3BZdYYLGU14QEuh+aJvvGWgKoIVPEIXYOZ9gUf3oBzYBZqrky+fdNuBYmRGfpQYvUG3MSWYKj9sp7p7n+QrbW+Q5EluV2wYJM3B5gYedZIa5J93AlrWFsaK0ZOr6Vm6TVEITpuTQ1ItF5teX99ivK+FXu7N/yx4nAuvxOwegPZWmhjsP1XL/q4PoaX6iYjxqeijVXDvN+dT1yDGgYvGDQSzIziXyjhjr2i3Zbw5VSjAVt2ZjaPUrY077NKsNSbiNStqRVF7cy/YqODbANW9dU3eHQNn39G6VVXrzSg+Gmmx5pXc58qz7vT4i34DgfvOlOiVyzbud5fbEk1yGji0/JvBwCh2fSiNeFIN5675oZrMk2PfwJWqO91SkHEzi7wSoAT/0NZUjJsNLZVSncYOWlEyttZdzLqtztbE4c3vOPbOBlWjClOEVxcrDOvTh5YHjR1yl2R6iG151pXC5HXqokL7WmoDGsV1774Gnpt/ocytMtCsZWfOGTNe4DFvjcfcnFmtqjspekuSi4tSNfnTFC4UVg3ilQiW7xIYyvFXid2s6My8dzwymj7CgB5MvT699vHANvMbrPQPxEBPdAl+CgWCB71L/7mATGU2S35674v41milHl9L9B7vVHhGK9j9w="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+AmountReturnedextraction:
+  name: "案发前后已归还的数额"
+  type: "私有"
+  code: "1006"
+  positivepurerule:
+      - "kGKRO5AXpno6M1ulBg0j56EK19sGh8Jl8YQdyOCQllheqi6YBSOV99gaJwdh1Ji0RcqT6jAV6AbKJFyREryz9PPKvbjH9wsWmtch3ziHtWfCip2x/vAIuatWK1/lCbrz+NZLejeQobg3V7IjVZm9ST4WgYWXfJ06IxQXVUQc2M7bwFngvItlIezOmS3gCDaUdrj6OGxe/uNdChAPcllHNujKtgEg0pg6jfQW5fKZhkG02SpCN2MhcJY1WKkdDR2zKBr52ArLq5GGKrc+Q5X5XZ45gBxcWK9NFCNTqbeZgjY97iYlPtg8fARtZI8UVlvLSRR7qK2zkObGsAtSB6kfexpxFmXqg6Sx/+IQ1htAcT0B8QdenMZUAOX6iOwxwvi7x+T/cTvzzPS8V3Y1d/MtUmZTh5GEOSTtCdv92Q6zXO1EJjVleHwu5uXep4OxnZLnYNK6Ve3s/9+iPmYJWLr4RShzg7nD/qolAqPmruYn2UhaLDqlQabgsDeHryxOhT2c4fCumCNDAvjx1RxVwRoFEXnCF5hmKXlT+D6hjYeHLCnGH0B2MpkTGYHvvz25kvH6/+z8ZzAj5X+UUUT8RW88AbsmZjiSOaNqt10NO+otYXYpLquqCm/8DxQopABJN/kuUVjs13Nd5F94cjhVrxwJsPxvoWCKvfUYx38iXiLhYT8="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+usedForNormalProductionactivitiesAndTimelyClearTheAbsorbedFundsextraction:
+  name: "主要用于正常的生产经营活动，（且）能够及时清退所吸收资金"
+  type: "共有纯正则"
+  code: "1007"
+  positivepurerule:
+      - "GxEz9lG/0CIrc1PeZC87Ma3Z17uCOncvaTqSsDj7oG3ZM9wNshtpLOfGfV2BmaQUN8lqdK3q82iNOB5p3hcVMo19fevKDKTs7F3csBzU5xhmx+1p7jiUa5sFLqJyB1kw3GtGexcxi91zFTzIVKRlB4tJPHk82+qsk18sxXVtW9/flz/FZnozIjl3FI2lsCNyVl49ruwQH2Cl3ExO7RyGmwng2SJbs72BLC+auwOodD/g9pzv12+8B7HspcPYyASp56qzaRT2ElP90JXpBz+24mmItrg1oEbmkh1Aw83FkxOXcklqqJ/Yzp88cHS2FW2zKYnlqNnH22RYCqwOtXKawwY33dLPBCyRwDP3VTHOkcBmTmxwY6WX4p4ItckPQoQJ+ZWLBa00cZkBRwID0ppzHdjInLLy3145oSlHo4fZU56tg8h2N5B8Euj5ClLz4IkWUucB3XEeXJTDR4gRygfVei51+8kZgq0hrnrlU/SqFYumtKWuFYxzyjasHopmXjnomZ8RmfYLQMLdgiqfsdxlv+jsMvKyh3kikq5rYzCspggtYn7nnDOiWzmWfAhJpCc9HMFSj5PiQZOteKZixMBQVrhMoid355T6M2d9mYabD/jtwlWuyH3r7bqrNEw7vP1laqUiGtDVRG8rEhMl5CbM10Fr1aDeHGd76DK5njdblZs="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+jointCrimeAndRefundedInTimeextraction:
+  name: "为他人向社会公众非法吸收资金提供帮助，从中收取代理费、好处费、返点费、佣金、提成等费用，构成共同犯罪，能够及时退缴上述费用的"
+  type: "共有纯正则"
+  code: "1008"
+  positivepurerule:
+      - "THGvw5yTclj9UC9CnkOaosYHK6TXojSkpI824wbBhcK6hUrsW2J3I7iQS/kC9yXeDe4YhaAmDJ98yWMIFYmCl0f1CHeGOoTwupawRhgDhNi2lv3YEaaykrMeZ/IFl8h6LIk171p3SSL5SkdmCLjqFQlOkyT5lAr2eBEAEx0TxPoo5CvFows5HAWqaSQgDn52+AKDr3H9c+fsISgnyJ+bd0INdgZYIUo5a6BH7AHL8BfYghSN9onybyjLpKwaZfQD6XWVmIXJb9MAY4gl7+bcrPV/6YZEswEBOJhfjDqyRzHUf+lUQcmXSRVYAEcexbLRDaJy5K+ZQrxei7GUFaLU5YufUQUNTsEqrzEyW4SyGja230cc5aqT0/azRrL5Fd81Y30xs6zbqi/O0H3GJJl/MpPn4YplmdT137kcg7le4VilYoFLOlOkrqO7lryS06+aBEqfhWETne2DNdMYDKF+5FWjV6JrzZbNniI71U8BfrLx8ASWMacSjigeY+waEcP5fplR6dh7tAyvJgHeaxxALw22wEKzgeWwq+Yo4vFBYwkok0+n1R3s117ElkRJsmDUy+XJE8iRGEbX87E4esNN85+60nWt4yr7r2o3E3zBjIwcaIK7MlxBX5ySLKJbXqY/E6wb2m3VUvJs+AY+QOZqcKlGsJuKY0jZcxMFzl4Idko="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:

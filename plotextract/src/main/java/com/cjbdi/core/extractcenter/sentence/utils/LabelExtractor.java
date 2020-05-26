@@ -37,6 +37,9 @@ public class LabelExtractor {
                code.setPrioritylevel("1");
                code.setParaText(casecauseModel.getOpinion());
                code.setParaName("本院认为");
+               List<String> paras = new ArrayList<>();
+               paras.add("本院认为");
+               code.setParas(paras);
                labelList.add(code);
             } else {
                String flag = casecauseModel.getJustice();
@@ -46,6 +49,9 @@ public class LabelExtractor {
                   code.setPrioritylevel("2");
                   code.setParaText(casecauseModel.getJustice());
                   code.setParaName("经审理查明");
+                  List<String> paras = new ArrayList<>();
+                  paras.add("经审理查明");
+                  code.setParas(paras);
                   labelList.add(code);
                }
             }
@@ -73,6 +79,9 @@ public class LabelExtractor {
                label.setPrioritylevel("1");
                label.setParaText(casecauseModel.getOpinion());
                label.setParaName("本院认为");
+               List<String> paras = new ArrayList<>();
+               paras.add("本院认为");
+               label.setParas(paras);
                labelList.add(label);
                flag1 = true;
             }
@@ -89,6 +98,9 @@ public class LabelExtractor {
                         label.setPrioritylevel("2");
                         label.setParaText(casecauseModel.getJustice());
                         label.setParaName("经审理查明");
+                        List<String> paras = new ArrayList<>();
+                        paras.add("本院认为");
+                        label.setParas(paras);
                         labelList.add(label);
                         break;
                      }

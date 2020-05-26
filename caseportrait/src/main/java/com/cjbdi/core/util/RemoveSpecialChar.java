@@ -11,6 +11,7 @@ public class RemoveSpecialChar {
                 result += line + "\n";
             }
         }
+        result = CommonTools.deleteDigitDot(result);
         return result.trim();
     }
     public String cleanTrialReportModel(String content) {

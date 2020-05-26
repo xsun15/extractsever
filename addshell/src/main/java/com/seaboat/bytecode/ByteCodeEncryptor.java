@@ -21,7 +21,7 @@ public class ByteCodeEncryptor {
         try {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             byte[] buf = new byte[1024];
-            String fileName = "caseportrait.jar";
+            String fileName = "plotextract.jar";
 
             File srcFile = new File(fileName);
             File dstFile = new File(fileName.substring(0, fileName.indexOf("."))+"_encrypted.jar");

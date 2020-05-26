@@ -1,0 +1,44 @@
+leaderextract:
+  name: "组织、领导犯罪集团首要分子"
+  type: "共有纯正则"
+  code: "1001"
+  positivepurerule:
+      - "VNfbikwCJDO77cfN2Mzyd+ZV0k6hx4c800EYMpfI1dvOcGNYENB+ZtRwt5yd1efdiV5zRqLkNSlBm6d7TJau4pgwRT9bsf1cf61Ry9rp1seZhxZ1j1mNqycSbz4XZbY2i+YIdcoE+xwNh/8ZkQi7e+McuuAIWH4AWBAo08DUUBVOTiJXESxoUC2a1C65n9w2Cxbq18NY0q9ugFjvfZpUhK2hAQC1CXP9NNVeQrHyvzQZo76ooQXmxPQ9IlI3sQKxKJdZ0bcEkQNTmM6i3Yftp8xIeYUhoEoNd9xjU9q0xIyaDqmARda8L6mnqFdUETgFMn22YoIvY5bmq3Z9rlz9YQvx/7zBLDdKsHubrr3PnmAv6IJp/McAC0Noy1vtztQKyjtRBoF5rhmaqIHAqljwWs+3LQu/8+3ptPuSDZ6OaGGBlvh8tr2HBz2h5k1vHHgdkc/cBUGVsTcecjh3NBnk0764vq1qDKUeSDmaakC9Jbzj3Jlv7SM7tiyhEyztbnpj/DxXqVcoDhpfspzAIF4y5EW8brzBtoBmoWbDizr3NbxmvT8Ol9fvxsqSeTRMRbe8adP60QwGPuKxEp2EeKBVt95DBTteUAT3tinqD1M4E/30FM4ov4iARIG/eOoCBOvr3boGIEW6O4QOxFzJj9V7yD++sXMadC8jMKpPr51AaPQ="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+illegalandcriminalactivitiesextract:
+  name: "使用诈骗的财物进行吸毒、赌博等违法犯罪活动"
+  type: "共有纯正则"
+  code: "1002"
+  positivepurerule:
+      - "C2tJIk4hM2Nm/zDCaBk/gtbhgsZxTY4hdZysrnT9ppyseyd6Ei1p63nTLgzEsQ2yWeOHLBxxKLtPM63MqX0Ozq0w9I+5cebkEx9Dm9Y4Z7tedviNDmxOk5OWeQI1fL06e9swMM+JjoyLUDft9kl/fkCICQIMAOGNEqw2kynP264YCFRtk/McimpZAlXAtBJtapim6lDhQTaaVhLHkB4jyOQT65fzCjux5hBR8TP6qDCk1ek8EkHjZKKZEjD9vT6b8ghX5wSe3T3pTK3tQOECOpX3ST69eOAMX/JCQ00KGwdz+cb8eezyOmRT8KxBkjEtxGIoxUnAdgp3wPMFOqEZpuakOMpF7sL/zzLFlja9bt/mzQFSzUWW1n51YCKX+Bma9Vqspnl41VNz/cBlrMGWCOCy0VIdCiPY7sDDS2SOqqjTpx0IiadJaO5qBvvTQS5rwUMtFfgHJ4YXIioQyco4YQwQxhYSQkzyWaEyzI9AauHGXD85tCR1MKTmFzoJ3GojI/e2694BHoYWoFUwT4jOrevTfH4t/C0AlLw+zx35No1U56iQU0LwYmFn20Oie87cMfyYLh9+Bv6X0+GGWXE0YvXVftrLyyydume+NNdcXGozG5Ch56XXUjdSZldmCIUIGJZ+RFNcRMuG5XQOdL3aF22AL8RattRMYzNhRJlGSCE="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+forstudytreatmentandurgentuseextract:
+  name: "确因学习、治病急用等原因而实施信用卡诈骗"
+  type: "共有纯正则"
+  code: "1003"
+  positivepurerule:
+      - "RlwgPw94bYArYCGoCyqzNZ0rjtkZlWLT+AnBMWl5gt7g7Q1ABTebcO8BO5h8GvyaBQ8unQTCNdCPzH2YGMzOOuVnFqws7g3jOuFozOdB6va/B6sCze9zHWD3TYsU+90jlNuYA7n5HnqJugkpPTP501ZsqAZxpnRrDrXNouXL3/qtfgufPQP++MANWI1LBwzZE4N22OwT7mUZDrso/iazRkYwTPPYKyqNIgo47w8IWpjsn3fYHwtjXgraNJ68sWPre6bLMKx1SsUT+vexSGOuqToBIreKgPmRGbc57KbQt95ScTQ/I0YmofZ16/sT0k3aQkltl2gGCmKoaSJbTexcLVKjsKrcl0AGhhnOsYpoWXV5QXtJoPJLA7LjgJsAPKGrOw513tiiiLgl7rAPBuqVWE8P9uBRgVRg6G+KsIG2ysQWc2QMys31OhaKyeXuTTzrVLxL19zWmhiUzRtNI6xkKrFHhaC9M4IKAf2sogWNxjMMsnO7SH02B2txjNO0V2yqTPDPRmJ2mXpHX08sdVWy/a4bMSfV9SQHtQ+XfkNRnmGOePSlNAzfFuO0mZ/nQouGoGJW6u1wuPZElMKNUtlYVHZRorTy0JPVJ4obY/yF48k367v1tEk/H17y8aR1xtzMM5W4XTbI7kpk2/kQheXioodqeGE/UKXT8A9+1JTeZIc="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+overdrawextract:
+  name: "使用信用卡恶意透支，在公安机关立案后、人民法院宣判前已偿还全部透支款息"
+  type: "共有纯正则"
+  code: "1004"
+  positivepurerule:
+      - "R+5tUGWSrRsAio3LjwTBnICmSMa2I/EXLLeu60YloIo/SO/jsBUdljs5skCyvpztB+zzBrgIVivqf5RqwbpEfx+6wVNTGD6MQ6m5ce/vT8LI3fcl1DHA7Z8HpaNNUDcoNrBKmYh7irWOcGHWDZvoweJJolYxq1ofS+7jPUtaPOWhnWK8G91Jp3q6XJKTL3qbkXTsr6tt0LMxAsRs8yXRCnRloKwFYHJ7iLKFac2RweE7KfbhMYBRJZSTcug9jxceiVhPKTv1Pn8mlItBk8oURh8pMx5mJJ82bEoHVDlNJZa2FUW0iWxoMQO7hbDLk7gOlTqDIRddc3m+Z4RkuL3R8H57m5FMDBeBTp2/llzK9QTaoTwdayyXVpMzIFfPtAAlg0C8kwWa6G1rxJWgspylc9cIp99US8vX3yIR5Hodxz1Pb4d0Co3AlL841ovKx50P1ytRTAwaWVgsjfguKl2QgSkYsa5FSpi+5MzNKN2f529zgPWFVR1dYCPbOSbp9M1lJLRzddl9d+Zh+ELQTaDghrGIfIa7+SGZdBBUG/oIdgtXVeYRsst34z1ofH77yQwDJbLTvS/j+KrtRSCRHoqmwdAOI9KhFW9XWNyJeG2CWov9saxODYYXtFqI04X2MzU0KHzt9g932qAJCut7NHarWsaGTsVovgod1Vwkdo5povM="
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+amountofmoneyrobberyextract:
+  name: "犯罪数额"
+  type: "私有"
+  code: "1005"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:

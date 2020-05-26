@@ -33,22 +33,26 @@ public class NumberVictim {
       String conclusion = casecauseModel.getOpinion();
       NumberConfig numberConfig = runSummarize(conclusion, keyword, noiseword);
       if (numberConfig != null) {
+         numberConfig.paraName = "本院认为";
          return numberConfig;
       }
       // 经审理查明段抽取总结性数字
       String factText = casecauseModel.getJustice();
       numberConfig = runSummarize(factText, keyword, noiseword);
       if (numberConfig != null) {
+         numberConfig.paraName="经审理查明";
          return numberConfig;
       }
       // 如果上述没有抽取到，则去本院认为段数人头
       numberConfig = runCalculate(conclusion, keyword, noiseword, defendants);
       if (numberConfig != null) {
+         numberConfig.paraName = "本院认为";
          return numberConfig;
       }
       // 如果上述没有抽取到，则去经审理查明段数人头
       numberConfig = runCalculate(factText, keyword, noiseword, defendants);
       if (numberConfig != null) {
+         numberConfig.paraName="经审理查明";
          return numberConfig;
       }
       return null;

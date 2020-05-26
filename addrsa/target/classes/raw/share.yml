@@ -1,0 +1,709 @@
+birthdayextract:
+  name: "出生日期"
+  type: "私有"
+  code: "1001"
+  positivepurerule:
+    - "生于\\d{4}年\\d{1,2}月\\d{1,2}日"
+    - "\\d{4}年\\d{1,2}月\\d{1,2}日出生"
+    - "\\d{4}年\\d{1,2}月\\d{1,2}日生"
+    - "\\d{4}年出生"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+ageextract:
+  name: "年龄"
+  type: "私有"
+  code: "1002"
+  positivepurerule:
+    - "[\\d一二三四五六七八九十]{1,3}周?岁"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+prosecutedateextract:
+  name: "公诉时间"
+  type: "私有"
+  code: "1060"
+  positivepurerule:
+    - ".*\\d{4}年\\d{1,2}月\\d{1,2}日.*犯{0,10}罪.*向.{0,10}公诉"
+    - ".*犯{0,10}罪.*\\d{4}年\\d{1,2}月\\d{1,2}日.*向.{0,10}公诉"
+    - ".*\\d{4}年\\d{1,2}月\\d{1,2}日.*涉嫌{0,10}罪.*公诉"
+    - ".*涉嫌{0,10}罪.*\\d{4}年\\d{1,2}月\\d{1,2}日.*公诉"
+    - ".*\\d{4}年\\d{1,2}月\\d{1,2}日.*涉嫌{0,10}罪.*审查起诉"
+    - "\\d{4}年\\d{1,2}月\\d{1,2}日.*审查起诉"
+    - ".*人民检察院.*号起诉书.*指控"
+    - ".*检察院指控(?=：|:)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+oldercrimeextract:
+  name: "老年人犯罪"
+  type: "私有"
+  code: "1003"
+  positivepurerule:
+    - "(?<!针对)老年人犯罪"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+oldercrime65extract:
+  name: "65周岁老年人犯罪"
+  type: "私有"
+  code: "1004"
+  positivepurerule:
+    - "已满65周岁"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+oldercrime70extract:
+  name: "70周岁老年人犯罪"
+  type: "私有"
+  code: "1005"
+  positivepurerule:
+    - "已满70周岁"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+oldercrime75extract:
+  name: "75周岁老年人犯罪"
+  type: "私有"
+  code: "1006"
+  positivepurerule:
+    - "已满75周岁"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+underagecrimeextract:
+  name: "未成年人犯罪"
+  type: "私有"
+  code: "1007"
+  positivepurerule:
+    - "(?<!针对)未成年人犯罪"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+underagecrime16extract:
+  name: "16周岁未成年人犯罪"
+  type: "私有"
+  code: "1008"
+  positivepurerule:
+    - "[未不]满18周岁(?!的人犯罪的除外)"
+    - "已满16周岁"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+oldercrime14extract:
+  name: "14周岁未成年人犯罪"
+  type: "私有"
+  code: "1009"
+  positivepurerule:
+    - "未满16周岁"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+deafdumbextract:
+  name: "聋哑人犯罪"
+  type: "共有纯正则"
+  code: "1010"
+  positivepurerule:
+    - "被告人.{0,20}[是系为有属于]聋哑"
+    - "被告人.{0,20}又聋又哑"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+blindextract:
+  name: "盲人犯罪"
+  type: "共有纯正则"
+  code: "1011"
+  positivepurerule:
+    - "被告人.{0,20}[是系为有属于]盲"
+    - "被告人.{0,20}失明"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+    - "交通肇事罪"
+cancontrolextract:
+  name: "具有自控能力"
+  type: "共有纯正则"
+  code: "1012"
+  positivepurerule:
+    - "有完全责任能力"
+    - "辨认和控制能力存在[，。]"
+    - "(尚未(完全)?丧失|不(存在)?影响)(辨认|控制).{0,20}能力"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+    - "交通肇事罪"
+mentalillnessextract:
+  name: "精神病人犯罪"
+  type: "共有纯正则"
+  code: "1013"
+  positivepurerule:
+    - "被告人(?!利用|明知).{0,10}(?<!强奸|多次与|对象为|未满十八周岁|未见)精神病(?!的少女|的未成年人)"
+    - "被告人(?!利用|明知).{0,10}(?<!强奸|多次与|对象为|未满十八周岁|未见)精神发育迟滞(?!的少女|的未成年人)"
+    - "被告人(?!利用|明知).{0,10}(?<!强奸|多次与|对象为|未满十八周岁|未见)精神分裂(?!的少女|的未成年人)"
+    - "被告人(?!利用|明知).{0,10}(?<!强奸|多次与|对象为|未满十八周岁|未见)精神不正常(?!的少女|的未成年人)"
+    - "被告人(?!利用|明知).{0,10}(?<!强奸|多次与|对象为|未满十八周岁|未见)精神失常(?!的少女|的未成年人)"
+    - "被告人(?!利用|明知).{0,10}(?<!强奸|多次与|对象为|未满十八周岁|未见)精神残疾(?!的少女|的未成年人)"
+    - "被告人(?!利用|明知).{0,10}(?<!强奸|多次与|对象为|未满十八周岁|未见)精神障碍(?!的少女|的未成年人)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+    - "交通肇事罪"
+majorcriminalextract:
+  name: "主犯"
+  type: "共有纯正则"
+  code: "1014"
+  positivepurerule:
+    - "被告人.{0,10}[是系为]主犯(?!的指控,本院不予支持)"
+    - "被告人.{0,20}共同犯罪.{0,20}起(主要|主导)作用"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+followercriminalextract:
+  name: "从犯"
+  type: "共有纯正则"
+  code: "1015"
+  positivepurerule:
+    - "被告人.{0,10}(?<!不能认定|不应认定)[是|系|为]从犯(?!的(辩护)?意见)"
+    - "被告人.{0,20}共同犯罪.{0,20}起(次要|辅助)作用"
+    - "被告人.{0,20}提供.{0,10}工具"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+forcedfollowercriminalextract:
+  name: "胁从犯"
+  type: "共有纯正则"
+  code: "1016"
+  positivepurerule:
+    - "(?<!辩护人所持(二|三|四)?|对罪名不持异议,[^。；]{0,20}|不宜认定[^。，；]{0,2}|辩护意见[^。，；]{0,5}|辩护人[^。，；]{0,2}(提出|所提)|提出(的)?(该)?)被告人[^。；]{0,10}(是|系|为|属于)胁从犯(?!.{0,1}(应免除处罚)?的(辩护)?意见|的观点|的相关意见|,经查|[^。，；]{0,8}建议对其免除处罚|.{0,1}故建议)"
+    - "被告人(?!的胁迫).{0,5}(被迫|迫于)(?!压力)"
+    - "被告人.{0,5}受.{0,5}蒙蔽"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+    - "交通肇事罪"
+accompliceextract:
+  name: "共同犯罪"
+  type: "共有纯正则"
+  code: "1017"
+  positivepurerule:
+    - "被告人.{0,10}[是系为]共犯"
+    - "被告人.{0,10}(伙同|结伙)"
+    - "被告人[^。，；]*?另案处理"
+    - "被告人[^。，；]*?已判刑"
+    - "被告人[^。；]*?伙同"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+leadercriminalextract:
+  name: "首要分子"
+  type: "共有纯正则"
+  code: "1018"
+  positivepurerule:
+    - "被告人.{0,10}[是系为]首要分子"
+    - "被告人.{0,20}(组织|策划|指挥|领导|煽动)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+    - "交通肇事罪"
+abetcriminalextract:
+  name: "教唆犯"
+  type: "共有纯正则"
+  code: "1019"
+  positivepurerule:
+    - "(?<!不应认定)被告人[^。；]{0,10}[是系为]教唆犯"
+    - "(?<!不应认定)被告人[^。；]{0,10}(?<!是否具有)(教唆|利诱|收买)(?![^。；]{0,5}有异议)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+    - "交通肇事罪"
+helpcriminalextract:
+  name: "帮助犯"
+  type: "共有纯正则"
+  code: "1020"
+  positivepurerule:
+    - "被告人.{0,10}负责(望风|窝藏|踩点|隐匿|消灭罪迹)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+unsuccessfulcriminalextract:
+  name: "未遂犯"
+  type: "共有纯正则"
+  code: "1021"
+  positivepurerule:
+    - "(?<!辩护人提出)被告人.{0,10}[是系为]未遂犯"
+    - "(?<!辩护人提出|所提(“)?|辩护人认为(:)?|对于)被告人[^。；]*?(?<!还是|不应认定为犯罪)未遂(?!的辩护意见|存在疑点)"
+ #   - "被告人[^。；]*?准备[^。；]*?当场抓获"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+    - "交通肇事罪"
+readycriminalextract:
+  name: "预备犯"
+  type: "共有纯正则"
+  code: "1022"
+  positivepurerule:
+    - "被告人.{0,20}[是系为]预备犯"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+    - "交通肇事罪"
+suspendcriminalextract:
+  name: "中止犯"
+  type: "共有纯正则"
+  code: "1023"
+  positivepurerule:
+    - "(?<!辩称)被告人.{0,20}[是系为]中止犯(?!或未遂犯)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+    - "交通肇事罪"
+deliberatelycrimeextract:
+  name: "故意犯罪"
+  type: "共有纯正则"
+  code: "1024"
+  positivepurerule:
+    - "被告人.{0,20}明知"
+    - "被告人.{0,20}故意犯罪"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+    - "交通肇事罪"
+negligentcrimeextract:
+  name: "过失犯罪"
+  type: "共有纯正则"
+  code: "1025"
+  positivepurerule:
+    - "被告人.{0,20}存在过失"
+    - "被告人.{0,20}疏忽大意"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+lightresponsibilityextract:
+  name: "罪责较轻"
+  type: "共有纯正则"
+  code: "1026"
+  positivepurerule:
+    - "罪责较轻"
+    - "情节轻微"
+    - "辅助作用"
+    - "犯罪较轻"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+abetunderageextract:
+  name: "教唆未成年人犯罪"
+  type: "共有纯正则"
+  code: "1027"
+  positivepurerule:
+    - "被告人.{0,20}(组织|策划|指挥|领导|煽动).{0,10}未成年"
+    - "被告人.{0,20}(组织|策划|指挥|领导|煽动).{0,10}未满(十[四六八]|1[468])周?岁"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+    - "交通肇事罪"
+abetdisavantagegroupextract:
+  name: "教唆限制行为能力人犯罪"
+  type: "共有纯正则"
+  code: "1028"
+  positivepurerule:
+    - "(组织|策划|指挥|领导|煽动).{0,10}限制能力人"
+    - "(组织|策划|指挥|领导|煽动).{0,10}未成年"
+    - "(组织|策划|指挥|领导|煽动).{0,10}未满(十[四六八]|1[468])周?岁"
+    - "(组织|策划|指挥|领导|煽动).{0,10}(智力|精神)障碍"
+    - "(组织|策划|指挥|领导|煽动).{0,10}残[疾障]"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+    - "交通肇事罪"
+seriousharmextract:
+  name: "较重损害后果"
+  type: "共有纯正则"
+  code: "1029"
+  positivepurerule:
+    - "[造致].{0,5}(损失|后果).{0,5}严重"
+    - "[造致].{0,5}严重.{0,5}(损失|后果)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+    - "交通肇事罪"
+slightharmextract:
+  name: "较轻损害后果"
+  type: "共有纯正则"
+  code: "1030"
+  positivepurerule:
+    - "[造致].{0,5}(损失|后果).{0,5}较轻"
+    - "[造致].{0,5}较轻.{0,5}(损失|后果)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+noharmextract:
+  name: "未造成损害后果"
+  type: "共有纯正则"
+  code: "1031"
+  positivepurerule:
+    - "(无|没有|未)[造致].{0,10}(严重后果|损失)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+surrenderextract:
+  name: "自首"
+  type: "共有纯正则"
+  code: "1032"
+  positivepurerule:
+    - "(?<!关于|提出)被告人[^。；]{0,25}(?<!不符合|不构成|不认定|不成立|(是否|不|辩解其)具有(前两款规定的)?|对于)自首(?!(情节)?的(辩护|上诉)意见|和立功(若干)?具体|.{0,5}请求对其从轻处罚|论|情节没有认定|情节的理由不能成立|情节[，,]经查)"
+    - "(?<!想过|第六十七条犯罪以后自动)投案"
+    - "被告人.{0,10}留在事故现场.{0,10}等候处理"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+noticedbypoliceextract:
+  name: "被办案机关发觉"
+  type: "共有纯正则"
+  code: "1033"
+  positivepurerule:
+    - "(罪行|犯罪事实).{0,10}被.{0,10}(民警|警察)发现"
+    - "(通知|传唤).{0,20}[到归]案"
+    - "回到.{0,20}投案"
+    - "(抓获|逮捕)"
+    - "强制隔离.{0,10}期间"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+interrogationextract:
+  name: "受到调查谈话、讯问或者强制措施"
+  type: "共有纯正则"
+  code: "1034"
+  positivepurerule:
+    - "受到.{0,20}讯问"
+    - "被采取强制措施"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+tellunknowncrimesextract:
+  name: "如实供述办案机关尚未掌握的罪行"
+  type: "共有纯正则"
+  code: "1035"
+  positivepurerule:
+    - "(坦白|供述).{0,20}[未没]掌握"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+afterpersuasionextract:
+  name: "并非出于被告人主动，而是经亲友规劝、陪同投案，或亲友送去投案等情形构成自首的"
+  type: "共有纯正则"
+  code: "1036"
+  positivepurerule:
+    - "经.{0,20}(规劝|劝导).{0,20}(投案|自首)"
+    - "陪同.{0,20}(投案|自首)"
+    - "亲友送去投案"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+askedbypoliceextract:
+  name: "罪行尚未被办案机关发觉，仅因形迹可疑被有关组织或办案机关盘问、教育后，主动交代自己的罪行"
+  type: "共有纯正则"
+  code: "1037"
+  positivepurerule:
+    - "(因形迹可疑|被盘问)[^。；]*?(供述|交代)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+whiledetoxificationextract:
+  name: "强制戒毒期间主动交代自己的罪行"
+  type: "共有纯正则"
+  code: "1038"
+  positivepurerule:
+    - "戒毒期间.{0,20}(供述|交代)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+avoidlawpunishedextract:
+  name: "恶意利用自首规避法律制裁"
+  type: "共有纯正则"
+  code: "1039"
+  positivepurerule:
+    - "目的.{0,20}[逃规]避法律"
+    - "恶意.{0,20}[逃规]避法律"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+honestlyextract:
+  name: "坦白"
+  type: "共有纯正则"
+  code: "1040"
+  positivepurerule:
+    - "(?<!未能(及时)?|不属于|后)坦白"
+    - "(?<!未能(及时)?|不属于|后)如实供述"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+avoidseriousresultextract:
+  name: "避免特别严重后果发生"
+  type: "共有纯正则"
+  code: "1041"
+  positivepurerule:
+    - "避免了?特别严重后果发生"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+exposecompanyextract:
+  name: "揭发同案犯共同犯罪事实的"
+  type: "共有纯正则"
+  code: "1042"
+  positivepurerule:
+    - "(揭发|供述|检举).{0,10}(其[它他余]人|同案犯).{0,10}罪"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+makecontributionextract:
+  name: "立功"
+  type: "共有纯正则"
+  code: "1043"
+  positivepurerule:
+    - "被告人(?!.{0,5}辩称|辩护人|)[^，。；]*?(?<!不构成|不属于|不具有(自首和)?|不能认定为有)立功(?!若干(具体)?问题的意见|具体应用法律|(情节|表现)的辩护意见)"
+    - "(揭发|检举).{0,20}犯罪"
+    - "(?<!向同案人.{0,3})提供.{0,20}线索"
+    - "阻止.{0,20}犯罪"
+  # - "协助.{0,20}抓捕"
+  positivemodelrule:
+  negativepurerule:
+    - "立功若干(具体)?问题的意见"
+    - "立功具体应用法律"
+  negativemodelrule:
+  negativecasecause:
+makeimportantcontributionextract:
+  name: "重大立功"
+  type: "共有纯正则"
+  code: "1044"
+  positivepurerule:
+    - "重大立功"
+    - "(揭发|检举).*?重大.*?犯罪"
+    - "有(发明|创造|重大技术革新)"
+    - "舍己救人"
+    - "(自然灾害|重大事故).*?有突出表现"
+    - "对(国家|社会).*?重大贡献"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+pleadextract:
+  name: "当庭自愿认罪"
+  type: "共有纯正则"
+  code: "1045"
+  positivepurerule:
+    - "当庭[^。；]*?认罪"
+    - "认罪[^。；]*?(态度|表现)[较很]?(好|真诚)"
+    - "(自愿|坦白)认罪"
+    - "(在开庭审理过程|庭审|侦察|审查起诉)中[^。；]*?认罪"
+    - "认罪[^。；]*?表现"
+    - "被告人[^。；]{0,10}对[^。；]*?事实[^，。；]*?(无|不持)异议"
+    - "被告人[^。；]{0,10}对[^，。；]*?指控供认不讳"
+    - "上述事实，被告人[^，。；]*?无异议[^。；]*?从轻处罚"
+    - "(?<!拒不)认罪认罚"
+    - "(?<!拒不)认罪、?悔罪"
+    - "认罪(?!不予)[^。；]*?采信"
+    - "供认不讳"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+penitenceextract:
+  name: "悔罪"
+  type: "共有纯正则"
+  code: "1046"
+  positivepurerule:
+    - "(?<!没有)悔罪(?!态度差)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+activecompensationextract:
+  name: "积极赔偿"
+  type: "共有纯正则"
+  code: "1047"
+  positivepurerule:
+    - "积极赔偿"
+    - "(?<!强险|死亡|无过错|足额|比率|关于|诉求其|予以|进行|共同|范围内|应(当)?|责任险|责任|规定的|提出的|依法|民事|要求.{0,5}|应予|要求|没有|当庭表示愿意(各)?|要求.{0,1}被告人|给他|让他|我|不愿|判处|不属于|支持)赔偿(?!金|责任|标准|死亡|案件|附带|原告|精神|请求|义务|款项|交通费|范围)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+pardonextract:
+  name: "取得谅解"
+  type: "共有纯正则"
+  code: "1048"
+  positivepurerule:
+    - "(取得|得到|获得|予以|表示|表达|作出).{0,20}谅解"
+    - "(有|出具|书写|提供).{0,21}谅解书"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+recidivismextract:
+  name: "累犯"
+  type: "共有纯正则"
+  code: "1049"
+  positivepurerule:
+    - "(被告人|被不起诉人)[^。；][是系为]累犯"
+    - "(被告人|被不起诉人)[^。；]刑满释放后五年内再犯"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+    - "交通肇事罪"
+recidivistextract:
+  name: "惯犯"
+  type: "私有"
+  code: "1050"
+  positivepurerule:
+    - "以.{0,5}(赌博|盗|窃|骗|走私|投机倒把).{0,20}为常?业"
+    - "惯[窃骗]"
+    - "一贯.{0,20}(制造|贩卖|运输).{0,20}毒品"
+    - "(?<!进行|卖淫)多次(?!进行|供述|与被害人发生性关系|反复翻供|到|抢劫或者抢劫数额巨大的)[^。；]{0,20}(情节严重|从重处罚)"
+    - "作案[\\d三四五六七八九十][起次]"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+    - "交通肇事罪"
+recordextract:
+  name: "前科"
+  type: "私有"
+  code: "1051"
+  positivepurerule:
+    - "(被告人|被不起诉人)[^。；](?<!无(犯罪)?)前科"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+firstcrimeextract:
+  name: "初犯、偶犯"
+  type: "私有"
+  code: "1052"
+  positivepurerule:
+    - "(?<!辩护人提出|辩护意见:)(被告人|被不起诉人)[^。；]*?(?<!不应认定)[是系为][(初犯)(偶犯)](?!(等|的)辩护意见)[^。；]{0,10}本院[^。；]{0,6}(酌情(予以)?从轻处罚|依法予以采纳)"
+ #   - "因[^。；！：，]{0,10}罪被[^。；！：，]{0,10}判处"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+criminalreconciliationextract:
+  name: "刑事和解"
+  type: "共有纯正则"
+  code: "1053"
+  positivepurerule:
+    - "(?<!要求|不存在)刑事和解(?!程序)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+excessivedefenseextract:
+  name: "防卫过当"
+  type: "共有纯正则"
+  code: "1054"
+  positivepurerule:
+    - "(?<!不属于|最多就是)防卫过当(?!的辩解|，应当对其减轻处罚的辩护意见不成立)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+    - "交通肇事罪"
+excessiveriskaversionextract:
+  name: "避险过当"
+  type: "共有纯正则"
+  code: "1055"
+  positivepurerule:
+    - "避险过当"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+returnrefundextract:
+  name: "退赃、退赔"
+  type: "共有纯正则"
+  code: "1056"
+  positivepurerule:
+    - "(?<!依法予以(继续)?追缴后|责令)退[赔赃]"
+    - "积极配合.{0,20}追缴赃款赃物"
+    - "赃物退回"
+    - "(被告人|被不起诉人)[^。？！；]{0,15}(?<!判决生效后|公安机关)发还(?!(物品)?清单|给本人|权属人)"
+    - "(被告人|被不起诉人)[^。？！；]{0,15}(?<!逼迫.{0,3}|不|不肯)归还"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+returnrefundlesslossextract:
+  name: "未造成经济损失或者损失较小"
+  type: "共有纯正则"
+  code: "1057"
+  positivepurerule:
+    - "未.{1,10}造成.{1,10}损失"
+    - "损失较[少小]"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+returnrefundinaffectordercaseextract:
+  name: "抢劫等严重危害社会治安犯罪退赃、退赔"
+  type: "共有纯正则"
+  code: "1058"
+  positivepurerule:
+    - "严重危害.{0,20}治安"
+    - "抢劫"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:
+    - "交通肇事罪"
+rescueaftercrimeextract:
+  name: "犯罪后积极抢救被害人"
+  type: "共有纯正则"
+  code: "1059"
+  positivepurerule:
+    - "积极(参与|组织)?[抢施]救(伤员|被害人|受伤人员)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+  negativecasecause:

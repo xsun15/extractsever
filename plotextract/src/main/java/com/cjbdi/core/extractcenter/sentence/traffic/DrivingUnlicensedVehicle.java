@@ -91,6 +91,9 @@ public class DrivingUnlicensedVehicle extends BasicSentenceFeatureClass {
 
          if(nameList != null && nameList.size() > 0 && ((String)nameList.get(nameList.size() - 1)).equals(defendant)) {
             label = SetLabel.run(boolConfig, this.code);
+            List<String> paras = new ArrayList<>();
+            paras.add("经审理查明");
+            label.setParas(paras);
          }
       }
 

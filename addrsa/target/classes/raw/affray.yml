@@ -1,0 +1,332 @@
+numberOfPeopleextraction:
+  name: "聚众斗殴人数"
+  type: "私有"
+  code: "1002"
+  positivepurerule:
+    - "斗殴[^。；！？]*?[0-9一二三四五六七八九十〇壹贰两叁肆陆柒捌玖拾零]+人(以上)?"
+    - "[0-9一二三四五六七八九十〇壹贰两叁肆陆柒捌玖拾零]+余?人[^。；！？]*?(殴|打|斗|砍|干架)"
+    - "(合计|共|参与人数|被告人)[^。；！？]*?[0-9一二三四五六七八九十〇壹贰两叁肆陆柒捌玖拾零、]+余?人"
+    - "(纠集|邀集|聚集|组织|邀约|召集|带)[^。；！？]*?[0-9一二三四五六七八九十〇壹贰两叁肆陆柒捌玖拾零]+余?人"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+onPublicextraction:
+  name: "公共场所或交通要道聚众斗殴"
+  type: "共有纯正则"
+  code: "1003"
+  positivepurerule:
+    - "(寻衅|滋事|争执|殴斗|殴打|打斗|厮打|砍向|持械|互殴)[^。；！？]*?(公共场所|交通要道|交通干道|主要交通道路|游戏厅|营业厅|歌厅|大厅)"
+    - "(寻衅|滋事|争执|殴斗|殴打|打斗|厮打|砍向|持械|互殴)[^。；！？]*?(游戏室|营业室)"
+    - "(寻衅|滋事|争执|殴斗|殴打|打斗|厮打|砍向|持械|互殴)[^。；！？]*?(?!家)门[口前]"
+    - "(寻衅|滋事|争执|殴斗|殴打|打斗|厮打|砍向|持械|互殴)[^。；！？]*?(门店|烧烤店|店面|超市|百货|市场|店内|柜台|饭馆|面馆|茶馆|咖啡馆|宾馆)"
+    - "(寻衅|滋事|争执|殴斗|殴打|打斗|厮打|砍向|持械|互殴)[^。；！？]*?(体育馆|餐馆|银行|商场|网吧|寺|庙|酒店|医院|公交站|人行道|大道|路边|巷子)"
+    - "(寻衅|滋事|争执|殴斗|殴打|打斗|厮打|砍向|持械|互殴)[^。；！？]*?(公园|花园|路(交叉)?口|广场|卖场|KTV|包厢|车站)"
+    - "(公共场所|交通要道|交通干道|主要交通道路|游戏厅|营业厅|歌厅|大厅)[^。；！？]*?(寻衅|滋事|争执|殴斗|殴打|打斗|厮打|砍向|持械|互殴)"
+    - "(游戏室|营业室)[^。；！？]*?(寻衅|滋事|争执|殴斗|殴打|打斗|厮打|砍向|持械|互殴)"
+    - "(?!家)门[口前][^。；！？]*?(寻衅|滋事|争执|殴斗|殴打|打斗|厮打|砍向|持械|互殴)"
+    - "(门店|烧烤店|店面|超市|百货|市场|店内|柜台|饭馆|面馆|茶馆|咖啡馆|宾馆)[^。；！？]*?(寻衅|滋事|争执|殴斗|殴打|打斗|厮打|砍向|持械|互殴)"
+    - "(体育馆|餐馆|银行|商场|网吧|寺|庙|酒店|医院|公交站|人行道|大道|路边|巷子)[^。；！？]*?(寻衅|滋事|争执|殴斗|殴打|打斗|厮打|砍向|持械|互殴)"
+    - "(公园|花园|路(交叉)?口|广场|卖场|KTV|包厢|车站)[^。；！？]*?(寻衅|滋事|争执|殴斗|殴打|打斗|厮打|砍向|持械|互殴)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+withWeaponextraction:
+  name: "持械斗殴"
+  type: "共有纯正则"
+  code: "1004"
+  positivepurerule:
+    - "持械"
+    - "(棒|管|刀|棍|械|镐|砖|斧|器|铁质|铁锹|酒瓶|啤酒扎杯|扳手|钢管)[^。；！？]*?(寻衅|滋事|争执|殴斗|殴打|打斗|厮打|砍向|持械|互殴)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+disruptSocialOrderextraction:
+  name: "严重扰乱社会秩序"
+  type: "共有纯正则"
+  code: "1005"
+  positivepurerule:
+    - "(社会|公共场所|公共)秩序.{0,10}(严重混乱|情节严重|情节恶劣|影响恶劣|极为混乱)"
+    - "严重(扰乱|破坏|影响|侵害).{0,10}(社会|公共场所|公共)秩序"
+    - "情节恶劣.{0,10}破坏社会秩序"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+badSocialImpactextraction:
+  name: "造成恶劣社会影响"
+  type: "共有纯正则"
+  code: "1006"
+  positivepurerule:
+    - "社会影响(极其|相当|太|较|较为|比较|极|更为)?(恶劣|大|坏|严重)"
+    - "造成[^。；！？]*?(恶劣|严重|重大|较大|极坏)[^，。；]*?影响"
+    - "社会(印象|影响)[^，。；]*?(恶劣|极坏)"
+    - "斗殴[^。；]*?影响[^，。；]*?(恶劣|极坏)"
+    - "社会危害性?大"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+organizeextraction:
+  name: "组织、控制他人斗殴的"
+  type: "共有纯正则"
+  code: "1007"
+  positivepurerule:
+    - "(教唆|组织|控制|纠集|指使|利用|带领|召集|伙同)[^。；！？]*?(寻衅|滋事|争执|殴斗|殴打|打斗|厮打|砍向|持械|互殴)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+minorextraction:
+  name: "组织、控制未成年人斗殴"
+  type: "私有"
+  code: "1008"
+  positivepurerule:
+    - "(教唆|组织|控制|纠集|指使|利用|带领|召集|伙同)[^。；！？]*?未成年"
+    - "(教唆|组织|控制|纠集|指使|利用|带领|召集|伙同)[^。；！？]*?1-9周?岁"
+    - "(教唆|组织|控制|纠集|指使|利用|带领|召集|伙同)[^。；！？]*?[一二三四五六七八九十]周?岁"
+    - "(教唆|组织|控制|纠集|指使|利用|带领|召集|伙同)[^。；！？]*?1[0-7]周?岁"
+    - "(教唆|组织|控制|纠集|指使|利用|带领|召集|伙同)[^。；！？]*?十[一二三四五六七]周?岁"
+    - "(教唆|组织|控制|纠集|指使|利用|带领|召集|伙同)[^。；！？]*?[不未]满(18|十八)周?岁"
+    - "(教唆|组织|控制|纠集|指使|利用|带领|召集|伙同)[^。；！？]*?尚未(18|十八)周?岁"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+propertyLossextraction:
+  name: "损毁财物数额"
+  type: "私有"
+  code: "1009"
+  positivepurerule:
+    - "维修费用[^，。；]*?(元|人民币)"
+    - "(价值|价格|价款)[^，。；]*?(元|人民币)"
+    - "(鉴定|认定)[^，。；]*?(元|人民币)"
+    - "(车损|损失|损毁|撞毁|撞坏)[^，。；]*?(元|人民币)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+underworldextraction:
+  name: "黑社会性质"
+  type: "共有纯正则"
+  code: "1010"
+  positivepurerule:
+    - "黑社会(性质|的).{0,10}组织"
+    - "带有黑社会性质"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+folkConflictextraction:
+  name: "民间矛盾"
+  type: "共有纯正则"
+  code: "1011"
+  positivepurerule:
+    - "(系|基于|因|考虑|由|属|是|在)[^。；！？]*?(民间|邻里|土地|地界|经济|地方|换地|种树|债务|民事|家庭|合同|生活|遗产)[^，。；]*?(矛盾|纠纷|琐事|纷争|问题)"
+    - "本案[^。；！？]*?(因|系)[^。；！？]*?(民间|邻里)纠纷"
+    - "民间(纠纷|矛盾)[^。；！？]*?引发[^。；！？]*?(犯罪|纠纷)"
+    - "处理[^。；！？]*?(矛盾|纠纷)[^。；！？]*?(而|致)[^。；！？]*?(伤害|轻伤)"
+    - "因[^，。；]*?(琐事|宅基地|感情问题|款|费|债|买|卖|不正当关系|经营|事故|赌资|挡路)[^。；！？]*?(矛盾|纠纷|伤|争执)"
+    - "属民间矛盾"
+    - "口角"
+    - "感情不和|感情纠纷"
+    - "[偷盗窃][^。；]*?发现[^。；]*?争执"
+    - "发现[^。；]*?[偷盗窃][^。；]*?争执"
+    - "[讨要借][^，。；]*?[款费债账][^。；]*?争执"
+    - "与前[男女]友.{0,10}有矛盾"
+    - "约定.{0,20}斗殴"
+    - "因故.*?矛盾|争执"
+    - "因.*?(和|与).*?(的矛盾|有矛盾|发生争执)"
+    - "因.*?(的矛盾|有矛盾|发生争执|发生冲突)"
+    - "(和|与).*?(发生|的|产生|引发|相约)(矛盾|纠纷|争执|冲突|对冲)"
+    - "挑衅|争吵|琐事|不正当男女关系|没面子|赌场纠纷"
+    - "(大|家庭)[琐事]"
+    - "(权属|债务|索要债务)"
+    - "(?=(^(?!.*?黑社会|非法传销|恶势力团伙).*))[^；！？]*?(矛盾|纠纷|争执|冲突|对冲|权属|债务|索要债务)?"
+    - "约定打架|约架|泄愤|不服气|言语冲突||为报复|纠纷"
+    - "(帮忙|约定|相约).{0,20}(打架|斗殴)"
+    - "堵住去路|滋扰|玩笑话|发生争执|辱骂"
+    - "因.{0,10}(和|与).{0,10}(的|有)(矛盾|纠纷)"
+    - "因.*?(矛盾|纷争|纠纷|争执|冲突)"
+    - "因.*?(被).*?(殴打)"
+    - "不满.*?(工程被).{0,20}(做)"
+    - "争夺.*?地盘"
+    - "不满.*?(和).{0,20}(在一起)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+trafficDisorderextraction:
+  name: "造成交通混乱"
+  type: "共有纯正则"
+  code: "1012"
+  positivepurerule:
+    - "(致|使|造成).{0,10}(道|路|交通).{0,10}(堵塞|混乱|阻断|中断|阻塞)"
+    - "(堵塞|扰乱|影响).{0,10}(道|交通)"
+    - "(道路|交通).{0,10}被?堵"
+    - "在.{0,20}交通要道.{0,20}(追逐|撞击)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+numberofseriousinjuryextract:
+  name: "重伤人数"
+  type: "私有"
+  code: "1013"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+numberofdeathextract:
+  name: "死亡人数"
+  type: "私有"
+  code: "1014"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+numberofminorinjuryextract:
+  name: "轻伤人数"
+  type: "私有"
+  code: "1015"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+numberofsligthinjuryextract:
+  name: "轻微伤人数"
+  type: "私有"
+  code: "1016"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+firstleveldisabilityextract:
+  name: "一级伤残人数"
+  type: "私有"
+  code: "1017"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+secondleveldisabilityextract:
+  name: "二级伤残人数"
+  type: "私有"
+  code: "1018"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+thirdleveldisabilityextract:
+  name: "三级伤残人数"
+  type: "私有"
+  code: "1019"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+fourthleveldisabilityextract:
+  name: "四级伤残人数"
+  type: "私有"
+  code: "1020"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+fifthleveldisabilityextract:
+  name: "五级伤残人数"
+  type: "私有"
+  code: "1021"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+sixthleveldisabilityextract:
+  name: "六级伤残人数"
+  type: "私有"
+  code: "1022"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+seventhleveldisabilityextract:
+  name: "七级伤残人数"
+  type: "私有"
+  code: "1023"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+eigthleveldisabilityextract:
+  name: "八级伤残人数"
+  type: "私有"
+  code: "1024"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+ninthleveldisabilityextract:
+  name: "九级伤残人数"
+  type: "私有"
+  code: "1025"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+tenthleveldisabilityextract:
+  name: "十级伤残人数"
+  type: "私有"
+  code: "1026"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+firstlevelseriousinjurynumberextract:
+  name: "重伤一级人数"
+  type: "私有"
+  code: "1027"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+secondlevelseriousinjurynumberextract:
+  name: "重伤二级人数"
+  type: "私有"
+  code: "1028"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+firstlevelminorinjurynumberextract:
+  name: "轻伤一级人数"
+  type: "私有"
+  code: "1029"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+secondlevelminorinjurynumberextract:
+  name: "轻伤二级人数"
+  type: "私有"
+  code: "1030"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+punishedbycourtaffaryextract:
+  name: "因聚众斗殴受过刑事处罚的"
+  type: "共有纯正则"
+  code: "1031"
+  positivepurerule:
+    - "因聚众斗殴受过刑事处罚"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+punishedbygovernaffaryextract:
+  name: "一年内因聚众斗殴受过行政处罚的"
+  type: "共有纯正则"
+  code: "1032"
+  positivepurerule:
+    - "因聚众斗殴受过行政处罚"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+timesextract:
+  name: "聚众斗殴次数"
+  type: "私有"
+  code: "1033"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:

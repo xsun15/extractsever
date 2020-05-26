@@ -89,7 +89,7 @@ public class IndicitmentSplit extends BasicSplit {
                 }
             }
             // 提取省份
-            indicitmentModel.setProvince(CommonTools.extractProvince(indicitmentModel.getProcuName()));
+            indicitmentModel.setProvince(extractProvince(indicitmentModel.getProcuName(), content));
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,0 +1,5 @@
+traffic:
+  retainSyntext:
+  removeSyntext: "(m|nr)"
+  retainWord: "主要@10|全部@10|同等@10|酒后@5|毒后@5|乙醇@5|酒精@5|死亡@10|伤@1|重伤@10|轻伤@5|轻微伤@5|逃逸@20|逃离@20"
+  removeWord: "(省|市|区|县)"

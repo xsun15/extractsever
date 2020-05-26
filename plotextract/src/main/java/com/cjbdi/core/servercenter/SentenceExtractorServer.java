@@ -4,12 +4,10 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.cjbdi.core.configurecentent.BeanFactoryConfig;
 import com.cjbdi.core.convertlabelcenter.ConvertLabelFactory;
-import com.cjbdi.core.convertlabelcenter.utils.ToLeianV1;
-import com.cjbdi.core.convertlabelcenter.utils.ToLeianV2;
-import com.cjbdi.core.convertlabelcenter.utils.ToSelfSentence;
-import com.cjbdi.core.convertlabelcenter.utils.ToZhengan;
+import com.cjbdi.core.convertlabelcenter.utils.*;
 import com.cjbdi.core.developcenter.good.ExtractGood;
 import com.cjbdi.core.extractcenter.BeanFactoryExtract;
+import com.cjbdi.core.extractcenter.sentence.common.time.StringUtil;
 import com.cjbdi.core.extractcenter.utils.CleanText;
 import com.cjbdi.core.extractcenter.utils.CommonTools;
 import com.cjbdi.core.extractcenter.utils.HttpRequest;
@@ -70,6 +68,7 @@ public class SentenceExtractorServer {
 
    @RequestMapping(value = {"/extract/sentence/feature/selfsentence"}, produces = {"application/json;charset=UTF-8"})
    public JSONObject extractSelfSentenceFeature(@RequestBody JSONObject reqParam, @Context HttpServletRequest request) {
+      System.out.println(reqParam.getString("fullText"));
       if(reqParam.containsKey("fullText")) {
          String fullText = reqParam.getString("fullText");
          if(org.apache.commons.lang3.StringUtils.isNotEmpty(fullText)) {
@@ -87,13 +86,21 @@ public class SentenceExtractorServer {
                JSONArray jsonArray;
                if(casecauseList != null && casecauseList.size() != 0) {
                   jsonArray = BeanFactoryExtract.sentenceExtractor.extract(docType, fullText, casecauseList);
+                  System.out.println("-------------提取结果--------------");
+                  System.out.println(jsonArray.toJSONString());
                   var10000 = ConvertLabelFactory.toSelfSentence;
-                  jsonArray = ToSelfSentence.run(jsonArray, fullText);
+                  jsonArray = ToSelfSentence.run(jsonArray);
+                  System.out.println("-------------标签转换--------------");
+                  System.out.println(jsonArray.toJSONString());
                   return Tools.packingResult("200", jsonArray);
                } else {
                   jsonArray = BeanFactoryExtract.sentenceExtractor.extract(docType, fullText, casecauseList);
+                  System.out.println("-------------提取结果--------------");
+                  System.out.println(jsonArray.toJSONString());
                   var10000 = ConvertLabelFactory.toSelfSentence;
-                  jsonArray = ToSelfSentence.run(jsonArray, fullText);
+                  jsonArray = ToSelfSentence.run(jsonArray);
+                  System.out.println("-------------标签转换--------------");
+                  System.out.println(jsonArray.toJSONString());
                   return Tools.packingResult("200", jsonArray);
                }
             } else {
@@ -259,6 +266,8 @@ public class SentenceExtractorServer {
    @RequestMapping(value = {"/predict/basicInfo"}, produces = {"application/json;charset=UTF-8"})
    public String predBasicInfo(@RequestBody JSONObject reqParam, @Context HttpServletRequest request) {
       String result = HttpRequest.sendPost(BeanFactoryConfig.interfaceConfig.getInterfacePortrait().getBasicinfo(), reqParam);
+      System.out.println("-------------基本信息--------------");
+      System.out.println(result);
       return result;
    }
 
@@ -278,4 +287,51 @@ public class SentenceExtractorServer {
       }
       return "";
    }
+
+   @RequestMapping(value = {"/extract/intelJudge"}, produces = {"application/json;charset=UTF-8"})
+   public String toInteliJudge(@RequestBody JSONObject reqParam, @Context HttpServletRequest request) {
+      JSONObject result = new JSONObject();
+      if(reqParam.containsKey("fullText")) {
+         String fullText = reqParam.getString("fullText");
+         if(StringUtils.isNotEmpty(fullText)) {
+            fullText = CleanText.run(fullText);
+            String caseDocType = Tools.extractCasetype(reqParam.getString("fullText"));
+            if (caseDocType.equals("刑事")) {
+               String docType = "";
+               if (reqParam.containsKey("docType")) {
+                  docType = reqParam.getString("docType");
+               } else {
+                  docType = Tools.extractDocType(fullText);
+               }
+               if (StringUtils.isNotEmpty(docType)) {
+                  List<String> casecauseList = reqParam.getObject("casecause", List.class);
+                  JSONArray extractResult = BeanFactoryExtract.sentenceExtractor.extract(docType, fullText, casecauseList);
+                  JSONArray inteliJudgeResult = ToInteliJudge.run(extractResult);
+                  String uuid = reqParam.getString("uuid");
+                  String province = "";
+                  String title = "";
+                  String basicInfo = HttpRequest.sendPost(BeanFactoryConfig.interfaceConfig.getInterfacePortrait().getBasicinfo(), reqParam);
+                  if (StringUtils.isNotEmpty(basicInfo)) {
+                     JSONObject basicInfoJson = JSONObject.parseObject(basicInfo);
+                     if (basicInfoJson.containsKey("province")) province = basicInfoJson.getString("province");
+                     if (basicInfoJson.containsKey("title"))  title = basicInfoJson.getString("caseTitle");
+                  }
+                  result.put("uuid", uuid);
+                  result.put("identificateType", "自动识别");
+                  result.put("caseType", "刑事");
+                  result.put("docType", docType);
+                  result.put("province", province);
+                  result.put("title", title);
+                  result.put("extractResult", inteliJudgeResult.toJSONString());
+                  return result.toJSONString();
+               }
+            } else if (caseDocType.equals("民事")) {
+               return null;
+            }
+         }
+      }
+      return null;
+   }
+
+
 }

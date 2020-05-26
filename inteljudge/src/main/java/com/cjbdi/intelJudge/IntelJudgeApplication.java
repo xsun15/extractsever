@@ -1,6 +1,7 @@
 package com.cjbdi.intelJudge;
 
 import com.cjbdi.intelJudge.configure.BeanConfigCenter;
+import com.cjbdi.intelJudge.model.Similarity;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -13,6 +14,9 @@ public class IntelJudgeApplication {
 		SpringApplication.run(IntelJudgeApplication.class, args);
 	}
 
-
+	@PostConstruct
+	public void init() {
+		BeanConfigCenter.init();
+	}
 
 }

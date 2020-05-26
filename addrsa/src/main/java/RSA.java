@@ -28,7 +28,7 @@ public class RSA {
 		System.out.println(message + "\t加密后的字符串为:" + messageEn);
 		String messageDe = decrypt(messageEn,rsa.keyMap.get(1));
 		System.out.println("还原后的字符串为:" + messageDe);
-		String inputPath = "/app/develop/addRsa/src/main/resources/raw";;		//要遍历的路径
+		String inputPath = "/app/develop/extractsever/addrsa/src/main/resources/raw";;		//要遍历的路径
 		File file = new File(inputPath);		//获取其file对象
 		func(file);
 	}
@@ -68,6 +68,7 @@ public class RSA {
 		//RSA加密
 		Cipher cipher = Cipher.getInstance("RSA");
 		cipher.init(Cipher.ENCRYPT_MODE, pubKey);
+		System.out.println(str);
 		String outStr = Base64.encodeBase64String(cipher.doFinal(str.getBytes("UTF-8")));
 		return outStr;
 	}
@@ -114,6 +115,7 @@ public class RSA {
 
 	private static void parseFile(File file) {
 		String saveName = file.getAbsolutePath().replaceAll("raw", "encrypt");
+		System.out.println(saveName);
 		RSA rsa = new RSA();
 		BufferedReader reader = null;
 		try {
@@ -128,7 +130,6 @@ public class RSA {
 					String messageEn = encrypt(lineNew, rsa.keyMap.get(0));
 					result += "      - \"" + messageEn + "\"\n";
 				} else  {
-					System.out.println(line);
 					result += line + "\n";
 				}
 			}

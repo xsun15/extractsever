@@ -3,7 +3,6 @@ package com.cjbdi.core.util;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.cjbdi.core.configcenter.BeanConfigCenter;
-import com.cjbdi.core.configcenter.extractconfig.province.ProvinceBasicConfig;
 import com.cjbdi.core.extractcenter.model.CasecauseModel;
 import com.cjbdi.core.extractcenter.model.DefendantModel;
 import org.apache.commons.lang.StringUtils;
@@ -15,6 +14,22 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CommonTools {
+
+    public static String deleteDigitDot(String string) {
+        string = string.replaceAll(" ", "");
+        String regxExp = "\\d[，,]\\d";
+        Pattern pattern = Pattern.compile(regxExp);
+
+        String matchedString;
+        String matchedString1;
+        for(Matcher matcher = pattern.matcher(string); matcher.find(); string = string.replaceAll(matchedString, matchedString1)) {
+            matchedString = matcher.group();
+            matchedString1 = matchedString.replace("，", "");
+            matchedString1 = matchedString1.replace(",", "");
+        }
+
+        return string;
+    }
 
     public static JSONObject casePortraitToJusticePortrait(List<DefendantModel> defendantModelList) {
         JSONObject result = new JSONObject();
@@ -179,26 +194,6 @@ public class CommonTools {
         return null;
     }
 
-
-    public static String extractProvince(String line) {
-        if (line!=null&&!line.isEmpty()) {
-            LinkedHashMap<String, ProvinceBasicConfig> features = BeanConfigCenter.extractConfig.getProvinceConfig().getProvince();
-            for (String code : features.keySet()) {
-                List<String> ruleList = features.get(code).getRule();
-                String name = features.get(code).getName();
-                if (ruleList!=null&&!ruleList.isEmpty()) {
-                    for (String rule : ruleList) {
-                        Pattern pattern = Pattern.compile(rule);
-                        Matcher matcher = pattern.matcher(line);
-                        if (matcher.find()) {
-                            return name;
-                        }
-                    }
-                }
-            }
-        }
-        return "";
-    }
 
     public static boolean isContain(String line, List<String> list) {
         for (String word : list) {

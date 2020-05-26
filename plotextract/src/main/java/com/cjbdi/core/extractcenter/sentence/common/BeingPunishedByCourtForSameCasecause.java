@@ -11,6 +11,7 @@ import com.cjbdi.core.extractcenter.utils.CasecauseModel;
 import com.cjbdi.core.extractcenter.utils.DefendantModel;
 import com.cjbdi.core.extractcenter.utils.MatchRule;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -38,7 +39,11 @@ public class BeingPunishedByCourtForSameCasecause extends BasicSentenceFeatureCl
             if(StringUtils.isNotEmpty(criminalPunishmentLabelExtractor)) {
                Map recordsOpt = MatchRule.matchPattern(criminalPunishmentLabelExtractor, this.positivePureRule, this.negativePureRule);
                if(recordsOpt != null && recordsOpt.size() > 0) {
-                  return SetLabel.run(recordsOpt, this.code);
+                  Label label =  SetLabel.run(recordsOpt, this.code);
+                  List<String> paras = new ArrayList<>();
+                  paras.add("本院认为");
+                  label.setParas(paras);
+                  return label;
                }
             }
          }
@@ -56,7 +61,11 @@ public class BeingPunishedByCourtForSameCasecause extends BasicSentenceFeatureCl
       if(recordsOpt1 != null && !recordsOpt1.isEmpty() && crimeDate != null && crimeDate.isPresent()) {
          BoolConfig boolConfig = criminalPunishmentLabelExtractor1.proc((LocalDate)crimeDate.get(), recordsOpt1);
          if(boolConfig != null) {
-            return SetLabel.run(boolConfig, this.code);
+            Label label = SetLabel.run(boolConfig, this.code);
+            List<String> paras = new ArrayList<>();
+            paras.add("经审理查明");
+            label.setParas(paras);
+            return label;
          }
       }
 

@@ -5,10 +5,9 @@ import com.cjbdi.core.extractcenter.sentence.utils.Label;
 import com.cjbdi.core.extractcenter.utils.CommonTools;
 import com.cjbdi.core.extractcenter.utils.LabelExtractor;
 import com.cjbdi.core.extractcenter.utils.MatchRule;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import org.apache.commons.lang.StringUtils;
+
+import java.util.*;
 
 public class PublicFeatureExtract extends LabelExtractor {
 
@@ -39,6 +38,13 @@ public class PublicFeatureExtract extends LabelExtractor {
          label.setText(boolConfig.colorTarget);
          label.setValue("true");
          label.setChiname(this.name);
+         List<String> rawText = new ArrayList<>();
+         if (StringUtils.isNotEmpty(boolConfig.target)) rawText.add(boolConfig.target);
+         else rawText.add(lineText);
+         label.setRawText(rawText);
+         List<Integer> list = new ArrayList<>();
+         list.add(boolConfig.startcolor);
+         label.setStartpos(list);
       }
       return label;
    }
@@ -78,6 +84,7 @@ public class PublicFeatureExtract extends LabelExtractor {
             label1.setText((String)extractResult1.get("text"));
             label1.setValue(month);
             label1.setChiname(this.name);
+
          }
 
          return label1;

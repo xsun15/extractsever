@@ -1,0 +1,220 @@
+sourceFromInfrastructureextraction:
+  name: "犯罪所得来源(电力设备,交通设施,广播电视设施,公用电信设施,军事设施,救灾、抢险、防汛、优抚、扶贫、救济款物)"
+  type: "共有纯正则"
+  code: "1001"
+  positivepurerule:
+    - "[盗窃抢骗偷][^。；]*?(电力设备|交通设施|广播电视设施|公用电信设施|军事设施|(救灾|抢险|防汛|优抚|扶贫|救济款)物)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+unableToInvestigateextraction:
+  name: "致使上游犯罪无法及时查处(替换为人名)"
+  type: "共有纯正则"
+  code: "1002"
+  positivepurerule:
+    - "(被告人|上诉人)[^。]*?[致使][^，。；]*?(无法|未能)及时查[处获]"
+    - "被告人[^。]*?妨害[^，。；]*?对上游[^，。；]*?犯罪的追究"
+    - "以逃避[^，。；]*?的追查"
+    - "致使上游犯罪无法及时查处"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+lossIrreparableextraction:
+  name: "造成公私财物损失无法挽回"
+  type: "共有纯正则"
+  code: "1003"
+  positivepurerule:
+    - "(造成|致|使|而)[^，。；]*?无法(挽回|追回)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+obstructionextraction:
+  name: "妨害司法机关对上游犯罪进行追究"
+  type: "共有纯正则"
+  code: "1004"
+  positivepurerule:
+    - "[致使][^，。；]*?(无法|未能)及时查[处获]"
+    - "妨害[^，。；]*?对上游[^，。；]*?犯罪的追究"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+majorJobextraction:
+  name: "以掩饰、隐瞒犯罪所得、犯罪所得收益为业(替换为人名)"
+  type: "共有纯正则"
+  code: "1005"
+  positivepurerule:
+    - "以掩饰、隐瞒犯罪所得、犯罪所得收益为业"
+    - "被告人[^。；]*?(专门|从事)[^。；]*?(销售|销)赃"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+selfUseextraction:
+  name: "行为人为自用而掩饰、隐瞒犯罪所得及其产生的收益(替换为人名)"
+  type: "共有纯正则"
+  code: "1006"
+  positivepurerule:
+    - "明知[^，。；]*?(犯罪所得|被盗|赃[车物])[^，。；]*?自用"
+    - "被告人[^。；]*?[购买收][^，。；]*?自用"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+computerInformationCrimeextraction:
+  name: "明知是非法获取计算机信息系统数据犯罪所获取的数据、非法控制计算机信息系统犯罪所获取的计算机信息系统控制权，而予以转移、收购、代为销售或者以其他方法掩饰、隐瞒"
+  type: "共有纯正则"
+  code: "1007"
+  positivepurerule:
+    - "(买|卖|销售).{0,10}用户.{0,5}数据"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+seriousUpstreamCrimeextraction:
+  name: "明知上游犯罪行为较重的"
+  type: "共有纯正则"
+  code: "1008"
+  positivepurerule:
+    - "上游犯罪行为.{0,5}较重"
+    - "明知.{0,5}(从事)?犯罪(活动|所得).{0,5}(而|仍).{0,10}(协助|予以)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+majorPublicInterestextraction:
+  name: "犯罪对象涉及国家安全、公共安全或重大公共利益的"
+  type: "共有纯正则"
+  code: "1009"
+  positivepurerule:
+    - "(涉及|危害|威胁).{0,15}国家安全"
+    - "(涉及|危害|威胁).{0,15}公共安全"
+    - "(涉及|危害|威胁).{0,15}公共利益"
+    - "(盗|偷卖).*?(电缆|原油)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+buySellextraction:
+  name: "买卖、介绍买卖、典当、拍卖、抵押或者用其抵债的(替换为人名)"
+  type: "共有纯正则"
+  code: "1010"
+  positivepurerule:
+    - "被告人.{0,10}(买|卖|介绍.{0,10}[买卖]|典当|拍卖|抵押|抵债)[^。？！；]+(?<!自行|[123456789]|电瓶|电动|押|三轮|用|停|该)车(?!电瓶|计|后备箱|内|被|运|拉|欲|以|总计|为)"
+    - "(购|买|卖|典当|拍卖|抵押|抵债)[^，。？！；]+(?<!自行|[23456789]|电瓶|电动|押|三轮|用|停)车(?!电瓶|计|后备箱|内|被|运|拉|欲|以|总计|为)[^？！；]*?(盗|抢劫|丢失|骗|未提供合法有效|犯罪所得|无有效凭证)"
+    - "(购|买|卖|典当|拍卖|抵押|抵债)[^，。？！；]+(盗|抢劫|丢失|骗|未提供.{0,5}合法有效|无合法来历凭证|没有任何合法手续)[^。？！；]*?(?<!自行|[123456789]|电瓶|电动|押|三轮|用|停)车(?!电瓶|计|后备箱|内|被|运|拉|欲|以|总计|为|架|公司)"
+    - "(盗|抢劫|丢失|骗|未提供.{0,5}合法有效|无合法来历凭证|没有任何合法手续)[^。？！；]+(购|买|卖|典当|拍卖|抵押|抵债)[^。？！；]+(?<!自行|[123456789]|电瓶|电动|押|三轮|用|停|该)车(?!电瓶|计|后备箱|内|被|运|拉|欲|以|总计|为|公司)"
+    - "(盗|抢劫|丢失|骗|未提供.{0,5}合法有效|无合法来历凭证|没有任何合法手续)[^。？！；]+(?<!自行|[123456789]|电瓶|电动|押|三轮|用|停)车(?!电瓶|计|后备箱|内|被|运|拉|欲|以|总计|为|公司)[^。？！；]*?(购|买|卖|典当|拍卖|抵押|抵债|质押)"
+    - "(?<!自行|[123456789]|电瓶|电动|押|三轮|用|停|驾|下|上)车(?!电瓶|计|后备箱|内|被|运|拉|欲|以|总计|系|辆|店|公司|厅|搭乘|后|到|倒至).*?(盗|抢劫|丢失|骗|未提供合法有效|犯罪所得|无有效凭证)[^。？！；]*?(购|买|卖|典当|拍卖|抵押|抵债)"
+    - "(?<!自行|[123456789]|电瓶|电动|押|三轮|用|停|驾|下|上|该)车(?!电瓶|计|后备箱|内|被|运|拉|欲|以|总计|开|系|辆|店|公司|厅|搭乘|后|到|倒至).*?(购|买|卖|典当|拍卖|抵押|抵债)[^。？！；]*?(盗|抢劫|丢失|骗|未提供合法有效)"
+    - "被告人.{0,10}明知是赃车而(购|买|卖|典当|拍卖|抵押|抵债)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+assemblyextraction:
+  name: "拆解、拼装或者组装的"
+  type: "共有纯正则"
+  code: "1011"
+  positivepurerule:
+    - "拆(解|卸)[^，。；]*?车"
+    - "车[^，。；]*?拆(解|卸)"
+    - "(拼|组|改)装[^，。；]*?车"
+    - "车[^，。；]*?(拼|组|改)装"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+modifyVehicleIdextraction:
+  name: "修改发动机号、车辆识别代号的"
+  type: "共有纯正则"
+  code: "1012"
+  positivepurerule:
+    - "改.{0,10}发动机号"
+    - "改.{0,10}车.{0,10}识别.{0,5}号"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+modifyVehicleShapeextraction:
+  name: "更改车身颜色或者车辆外形的"
+  type: "共有纯正则"
+  code: "1013"
+  positivepurerule:
+    - "[改涂喷].{0,10}车.{0,10}色"
+    - "改.{0,10}车.{0,10}外形"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+provideVehicleCertificateextraction:
+  name: "提供或者出售机动车来历凭证、整车合格证、号牌以及有关机动车的其他证明和凭证的"
+  type: "共有纯正则"
+  code: "1014"
+  positivepurerule:
+    - "(提供|出售).{0,10}车.{0,10}(凭证|合格证|号牌|证明)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+fakeVehicleCertificateextraction:
+  name: "提供或者出售伪造、变造的机动车来历凭证、整车合格证、号牌以及有关机动车的其他证明和凭证的"
+  type: "共有纯正则"
+  code: "1015"
+  positivepurerule:
+    - "伪造.{0,10}车.{0,10}(凭证|合格证|号牌|证明)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+vehicleNumberextraction:
+  name: "机动车犯罪数量"
+  type: "私有"
+  code: "1016"
+  positivepurerule:
+    - "[盗窃抢骗偷买卖].{0,15}车.{0,5}[\\d一二三四五六七八九十百千万]辆"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+vehicleCrimeextraction:
+  name: "机动车犯罪"
+  type: "共有纯正则"
+  code: "1017"
+  positivepurerule:
+    - "[盗窃抢骗偷买卖购].{0,18}(?<!自行|[123456789]|电瓶|电动|押|三轮|用|停)车(?!电瓶|计|后备箱|内|被|运|拉|欲|以|总计)"
+    - "(?<!自行|电瓶|电动|押|三轮|用|停)车(?!电瓶|计|后备箱|内|被|运|拉|欲|以|总计).{0,5}(价值|共计|合计).{0,9}[\\d一二三四五六七八九十百千万](元|人民币)"
+    - "(?<!自行|电瓶|电动|押|三轮|用|停)车(?!电瓶|计|后备箱|内|被|运|拉|欲|以|总计)为.{0,20}[盗窃抢骗偷买卖购].{0,5}所得"
+    - "明知该.{0,10}(?<!自行|电瓶|电动|押|三轮)车[是系为]被盗车辆的情况下"
+    - "[盗窃抢骗偷].{0,10}所得的.{0,10}(?<!自行|电瓶|电动|押|三轮|用|停)车(?!电瓶|计|后备箱|内|被|运|拉|欲|以|总计)"
+    - "明知.{0,5}销售的.{0,15}(?<!自行|电瓶|电动|押|三轮)车[是系为]赃物"
+vehicleValueextraction:
+  name: "机动车犯罪价值"
+  type: "私有"
+  code: "1018"
+  positivepurerule:
+  - "车.{0,5}(价值|共计|合计).{0,5}[\\d一二三四五六七八九十百千万](元|人民币)"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+punishedbycourtconcealciextract:
+  name: "因掩饰、隐瞒受过刑事处罚的"
+  type: "私有"
+  code: "1019"
+  positivepurerule:
+    - "因(掩饰|隐瞒)受过刑事处罚"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+punishedbygovernconcealciextract:
+  name: "一年内因掩饰、隐瞒受过行政处罚的"
+  type: "私有"
+  code: "1020"
+  positivepurerule:
+    - "因(掩饰|隐瞒)受过行政处罚"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+amountofmoneyconcealextract:
+  name: "掩饰隐瞒数额"
+  type: "私有"
+  code: "1021"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
+timesextract:
+  name: "掩饰、隐瞒次数"
+  type: "私有"
+  code: "1022"
+  positivepurerule:
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
