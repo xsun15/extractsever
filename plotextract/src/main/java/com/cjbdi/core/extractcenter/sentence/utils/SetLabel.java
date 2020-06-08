@@ -16,11 +16,6 @@ public class SetLabel {
       label.setUsedRegx((String)extractResult.get("Pattern"));
       label.setFlag((long)Integer.parseInt(code));
       label.setText((String)extractResult.get("text"));
-      List<String> rawText = new ArrayList<>();
-      rawText.add(extractResult.get("rawText"));
-      label.setRawText(rawText);
-      List<Integer> list = new ArrayList<>();
-      list.add(Integer.parseInt(extractResult.get("startpos")));
       label.setValue("true");
       return label;
    }
@@ -31,16 +26,7 @@ public class SetLabel {
       label.setFlag((long)Integer.parseInt(code));
       label.setText(numberConfig.colorTarget);
       label.setValue(String.valueOf(numberConfig.value));
-      List<String> rawText = new ArrayList<>();
-      rawText.add(numberConfig.target);
-      label.setRawText(rawText);
       label.setParaName(numberConfig.paraName);
-      List<Integer> list = new ArrayList<>();
-      list.add(numberConfig.startcolor);
-      label.setStartpos(list);
-      List<String> paras = new ArrayList<>();
-      paras.add(numberConfig.paraName);
-      label.setParas(paras);
       return label;
    }
 
@@ -49,12 +35,6 @@ public class SetLabel {
       label.setUsedRegx(boolConfig.rule);
       label.setFlag((long)Integer.parseInt(code));
       label.setText(boolConfig.colorTarget);
-      List<String> rawText = new ArrayList<>();
-      rawText.add(boolConfig.target);
-      label.setRawText(rawText);
-      List<Integer> list = new ArrayList<>();
-      list.add(boolConfig.startcolor);
-      label.setStartpos(list);
       label.setValue("true");
       return label;
    }

@@ -40,6 +40,7 @@ public class DeathNumber extends BasicSentenceFeatureClass {
       NumberConfig numberConfig = numberVictim.doextract(defendantModel, casecauseModel, this.keyword, this.noiseword);
       if(numberConfig != null) {
          Label label = SetLabel.run(numberConfig, this.code);
+         label.setTraceSourceMap(numberConfig.traceSourceMap);
          return label;
       } else {
          return null;

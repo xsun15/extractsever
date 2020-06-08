@@ -1,7 +1,9 @@
 package com.cjbdi.core.extractcenter.sentence.common;
 
+import com.cjbdi.core.convertlabelcenter.utils.TraceSource;
 import com.cjbdi.core.extractcenter.sentence.common.utils.NumberConfig;
 import com.cjbdi.core.extractcenter.utils.*;
+import com.cjbdi.core.servercenter.utils.TraceSourceModel;
 import com.hankcs.hanlp.HanLP;
 import com.hankcs.hanlp.seg.Segment;
 import com.hankcs.hanlp.seg.common.Term;
@@ -60,7 +62,11 @@ public class NumberVictim {
 
    public NumberConfig runSummarize(String text, String keyword, String noiseword) {
       if (StringUtils.isNotEmpty(text)) {
-         List<String> contentList = Arrays.asList(text.split(noiseword));
+         List<String> textList = Arrays.asList(text.split("\n"));
+         List<String> contentList = new ArrayList<>();
+         for (String line : textList) {
+             contentList.addAll(Arrays.asList(line.split(noiseword)));
+         }
          List<String> targetContent = new ArrayList<>();
          for (String sentence : contentList) {
             if (matchRule(sentence, keyword)) {
@@ -70,6 +76,7 @@ public class NumberVictim {
          if (targetContent != null && targetContent.size() > 0) {
             int injuryNumber = 0;
             List<NumberConfig> numberConfigList = new ArrayList<>();
+            Map<String, TraceSourceModel> traceSourceModelMap = new HashMap<>();
             for (String content : targetContent) {
                NumberConfig numberConfig = matchPatternNumberConfig(content, positivePurePattern, negativePurePattern);
                if (numberConfig != null) {
@@ -80,6 +87,16 @@ public class NumberVictim {
                   numberConfig.startcolor = numberConfig.startcolor + text.indexOf(content);
                   numberConfig.endcolor = numberConfig.endcolor + text.indexOf(content);
                   numberConfig.colorTarget = numberConfig.startcolor + "," + numberConfig.endcolor + ";";
+                  // 提取溯源
+                  for (String line : textList) {
+                     if (line.contains(content)) {
+                        TraceSourceModel traceSourceModel = new TraceSourceModel();
+                        traceSourceModel.startpos.add(line.indexOf(content) + content.indexOf(numberConfig.target));
+                        traceSourceModel.matchText.add(numberConfig.target);
+                        traceSourceModelMap.put(line, traceSourceModel);
+                        break;
+                     }
+                  }
                   numberConfigList.add(numberConfig);
                }
             }
@@ -97,6 +114,7 @@ public class NumberVictim {
                ColorText colorText = new ColorText();
                result.value= injuryNumber;
                result.colorTarget = colorText.run(colorTextConfig);
+               result.traceSourceMap = traceSourceModelMap;
                return result;
             }
          }
@@ -107,7 +125,11 @@ public class NumberVictim {
    public NumberConfig runCalculate(String text, String keyword, String noiseword, Set<String> defendants) {
       Segment segment = HanLP.newSegment().enableNameRecognize(true);
       if (StringUtils.isNotEmpty(text)) {
-         List<String> contentList = Arrays.asList(text.split(noiseword));
+         List<String> textList = Arrays.asList(text.split("\n"));
+         List<String> contentList = new ArrayList<>();
+         for (String line : textList) {
+            contentList.addAll(Arrays.asList(line.split(noiseword)));
+         }
          List<String> targetContent = new ArrayList<>();
          for (String sentence : contentList) {
             if (matchRule(sentence, keyword)) {
@@ -119,13 +141,13 @@ public class NumberVictim {
          if (targetContent != null && targetContent.size() > 0) {
             // 利用hanlp的词法分析提取人名
             List<NumberConfig> numberConfigList = new ArrayList<>();
+            Map<String, TraceSourceModel> traceSourceModelMap = new HashMap<>();
             for (String content : targetContent) {
                List<NumberConfig> numberConfigs= matchTextListPattern(content, positivePurePattern, negativePurePattern);
                if (numberConfigs!=null) {
                   for (NumberConfig numberConfig : numberConfigs) {
                      String target = "";
                      if (target==null||target.isEmpty()) target = numberConfig.target;
-
                      List<Term> termList = segment.seg(target);
                      boolean flag = false;
                      for (Term term : termList) {
@@ -138,13 +160,19 @@ public class NumberVictim {
                         }
                      }
                      if (!flag){
-
                         min += 1; //如果如人头的结果为空，则至少要有一个人
-
                      }
 
-
-
+                     // 提取溯源
+                     for (String line : textList) {
+                        if (line.contains(content)) {
+                           TraceSourceModel traceSourceModel = new TraceSourceModel();
+                           traceSourceModel.startpos.add(line.indexOf(content) + numberConfig.startcolor);
+                           traceSourceModel.matchText.add(numberConfig.target);
+                           traceSourceModelMap.put(line, traceSourceModel);
+                           break;
+                        }
+                     }
                   }
                }
             }
@@ -162,6 +190,7 @@ public class NumberVictim {
                ColorText colorText = new ColorText();
                result.value= nameSet.size()>1?nameSet.size():1;
                result.colorTarget = colorText.run(colorTextConfig);
+               result.traceSourceMap = traceSourceModelMap;
                return result;
             }
          }

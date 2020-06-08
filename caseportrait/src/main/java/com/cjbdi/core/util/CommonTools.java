@@ -92,7 +92,7 @@ public class CommonTools {
     }
 
     public static boolean ismatch(String line, List<String> expPatternList) {
-        if (StringUtils.isNotEmpty(line)) {
+        if (StringUtils.isNotEmpty(line) && expPatternList!=null) {
             for (String exp : expPatternList) {
                 Pattern pattern = Pattern.compile(exp);
                 Matcher matcher = pattern.matcher(line);

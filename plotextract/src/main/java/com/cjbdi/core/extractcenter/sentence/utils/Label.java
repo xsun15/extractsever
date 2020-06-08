@@ -1,15 +1,13 @@
 package com.cjbdi.core.extractcenter.sentence.utils;
 
 
-import java.util.ArrayList;
-import java.util.List;
+import com.cjbdi.core.servercenter.utils.TraceSourceModel;
+
+import java.util.Map;
 
 public class Label {
 
    long flag;
-   List<Integer> startpos = new ArrayList<>();
-   List<String> rawText = new ArrayList<>();
-   List<String> paras = new ArrayList<>();
    String value;
    String text;
    String paraText;
@@ -18,6 +16,9 @@ public class Label {
    String usedRegx;
    String prioritylevel;
    String chiname;
+
+   // 提取溯源
+   Map<String, TraceSourceModel> traceSourceMap;
 
 
    public long getFlag() {
@@ -96,27 +97,11 @@ public class Label {
       this.paraName = paraName;
    }
 
-   public List<Integer> getStartpos() {
-      return startpos;
+   public Map<String, TraceSourceModel> getTraceSourceMap() {
+      return traceSourceMap;
    }
 
-   public void setStartpos(List<Integer> startpos) {
-      this.startpos = startpos;
-   }
-
-   public List<String> getRawText() {
-      return rawText;
-   }
-
-   public void setRawText(List<String> rawText) {
-      this.rawText = rawText;
-   }
-
-   public List<String> getParas() {
-      return paras;
-   }
-
-   public void setParas(List<String> paras) {
-      this.paras = paras;
+   public void setTraceSourceMap(Map<String, TraceSourceModel> traceSourceMap) {
+      this.traceSourceMap = traceSourceMap;
    }
 }

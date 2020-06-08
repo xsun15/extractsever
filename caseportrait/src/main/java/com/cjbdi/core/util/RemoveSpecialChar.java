@@ -14,6 +14,11 @@ public class RemoveSpecialChar {
         result = CommonTools.deleteDigitDot(result);
         return result.trim();
     }
+    public String cleanSomeEnglish(String content) {
+        content = content.replaceAll("null","");
+        return content;
+    }
+
     public String cleanTrialReportModel(String content) {
         content = content.replaceAll("[^0-9a-zA-Z\\u4e00-\\u9fa5.，,、。？“”:：*×\\n《》Oo〇（）()\\s]+","");
         String[] contentList = content.split("\n");

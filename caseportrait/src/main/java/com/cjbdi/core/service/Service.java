@@ -1,5 +1,6 @@
 package com.cjbdi.core.service;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.cjbdi.core.develop.FactCrime;
 import com.cjbdi.core.extractcenter.BeanExtractCenter;
@@ -22,6 +23,45 @@ import java.util.*;
 
 @RestController
 public class Service extends RemoveSpecialChar {
+
+    @RequestMapping(value = "/extract/complexity", produces = "application/json;charset=UTF-8", method = RequestMethod.POST)
+    public String extractComplexity(@RequestBody JSONObject jsonParam, @Context HttpServletRequest request) {
+        JSONObject result = new JSONObject();
+        if (jsonParam.containsKey("fullText")) {
+            String fullText = jsonParam.getString("fullText");
+            if (StringUtils.isNotEmpty(fullText)) {
+                fullText = clean(fullText);
+                String docType = "";
+                if (jsonParam.containsKey("docType")) docType = jsonParam.getString("docType");
+                else docType = CommonTools.extractDocType(fullText);
+                if (StringUtils.isEmpty(docType)) return "";
+                if (docType.equals("刑事判决书")) {
+                    FirstTrialModel firstTrialModel= BeanExtractCenter.firstTrialSplit.split(fullText);
+                    Set<String> defendantSet = BeanExtractCenter.defendantExtract.extract(firstTrialModel.getDefendant());
+                    List<String> caseList = BeanExtractCenter.firstTrialSplit.findCasecause(firstTrialModel.getDefendant(), firstTrialModel.getCourtOpinion(), firstTrialModel.getJustice());
+                    if (defendantSet!=null&&caseList!=null) {
+                        if (defendantSet.size()==1&&caseList.size()==1) result.put("复杂度", 1);
+                        else if (defendantSet.size()>1&&caseList.size()==1) result.put("复杂度", 2);
+                        else if (defendantSet.size()==1&&caseList.size() > 1) result.put("复杂度", 3);
+                        else if (defendantSet.size()>1&&caseList.size()>1) result.put("复杂度", 4);
+                        return result.toJSONString();
+                    }
+                } else if (docType.equals("起诉书")) {
+                    IndicitmentModel indicitmentModel = BeanExtractCenter.indicitmentSplit.split(fullText);
+                    Set<String> defendantSet = BeanExtractCenter.defendantExtract.extract(indicitmentModel.getDefendant());
+                    List<String> caseList = BeanExtractCenter.indicitmentSplit.findCasecause(indicitmentModel.getDefendant(), indicitmentModel.getProcuOpinion(), indicitmentModel.getJustice());
+                    if (defendantSet!=null&&caseList!=null) {
+                        if (defendantSet.size()==1&&caseList.size()==1) result.put("复杂度", 1);
+                        else if (defendantSet.size()>1&&caseList.size()==1) result.put("复杂度", 2);
+                        else if (defendantSet.size()==1&&caseList.size() > 1) result.put("复杂度", 3);
+                        else if (defendantSet.size()>1&&caseList.size()>1) result.put("复杂度", 4);
+                        return result.toJSONString();
+                    }
+                }
+            }
+        }
+        return null;
+    }
 
     @RequestMapping(value = "/extract/province", produces = "application/json;charset=UTF-8", method = RequestMethod.POST)
     public String extractProvince(@RequestBody JSONObject jsonParam, @Context HttpServletRequest request) {
@@ -105,6 +145,7 @@ public class Service extends RemoveSpecialChar {
 
     @RequestMapping(value = "/document/split", produces = "application/json;charset=UTF-8", method = RequestMethod.POST)
     public String split(@RequestBody JSONObject jsonParam, @Context HttpServletRequest request) {
+        System.out.println("你好啊");
         if (jsonParam.containsKey("fullText")) {
             String fullText = jsonParam.getString("fullText");
             if (StringUtils.isNotEmpty(fullText)) {
@@ -239,6 +280,44 @@ public class Service extends RemoveSpecialChar {
         return "";
     }
 
+    @RequestMapping(value = "/document/portrait/justice/intelJudge", produces = "application/json;charset=UTF-8", method = RequestMethod.POST)
+    public String portraitJusticeIntelJudge(@RequestBody JSONObject jsonParam, @Context HttpServletRequest request) {
+
+        if (jsonParam.containsKey("fullText")) {
+            String fullText = jsonParam.getString("fullText");
+            if (StringUtils.isNotEmpty(fullText)) {
+                fullText = clean(fullText);
+                String docType = "";
+                if (jsonParam.containsKey("docType")) docType = jsonParam.getString("docType");
+                else docType = CommonTools.extractDocType(fullText);
+                if (StringUtils.isEmpty(docType)) return "";
+                else if (docType.equals("刑事判决书")) {
+                    FirstTrialModel firstTrialModel = BeanExtractCenter.firstTrialSplit.split(fullText);
+                    Set<String> defendantSet = BeanExtractCenter.defendantExtract.extract(firstTrialModel.getDefendant());
+                    JSONObject result = CasePortrait.run(firstTrialModel.getJustice(), firstTrialModel.getAccuse(), defendantSet);
+                    return JSONObject.toJSONString(result);
+                } else if (docType.equals("起诉书")) {
+                    //分段
+                    IndicitmentModel indicitmentModel = BeanExtractCenter.indicitmentSplit.split(fullText);
+                    //从被告人段中得到所有被告人
+                    Set<String> defendantSet = BeanExtractCenter.defendantExtract.extract(indicitmentModel.getDefendant());
+                    //抽取案由
+                    JSONObject result = CasePortrait.run(indicitmentModel.getJustice(), "", defendantSet);
+                    return JSONObject.toJSONString(result);
+                } else if (docType.equals("不起诉决定书")) {
+                    //分段
+                    NoprosModel noprosModel = BeanExtractCenter.noprosSplit.split(fullText);
+                    //从被告人段中得到所有被告人
+                    Set<String> defendantSet = BeanExtractCenter.defendantExtract.extract(noprosModel.getDefendant());
+                    //调用模型预测案由
+                    List<String> caseList = BeanExtractCenter.noprosSplit.findCasecause(noprosModel.getDefendant(), noprosModel.getProcuOpinion(), noprosModel.getJustice());
+                    return "";
+                }
+            }
+        }
+        return "";
+    }
+
 
     @RequestMapping(value = "/document/portrait", produces = "application/json;charset=UTF-8", method = RequestMethod.POST)
     public String portrait(@RequestBody JSONObject jsonParam, @Context HttpServletRequest request) {
@@ -259,7 +338,7 @@ public class Service extends RemoveSpecialChar {
                             firstTrialModel.getSue(), firstTrialModel.getDefendant(), defendantSet, caseList);
                     System.out.println("---------------进来了-----------------");
                     System.out.println(JSONObject.toJSONString(defendantModelList));
-                    return JSONObject.toJSONString(defendantModelList);
+                    return cleanSomeEnglish(JSONObject.toJSONString(defendantModelList));
                 } else if (docType.equals("起诉书")) {
                     //分段
                     IndicitmentModel indicitmentModel = BeanExtractCenter.indicitmentSplit.split(fullText);
@@ -271,7 +350,7 @@ public class Service extends RemoveSpecialChar {
                             indicitmentModel.getInvestigate(), indicitmentModel.getDefendant(), defendantSet, caseList);
                     System.out.println("-------------进来了-------------------");
                     System.out.println(JSONObject.toJSONString(defendantModelList));
-                    return JSONObject.toJSONString(defendantModelList);
+                    return cleanSomeEnglish(JSONObject.toJSONString(defendantModelList));
                 } else if (docType.equals("不起诉决定书")) {
                     //分段
                     NoprosModel noprosModel = BeanExtractCenter.noprosSplit.split(fullText);
@@ -287,21 +366,21 @@ public class Service extends RemoveSpecialChar {
                     List<String> caseList = BeanExtractCenter.reviewReportSplit.findCasecause(reviewReportModel.getCasecause(), reviewReportModel.getProcopiniondetail(), reviewReportModel.getFacts());
                     List<DefendantModel> defendantModelList = CasePortrait.run(reviewReportModel.getProcopiniondetail(), reviewReportModel.getFacts(), "",
                             reviewReportModel.getInvestopinion(), reviewReportModel.getDefendant(), defendantSet, caseList);
-                    return JSONObject.toJSONString(defendantModelList);
+                    return cleanSomeEnglish(JSONObject.toJSONString(defendantModelList));
                 } else if (docType.equals("审结报告")) {
                     TrialReportModel trialReportModel = BeanExtractCenter.trialReportSplit.split(fullText);
                     Set<String> defendantSet = BeanExtractCenter.defendantExtract.extract(trialReportModel.getBothsides());
                     List<String> caseList = BeanExtractCenter.trialReportSplit.findCasecause(trialReportModel.getBothsides(), trialReportModel.getCourtopinion(), trialReportModel.getJustice());
                     List<DefendantModel> defendantModelList = CasePortrait.run(trialReportModel.getCourtopinion(), trialReportModel.getJustice(), "",
                             trialReportModel.getAccusDefendDetail(), trialReportModel.getBothsides(), defendantSet, caseList);
-                    return JSONObject.toJSONString(defendantModelList);
+                    return cleanSomeEnglish(JSONObject.toJSONString(defendantModelList));
                 } else if (docType.equals("起诉意见书")) {
                     IndictOpinionModel indictOpinionModel = BeanExtractCenter.indictOpinionSplit.split(fullText);
                     Set<String> defendantSet = BeanExtractCenter.defendantExtract.extract(indictOpinionModel.getDefendant());
                     List<String> caseList = BeanExtractCenter.indictOpinionSplit.findCasecause(indictOpinionModel.getDefendant(), indictOpinionModel.getPoliceOpinion(), indictOpinionModel.getInvestigate());
                     List<DefendantModel> defendantModelList = CasePortrait.run(indictOpinionModel.getPoliceOpinion(), indictOpinionModel.getInvestigate(), "",
                             "", indictOpinionModel.getDefendant(), defendantSet, caseList);
-                    return JSONObject.toJSONString(defendantModelList);
+                    return cleanSomeEnglish(JSONObject.toJSONString(defendantModelList));
                 }
             }
         }
@@ -351,6 +430,59 @@ public class Service extends RemoveSpecialChar {
                 resultJson.put("docType", docType);
                 resultJson.put("province", province);
                 return resultJson.toString();
+            }
+        }
+        return "";
+    }
+
+    @RequestMapping(value = "/predict/casecause", produces = "application/json;charset=UTF-8", method = RequestMethod.POST)
+    public String portraitCasecause(@RequestBody JSONObject reqParam, @Context HttpServletRequest request) {
+        System.out.println(reqParam.getString("fullText"));
+        if (reqParam.containsKey("fullText")) {
+            String fullText = reqParam.getString("fullText");
+            if (StringUtils.isNotEmpty(fullText)) {
+                fullText = clean(fullText);
+                String docType = "";
+                if (reqParam.containsKey("docType")) docType = reqParam.getString("docType");
+                else docType = CommonTools.extractDocType(fullText);
+                if (StringUtils.isEmpty(docType)) return "";
+                JSONArray resultArray = new JSONArray();
+                if (docType.equals("刑事判决书")) {
+                    FirstTrialModel firstTrialModel = BeanExtractCenter.firstTrialSplit.split(fullText);
+                    Set<String> defendantSet = BeanExtractCenter.defendantExtract.extract(firstTrialModel.getDefendant());
+                    JSONObject portrayJustice = CasePortrait.run(firstTrialModel.getJustice(), firstTrialModel.getAccuse(), defendantSet);
+                    List<String> caseList = BeanExtractCenter.firstTrialSplit.findCasecauseOpinion(firstTrialModel.getCourtOpinion());
+                    List<DefendantModel> defendantModelList = CasePortrait.defendantPortray(firstTrialModel.getCourtOpinion(), defendantSet, caseList);
+                    for (DefendantModel defendantModel : defendantModelList) {
+                        String name = defendantModel.getName();
+                        String justice = portrayJustice.getString(name);
+                        List<String> casecauseModel = BeanExtractCenter.firstTrialSplit.findCasecauseJustice(justice);
+                        JSONObject result = new JSONObject();
+                        result.put("accusedName", name);
+                        result.put("opinionCasecause", defendantModel.getCasecauseSet());
+                        result.put("predCasecause", casecauseModel);
+                        resultArray.add(result);
+                    }
+                    return JSONObject.toJSONString(resultArray);
+                } else if (docType.equals("起诉书")) {
+                    IndicitmentModel indicitmentModel = BeanExtractCenter.indicitmentSplit.split(fullText);
+                    Set<String> defendantSet = BeanExtractCenter.defendantExtract.extract(indicitmentModel.getDefendant());
+                    JSONObject portrayJustice = CasePortrait.run(indicitmentModel.getJustice(), indicitmentModel.getJustice(), defendantSet);
+                    List<String> caseList = BeanExtractCenter.indicitmentSplit.findCasecauseOpinion(indicitmentModel.getProcuOpinion());
+                    List<DefendantModel> defendantModelList = CasePortrait.defendantPortray(indicitmentModel.getProcuOpinion(), defendantSet, caseList);
+                    JSONObject result = new JSONObject();
+                    for (DefendantModel defendantModel : defendantModelList) {
+                        String name = defendantModel.getName();
+                        String justice = portrayJustice.getString(name);
+                        List<String> casecauseModel = BeanExtractCenter.indicitmentSplit.findCasecauseJustice(justice);
+                        result.put("accusedName", name);
+                        result.put("opinionCasecause", defendantModel.getCasecauseSet());
+                        result.put("predCasecause", casecauseModel);
+                        resultArray.add(result);
+                    }
+                    return JSONObject.toJSONString(resultArray);
+                }
+                return "";
             }
         }
         return "";

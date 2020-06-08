@@ -5,12 +5,7 @@ import com.cjbdi.core.developcenter.utils.CommonTools;
 import com.cjbdi.core.extractcenter.sentence.common.money.MoneyConfig;
 import com.cjbdi.core.extractcenter.sentence.common.utils.BoolConfig;
 import com.cjbdi.core.extractcenter.sentence.common.utils.NumberConfig;
-import com.cjbdi.core.extractcenter.utils.ColorText;
-import com.cjbdi.core.extractcenter.utils.ColorTextConfig;
-import com.cjbdi.core.extractcenter.utils.ExtractNumber;
-import com.cjbdi.core.extractcenter.utils.IsDigit;
-import com.cjbdi.core.extractcenter.utils.WordfigureToNumber;
-import com.cjbdi.core.servercenter.utils.Tools;
+import com.cjbdi.core.servercenter.utils.TraceSourceModel;
 import com.hankcs.hanlp.HanLP;
 import com.hankcs.hanlp.seg.Segment;
 import com.hankcs.hanlp.seg.common.Term;
@@ -157,7 +152,6 @@ public class MatchRule {
       Matcher matcher;
       if(text != null && !text.isEmpty()) {
          var3 = nruleList.iterator();
-
          while(var3.hasNext()) {
             pattern = (Pattern)var3.next();
             matcher = pattern.matcher(text);
@@ -166,28 +160,34 @@ public class MatchRule {
             }
          }
       }
-
       if(text != null && !text.isEmpty()) {
-         var3 = pruleList.iterator();
-         while(var3.hasNext()) {
-            pattern = (Pattern)var3.next();
-            matcher = pattern.matcher(text);
-            if(matcher.find()) {
-               BoolConfig boolConfig = new BoolConfig();
-               boolConfig.rule = pattern.toString();
-               boolConfig.target = matcher.group();
-               boolConfig.startcolor = text.indexOf(boolConfig.target);
-               boolConfig.endcolor = boolConfig.startcolor + boolConfig.target.length();
-               ColorTextConfig colorTextConfig = new ColorTextConfig();
-               colorTextConfig.text = text;
-               colorTextConfig.effectText = boolConfig.startcolor + "," + boolConfig.endcolor + ";";
-               ColorText colorText = new ColorText();
-               boolConfig.colorTarget = colorText.run(colorTextConfig);
-               return boolConfig;
+         List<String> textList = Arrays.asList(text.split("\n"));
+         for (String lineText : textList) {
+            var3 = pruleList.iterator();
+            while (var3.hasNext()) {
+               pattern = (Pattern) var3.next();
+               matcher = pattern.matcher(lineText);
+               if (matcher.find()) {
+                  BoolConfig boolConfig = new BoolConfig();
+                  boolConfig.rule = pattern.toString();
+                  boolConfig.target = matcher.group();
+                  boolConfig.startcolor = text.indexOf(boolConfig.target);
+                  boolConfig.endcolor = boolConfig.startcolor + boolConfig.target.length();
+                  ColorTextConfig colorTextConfig = new ColorTextConfig();
+                  colorTextConfig.text = text;
+                  colorTextConfig.effectText = boolConfig.startcolor + "," + boolConfig.endcolor + ";";
+                  ColorText colorText = new ColorText();
+                  boolConfig.colorTarget = colorText.run(colorTextConfig);
+                  // 提取溯源 (根据位置)
+                  TraceSourceModel traceSourceModel = new TraceSourceModel();
+                  traceSourceModel.matchText.add(matcher.group());
+                  traceSourceModel.startpos.add(lineText.indexOf(matcher.group()));
+                  boolConfig.traceSourceMap.put(lineText, traceSourceModel);
+                  return boolConfig;
+               }
             }
          }
       }
-
       return null;
    }
 

@@ -40,7 +40,7 @@ public class ToInteliJudge {
                JSONArray plotListTarget = convert("总则", plotList, "25");
                factListsTarget.addAll(plotListTarget);
                percaseFetauresTarget.put("caseCause", casecause);
-               percaseFetauresTarget.put("features ", factListsTarget);
+               percaseFetauresTarget.put("features", factListsTarget);
                completeFeaturesTarget.add(percaseFetauresTarget);
             }
 
@@ -88,23 +88,23 @@ public class ToInteliJudge {
                      value = extractFeature.getString("flag");
                      String text = extractFeature.getString("text");
                      String value1 = extractFeature.getString("value");
-                     List<String> rawText = extractFeature.getObject("rawText", List.class);
-                     List<Integer> startPos = extractFeature.getObject("startpos", List.class);
-                     List<String> paraName = extractFeature.getObject("paras", List.class);
+                     Object rawText = extractFeature.get("featureContent");
+                     Object startPos = extractFeature.get("locationIndex");
+                     Object paraName = extractFeature.get("locationPara");
                      if(StringUtils.isNotEmpty(rule) && rule.contains(value) && StringUtils.isNotEmpty(value1) && value1.equals("true")) {
                         rule = rule.replaceAll(value, "true");
                         matchText.add(text);
                         targetValue = "true";
-                        if (rawText!=null) matchTextList.addAll(rawText);
-                        if (startPos!=null) matchStartPos.addAll(startPos);
-                        if (paraName!=null) matchParas.addAll(paraName);
+                        if (rawText!=null) matchTextList.addAll((List) rawText);
+                        if (startPos!=null) matchStartPos.addAll((List) startPos);
+                        if (paraName!=null) matchParas.addAll((List) paraName);
                      } else if(StringUtils.isNotEmpty(rule) && rule.contains(value)) {
                         rule = rule.replaceAll(value, "true");
                         matchText.add(text);
                         targetValue = value1;
-                        if (rawText!=null) matchTextList.addAll(rawText);
-                        if (startPos!=null) matchStartPos.addAll(startPos);
-                        if (paraName!=null) matchParas.addAll(paraName);
+                        if (rawText!=null) matchTextList.addAll((List) rawText);
+                        if (startPos!=null) matchStartPos.addAll((List) startPos);
+                        if (paraName!=null) matchParas.addAll((List) paraName);
                      }
                   }
 
@@ -123,7 +123,7 @@ public class ToInteliJudge {
                   }
 
                   if(CalculateExpression.run(rule)) {
-                     targetList.add(convert(order + code, matchText, targetValue, name, type, datatype, matchTextList, matchStartPos, matchParas));
+                     targetList.add(convert(order + code, targetValue, name, type, datatype, matchTextList, matchStartPos, matchParas));
                   }
                }
             }
@@ -133,7 +133,7 @@ public class ToInteliJudge {
       return targetList;
    }
 
-   private static JSONObject convert(String code, List matchText, String targetValue, String name, String plotType, String valueType, List<String> rawText,
+   private static JSONObject convert(String code, String targetValue, String name, String plotType, String valueType, List<String> rawText,
                                      List<Integer> startPos, List<String> paraName) {
       JSONObject targetJson = new JSONObject();
       targetJson.put("plotType", plotType);
@@ -144,8 +144,8 @@ public class ToInteliJudge {
       targetJson.put("mappingValue", "");
       targetJson.put("valueType", valueType);
       targetJson.put("featureContent", rawText);
-      targetJson.put("locationpara", startPos);
-      targetJson.put("locationIndexs", paraName);
+      targetJson.put("locationpara", paraName);
+      targetJson.put("locationIndexs", startPos);
       return targetJson;
    }
 }

@@ -40,9 +40,6 @@ public class BeingPunishedByCourtForSameCasecause extends BasicSentenceFeatureCl
                Map recordsOpt = MatchRule.matchPattern(criminalPunishmentLabelExtractor, this.positivePureRule, this.negativePureRule);
                if(recordsOpt != null && recordsOpt.size() > 0) {
                   Label label =  SetLabel.run(recordsOpt, this.code);
-                  List<String> paras = new ArrayList<>();
-                  paras.add("本院认为");
-                  label.setParas(paras);
                   return label;
                }
             }
@@ -62,9 +59,6 @@ public class BeingPunishedByCourtForSameCasecause extends BasicSentenceFeatureCl
          BoolConfig boolConfig = criminalPunishmentLabelExtractor1.proc((LocalDate)crimeDate.get(), recordsOpt1);
          if(boolConfig != null) {
             Label label = SetLabel.run(boolConfig, this.code);
-            List<String> paras = new ArrayList<>();
-            paras.add("经审理查明");
-            label.setParas(paras);
             return label;
          }
       }

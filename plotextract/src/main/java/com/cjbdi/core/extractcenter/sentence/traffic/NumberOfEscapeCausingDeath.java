@@ -33,9 +33,6 @@ public class NumberOfEscapeCausingDeath extends BasicSentenceFeatureClass {
       NumberConfig numberConfig = this.doextract(defendantModel, casecauseModel, this.keyword, this.noiseword);
       if(numberConfig != null) {
          Label label = SetLabel.run(numberConfig, ((ExtractFeatureBasicConfig)basicCaseClass.getFeatures().get(this.code)).getCode());
-         List<String> paras = new ArrayList<>();
-         paras.add("本院认为");
-         label.setParas(paras);
          return label;
       } else {
          return null;

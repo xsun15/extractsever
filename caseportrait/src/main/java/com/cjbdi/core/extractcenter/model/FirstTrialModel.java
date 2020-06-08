@@ -1,5 +1,6 @@
 package com.cjbdi.core.extractcenter.model;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 

@@ -38,6 +38,7 @@ public class IndictOpinionSplit extends BasicSplit {
                     indictOpinionModel.setModel(order, text);
                 }
             }
+            if (StringUtils.isNotEmpty(indictOpinionModel.getInvestigate())) indictOpinionModel.setInvestigate(indictOpinionModel.getInvestigate().replaceAll("null", ""));
             splitEvidence(indictOpinionModel.getInvestigate());
             return indictOpinionModel;
         }

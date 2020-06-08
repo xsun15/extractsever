@@ -1,5 +1,6 @@
 package com.cjbdi.core.extractcenter.split;
 
+import com.alibaba.fastjson.JSONObject;
 import com.cjbdi.core.configcenter.BeanConfigCenter;
 import com.cjbdi.core.configcenter.extractconfig.cascause.CasecauseBasicConfig;
 import com.cjbdi.core.util.CommonTools;
@@ -147,9 +148,53 @@ public class BasicSplit {
         }
         // 根据经审理查明段，利用模型预测案由，目前仅支持单罪名预测
         if (caseSet == null || caseSet.isEmpty() ) {
-            MultivaluedMapImpl paramsModel = new MultivaluedMapImpl();
-            paramsModel.add("content", factText);
-            String resultModelString = HttpRequest.sendPost(BeanConfigCenter.interfaceConfig.getInterfaceModel().getPredictcasecausermdl(), paramsModel);
+            JSONObject reqPara = new JSONObject();
+            reqPara.put("content", factText);
+            String resultModelString = HttpRequest.sendPost(BeanConfigCenter.interfaceConfig.getInterfaceModel().getPredictcasecausermdl(), reqPara);
+            caseSet.add(resultModelString);
+        }
+        return new ArrayList<>(caseSet);
+    }
+
+    public List<String> findCasecauseOpinion(String conclusion) {
+        //先从本院认为段提取案由
+        Set<String> caseSet = new HashSet<>();
+        LinkedHashMap<String, CasecauseBasicConfig> map = BeanConfigCenter.extractConfig.getCasecauseConfig().getCasecause();
+        for (String casename : map.keySet()) {
+            CasecauseBasicConfig casecauseBasicConfig = map.get(casename);
+            List<String> ruleList = casecauseBasicConfig.getRule();
+            if (CommonTools.ismatch(conclusion, ruleList)){
+                if ( casecauseBasicConfig.getSubSituationRule().size() == 0 || CommonTools.ismatch(conclusion, casecauseBasicConfig.getSubSituationRule())){
+                    caseSet.add(casecauseBasicConfig.getName());
+                }
+            }
+        }
+        return new ArrayList<>(caseSet);
+    }
+
+    public List<String> findCasecauseInvestigate(String backgroundText) {
+        Set<String> caseSet = new HashSet<>();
+        LinkedHashMap<String, CasecauseBasicConfig> map = BeanConfigCenter.extractConfig.getCasecauseConfig().getCasecause();
+        // 从被告人段提取案由
+        if (caseSet == null || caseSet.isEmpty()) {
+            for (String casename : map.keySet()) {
+                CasecauseBasicConfig casecauseBasicConfig = map.get(casename);
+                List<String> ruleList = casecauseBasicConfig.getRule();
+                if (CommonTools.ismatch(backgroundText, ruleList)){
+                    caseSet.add(casecauseBasicConfig.getName());
+                }
+            }
+        }
+        return new ArrayList<>(caseSet);
+    }
+
+    public List<String> findCasecauseJustice(String factText) {
+        Set<String> caseSet = new HashSet<>();
+        LinkedHashMap<String, CasecauseBasicConfig> map = BeanConfigCenter.extractConfig.getCasecauseConfig().getCasecause();
+        if (caseSet == null || caseSet.isEmpty() ) {
+            JSONObject reqPara = new JSONObject();
+            reqPara.put("content", factText);
+            String resultModelString = HttpRequest.sendPost(BeanConfigCenter.interfaceConfig.getInterfaceModel().getPredictcasecausermdl(), reqPara);
             caseSet.add(resultModelString);
         }
         return new ArrayList<>(caseSet);

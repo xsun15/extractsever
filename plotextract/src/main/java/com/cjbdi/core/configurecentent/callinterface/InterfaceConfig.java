@@ -8,6 +8,7 @@ public class InterfaceConfig {
 
    private InterfaceModel interfaceModel;
    private InterfacePortrait interfacePortrait;
+   private InterfaceCivil interfaceCivil;
 
 
    public InterfaceConfig() {
@@ -16,6 +17,8 @@ public class InterfaceConfig {
       this.interfaceModel = new InterfaceModel(feature, place);
       feature = "portraitextract";
       this.interfacePortrait = new InterfacePortrait(feature, place);
+      feature = "civilextract";
+      this.interfaceCivil = new InterfaceCivil(feature, place);
    }
 
    public InterfaceModel getInterfaceModel() {
@@ -32,5 +35,13 @@ public class InterfaceConfig {
 
    public void setInterfacePortrait(InterfacePortrait interfacePortrait) {
       this.interfacePortrait = interfacePortrait;
+   }
+
+   public InterfaceCivil getInterfaceCivil() {
+      return interfaceCivil;
+   }
+
+   public void setInterfaceCivil(InterfaceCivil interfaceCivil) {
+      this.interfaceCivil = interfaceCivil;
    }
 }

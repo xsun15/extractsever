@@ -44,25 +44,28 @@ public class SentenceExtractorServer {
          String fullText = jsonParam.getString("fullText");
          if(StringUtils.isNotEmpty(fullText)) {
             fullText = Tools.clean(fullText);
-            String docType = "";
-            if(jsonParam.containsKey("docType")) {
-               docType = jsonParam.getString("docType");
-            } else {
-               docType = Tools.extractDocType(fullText);
+            String caseDocType = Tools.extractCasetype(jsonParam.getString("fullText"));
+            if (caseDocType.equals("刑事")) {
+               String docType = "";
+               if (jsonParam.containsKey("docType")) {
+                  docType = jsonParam.getString("docType");
+               } else {
+                  docType = Tools.extractDocType(fullText);
+               }
+               if (StringUtils.isEmpty(docType)) return "";
+               JSONObject reqPara = new JSONObject();
+               reqPara.put("docType", docType);
+               reqPara.put("fullText", fullText);
+               String paraSplitter = HttpRequest.sendPost(BeanFactoryConfig.interfaceConfig.getInterfacePortrait().getDocsplitraw(), reqPara);
+               return paraSplitter;
+            } else if (caseDocType.equals("民事")) {
+               JSONObject civilPara = new JSONObject();
+               civilPara.put("text", fullText);
+               String paraSplitter = HttpRequest.sendPost(BeanFactoryConfig.interfaceConfig.getInterfaceCivil().getSplit(), civilPara);
+               return paraSplitter;
             }
-
-            if(StringUtils.isEmpty(docType)) {
-               return "";
-            }
-
-            JSONObject reqPara = new JSONObject();
-            reqPara.put("docType", docType);
-            reqPara.put("fullText", fullText);
-            String paraSplitter = HttpRequest.sendPost(BeanFactoryConfig.interfaceConfig.getInterfacePortrait().getDocsplitraw(), reqPara);
-            return paraSplitter;
          }
       }
-
       return "";
    }
 
@@ -326,7 +329,10 @@ public class SentenceExtractorServer {
                   return result.toJSONString();
                }
             } else if (caseDocType.equals("民事")) {
-               return null;
+               JSONObject civilPara = new JSONObject();
+               civilPara.put("text", fullText);
+               civilPara.put("uuid", reqParam.getString("uuid"));
+               return  HttpRequest.sendPost(BeanFactoryConfig.interfaceConfig.getInterfaceCivil().getPortray(), civilPara);
             }
          }
       }

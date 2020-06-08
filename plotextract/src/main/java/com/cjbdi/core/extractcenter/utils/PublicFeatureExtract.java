@@ -38,13 +38,8 @@ public class PublicFeatureExtract extends LabelExtractor {
          label.setText(boolConfig.colorTarget);
          label.setValue("true");
          label.setChiname(this.name);
-         List<String> rawText = new ArrayList<>();
-         if (StringUtils.isNotEmpty(boolConfig.target)) rawText.add(boolConfig.target);
-         else rawText.add(lineText);
-         label.setRawText(rawText);
-         List<Integer> list = new ArrayList<>();
-         list.add(boolConfig.startcolor);
-         label.setStartpos(list);
+         // 提取溯源
+         label.setTraceSourceMap(boolConfig.traceSourceMap);
       }
       return label;
    }

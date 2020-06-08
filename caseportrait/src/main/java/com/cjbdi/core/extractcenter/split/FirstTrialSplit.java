@@ -108,6 +108,8 @@ public class FirstTrialSplit extends BasicSplit {
                 if (StringUtils.isNotEmpty(result))
                     firstTrial.setAccuse(result);
             }
+            if (StringUtils.isNotEmpty(firstTrial.getJustice())) firstTrial.setJustice(firstTrial.getJustice().replaceAll("null", ""));
+
             // 抽取审判时间
             firstTrial.setJudgeDate(CommonTools.matchText(content, firstTrialBasicConfig.getJudgeDate()));
             // 抽取省份

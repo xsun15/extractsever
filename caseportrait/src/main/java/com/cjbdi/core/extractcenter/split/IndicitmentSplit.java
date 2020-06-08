@@ -88,6 +88,7 @@ public class IndicitmentSplit extends BasicSplit {
                     }
                 }
             }
+            if (StringUtils.isNotEmpty(indicitmentModel.getJustice())) indicitmentModel.setJustice(indicitmentModel.getJustice().replaceAll("null", ""));
             // 提取省份
             indicitmentModel.setProvince(extractProvince(indicitmentModel.getProcuName(), content));
         } catch (Exception e) {

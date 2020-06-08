@@ -81,6 +81,31 @@ public class CasePortrait {
         return judgmentModel;
     }
 
+    public static JSONObject run (String factText, String accuse, Set<String> defendantSet) {
+        JSONObject result = new JSONObject();
+        if (CommonTools.isJoinJusticeAccuse(factText, accuse)) factText = accuse + factText;
+        if (defendantSet!=null&& defendantSet.size() >0) {
+            List<String> factbodyList = Arrays.asList(factText.split("\n"));
+            for (String defendant : defendantSet) {
+                factText = "";
+                for (String line : factbodyList) {
+                    if (line.contains(defendant))
+                        factText += line + "\n";
+                    else if (!CommonTools.isContain(line, defendantSet))
+                        factText += line + "\n";
+                }
+                if (StringUtils.isNotBlank(factText) && StringUtils.isNotEmpty(factText)) factText = factText.replaceAll("null", "");
+                result.put(defendant, factText);
+            }
+        } else if (defendantSet!=null) {
+            for (String defendant : defendantSet) {
+				if (StringUtils.isNotBlank(factText) && StringUtils.isNotEmpty(factText)) factText = factText.replaceAll("null", "");
+                result.put(defendant, factText);
+            }
+        }
+        return result;
+    }
+
     public static List<DefendantModel> run(String conclusion, String factText, String accuse, String transfer, String background, Set<String> defendantSet, List<String> caseList) {
         List<DefendantModel> defendantModelList = defendantCasecause(conclusion, transfer, background, defendantSet, caseList);
         if (CommonTools.isJoinJusticeAccuse(factText, accuse)) factText = accuse + factText;
@@ -88,7 +113,7 @@ public class CasePortrait {
         Map<String, CasecausePortray> casecauseAccuseFactMap = casecauseCrimeFact(accuse, caseList);
         defendantModelList = defendantCasecauseJusticeFact(defendantModelList, casecauseJusticeFactMap, defendantSet);
         defendantModelList = defendantCasecauseAccuseFact(defendantModelList, casecauseAccuseFactMap, defendantSet);
-        defendantModelList = defendantPortray(defendantModelList, background,transfer, conclusion);
+        defendantModelList = defendantPortray(defendantModelList, background, transfer, conclusion);
         return defendantModelList;
     }
 
