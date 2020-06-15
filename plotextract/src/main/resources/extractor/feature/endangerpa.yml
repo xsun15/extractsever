@@ -1,4 +1,4 @@
-propertyLossextraction:
+propertyLossextract:
   name: "损毁财物数额"
   type: "私有"
   code: "1001"
@@ -11,7 +11,7 @@ propertyLossextraction:
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
-violentActionextraction:
+violentActionextract:
   name: "暴力袭击袭击警察或国家工作人员的"
   type: "共有纯正则"
   code: "1002"
@@ -23,7 +23,7 @@ violentActionextraction:
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
-executionNotStandardizedextraction:
+executionNotStandardizedextract:
   name: "因执行公务行为不规范而导致妨害公务犯罪"
   type: "共有纯正则"
   code: "1003"
@@ -39,7 +39,7 @@ executionNotStandardizedextraction:
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
-inciteextractionextraction:
+inciteextractionextract:
   name: "煽动群众阻碍依法执行职务、履行职责"
   type: "共有纯正则"
   code: "1004"
@@ -53,7 +53,7 @@ inciteextractionextraction:
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
-badSocialImpactextraction:
+badSocialImpactextract:
   name: "造成恶劣社会影响"
   type: "共有纯正则"
   code: "1005"

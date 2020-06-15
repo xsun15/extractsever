@@ -10,7 +10,7 @@ usingforcemethodextract:
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
-suicide:
+suicideextract:
   name: "引起他人自杀"
   type: "共有纯正则"
   code: "1004"
@@ -24,7 +24,7 @@ suicide:
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
-affectLife:
+affectLifeextract:
   name: "严重影响他人工作、生活、生产、经营"
   type: "共有纯正则"
   code: "1005"
@@ -44,7 +44,7 @@ affectLife:
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
-publicDisorder:
+publicDisorderextract:
   name: "造成公共场所秩序严重混乱"
   type: "共有纯正则"
   code: "1006"
@@ -53,7 +53,7 @@ publicDisorder:
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
-strongTake:
+strongTakeextract:
   name: "强拿硬要的"
   type: "共有纯正则"
   code: "1007"
@@ -65,7 +65,7 @@ strongTake:
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
-damagedOccupied:
+damagedOccupiedextract:
   name: "任意损毁、占用公私财物的"
   type: "共有纯正则"
   code: "1008"
@@ -74,7 +74,7 @@ damagedOccupied:
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
-escalationOnPurpose:
+escalationOnPurposeextract:
   name: "故意扩大事态的"
   type: "共有纯正则"
   code: "1010"
@@ -84,7 +84,7 @@ escalationOnPurpose:
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
-teachingAimAtMedicalStaff:
+teachingAimAtMedicalStaffextract:
   name: "教唆他人实施针对医疗机构或者医务人员"
   type: "共有纯正则"
   code: "1011"
@@ -93,7 +93,7 @@ teachingAimAtMedicalStaff:
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
-inTheNameOfMedicalDispute:
+inTheNameOfMedicalDisputeextract:
   name: "以受他人委托处理医疗纠纷为名"
   type: "共有纯正则"
   code: "1012"
@@ -104,7 +104,7 @@ inTheNameOfMedicalDispute:
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
-underworld:
+underworldextract:
   name: "带有黑社会性质的"
   type: "共有纯正则"
   code: "1013"
@@ -123,7 +123,7 @@ underworld:
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
-organize:
+organizeextract:
   name: "组织、控制他人寻衅滋事的"
   type: "共有纯正则"
   code: "1014"
@@ -132,7 +132,7 @@ organize:
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
-minor:
+minorextract:
   name: "组织、控制未成年人寻衅滋事的"
   type: "共有纯正则"
   code: "1015"
@@ -147,7 +147,7 @@ minor:
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
-beatAction:
+beatActionextract:
   name: "殴打他人的"
   type: "共有纯正则"
   code: "1016"
@@ -170,7 +170,7 @@ beatAction:
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
-withWeapon:
+withWeaponextract:
   name: "持械"
   type: "共有纯正则"
   code: "1017"
@@ -179,7 +179,7 @@ withWeapon:
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
-threatAction:
+threatActionextract:
   name: "追逐、拦截、辱骂、恐吓"
   type: "共有纯正则"
   code: "1018"
@@ -191,7 +191,7 @@ threatAction:
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
-vulnerableGroup:
+vulnerableGroupextract:
   name: "犯罪对象为弱势群体"
   type: "共有纯正则"
   code: "1019"
