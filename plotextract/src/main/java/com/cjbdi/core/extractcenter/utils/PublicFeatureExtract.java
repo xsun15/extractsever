@@ -1,88 +1,111 @@
 package com.cjbdi.core.extractcenter.utils;
 
-import com.cjbdi.core.extractcenter.sentence.common.utils.BoolConfig;
-import com.cjbdi.core.extractcenter.sentence.utils.Label;
-import com.cjbdi.core.extractcenter.utils.CommonTools;
-import com.cjbdi.core.extractcenter.utils.LabelExtractor;
-import com.cjbdi.core.extractcenter.utils.MatchRule;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import com.alibaba.fastjson.JSONObject;
+import com.cjbdi.core.configcenter.BeanFactoryConfig;
+import com.cjbdi.core.configcenter.extractfeature.ExtractFeatureModel;
+import com.cjbdi.core.extractcenter.utils.caseportrait.CasecauseModel;
+import com.cjbdi.core.extractcenter.utils.tracesource.Label;
+import com.cjbdi.core.extractcenter.utils.tracesource.MatchModel;
+import com.cjbdi.core.utils.CommonTools;
+import com.cjbdi.core.utils.HttpRequest;
+import org.apache.commons.lang.StringUtils;
 
-public class PublicFeatureExtract extends LabelExtractor {
+import java.util.*;
+import java.util.regex.Pattern;
 
-   private List positivePattern;
-   private List negativePattern;
-   private String code;
-   private String name;
+public class PublicFeatureExtract {
 
-
-   public String getCode() {
-      return this.code;
+   public static List<Label> extractPublic(CasecauseModel casecauseModel) {
+      String caseId = CommonTools.getCaseId(casecauseModel.getCasecause());
+      if (StringUtils.isEmpty(caseId)) return null;
+      // 获取案由情节树
+      JSONObject featureList = BeanFactoryConfig.extractFeatureConfig.getFeature().getJSONObject(caseId);
+      List<Label> labelList = new ArrayList<>();
+      for (String featureId : featureList.keySet()) {
+         ExtractFeatureModel extractFeatureModel = featureList.getObject(featureId, ExtractFeatureModel.class);
+         Label label = extractPublicPureRule(extractFeatureModel, casecauseModel, caseId, featureId);
+         if (label!=null) labelList.add(label);
+         label = extractPublicModelRule(extractFeatureModel, casecauseModel, caseId, featureId);
+         if (label!=null) labelList.add(label);
+      }
+      return labelList;
    }
 
-   public PublicFeatureExtract(List positivePattern, List negativePattern, String code, String name) {
-      this.positivePattern = positivePattern;
-      this.negativePattern = negativePattern;
-      this.code = code;
-      this.name = name;
+   public static Label extractPublicModelRule( ExtractFeatureModel extractFeatureModel, CasecauseModel casecauseModel, String caseId, String featureId) {
+      if (extractFeatureModel.getType().equals("共有模型正则")) {
+         List<Pattern> positivePattern = extractFeatureModel.getPositiveModelRule();
+         List<Pattern> negativePattern = extractFeatureModel.getNegativeModelRule();
+         // 抽取本院认为段
+         String paraName = "opinion";
+         Integer priorityLevel = BeanFactoryConfig.splitDocConfig.getPriorityLevel().getInteger(paraName);
+         Label label = extractRule(casecauseModel.getOpinion(), positivePattern, negativePattern, casecauseModel, extractFeatureModel, caseId, featureId, paraName, priorityLevel);
+         if (label!=null) return label;
+         // 抽取经审理查明段
+         paraName = "justice";
+         priorityLevel = BeanFactoryConfig.splitDocConfig.getPriorityLevel().getInteger(paraName);
+         label = extractModel(casecauseModel.getJustice(), positivePattern, negativePattern, casecauseModel, extractFeatureModel, caseId, featureId, paraName, priorityLevel);
+         if (label!=null) return label;
+      }
+      return null;
    }
 
-   public Label doExtract(String lineText) {
-      BoolConfig boolConfig = MatchRule.matchPatternBoolConfig(lineText, this.positivePattern, this.negativePattern);
-      Label label = null;
-      if(boolConfig != null) {
-         label = new Label();
-         label.setUsedRegx(boolConfig.rule);
-         label.setFlag((long)Integer.parseInt(this.code));
-         label.setText(boolConfig.colorTarget);
+   public static Label extractPublicPureRule( ExtractFeatureModel extractFeatureModel, CasecauseModel casecauseModel, String caseId, String featureId) {
+      if (extractFeatureModel.getType().equals("共有纯正则")) {
+         List<Pattern> positivePattern = extractFeatureModel.getPositivePureRule();
+         List<Pattern> negativePattern = extractFeatureModel.getNegativePureRule();
+         // 抽取本院认为段
+         String paraName = "opinion";
+         Integer priorityLevel = BeanFactoryConfig.splitDocConfig.getPriorityLevel().getInteger(paraName);
+         Label label = extractRule(casecauseModel.getOpinion(), positivePattern, negativePattern, casecauseModel, extractFeatureModel, caseId, featureId, paraName, priorityLevel);
+         if (label!=null) return label;
+         // 抽取经审理查明段
+         paraName = "justice";
+         priorityLevel = BeanFactoryConfig.splitDocConfig.getPriorityLevel().getInteger(paraName);
+         label = extractRule(casecauseModel.getJustice(), positivePattern, negativePattern, casecauseModel, extractFeatureModel, caseId, featureId, paraName, priorityLevel);
+         if (label!=null) return label;
+      }
+      return null;
+   }
+
+   public static Label extractRule(String content, List<Pattern> positiveRule, List<Pattern> negativeRule, CasecauseModel casecauseModel, ExtractFeatureModel extractFeatureModel, String caseId, String featureId,
+                            String paraName, Integer priorityLevel) {
+      MatchModel matchModel = CommonTools.matchModel(content, positiveRule, negativeRule);
+      if (matchModel!=null) {
+         Label label = new Label();
+         label.setCaseCause(casecauseModel.getCasecause());
+         label.setChiName(extractFeatureModel.getName());
+         label.setCode(caseId + featureId);
          label.setValue("true");
-         label.setChiname(this.name);
+         matchModel.setParaName(paraName);
+         matchModel.setPriorityLevel(priorityLevel);
+         matchModel.setParaText(content);
+         label.addMatchModel(matchModel);
+         return label;
       }
-      return label;
+      return null;
    }
 
-   public Label doExtract(String defendant, String casecause, Set casecauseList, String content) {
-      if(casecause.contains("隐瞒")) {
-         casecause = "隐瞒";
-      } else if(casecause.contains("毒品")) {
-         casecause = "毒品";
+   public static Label extractModel(String content, List<Pattern> positiveRule, List<Pattern> negativeRule, CasecauseModel casecauseModel, ExtractFeatureModel extractFeatureModel, String caseId, String featureId,
+                             String paraName, Integer priorityLevel) {
+      Boolean isExit = CommonTools.isMatchPattern(content, negativeRule);
+      if (!isExit) {
+         JSONObject reqPara = new JSONObject();
+         reqPara.put("fullText", content);
+         String modelUrl = BeanFactoryConfig.interfaceUrl.getServiceUrl().getString(extractFeatureModel.getModelUrl());
+         String result = HttpRequest.sendPost(modelUrl, reqPara);
+         if (result.equalsIgnoreCase("true")) {
+            MatchModel matchModel = CommonTools.matchModel(content, positiveRule);
+            Label label = new Label();
+            label.setCaseCause(casecauseModel.getCasecause());
+            label.setChiName(extractFeatureModel.getName());
+            label.setCode(caseId + featureId);
+            label.setValue("true");
+            matchModel.setParaName(paraName);
+            matchModel.setPriorityLevel(priorityLevel);
+            label.addMatchModel(matchModel);
+            return label;
+         }
       }
-
-      if(content.contains(defendant) && (content.contains(casecause) || casecause.equals("隐瞒") && content.contains("掩饰"))) {
-         String str1 = content.substring(0, content.indexOf(defendant));
-         String str2 = content.substring(str1.length() + defendant.length());
-         if(casecause.equals("隐瞒") && str2.indexOf(casecause) == -1) {
-            casecause = "掩饰";
-         }
-
-         String str3 = str2.substring(0, str2.indexOf(casecause));
-         String str4 = str2.substring(str3.length() + casecause.length());
-         Iterator extractResult = casecauseList.iterator();
-
-         while(extractResult.hasNext()) {
-            String label = (String)extractResult.next();
-            if(str4.contains(label) && !label.equals(casecause)) {
-               str4 = str4.substring(0, str4.indexOf(label));
-            }
-         }
-
-         Map extractResult1 = MatchRule.mathPatternYearMonthDay(str4, this.positivePattern, this.negativePattern);
-         Label label1 = null;
-         if(!extractResult1.isEmpty()) {
-            label1 = new Label();
-            String month = CommonTools.convertYear2Month(extractResult1);
-            label1.setUsedRegx((String)extractResult1.get("rule"));
-            label1.setFlag((long)Integer.parseInt(this.code));
-            label1.setText((String)extractResult1.get("text"));
-            label1.setValue(month);
-            label1.setChiname(this.name);
-         }
-
-         return label1;
-      } else {
-         return null;
-      }
+      return null;
    }
 }

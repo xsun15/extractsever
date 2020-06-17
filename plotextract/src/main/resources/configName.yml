@@ -1,0 +1,22 @@
+place:
+  path: "/home/xrsun/123456"
+convertLabel:
+  selfSentence: "/configureCenter/convertLabel/selfSentence"
+  zhengAn: "/configureCenter/convertLabel/zhengAn"
+  leiAn: "/configureCenter/convertLabel/leiAn"
+lxFeature:
+  common: "/extractor/feature/common"
+  money: "/extractor/feature/common/money"
+  gram: "/extractor/feature/common/gram"
+  feature: "/extractor/feature/caseCause"
+checkFeature:
+  feature: "/extractor/checkFeature/feature.yml"
+others:
+  time: "/time.m"
+  interfaceUrl: "/interface/interfaceUrl.yml"
+  factSplit: "/split/factSplit.yml"
+  caseCause: "/extractor/caseCause/caseCause.yml"
+  priorityLevel: "/extractor/feature/common/priorityLevel.yml"
+enDecrypt:
+  encrypt: "false"
+

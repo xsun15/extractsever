@@ -1,15 +1,13 @@
 package com.cjbdi;
 
-import com.cjbdi.core.configurecentent.BeanFactoryConfig;
-import com.cjbdi.core.configurecentent.callinterface.InterfaceConfig;
-import com.cjbdi.core.configurecentent.casecause.PredCasecauseConfig;
-import com.cjbdi.core.configurecentent.configplace.ConfigPlace;
-import com.cjbdi.core.configurecentent.converlabel.ConvertLabelConfig;
-import com.cjbdi.core.configurecentent.extractfeature.ExtractFeatureConfig;
-import com.cjbdi.core.configurecentent.extractfeature.checklabel.CheckLabelConfig;
-import com.cjbdi.core.configurecentent.splitdocument.FactTextConfig;
-import com.cjbdi.core.extractcenter.BeanFactoryExtract;
-import com.cjbdi.core.extractcenter.sentence.SentenceExtractor;
+import com.cjbdi.core.configcenter.BeanFactoryConfig;
+import com.cjbdi.core.configcenter.checkfeature.CheckFeatureConfig;
+import com.cjbdi.core.configcenter.configplace.ConfigPlace;
+import com.cjbdi.core.configcenter.casecause.CasecauseConfig;
+import com.cjbdi.core.configcenter.convertlabel.ConvertFeatureConfig;
+import com.cjbdi.core.configcenter.extractfeature.ExtractFeatureConfig;
+import com.cjbdi.core.configcenter.interfaceurl.InterfaceUrl;
+import com.cjbdi.core.configcenter.splitdoc.SplitDocConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -25,13 +23,11 @@ public class ExtractApplication {
 	@PostConstruct
 	public void init() {
 		BeanFactoryConfig.configPlace = new ConfigPlace();
-		BeanFactoryConfig.predCasecauseConfig = new PredCasecauseConfig();
-		BeanFactoryConfig.factTextConfig = new FactTextConfig();
-		BeanFactoryConfig.interfaceConfig = new InterfaceConfig();
+		BeanFactoryConfig.splitDocConfig = new SplitDocConfig();
+		BeanFactoryConfig.casecauseConfig = new CasecauseConfig();
 		BeanFactoryConfig.extractFeatureConfig = new ExtractFeatureConfig();
-		BeanFactoryConfig.convertLabelConfig = new ConvertLabelConfig();
-		BeanFactoryConfig.checkLabelConfig = new CheckLabelConfig();
-		SentenceExtractor.init();
-		BeanFactoryExtract.init();
+		BeanFactoryConfig.convertFeatureConfig = new ConvertFeatureConfig();
+		BeanFactoryConfig.checkFeatureConfig = new CheckFeatureConfig();
+		BeanFactoryConfig.interfaceUrl = new InterfaceUrl();
 	}
 }
