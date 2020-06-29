@@ -583,7 +583,7 @@ pardonextract:
   negativecasecause:
 recidivismextract:
   name: "累犯"
-  type: "共有纯正则"
+  type: "私有"
   code: "1049"
   positivepurerule:
     - "(被告人|被不起诉人|犯罪嫌疑人)[^。；].*?[是系为]累犯"

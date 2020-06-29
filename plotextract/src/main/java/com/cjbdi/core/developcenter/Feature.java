@@ -7,6 +7,8 @@ import com.cjbdi.core.decryptcenter.BasicCaseClass;
 import com.cjbdi.core.extractcenter.sentence.SentenceExtractor;
 import com.cjbdi.core.extractcenter.sentence.common.time.StringUtil;
 import com.cjbdi.core.extractcenter.sentence.drunkdriving.InitExtractor;
+import com.cjbdi.core.extractcenter.sentence.share.RecidivismExtractor;
+import com.cjbdi.core.extractcenter.sentence.share.ShareExtractor;
 import com.cjbdi.core.extractcenter.sentence.utils.BasicSentenceFeatureClass;
 import com.cjbdi.core.extractcenter.sentence.utils.Label;
 import com.cjbdi.core.extractcenter.sentence.utils.LabelExtractor;
@@ -26,6 +28,7 @@ public class Feature {
     public static LinkedHashMap<String, List<PublicFeatureExtract>> basicModelRuleExtractors = new LinkedHashMap<>();
     public static LinkedHashMap<String,List<BasicSentenceFeatureClass>> basicPrivateExtractors = new LinkedHashMap<>();
     public static LinkedHashMap<String, BasicCaseClass> basicCaseClass = new LinkedHashMap<>();
+    public static LinkedHashMap<String, RecidivismExtractor> basicShareExtractors=new LinkedHashMap<>();
     static {
         InitExtractor initExtractor = SentenceExtractor.initExtractor.getDrunkDrivingExtractor().getInitExtractor();
         basicPrivateExtractors.put("危险驾驶罪（醉驾）",initExtractor.getBasicPrivateExtractors());
@@ -39,6 +42,9 @@ public class Feature {
         IndividualIllegallyAbsorbingPublicDeposits individualIllegallyAbsorbingPublicDeposits = new IndividualIllegallyAbsorbingPublicDeposits();
         basicCaseClass.put("非法吸收公众存款罪（个人）",individualIllegallyAbsorbingPublicDeposits);
 
+
+        com.cjbdi.core.extractcenter.sentence.share.InitExtractor initExtractor_share = new com.cjbdi.core.extractcenter.sentence.share.InitExtractor();
+        basicShareExtractors.put("总则量刑情节", initExtractor_share.getRecidivismExtractor());
         com.cjbdi.core.extractcenter.sentence.traffic.InitExtractor initExtractor_traffic = new com.cjbdi.core.extractcenter.sentence.traffic.InitExtractor();
         basicPureRuleExtractors.put("交通肇事罪",initExtractor_traffic.getBasicPureRuleExtractors());
         basicPrivateExtractors.put("交通肇事罪",initExtractor_traffic.getBasicPrivateExtractors());
@@ -168,4 +174,59 @@ public class Feature {
         }
         return null;
    }
+    public static Label extractshare(DefendantModel defendantModel, CasecauseModel casecauseModel, String extractorType, String extractorFrom, String code,String Para) {
+        Set<String> casecauseSet = defendantModel.getCasecauseSet();
+        if (extractorType.equals("私有")) {
+            if(extractorFrom.equals("本院认为")){
+                casecauseModel.setDefendant("");
+               Label label=basicShareExtractors.get("总则量刑情节").doextract(defendantModel, casecauseModel);
+                if (label != null && label.getFlag() == Long.valueOf(code)) {
+                    return label;
+                }
+            }else if(extractorFrom.equals("被告人段")){
+                casecauseModel.setOpinion("");
+                Label label=basicShareExtractors.get("总则量刑情节").doextract(defendantModel, casecauseModel);
+                if (label != null && label.getFlag() == Long.valueOf(code)) {
+                    return label;
+                }
+            }
+
+//            if (extractorFrom.equals("本院认为")) {
+//                casecauseModel.setJustice("");
+//
+//
+//            } else if (extractorFrom.equals("经审理查明")) {
+//                casecauseModel.setOpinion("");
+//
+//            }
+
+        } else if (extractorType.equals("共有纯正则")) {
+            if (extractorFrom.equals("本院认为")) {
+                casecauseModel.setJustice("");
+                if (basicPureRuleExtractors.get(casecauseModel.getCasecause()) != null) {
+                    if (basicPureRuleExtractors.get(casecauseModel.getCasecause()).get(code) != null) {
+//                    for(BasicSentenceFeatureClass basicSentenceFeatureClass :basicPrivateExtractors.get(casecauseModel.getCasecause())){
+                        Label label = basicPureRuleExtractors.get(casecauseModel.getCasecause()).get(code).doExtract(casecauseModel.getOpinion());
+                        if (label != null && label.getFlag() == Long.valueOf(code)) {
+                            return label;
+                        }
+
+                    }
+                }
+            } else if (extractorFrom.equals("经审理查明")) {
+                casecauseModel.setOpinion("");
+                if (basicPureRuleExtractors.get(casecauseModel.getCasecause()) != null) {
+                    if (basicPureRuleExtractors.get(casecauseModel.getCasecause()).get(code) != null) {
+//                    for(BasicSentenceFeatureClass basicSentenceFeatureClass :basicPrivateExtractors.get(casecauseModel.getCasecause())){
+                        Label label = basicPureRuleExtractors.get(casecauseModel.getCasecause()).get(code).doExtract(casecauseModel.getJustice());
+                        if (label != null && label.getFlag() == Long.valueOf(code)) {
+                            return label;
+                        }
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
 }
