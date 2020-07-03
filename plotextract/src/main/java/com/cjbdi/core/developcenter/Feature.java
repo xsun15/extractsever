@@ -1,5 +1,6 @@
 package com.cjbdi.core.developcenter;
 
+import com.alibaba.fastjson.JSONObject;
 import com.cjbdi.core.configurecentent.extractfeature.sentence.DrunkDriving;
 import com.cjbdi.core.configurecentent.extractfeature.sentence.IndividualIllegallyAbsorbingPublicDeposits;
 import com.cjbdi.core.configurecentent.extractfeature.sentence.Traffic;
@@ -134,7 +135,7 @@ public class Feature {
         return res;
     }
 
-    public static Label extractbool(DefendantModel defendantModel, CasecauseModel casecauseModel, String extractorType, String extractorFrom, String code,String Para) {
+    public static Label extractbool(DefendantModel defendantModel, CasecauseModel casecauseModel, String extractorType, String extractorFrom, String code, JSONObject Para) {
         Set<String> casecauseSet = defendantModel.getCasecauseSet();
         if (extractorType.equals("私有")) {
             if (extractorFrom.equals("本院认为")) {
@@ -164,7 +165,7 @@ public class Feature {
                 if (basicPureRuleExtractors.get(casecauseModel.getCasecause()) != null) {
                     if (basicPureRuleExtractors.get(casecauseModel.getCasecause()).get(code) != null) {
 //                    for(BasicSentenceFeatureClass basicSentenceFeatureClass :basicPrivateExtractors.get(casecauseModel.getCasecause())){
-                        Label label = basicPureRuleExtractors.get(casecauseModel.getCasecause()).get(code).doExtract(casecauseModel.getJustice());
+                        Label label = basicPureRuleExtractors.get(casecauseModel.getCasecause()).get(code).doExtract(Para.getString("justice"));
                         if (label != null && label.getFlag() == Long.valueOf(code)) {
                             return label;
                         }
@@ -174,7 +175,7 @@ public class Feature {
         }
         return null;
    }
-    public static Label extractshare(DefendantModel defendantModel, CasecauseModel casecauseModel, String extractorType, String extractorFrom, String code,String Para) {
+    public static Label extractshare(DefendantModel defendantModel, CasecauseModel casecauseModel, String extractorType, String extractorFrom, String code,JSONObject Para) {
         Set<String> casecauseSet = defendantModel.getCasecauseSet();
         if (extractorType.equals("私有")) {
             if(extractorFrom.equals("本院认为")){

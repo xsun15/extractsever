@@ -226,7 +226,7 @@ public class DevelopServer {
                     Label label = null;
                     //保证用户传入的案由和系统提取的案由相同
                     if (casecauseModel.getCasecause().equals(jsonParam.getString("casecause"))){
-                        label = Feature.extractbool(defendantModel,casecauseModel,extractorType,extractorFrom,code,paraSplitter);
+                        label = Feature.extractbool(defendantModel,casecauseModel,extractorType,extractorFrom,code,paraSplitterJson);
                     }
                     if (label != null){
                         JsonObject jsonObject = new JsonObject();
@@ -311,7 +311,7 @@ public class DevelopServer {
                     Label label = null;
                     //保证用户传入的案由和系统提取的案由相同
 //                    if (casecauseModel.getCasecause().equals(jsonParam.getString("casecause"))){
-                        label = Feature.extractshare(defendantModel,casecauseModel,extractorType,extractorFrom,code,paraSplitter);
+                        label = Feature.extractshare(defendantModel,casecauseModel,extractorType,extractorFrom,code,paraSplitterJson);
 //                    }
                     if (label != null){
                         JsonObject jsonObject = new JsonObject();
