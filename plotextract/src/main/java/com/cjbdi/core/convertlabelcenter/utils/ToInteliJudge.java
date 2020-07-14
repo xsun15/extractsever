@@ -91,6 +91,7 @@ public class ToInteliJudge {
                      Object rawText = extractFeature.get("featureContent");
                      Object startPos = extractFeature.get("locationIndex");
                      Object paraName = extractFeature.get("locationPara");
+
                      if(StringUtils.isNotEmpty(rule) && rule.contains(value) && StringUtils.isNotEmpty(value1) && value1.equals("true")) {
                         rule = rule.replaceAll(value, "true");
                         matchText.add(text);
@@ -123,7 +124,7 @@ public class ToInteliJudge {
                   }
 
                   if(CalculateExpression.run(rule)) {
-                     targetList.add(convert(order + code, targetValue, name, type, datatype, matchTextList, matchStartPos, matchParas));
+                     targetList.add(convert(order + code, targetValue, name, type, datatype, matchTextList, matchStartPos, matchParas, matchText));
                   }
                }
             }
@@ -134,7 +135,7 @@ public class ToInteliJudge {
    }
 
    private static JSONObject convert(String code, String targetValue, String name, String plotType, String valueType, List<String> rawText,
-                                     List<Integer> startPos, List<String> paraName) {
+                                     List<Integer> startPos, List<String> paraName, List<String> matchTextColor) {
       JSONObject targetJson = new JSONObject();
       targetJson.put("plotType", plotType);
       targetJson.put("featureCode", code);
@@ -146,6 +147,7 @@ public class ToInteliJudge {
       targetJson.put("featureContent", rawText);
       targetJson.put("locationpara", paraName);
       targetJson.put("locationIndexs", startPos);
+      targetJson.put("colorText", matchTextColor.toString().replaceAll("\\[", "").replaceAll("\\]", ""));
       return targetJson;
    }
 }

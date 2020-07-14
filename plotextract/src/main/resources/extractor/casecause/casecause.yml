@@ -58,71 +58,35 @@ drugextract:
     ename: "drug"
     order: "24"
     name: "走私、贩卖、运输、制造毒品罪"
+drunkDrivingextract:
+    ename: "drunkDriving"
+    name: "危险驾驶罪"
+    order: "26"
 counterfeitFraudextract:
     ename: "counterfeitFraud"
-    name: "使用伪造的信用卡诈骗罪"
-    order: "26"
-fraudulentIdentificationFraudextract:
-    ename: "fraudulentIdentificationFraud"
-    name: "使用以虚假的身份证明骗领的信用卡诈骗罪"
+    name: "信用卡诈骗罪"
     order: "27"
-invalidFraudextract:
-    ename: "invalidFraud"
-    name: "使用作废的信用卡或者冒用他人信用卡诈骗罪"
-    order: "28"
-maliciousOverDraftFraudextract:
-    ename: "maliciousOverDraftFraud"
-    name: "恶意透支诈骗罪"
-    order: "29"
 illegalPossessionDrugsextract:
     ename: "illegalPossessionDrugs"
     name: "非法持有毒品罪"
-    order: "30"
+    order: "28"
 prostitutionextract:
     ename: "prostitution"
     name: "引诱、容留、介绍卖淫罪"
-    order: "31"
+    order: "29"
 providingVenuesForDrugUsersextract:
     ename: "providingVenuesForDrugUsers"
     name: "容留他人吸毒罪"
+    order: "30"
+contractFraudextract:
+    ename: "contractFraud"
+    name: "合同诈骗罪"
+    order: "31"
+fundRaisingFraudextract:
+    ename: "fundRaisingFraud"
+    name: "集资诈骗罪"
     order: "32"
-individualContractFraudextract:
-    ename: "individualContractFraud"
-    name: "合同诈骗罪（个人）"
+illegallyAbsorbingPublicDepositsextract:
+    ename: "illegallyAbsorbingPublicDeposits"
+    name: "非法吸收公众存款罪"
     order: "33"
-companyContractFraudextract:
-    ename: "companyContractFraud"
-    name: "合同诈骗罪（单位）"
-    order: "34"
-individualFundRaisingFraudextract:
-    ename: "individualFundRaisingFraud"
-    name: "集资诈骗罪（个人）"
-    order: "35"
-companyFundRaisingFraudextract:
-    ename: "companyFundRaisingFraud"
-    name: "集资诈骗罪（单位）"
-    order: "36"
-individualIllegallyAbsorbingPublicDepositsextract:
-    ename: "individualIllegallyAbsorbingPublicDeposits"
-    name: "非法吸收公众存款罪（个人）"
-    order: "37"
-companyIllegallyAbsorbingPublicDepositsextract:
-    ename: "companyIllegallyAbsorbingPublicDeposits"
-    name: "非法吸收公众存款罪（单位）"
-    order: "38"
-drunkDrivingextract:
-    ename: "drunkDriving"
-    name: "危险驾驶罪（醉驾）"
-    order: "39"
-schoolBusBusinessOrPassengerTransportationextract:
-    ename: "schoolBusBusinessOrPassengerTransportation"
-    name: "危险驾驶罪（从事校车业务或者旅客运输）"
-    order: "40"
-chaseRaceextract:
-    ename: "chaseRace"
-    name: "危险驾驶罪（在道路上驾驶机动车，追逐竞驶）"
-    order: "41"
-transportationOfHazardousChemicalsextract:
-    ename: "transportationOfHazardousChemicals"
-    name: "危险驾驶罪（运输危险化学品）"
-    order: "42"

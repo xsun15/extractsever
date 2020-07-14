@@ -25,8 +25,13 @@ public class IndicitmentSplit extends BasicSplit {
         List<ParaInfo> paraInfoList = new ArrayList<>();
         indicitmentModel = new IndicitmentModel();
         indicitmentModel.setProcuName(contentList.get(0));
-        indicitmentModel.setDocType(contentList.get(1));
-        indicitmentModel.setProcuCaseId(contentList.get(2));
+        // 设置文书类型
+        String docType = CommonTools.extractDocType(content);
+        indicitmentModel.setDocType(docType);
+        String rule = ".*?[0-9]{4}.*?号$";
+        String matchText = CommonTools.matchText(content, rule);
+        if (StringUtils.isNotEmpty(matchText))
+            indicitmentModel.setProcuCaseId(matchText);
         try {
             Class c = Class.forName("com.cjbdi.core.configcenter.structurateConfig.utils.IndicitmentBasicConfig");
             Field[] fields = c.getDeclaredFields();

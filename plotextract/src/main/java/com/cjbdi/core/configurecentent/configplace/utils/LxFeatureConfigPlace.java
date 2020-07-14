@@ -390,9 +390,6 @@ public class LxFeatureConfigPlace {
       HashMap map = new HashMap();
       map.put("总则量刑情节", StringUtils.strip(this.share.toString(), "[]"));
       map.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("drunkDrivingextract")).getName(), StringUtils.strip(this.drunkDriving.toString(), "[]"));
-      map.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("transportationOfHazardousChemicalsextract")).getName(), StringUtils.strip(this.transportationOfHazardousChemical.toString(), "[]"));
-      map.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("chaseRaceextract")).getName(), StringUtils.strip(this.chaseRace.toString(), "[]"));
-      map.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("schoolBusBusinessOrPassengerTransportationextract")).getName(), StringUtils.strip(this.schoolBusBusinessOrPassengerTransportation.toString(), "[]"));
       map.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("trafficextract")).getName(), StringUtils.strip(this.traffic.toString(), "[]"));
       map.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("injuryextract")).getName(), StringUtils.strip(this.injury.toString(), "[]"));
       map.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("rapeextract")).getName(), StringUtils.strip(this.rape.toString(), "[]"));
@@ -405,22 +402,16 @@ public class LxFeatureConfigPlace {
       map.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("extortionextract")).getName(), StringUtils.strip(this.extortion.toString(), "[]"));
       map.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("endangerpaextract")).getName(), StringUtils.strip(this.endangerpa.toString(), "[]"));
       map.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("affaryextract")).getName(), StringUtils.strip(this.affray.toString(), "[]"));
-      map.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("fraudulentIdentificationFraudextract")).getName(), StringUtils.strip(this.fraudulentIdentificationFraud.toString(), "[]"));
-      map.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("maliciousOverDraftFraudextract")).getName(), StringUtils.strip(this.maliciousOverDraftFraud.toString(), "[]"));
-      map.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("invalidFraudextract")).getName(), StringUtils.strip(this.invalidCreditCardFraud.toString(), "[]"));
       map.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("counterfeitFraudextract")).getName(), StringUtils.strip(this.counterfeitCreditCardFraud.toString(), "[]"));
       map.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("illegalPossessionDrugsextract")).getName(), StringUtils.strip(this.illegalPossessionDrugs.toString(), "[]"));
       map.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("prostitutionextract")).getName(), StringUtils.strip(this.prostitution.toString(), "[]"));
       map.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("providingVenuesForDrugUsersextract")).getName(), StringUtils.strip(this.providingVenuesForDrugUsers.toString(), "[]"));
-      map.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("individualContractFraudextract")).getName(), StringUtils.strip(this.individualContractFraud.toString(), "[]"));
-      map.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("companyContractFraudextract")).getName(), StringUtils.strip(this.companyContractFraud.toString(), "[]"));
-      map.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("individualFundRaisingFraudextract")).getName(), StringUtils.strip(this.individualFundRaisingFraud.toString(), "[]"));
-      map.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("companyFundRaisingFraudextract")).getName(), StringUtils.strip(this.companyFundRaisingFraud.toString(), "[]"));
-      map.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("individualIllegallyAbsorbingPublicDepositsextract")).getName(), StringUtils.strip(this.individualIllegallyAbsorbingPublicDeposits.toString(), "[]"));
-      map.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("companyIllegallyAbsorbingPublicDepositsextract")).getName(), StringUtils.strip(this.individualIllegallyAbsorbingPublicDeposits.toString(), "[]"));
       map.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("drugextract")).getName(), StringUtils.strip(this.drug.toString(), "[]"));
       map.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("findtroubleextract")).getName(), StringUtils.strip(this.findtrouble.toString(), "[]"));
       map.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("concealextract")).getName(), StringUtils.strip(this.concealci.toString(), "[]"));
+      map.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("contractFraudextract")).getName(), StringUtils.strip(this.individualContractFraud.toString(), "[]"));
+      map.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("fundRaisingFraudextract")).getName(), StringUtils.strip(this.individualFundRaisingFraud.toString(), "[]"));
+      map.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("illegallyAbsorbingPublicDepositsextract")).getName(), StringUtils.strip(this.individualIllegallyAbsorbingPublicDeposits.toString(), "[]"));
       return map;
    }
 }

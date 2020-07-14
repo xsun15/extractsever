@@ -31,17 +31,10 @@ public class Feature {
     public static LinkedHashMap<String, RecidivismExtractor> basicShareExtractors=new LinkedHashMap<>();
     static {
         InitExtractor initExtractor = SentenceExtractor.initExtractor.getDrunkDrivingExtractor().getInitExtractor();
-        basicPrivateExtractors.put("危险驾驶罪（醉驾）",initExtractor.getBasicPrivateExtractors());
-        basicPureRuleExtractors.put("危险驾驶罪（醉驾）",initExtractor.getBasicPureRuleExtractors());
+        basicPrivateExtractors.put("危险驾驶罪",initExtractor.getBasicPrivateExtractors());
+        basicPureRuleExtractors.put("危险驾驶罪",initExtractor.getBasicPureRuleExtractors());
         DrunkDriving drunkDriving = new DrunkDriving();
-        basicCaseClass.put("危险驾驶罪（醉驾）",drunkDriving);
-
-        com.cjbdi.core.extractcenter.sentence.individualillegallyabsorbingpublicdeposits.InitExtractor initExtractor1 = SentenceExtractor.initExtractor.getIndividualIllegallyAbsorbingPublicDepositsExtractor().getInitExtractor();
-        basicPrivateExtractors.put("非法吸收公众存款罪（个人）",initExtractor1.getBasicPrivateExtractors());
-        basicPureRuleExtractors.put("非法吸收公众存款罪（个人）",initExtractor.getBasicPureRuleExtractors());
-        IndividualIllegallyAbsorbingPublicDeposits individualIllegallyAbsorbingPublicDeposits = new IndividualIllegallyAbsorbingPublicDeposits();
-        basicCaseClass.put("非法吸收公众存款罪（个人）",individualIllegallyAbsorbingPublicDeposits);
-
+        basicCaseClass.put("危险驾驶罪",drunkDriving);
 
         com.cjbdi.core.extractcenter.sentence.share.InitExtractor initExtractor_share = new com.cjbdi.core.extractcenter.sentence.share.InitExtractor();
         basicShareExtractors.put("总则量刑情节", initExtractor_share.getRecidivismExtractor());

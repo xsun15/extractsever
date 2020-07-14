@@ -45,7 +45,7 @@ public class BasicSplit {
         if (StringUtils.isNotEmpty(content)) {
             if (content.contains("检察院") || content.contains("公诉机关")) {
                 return "刑事";
-            } else if (content.contains("民事起诉") || content.contains("民事诉讼法")) {
+            } else if (content.contains("民事起诉") || content.contains("民事诉讼法") || content.contains("起诉状")) {
                 return "民事";
             } else if (content.contains("行政起诉") || content.contains("行政诉讼法")) {
                 return "行政";

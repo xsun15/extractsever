@@ -4,7 +4,7 @@ import com.cjbdi.core.decryptcenter.BasicCaseClass;
 
 public class DrunkDriving extends BasicCaseClass {
 
-   private String casecause = "危险驾驶罪（醉驾）";
+   private String casecause = "危险驾驶罪";
 
 
    public DrunkDriving() {

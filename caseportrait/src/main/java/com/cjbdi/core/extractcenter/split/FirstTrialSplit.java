@@ -30,8 +30,13 @@ public class FirstTrialSplit extends BasicSplit {
             if(contentList.isEmpty() || contentList.size() <= 5) return firstTrial;
             firstTrial.setTitle(contentList.get(0));
             firstTrial.setCourtName(contentList.get(1));
-            firstTrial.setDocType(contentList.get(2));
-            firstTrial.setCourtCaseId(contentList.get(3));
+            // 设置文书类型
+            String docType = CommonTools.extractDocType(content);
+            firstTrial.setDocType(docType);
+            String rule = ".*?[0-9]{4}.*?号$";
+            String matchText = CommonTools.matchText(content, rule);
+            if (StringUtils.isNotEmpty(matchText))
+                firstTrial.setCourtCaseId(matchText);
             firstTrial.setProcuName(contentList.get(4));
             Class c = Class.forName("com.cjbdi.core.configcenter.structurateConfig.utils.FirstTrialBasicConfig");
             Field[] fields = c.getDeclaredFields();
