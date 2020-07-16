@@ -14,6 +14,7 @@ portraitextract:
   docsplit: "/document/split"
   docportray: "/document/portrait"
   basicinfo: "/predict/basicInfo"
+  caseType: "/extract/casetype"
 civilextract:
   ip: "http://192.168.10.109:8989"
   split: "/CivilNewFiveCaseCauses/CutIndict"

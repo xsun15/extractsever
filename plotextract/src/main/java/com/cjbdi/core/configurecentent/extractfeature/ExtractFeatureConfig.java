@@ -64,71 +64,12 @@ public class ExtractFeatureConfig {
    private Concealci concealci = new Concealci();
    private Findtrouble findtrouble = new Findtrouble();
    private DrunkDriving drunkDriving = new DrunkDriving();
-   private TransportationOfHazarDousChemical transportationOfHazarDousChemical = new TransportationOfHazarDousChemical();
-   private SchoolBusBusinessOrPassengerTransportation schoolBusBusinessOrPassengerTransportation = new SchoolBusBusinessOrPassengerTransportation();
-   private ChaseRace chaseRace = new ChaseRace();
    private CourtDecision courtDecision = new CourtDecision();
-   private IndividualIllegallyAbsorbingPublicDeposits individualIllegallyAbsorbingPublicDeposits = new IndividualIllegallyAbsorbingPublicDeposits();
-   private CompanyIllegallyAbsorbingPublicDeposits companyIllegallyAbsorbingPublicDeposits = new CompanyIllegallyAbsorbingPublicDeposits();
-   private CompanyFundRaisingFraud companyFundRaisingFraud = new CompanyFundRaisingFraud();
-   private CounterfeitFraud counterfeitFraud = new CounterfeitFraud();
-   private FraudulentIdentificationFraud fraudulentIdentificationFraud = new FraudulentIdentificationFraud();
-   private InvalidFraud invalidFraud = new InvalidFraud();
-   private MaliciousOverDraftFraud maliciousOverDraftFraud = new MaliciousOverDraftFraud();
-   private IllegalPossessionDrugs illegalPossessionDrugs = new IllegalPossessionDrugs();
-   private Prostitution prostitution = new Prostitution();
-   private IndividualFundRaisingFraud individualFundRaisingFraud = new IndividualFundRaisingFraud();
-   private CompanyContractFraud companyContractFraud = new CompanyContractFraud();
-   private IndividualContractFraud individualContractFraud = new IndividualContractFraud();
-   private ProvidingVenuesForDrugUsers providingVenuesForDrugUsers = new ProvidingVenuesForDrugUsers();
+
 
 
    public DrunkDriving getDrunkDriving() {
       return this.drunkDriving;
-   }
-
-   public TransportationOfHazarDousChemical getTransportationOfHazarDousChemical() {
-      return this.transportationOfHazarDousChemical;
-   }
-
-   public SchoolBusBusinessOrPassengerTransportation getSchoolBusBusinessOrPassengerTransportation() {
-      return this.schoolBusBusinessOrPassengerTransportation;
-   }
-
-   public ChaseRace getChaseRace() {
-      return this.chaseRace;
-   }
-
-   public IndividualIllegallyAbsorbingPublicDeposits getIndividualIllegallyAbsorbingPublicDeposits() {
-      return this.individualIllegallyAbsorbingPublicDeposits;
-   }
-
-   public CompanyIllegallyAbsorbingPublicDeposits getCompanyIllegallyAbsorbingPublicDeposits() {
-      return this.companyIllegallyAbsorbingPublicDeposits;
-   }
-
-   public IndividualFundRaisingFraud getIndividualFundRaisingFraud() {
-      return this.individualFundRaisingFraud;
-   }
-
-   public CompanyFundRaisingFraud getCompanyFundRaisingFraud() {
-      return this.companyFundRaisingFraud;
-   }
-
-   public CompanyContractFraud getCompanyContractFraud() {
-      return this.companyContractFraud;
-   }
-
-   public IndividualContractFraud getIndividualContractFraud() {
-      return this.individualContractFraud;
-   }
-
-   public ProvidingVenuesForDrugUsers getProvidingVenuesForDrugUsers() {
-      return this.providingVenuesForDrugUsers;
-   }
-
-   public IllegalPossessionDrugs getIllegalPossessionDrugs() {
-      return this.illegalPossessionDrugs;
    }
 
    public Concealci getConcealci() {
@@ -207,26 +148,6 @@ public class ExtractFeatureConfig {
       return this.courtDecision;
    }
 
-   public CounterfeitFraud getCounterfeitFraud() {
-      return this.counterfeitFraud;
-   }
-
-   public FraudulentIdentificationFraud getFraudulentIdentificationFraud() {
-      return this.fraudulentIdentificationFraud;
-   }
-
-   public InvalidFraud getInvalidFraud() {
-      return this.invalidFraud;
-   }
-
-   public Prostitution getProstitution() {
-      return this.prostitution;
-   }
-
-   public MaliciousOverDraftFraud getMaliciousOverDraftFraud() {
-      return this.maliciousOverDraftFraud;
-   }
-
    public Gram getGram() {
       return this.gram;
    }
@@ -235,9 +156,6 @@ public class ExtractFeatureConfig {
       HashMap map = new HashMap();
       map.put("总则量刑情节", this.share);
       map.put(((BasicConfig) BeanFactoryConfig.predCasecauseConfig.getCasecause().get("drunkDrivingextract")).getName(), this.drunkDriving);
-      map.put(((BasicConfig) BeanFactoryConfig.predCasecauseConfig.getCasecause().get("transportationOfHazardousChemicalsextract")).getName(), this.transportationOfHazarDousChemical);
-      map.put(((BasicConfig) BeanFactoryConfig.predCasecauseConfig.getCasecause().get("chaseRaceextract")).getName(), this.chaseRace);
-      map.put(((BasicConfig) BeanFactoryConfig.predCasecauseConfig.getCasecause().get("schoolBusBusinessOrPassengerTransportationextract")).getName(), this.schoolBusBusinessOrPassengerTransportation);
       map.put(((BasicConfig) BeanFactoryConfig.predCasecauseConfig.getCasecause().get("trafficextract")).getName(), this.traffic);
       map.put(((BasicConfig) BeanFactoryConfig.predCasecauseConfig.getCasecause().get("injuryextract")).getName(), this.injury);
       map.put(((BasicConfig) BeanFactoryConfig.predCasecauseConfig.getCasecause().get("rapeextract")).getName(), this.rape);
@@ -250,19 +168,6 @@ public class ExtractFeatureConfig {
       map.put(((BasicConfig) BeanFactoryConfig.predCasecauseConfig.getCasecause().get("extortionextract")).getName(), this.extortion);
       map.put(((BasicConfig) BeanFactoryConfig.predCasecauseConfig.getCasecause().get("endangerpaextract")).getName(), this.endangerpa);
       map.put(((BasicConfig) BeanFactoryConfig.predCasecauseConfig.getCasecause().get("affaryextract")).getName(), this.affray);
-      map.put(((BasicConfig) BeanFactoryConfig.predCasecauseConfig.getCasecause().get("fraudulentIdentificationFraudextract")).getName(), this.fraudulentIdentificationFraud);
-      map.put(((BasicConfig) BeanFactoryConfig.predCasecauseConfig.getCasecause().get("maliciousOverDraftFraudextract")).getName(), this.maliciousOverDraftFraud);
-      map.put(((BasicConfig) BeanFactoryConfig.predCasecauseConfig.getCasecause().get("invalidFraudextract")).getName(), this.invalidFraud);
-      map.put(((BasicConfig) BeanFactoryConfig.predCasecauseConfig.getCasecause().get("counterfeitFraudextract")).getName(), this.counterfeitFraud);
-      map.put(((BasicConfig) BeanFactoryConfig.predCasecauseConfig.getCasecause().get("illegalPossessionDrugsextract")).getName(), this.illegalPossessionDrugs);
-      map.put(((BasicConfig) BeanFactoryConfig.predCasecauseConfig.getCasecause().get("prostitutionextract")).getName(), this.prostitution);
-      map.put(((BasicConfig) BeanFactoryConfig.predCasecauseConfig.getCasecause().get("providingVenuesForDrugUsersextract")).getName(), this.providingVenuesForDrugUsers);
-      map.put(((BasicConfig) BeanFactoryConfig.predCasecauseConfig.getCasecause().get("individualContractFraudextract")).getName(), this.individualContractFraud);
-      map.put(((BasicConfig) BeanFactoryConfig.predCasecauseConfig.getCasecause().get("companyContractFraudextract")).getName(), this.companyContractFraud);
-      map.put(((BasicConfig) BeanFactoryConfig.predCasecauseConfig.getCasecause().get("individualFundRaisingFraudextract")).getName(), this.individualFundRaisingFraud);
-      map.put(((BasicConfig) BeanFactoryConfig.predCasecauseConfig.getCasecause().get("companyFundRaisingFraudextract")).getName(), this.companyFundRaisingFraud);
-      map.put(((BasicConfig) BeanFactoryConfig.predCasecauseConfig.getCasecause().get("individualIllegallyAbsorbingPublicDepositsextract")).getName(), this.individualIllegallyAbsorbingPublicDeposits);
-      map.put(((BasicConfig) BeanFactoryConfig.predCasecauseConfig.getCasecause().get("companyIllegallyAbsorbingPublicDepositsextract")).getName(), this.companyIllegallyAbsorbingPublicDeposits);
       map.put(((BasicConfig) BeanFactoryConfig.predCasecauseConfig.getCasecause().get("drugextract")).getName(), this.drug);
       map.put(((BasicConfig) BeanFactoryConfig.predCasecauseConfig.getCasecause().get("findtroubleextract")).getName(), this.findtrouble);
       map.put(((BasicConfig) BeanFactoryConfig.predCasecauseConfig.getCasecause().get("concealextract")).getName(), this.concealci);

@@ -11,7 +11,7 @@ import com.cjbdi.core.extractcenter.sentence.utils.InitBasicExtractor;
 
 public class InitExtractor extends InitBasicExtractor {
 
-   private String casecause = "危险驾驶罪（醉驾）";
+   private String casecause = "危险驾驶罪";
 
 
    public InitExtractor() {
@@ -20,7 +20,6 @@ public class InitExtractor extends InitBasicExtractor {
       this.basicPrivateExtractors.add(new SlightInjuryNumber("1005"));
       this.basicPrivateExtractors.add(new SeriousInjuryNumber("1007"));
       this.basicPrivateExtractors.add(new MinorInjuryNumber("1006"));
-      this.basicPrivateExtractors.add(new DefaultSpecialMoneyExtractor("economicLossextract"));
       this.basicPrivateExtractors.add(new BeingPunishedByCourtForSameCasecause("1014"));
       this.basicPrivateExtractors.add(new BeingPunishedByGovernForSameCasecause("1013"));
    }

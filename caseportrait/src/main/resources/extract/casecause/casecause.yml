@@ -65,7 +65,7 @@ fraudextract:
   rule:
     - "应当以诈骗罪追究其刑事责任"
     - "《中华人民共和国刑法》.*?第二百六十六条"
-    - "因涉嫌.*?诈骗罪.*?被.*?逮捕"
+    - "因涉嫌[^信用卡集资]诈骗罪.*?被.*?逮捕"
     - "指控被告人.*?犯诈骗罪"
   subSituationRule:
 seizingextract:
@@ -148,156 +148,74 @@ drugextract:
     - "因涉嫌.*?(走私|贩卖|运输|制造).*?毒品罪.*?被.*?逮捕"
     - "指控被告人.*?犯(走私|贩卖|运输|制造).*?毒品罪"
   subSituationRule:
-counterfeitFraudextract:
-  ename: "counterfeitFraud"
-  name: "使用伪造的信用卡诈骗罪"
+drunkDrivingextract:
+  ename: "drunkDriving"
+  name: "危险驾驶罪"
   order: "26"
   rule:
-    - "应当以信用卡诈骗罪追究其刑事责任"
-    - "《中华人民共和国刑法》.*?第一百九十六条"
-    - "因涉嫌.*?信用卡诈骗罪.*?被.*?逮捕"
-  subSituationRule:
-    - "使用伪造的信用卡"
-fraudulentIdentificationFraudextract:
-  ename: "fraudulentIdentificationFraud"
-  name: "使用以虚假的身份证明骗领的信用卡诈骗罪"
+    - "应当以危险驾驶罪追究其刑事责任"
+    - "《中华人民共和国刑法》.*?第一百三十三条之一"
+    - "因涉嫌.*?危险驾驶罪.*?被.*?逮捕"
+    - "指控被告人.*?犯危险驾驶罪"
+counterfeitFraudextract:
+  ename: "counterfeitFraud"
+  name: "信用卡诈骗罪"
   order: "27"
   rule:
     - "应当以信用卡诈骗罪追究其刑事责任"
     - "《中华人民共和国刑法》.*?第一百九十六条"
     - "因涉嫌.*?信用卡诈骗罪.*?被.*?逮捕"
-  subSituationRule:
-    - "使用以虚假的身份证明骗领的信用卡"
-invalidFraudextract:
-  ename: "invalidFraud"
-  name: "使用作废的信用卡或者冒用他人信用卡诈骗罪"
-  order: "28"
-  rule:
-    - "应当以信用卡诈骗罪追究其刑事责任"
-    - "《中华人民共和国刑法》.*?第一百九十六条"
-    - "因涉嫌.*?信用卡诈骗罪.*?被.*?逮捕"
-  subSituationRule:
-    - "(拾得|冒用|骗取)(他人|[^，]{1,30})(信用卡|刷卡)"
-    - "使用作废的信用卡"
-maliciousOverDraftFraudextract:
-  ename: "maliciousOverDraftFraud"
-  name: "恶意透支诈骗罪"
-  order: "29"
-  rule:
-    - "应当以信用卡诈骗罪追究其刑事责任"
-    - "《中华人民共和国刑法》.*?第一百九十六条"
-    - "因涉嫌.*?信用卡诈骗罪.*?被.*?逮捕"
-  subSituationRule:
-    - "透支"
+    - "指控被告人.*?信用卡诈骗罪"
 illegalPossessionDrugsextract:
   ename: "illegalPossessionDrugs"
   name: "非法持有毒品罪"
-  order: "30"
+  order: "28"
   rule:
     - "应当以非法持有毒品罪追究其刑事责任"
     - "《中华人民共和国刑法》.*?第三百四十八条"
     - "因涉嫌.*?非法持有毒品罪.*?被.*?逮捕"
-  subSituationRule:
+    - "指控被告人.*?犯非法持有毒品罪"
 prostitutionextract:
   ename: "prostitution"
   name: "引诱、容留、介绍卖淫罪"
-  order: "31"
+  order: "29"
   rule:
     - "应当以(容留|引诱|介绍)卖淫罪追究其刑事责任"
     - "《中华人民共和国刑法》.*?第三百五十九条"
     - "因涉嫌.*?(容留|引诱|介绍)卖淫罪.*?被.*?逮捕"
-  subSituationRule:
+    - "指控被告人.*?犯引诱、容留、介绍卖淫罪"
 providingVenuesForDrugUsersextract:
   ename: "providingVenuesForDrugUsers"
   name: "容留他人吸毒罪"
-  order: "32"
+  order: "30"
   rule:
     - "应当以容留他人吸毒罪追究其刑事责任"
-    - "《中华人民共和国刑法》.*?第三百五十四条"
+    - "《中华人民共和国刑法》[^，。]第三百五十四条"
     - "因涉嫌.*?容留他人吸毒罪.*?被.*?逮捕"
-  subSituationRule:
-individualContractFraudextract:
-  ename: "individualContractFraud"
-  name: "合同诈骗罪（个人）"
-  order: "33"
+    - "指控被告人.*?犯容留他人吸毒罪"
+contractFraudextract:
+  ename: "contractFraud"
+  name: "合同诈骗罪"
+  order: "31"
   rule:
     - "应当以合同诈骗罪追究其刑事责任"
-    - "《中华人民共和国刑法》.*?第二百二十四条"
-  subSituationRule:
-companyContractFraudextract:
-  ename: "companyContractFraud"
-  name: "合同诈骗罪（单位）"
-  order: "34"
-  rule:
-    - "合同诈骗罪（单位）"
-  subSituationRule:
-individualFundRaisingFraudextract:
-  ename: "individualFundRaisingFraud"
-  name: "集资诈骗罪（个人）"
-  order: "35"
+    - "《中华人民共和国刑法》[^，。]第二百二十四条"
+    - "指控被告人.*?犯合同诈骗罪"
+fundRaisingFraudextract:
+  ename: "fundRaisingFraud"
+  name: "集资诈骗罪"
+  order: "32"
   rule:
     - "应当以集资诈骗罪追究其刑事责任"
-    - "《中华人民共和国刑法》.*?第一百九十二条"
-  subSituationRule:
-companyFundRaisingFraudextract:
-  ename: "companyFundRaisingFraud"
-  name: "集资诈骗罪（单位）"
-  order: "36"
-  rule:
-    - "集资诈骗罪（单位）"
-  subSituationRule:
+    - "《中华人民共和国刑法》[^，。]第一百九十二条"
+    - "因涉嫌.*?集资诈骗罪.*?被.*?逮捕"
+    - "指控被告人.*?犯集资诈骗罪"
 individualIllegallyAbsorbingPublicDepositsextract:
   ename: "individualIllegallyAbsorbingPublicDeposits"
-  name: "非法吸收公众存款罪（个人）"
-  order: "37"
+  name: "非法吸收公众存款罪"
+  order: "33"
   rule:
     - "应当?以非法吸收公众存款罪追究其刑事责任"
-  #     - "《中华人民共和国刑法》.*?第一百七十六条"
-  subSituationRule:
-companyIllegallyAbsorbingPublicDepositsextract:
-  ename: "companyIllegallyAbsorbingPublicDeposits"
-  name: "非法吸收公众存款罪（单位）"
-  order: "38"
-  rule:
-    - "集资诈骗罪（单位）"
-  subSituationRule:
-drunkDrivingextract:
-  ename: "drunkDriving"
-  name: "危险驾驶罪（醉驾）"
-  order: "39"
-  rule:
-    - "应当以危险驾驶罪追究其刑事责任"
-    - "《中华人民共和国刑法》.*?第一百三十三条之一"
-    - "因涉嫌.*?危险驾驶罪.*?被.*?逮捕"
-  subSituationRule:
-    - "(醉|酒)"
-schoolBusBusinessOrPassengerTransportationextract:
-  ename: "schoolBusBusinessOrPassengerTransportation"
-  name: "危险驾驶罪（从事校车业务或者旅客运输）"
-  order: "40"
-  rule:
-    - "应当以危险驾驶罪追究其刑事责任"
-    - "《中华人民共和国刑法》.*?第一百三十三条之一"
-    - "因涉嫌.*?危险驾驶罪.*?被.*?逮捕"
-  subSituationRule:
-    - "(校车|学生|客)"
-chaseRaceextract:
-  ename: "chaseRace"
-  name: "危险驾驶罪（在道路上驾驶机动车，追逐竞驶）"
-  order: "41"
-  rule:
-    - "应当以危险驾驶罪追究其刑事责任"
-    - "《中华人民共和国刑法》.*?第一百三十三条之一"
-    - "因涉嫌.*?危险驾驶罪.*?被.*?逮捕"
-  subSituationRule:
-    - "追逐竞驶"
-transportationOfHazardousChemicalsextract:
-  ename: "transportationOfHazardousChemicals"
-  name: "危险驾驶罪（运输危险化学品）"
-  order: "42"
-  rule:
-    - "应当以危险驾驶罪追究其刑事责任"
-    - "《中华人民共和国刑法》.*?第一百三十三条之一"
-    - "因涉嫌.*?危险驾驶罪.*?被.*?逮捕"
-  subSituationRule:
-    - "化学品"
+    - "《中华人民共和国刑法》[^，。]第一百七十六条"
+    - "因涉嫌.*?非法吸收公众存款罪.*?被.*?逮捕"
+    - "指控被告人.*?犯非法吸收公众存款罪"

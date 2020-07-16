@@ -11,6 +11,7 @@ public class InterfacePortrait {
    private List docsplit;
    private List docportray;
    private List basicinfo;
+   private List<String> caseType;
 
 
    public InterfacePortrait(String featureName, String sourceName) {
@@ -19,6 +20,7 @@ public class InterfacePortrait {
       this.docsplit = YamlPropertySourceFactoryUser.loadConfig(featureName + ".docsplit", sourceName);
       this.docportray = YamlPropertySourceFactoryUser.loadConfig(featureName + ".docportray", sourceName);
       this.basicinfo = YamlPropertySourceFactoryUser.loadConfig(featureName + ".basicinfo", sourceName);
+      this.caseType = YamlPropertySourceFactoryUser.loadConfig(featureName + ".caseType", sourceName);
    }
 
    public String getIp() {
@@ -59,5 +61,13 @@ public class InterfacePortrait {
 
    public void setBasicinfo(List basicinfo) {
       this.basicinfo = basicinfo;
+   }
+
+   public String getCaseType() {
+      return StringUtils.strip(this.ip.toString(), "[]") + StringUtils.strip(this.caseType.toString(), "[]");
+   }
+
+   public void setCaseType(List caseType) {
+      this.caseType = caseType;
    }
 }

@@ -132,6 +132,19 @@ public class CommonTools {
         return "";
     }
 
+    public static String matchText(String line, String rule) {
+        if (StringUtils.isEmpty(line) ||StringUtils.isEmpty(rule)) return null;
+        List<String> list = Arrays.asList(line.split("\n"));
+        for (String str : list) {
+            Pattern pattern = Pattern.compile(rule);
+            Matcher matcher = pattern.matcher(str);
+            if (matcher.find()) {
+                return str;
+            }
+        }
+        return "";
+    }
+
     public static Integer matchOrderIndex(String line, List<String> expPatternList) {
         if (line!=null&&!line.isEmpty() && expPatternList!=null) {
             List<String> list = Arrays.asList(line.split("\n"));

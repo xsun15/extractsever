@@ -339,5 +339,14 @@ public class SentenceExtractorServer {
       return null;
    }
 
+   @RequestMapping(value = "/extract/casetype", produces = "application/json;charset=UTF-8", method = RequestMethod.POST)
+   public String extractCasetype(@RequestBody JSONObject jsonParam, @Context HttpServletRequest request) {
+      if (jsonParam.containsKey("fullText")) {
+         String result = HttpRequest.sendPost(BeanFactoryConfig.interfaceConfig.getInterfacePortrait().getCaseType(), jsonParam);
+         return result;
+      }
+      return null;
+   }
+
 
 }
