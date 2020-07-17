@@ -16,6 +16,7 @@ convertlabel:
      seizing: "/configurecenter/covertlabel/selfsentence/seizing.yml"
      steal: "/configurecenter/covertlabel/selfsentence/steal.yml"
      traffic: "/configurecenter/covertlabel/selfsentence/traffic.yml"
+     drunkDriving: "/configurecenter/covertlabel/selfsentence/drunkDriving.yml"
   zhengan:
     share: "/configurecenter/covertlabel/zhengan/share.yml"
     affray: "/configurecenter/covertlabel/zhengan/affray.yml"
@@ -50,6 +51,7 @@ convertlabel:
     findtrouble: "/configurecenter/covertlabel/leian/findtrouble.yml"
     concealci: "/configurecenter/covertlabel/leian/concealci.yml"
     drug: "/configurecenter/covertlabel/leian/drug.yml"
+    drunkDriving: "/configurecenter/covertlabel/leian/drunkDriving.yml"
 checklabel:
   sentence: "configurecenter/sentence/checklabel/sentence.yml"
 lxfeature:

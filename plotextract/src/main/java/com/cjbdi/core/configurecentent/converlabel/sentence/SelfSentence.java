@@ -39,6 +39,7 @@ public class SelfSentence {
    private Seizing seizing = new Seizing();
    private Steal steal = new Steal();
    private Traffic traffic = new Traffic();
+   private DrunkDriving drunkDriving = new DrunkDriving();
 
 
    public JSONArray toJson() {
@@ -59,6 +60,7 @@ public class SelfSentence {
       jsonObject.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("seizingextract")).getName(), this.seizing);
       jsonObject.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("stealextract")).getName(), this.steal);
       jsonObject.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("trafficextract")).getName(), this.traffic);
+      jsonObject.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("drunkDrivingextract")).getName(), this.drunkDriving);
       jsonObject.put("总则", this.share);
       jsonArray.add(jsonObject);
       return jsonArray;

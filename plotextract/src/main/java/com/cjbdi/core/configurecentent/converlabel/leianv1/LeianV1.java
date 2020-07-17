@@ -23,7 +23,7 @@ public class LeianV1 {
    private FindTrouble findtrouble = new FindTrouble();
    private Concealci concealci = new Concealci();
    private Drug drug = new Drug();
-
+   private DrunkDriving drunkDriving = new DrunkDriving();
 
    public JSONArray toJson() {
       JSONArray jsonArray = new JSONArray();
@@ -43,6 +43,7 @@ public class LeianV1 {
       jsonObject.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("findtroubleextract")).getName(), this.findtrouble);
       jsonObject.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("concealextract")).getName(), this.concealci);
       jsonObject.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("drugextract")).getName(), this.drug);
+      jsonObject.put(((BasicConfig)BeanFactoryConfig.predCasecauseConfig.getCasecause().get("drunkDrivingextract")).getName(),this.drunkDriving);
       jsonObject.put("总则", this.share);
       jsonArray.add(jsonObject);
       return jsonArray;

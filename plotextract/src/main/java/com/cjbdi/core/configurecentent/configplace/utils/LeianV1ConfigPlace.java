@@ -22,6 +22,7 @@ public class LeianV1ConfigPlace {
    private List findtrouble;
    private List concealci;
    private List drug;
+   private List drunkDriving;
 
 
    public LeianV1ConfigPlace(String featureName, String sourceName) {
@@ -41,6 +42,7 @@ public class LeianV1ConfigPlace {
       this.concealci = YamlPropertySourceFactoryUser.loadConfig(featureName + ".concealci", sourceName);
       this.drug = YamlPropertySourceFactoryUser.loadConfig(featureName + ".drug", sourceName);
       this.robbery = YamlPropertySourceFactoryUser.loadConfig(featureName + ".robbery", sourceName);
+      this.drunkDriving=YamlPropertySourceFactoryUser.loadConfig(featureName + ".drunkDriving", sourceName);
    }
 
    public String getSteal() {
@@ -169,5 +171,11 @@ public class LeianV1ConfigPlace {
 
    public void setDrug(List drug) {
       this.drug = drug;
+   }
+
+   public String getDrunkDriving() { return StringUtils.strip(this.drunkDriving.toString(), "[]"); }
+
+   public void setDrunkDriving(List drunkDriving) {
+      this.drunkDriving = drunkDriving;
    }
 }

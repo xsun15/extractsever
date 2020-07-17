@@ -1,0 +1,84 @@
+bloodAlcoholContentextract:
+  name: "血液酒精含量"
+  rule: "1001"
+primaryliabilityextract:
+  name: "主要责任"
+  rule: "1002"
+fullliabilityextract:
+  name: "全部责任"
+  rule: "1003"
+equalliabilityextract:
+  name: "同等责任"
+  rule: "1004"
+chasedrivingextract:
+  name: "追逐竞驶"
+  rule: "1005"
+escapeaftertrafficaccidentextract:
+  name: "肇事后逃逸"
+  rule: "1006"
+numberofseriousinjuryextract:
+  name: "重伤人数"
+  rule: "1007"
+numberofdeathextract:
+  name: "死亡人数"
+  rule: "1029"
+numberofminorinjuryextract:
+  name: "轻伤人数"
+  rule: "1008"
+numberofslightinjuryextract:
+  name: "轻微伤人数"
+  rule: "1009"
+firstlevelseriousinjurynumberextract:
+  name: "重伤一级人数"
+  rule: "1010"
+secondlevelseriousinjurynumberextract:
+  name: "重伤二级人数"
+  rule: "1011"
+firstlevelminorinjurynumberextract:
+  name: "轻伤一级人数"
+  rule: "1012"
+secondlevelminorinjurynumberextract:
+  name: "轻伤二级人数"
+  rule: "1013"
+motorVehiclesCarryingPassengersextract:
+  name: "载有乘客的营运机动车"
+  rule: "1014"
+drivingEnvironmentextract:
+  name: "高速公路、城市快速路"
+  rule: "1015"
+overloadingAndSpeedingAndSoonextract:
+  name: "无牌照、伪造、变造机动车牌证"
+  rule: "1016"
+disqualifiedfromdrivingextract:
+  name: "无驾驶资格驾驶"
+  rule: "1017"
+evasionCheckextract:
+  name: "逃避公安机关依法检查，或者抗拒、阻碍公安机关依法检查尚未构成其他犯罪的"
+  rule: "1018"
+administrativeSanctionextract:
+  name: "曾因危险驾驶罪受过行政处罚"
+  rule: "1019"
+criminalInvestigationextract:
+  name: "曾因危险驾驶罪受过刑事处罚"
+  rule: "1020"
+largeVehicleOverloadextract:
+  name: "大型载客汽车超载"
+  rule: "1022"
+mediumVehicleOverloadextract:
+  name: "中型载客汽车超载"
+  rule: "1023"
+smallVehicleOverloadextract:
+  name: "小型载客汽车超载"
+  rule: "1024"
+miniVehicleOverloadextract:
+  name: "微型载客汽车超载"
+  rule: "1025"
+overloadextract:
+  name: "超载"
+  rule: "1026"
+drivingSchoolextract:
+  name: "驾驶校车"
+  rule: "1027"
+drunkDrivingextract:
+  name: "醉酒驾驶"
+  rule: "1028"

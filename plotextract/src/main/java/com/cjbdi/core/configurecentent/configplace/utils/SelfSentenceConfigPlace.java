@@ -22,6 +22,7 @@ public class SelfSentenceConfigPlace {
    private List robbery;
    private List seizing;
    private List steal;
+   private List drunkDriving;
 
 
    public SelfSentenceConfigPlace(String featureName, String sourceName) {
@@ -41,6 +42,7 @@ public class SelfSentenceConfigPlace {
       this.concealci = YamlPropertySourceFactoryUser.loadConfig(featureName + ".concealci", sourceName);
       this.drug = YamlPropertySourceFactoryUser.loadConfig(featureName + ".drug", sourceName);
       this.robbery = YamlPropertySourceFactoryUser.loadConfig(featureName + ".robbery", sourceName);
+      this.drunkDriving = YamlPropertySourceFactoryUser.loadConfig(featureName + ".drunkDriving", sourceName);
    }
 
    public String getTraffic() {
@@ -170,4 +172,8 @@ public class SelfSentenceConfigPlace {
    public void setSteal(List steal) {
       this.steal = steal;
    }
+
+   public String getDrunkDriving() {return StringUtils.strip(this.drunkDriving.toString(), "[]");}
+
+   public void setDrunkDriving(List drunkDriving) { this.drunkDriving = drunkDriving; }
 }

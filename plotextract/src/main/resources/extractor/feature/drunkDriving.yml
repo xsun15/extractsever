@@ -3,7 +3,7 @@ bloodAlcoholContentextract:
   type: "私有"
   code: "1001"
   positivepurerule:
-  - "\\d+(\\.\\d+)?(mg|MG|Mg|mG|毫克)/100(ml|ML|mL|Ml|毫升)"
+    - "\\d+(\\.\\d+)?(mg|MG|Mg|mG|毫克)/100(ml|ML|mL|Ml|毫升)"
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
@@ -12,9 +12,11 @@ primaryliabilityextract:
   type: "共有纯正则"
   code: "1002"
   positivepurerule:
-  - "(负|承担|为|确定)[^。；！？]*?主要责任"
+    - "(负|承担|为|确定)[^。；！？]*?主要责任"
   positivemodelrule:
   negativepurerule:
+    - "一）?造成交通事故且负事故全部或者主要责任，或者造成交通事故后逃逸"
+    - "第[一五]项[^。；！？]{0,10}造成交通事故且负事故主要责任的，无驾驶资格驾驶机动车的"
   negativemodelrule:
 fullliabilityextract:
   name: "全部责任"
@@ -39,19 +41,26 @@ chasedrivingextract:
   type: "共有纯正则"
   code: "1005"
   positivepurerule:
-    - "(?<!事故后)追逐"
+    - "[驾驶].*?(?<!事故后)追逐"
     - "竞速"
     - "竞驶(?!，情节恶劣的，或者在道路上醉酒驾驶机动车的)"
     - "(?<!事故后)追赶[^。；]*?致[^。；]*?(受伤|死亡)"
+    - "为寻求刺激[^。；]*?(超过规定时速|超车)"
+    - "被告人[^。；]*?截停"
+    - "驾驶[^。，！？；]*?车将学校大门撞开进入校区"
   positivemodelrule:
   negativepurerule:
+    - "在道路上驾驶机动车追逐(竟|竞|行)(驾|驶)，?情节(严|恶)劣的?(行为)?，?或者(在道路)?上?醉酒驾驶机动车"
+    - "一）?追逐(竟|竞)(驾|驶)(、|，)情节(严|恶)劣的"
+    - "危险驾驶罪是指在道路上驾驶机动车追逐(竟|竞)(驾|驶)，情节(严|恶)劣(的行为)?或者在道路上醉酒驾驶机动车的行为"
+    - "随意追逐、辱骂、殴打他人[^。；]*?寻衅滋事罪"
   negativemodelrule:
 escapeaftertrafficaccidentextract:
   name: "肇事后逃逸"
   type: "共有纯正则"
   code: "1006"
   positivepurerule:
-    - "(事故|肇事|撞|作案|案发).{0,15}(后|且)[^。]{0,70}(逃逸|逃离|离开|驶离|继续(行驶|驾车)|去向不明)"
+    - "(事故|肇事|撞|作案|案发).{0,15}(后|且)[^。]{0,70}(?<!未|没有)(逃至|逃逸|逃离|离开|驶离|继续(行驶|驾车|前行)|去向不明|藏匿)"
     - "(非|不构成|不属于).{0,15}逃逸.{0,15}(之辩|辩解|辩护|理由|意见).{0,15}不予以(采纳|采信|支持)"
     - "有逃逸.{0,15}(故意|情节|行为)"
     - "(符合|认定).{0,15}肇事.{0,15}逃逸"
@@ -61,10 +70,18 @@ escapeaftertrafficaccidentextract:
     - "(?<!不属于交通)(弃车|驾车|肇事).{0,15}逃逸"
     - "谎称.{0,15}拨打.{0,15}(110|120)"
     - "未拨打[^。；]*?(逃离|离开.{0,10}现场)"
-    - "(驾车|欲)逃离"
+    - "(驾车|欲)逃[离至]"
     - "系逃逸"
+    - "弃车离开现场|(离开现场|驶离)现场"
+    - "撞上[^。？！，；]*?被害人[^。？！，；]*?后逃逸"
+    - "(撞|刮|追尾|受伤|损坏|擦挂|(碰|刮)(蹭|擦)|事故).*?(离开|(逃|驶)(离|避|逸)|弃车|继续(向前行驶|行驶|驾车|前行)|(驾|驶)车前行)"
   positivemodelrule:
   negativepurerule:
+    - "一）?造成交通事故且负事故全部或者主要责任，或者造成交通事故后逃逸"
+    - "(事故|肇事|撞|作案|案发).{0,15}(后|且)[^。]{0,70}随事故处理人员(离开|驶离)"
+    - "调查过程中[^，。？！；]*?去向不明"
+    - "第二款规定[^。？！；]*?或者造成交通事故后逃逸"
+    - "被告人[^。？！；]*?称事故发生后，其离开现场才喝的酒与查明的事实不符"
   negativemodelrule:
 numberofseriousinjuryextract:
   name: "重伤人数"
@@ -77,7 +94,7 @@ numberofseriousinjuryextract:
 numberofdeathextract:
   name: "死亡人数"
   type: "私有"
-  code: "1023"
+  code: "1029"
   positivepurerule:
   positivemodelrule:
   negativepurerule:
@@ -135,18 +152,30 @@ motorVehiclesCarryingPassengersextract:
   type: "共有纯正则"
   code: "1014"
   positivepurerule:
-   - "载有乘客的营运机动车"
+    - "载有乘客的营运机动车"
+    - "乘客[^。；！？]*?营运[^。；！？]*?(出租|机动)车"
+    - "被告人[^。；！？]*?被乘客举报"
+    - "致车上乘客[^。；！？]*?受伤"
+    - "被告人[^。；！？]*?(载有|搭载)乘客"
+    - "驾驶[^。；？！]*?(营运|客运|客车|出租车)[^。；？！]*?(载|接|送|致)[^，。？！]*?(乘客|朋友|客|人)"
   positivemodelrule:
   negativepurerule:
+    - "四）?驾驶载有乘客的营运机动车的"
   negativemodelrule:
 drivingEnvironmentextract:
   name: "高速公路、城市快速路"
   type: "共有纯正则"
   code: "1015"
   positivepurerule:
-   - "(高速公路|城市快速路)"
+    - "(高速|快速路|高速[^。；？！]*?收费站|下高速时|高架|外环)"
+    - "沿[^。，；！？]*?高速行驶"
+    - "(行|驶)至[^。，；！？]*?高速[^。，；！？]*?公里处"
+    - "北京[^。，；！？]*?[二三四五六]环"
+    - "[南北][二三四五六]?环"
   positivemodelrule:
   negativepurerule:
+    - "准备上(高速公路|快速路)时"
+    - "相对[^。，；！？]*?城市快速路来比较，社会危害性较小"
   negativemodelrule:
 overloadingAndSpeedingAndSoonextract:
   name: "无牌照、伪造、变造机动车牌证"
@@ -158,10 +187,12 @@ overloadingAndSpeedingAndSoonextract:
     - "(没有|未)(取得|登记|悬挂|挂|上)(机动车|车)?(号|车牌|号牌|牌照|照|牌)"
     - "套牌"
     - "车辆牌照与(肇事|投保)车辆牌照不一致"
-    - "挪用(牌照|号牌)"
+    - "(已注销|挪用)(牌照|号牌)"
     - "车牌号不符"
     - "变造号牌"
     - "(没有|未)[^。；！？]*?(?<!所有权转移|变更|过户)(登记|注册)"
+    - "被告人[^。；！？，]*?驾驶[^。；！？，]*?悬挂[^。；！？，]*?牌照"
+    - "车牌号系伪造"
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
@@ -178,8 +209,11 @@ disqualifiedfromdrivingextract:
     - "(?<!被害人)(无|不具备|未办理|未取得)(道路)?(运输|客运|货运)从业资格"
     - "(?<!被害人)未办理从业运输资格"
     - "(?<!被害人)无装载机操作资格"
-    - "(?<!被害人)驾驶资格证被注销"
     - "(?<!被害人)准驾车型不符"
+    - "被告人[^。；！？]*?(未取得|无)[^，。；？！]*?驾驶资格"
+    - "无证驾驶[^。？！]*?(与|将)[^，。？！；]*?撞"
+    - "被告人[^。；！？]*?(未取得|无)[^，。；？！]*?驾驶(资格|证)"
+    - "(?<!被害人)驾驶(资格)?证[^，。；？！]*?被(注|吊)销"
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
@@ -188,16 +222,19 @@ evasionCheckextract:
   type: "共有纯正则"
   code: "1018"
   positivepurerule:
-    - "(逃避|阻碍|拒绝)[^，]*?检查"
+    - "((躲|逃)避|阻碍|拒(绝|不)|调转车头|掉头)[^。？！，]*?(检(查|测)|测试|调查|查获)"
+    - "(?<!不具备)(逃(跑|离|脱|逸|走|避)|(不|未)到(案|庭)|脱逃|离开|在逃|逃逸|佯装|不(交代|配合)|闯过|谎称|拒绝|冒充|顶包)"
+    - "((盘|检|拦)(查|测)|查获|临检|处理|执勤|查车|劝阻|案发后|撞)[^？！；]*?((掉|调)头|加速|(未|没有)停车|强行|逃(脱|逸|窜|避|跑|离)|冒(用|名|充)|倒车|拉扯冲(卡|岗)|不(予)?配合|后倒|(交|更)换(座位|位置)|继续|阻碍|驶(入|离)|躲避)"
   positivemodelrule:
   negativepurerule:
+    - "(没有|无)[^，。；！？]{0,12}(抗拒|阻碍|逃跑)"
   negativemodelrule:
 administrativeSanctionextract:
   name: "曾因危险驾驶罪受过行政处罚"
   type: "私有"
   code: "1019"
   positivepurerule:
-  - "行政处罚"
+    - "行政处罚"
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
@@ -209,21 +246,15 @@ criminalInvestigationextract:
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
-obstructionOfCriminalProceedingsextract:
-  name: "在诉讼期间拒不到案、逃跑"
-  type: "共有纯正则"
-  code: "1021"
-  positivepurerule:
-    - "(拒不到案|逃跑)"
-  positivemodelrule:
-  negativepurerule:
-  negativemodelrule:
 largeVehicleOverloadextract:
   name: "大型载客汽车超载"
   type: "共有纯正则"
   code: "1022"
   positivepurerule:
-    - "驾驶[^，]*?大型[^，]*?车"
+    - "驾驶[^。；！？]*?(?<!与)大(型|客)[^。；！？]*?车.*?(实载|超员|额定|定额|超载|核定|核载)"
+    - "大型载客汽车超载"
+    - "属于大型普通客车[^。；！？]*?核定载客"
+    - "驾驶[^。；！？]*?(实载|超员|额定|定额|超载|核定|核载)[^。；！？]*?(?<!与)大(型|客)[^。；！？]*?车"
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
@@ -232,7 +263,8 @@ mediumVehicleOverloadextract:
   type: "共有纯正则"
   code: "1023"
   positivepurerule:
-    - "驾驶[^，]*?中型[^，]*?车"
+    - "驾驶[^。；！？]*?(?<!与)中型[^，。；！？]*?车.*?(超载|额定|核定|定额|超员|实载|核载)"
+    - "中型载客汽车超载"
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
@@ -241,7 +273,9 @@ smallVehicleOverloadextract:
   type: "共有纯正则"
   code: "1024"
   positivepurerule:
-    - "驾驶[^，]*?小型[^，]*?车"
+    - "驾驶[^。；！？]*?(?<!与)(长安面包车|小型)[^，。；！？]*?车.*?(超载|额定|核定|定额|超员|实载|核载)"
+    - "小型载客汽车超载"
+    - "驾驶[^。；！？]*?(超载|额定|核定|定额|超员|实载|核载)[^。；！？]*?(?<!与)(长安面包车|小型)[^，。；！？]*?车"
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
@@ -250,7 +284,8 @@ miniVehicleOverloadextract:
   type: "共有纯正则"
   code: "1025"
   positivepurerule:
-    - "驾驶[^，]*?微型[^，]*?车"
+    - "微型载客汽车超载"
+    - "(?<!与)微型[^，。？！]*?车[^，。？！].*?(超载|额定|核定|定额|超员|实载|核载)"
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
@@ -259,9 +294,18 @@ overloadextract:
   type: "共有纯正则"
   code: "1026"
   positivepurerule:
-    - "(超载|超员|超过额定乘员)"
+    - "(超载|超员|超过额定(乘员|载))"
+    - "(核|拉)(定|载)[^；？！]*?(实|核|搭)[^，；。？！]*?载"
+    - "(核|拉)(定|载)[^；？！]*?(实际载客|载着|载运|超员|搭载|共计{1,5}(名|人))"
+    - "(实际载客|载着|载运|超员|搭载|共计{1,5}(名|人))[^；？！]*?(核|拉)(定|载)"
+    - "额定[^。；？！]*?实载"
+    - "载[^。，；？！]*?四人[^。；？！]*?驾驶[^。，；？！]*?二轮摩托车"
+    - "二轮摩托车[^？！；]*?(拉乘|载)[^，。；？！]*?某[^，。；？！]{1,7}某"
   positivemodelrule:
   negativepurerule:
+    - "或者从事校车业务或者?旅客运输，严重超过额定乘员载客，或者?严重超过规定时速行驶(的|等)行为"
+    - "三）?从事校车业务或者旅客运输，严重超过额定乘员载客，或者严重超过规定时速行(使|驶)的"
+    - "有严重超员、超载或者?超速驾驶，无驾驶资格驾驶机动车"
   negativemodelrule:
 drivingSchoolextract:
   name: "驾驶校车"
@@ -269,8 +313,12 @@ drivingSchoolextract:
   code: "1027"
   positivepurerule:
     - "校车"
+    - "学校公?车辆?"
+    - "驾驶[^，。；！？]*?车[^；！？]*?学生[^；！？]*?(超员|核定|实载|超速|额定|定额)"
+    - "驾驶[^；！？]*?(超员|核定|实载|超速|额定|定额)[^；！？]*?学生"
   positivemodelrule:
   negativepurerule:
+    - "从事校车业务或者旅客运输"
   negativemodelrule:
 drunkDrivingextract:
   name: "醉酒驾驶"
@@ -278,6 +326,7 @@ drunkDrivingextract:
   code: "1028"
   positivepurerule:
     - "醉酒"
+    - "酒后"
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
