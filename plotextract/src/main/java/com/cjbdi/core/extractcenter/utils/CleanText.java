@@ -11,7 +11,7 @@ public class CleanText {
 
    public static String run(String content) {
       content = content.replaceAll("＊", "某");
-      content = content.replaceAll("[^0-9a-zA-Z\\u4e00-\\u9fa5.，,、。？“”：:*×\\n《》（）Oo〇]+","");
+      content = content.replaceAll("[^0-9a-zA-Z\\u4e00-\\u9fa5.，,、。？“”：:*×\\n《》（）Oo〇\\/]+","");
       String[] contentList = content.split("\n");
       String result = "";
       for (String line : contentList) {
