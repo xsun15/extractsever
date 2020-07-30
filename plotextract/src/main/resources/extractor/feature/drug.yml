@@ -1,5 +1,5 @@
 againstWithViolenceExpListextract:
-  name: " 暴力抗拒检查、拘留、逮捕"
+  name: "暴力抗拒检查、拘留、逮捕"
   type: "共有纯正则"
   code: "1001"
   positivepurerule:
@@ -15,7 +15,7 @@ againstWithViolenceExpListextract:
   negativepurerule:
   negativemodelrule:
 govEmplyeeInvolvedExpListextract:
-  name: " 国家工作人员走私、贩卖、运输、制造毒品"
+  name: "国家工作人员走私、贩卖、运输、制造毒品"
   type: "共有纯正则"
   code: "1002"
   positivepurerule:

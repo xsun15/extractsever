@@ -53,7 +53,8 @@ deathCountExpListextract:
   type: "共有纯正则"
   code: "1005"
   positivepurerule:
-    - "造成*死亡"
+    - "造成.*?死亡"
+    - "(致(?!中枢性呼吸)|受|造成|使得)[^，。；]*?(死(?!亡或者造成其他严重后果的|刑|亡或者以特别残忍手段|亡、强奸、抢劫)|自杀|身亡)"
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
@@ -62,7 +63,7 @@ suicideCountExpListextract:
   type: "共有纯正则"
   code: "1006"
   positivepurerule:
-    - "致使*自杀"
+    - "致使.*?自杀"
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
@@ -71,7 +72,7 @@ inDisasterExpListextract:
   type: "共有纯正则"
   code: "1007"
   positivepurerule:
-    - "在[自然灾害|事故灾害|社会安全(事件)?|突发(事件)?]期间(?![,，]在事件发生地抢夺的)"
+    - "在(自然灾害|事故灾害|社会安全(事件)?|突发(事件)?)期间(?![,，]在事件发生地抢夺的)"
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
@@ -89,7 +90,7 @@ minorLabelVerbWordsextract:
   negativemodelrule:
 minorLabelExpressionsextract:
   name: "组织、控制未成年人抢夺"
-  type: "私有"
+  type: "共有纯正则"
   code: "1009"
   positivepurerule:
     - "教唆.*?(未成年|1-9周?岁|[一二三四五六七八九十]周?岁|1[0-7]周?岁|十[一二三四五六七]周?岁|[不未]满(18|十八)周?岁|尚未(18|十八)周?岁|[无|未达到]刑事责任)"
@@ -129,12 +130,12 @@ specialFundsAndMaterialsExpListextract:
   negativepurerule:
   negativemodelrule:
 patientExpListextract:
-  name: " 在医院抢夺病人或其亲友财物"
+  name: "在医院抢夺病人或其亲友财物"
   type: "共有纯正则"
   code: "1012"
   positivepurerule:
-    - ".{0,10}住院的.{0,10}"
-    - ".{0,10}照看病人的.{0,10}"
+    - "住院"
+    - "照看病人"
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
@@ -143,10 +144,20 @@ forLivingExpListextract:
   type: "共有纯正则"
   code: "1013"
   positivepurerule:
-    - ".{0,30}因生活所迫而犯罪"
-    - ".{0,30}家庭困难"
-    - ".{0,30}病急需用钱"
-    - ".{0,30}治病"
+    - "因生活所迫而犯罪"
+    - "家庭困难"
+    - "病急需用钱"
+    - "治病"
+    - "(因|为)[^。；！？]*?(生病|疾病|治病|生活|疾病所)急需"
+    - "(因|为)[^。；！？]*?急需[^。；！？]*?(治病|治疗|用钱)"
+    - "(为|用于)[^。；！？]*?(医药费|治病|生活急需)"
+    - "经查[^。]*?被告人[^。]*?患有[^。]*?病"
+    - "生活.{0,5}所需"
+    - "因生活所迫(?<!(辩护人|辩称)[^。！；]{0,40}家庭困难)(?![^。！]{0,50}(意见|不符|不予采纳))"
+    - "家庭困难(?<!(辩护人|辩称)[^。！；]{0,40}家庭困难)(?![^。！]{0,50}(意见|不符|不予采纳))"
+    - "个人投资失败"
+    - "家[中里]有事"
+    - "家[庭里].{0,10}急需"
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
@@ -187,6 +198,10 @@ givebackbeforeexposuredextract:
     - "(报警)之?前.{0,20}[归交退送放][还回]"
     - "主动.{0,30}投案.{0,30}[归交退送放][还回]"
     - "主动[携|带|拿|将].{0,20}[投案|送回]"
+    - "同(月|日)[^。！？；：]{0,20}主动[^。！？；：]{0,30}投案[^。！？；：]{0,30}[归交退送放][还回]"
+    - "(?<!案发后)主动[携|带|拿|将][^。！？；：]{0,20}[归交退放送回还]"
+    - "将抢夺所得[^。！？；：]{0,20}[还回][^。！？；：]{0,20}同(月|日)[^。！？；：]{0,20}主动[^。！？；：]{0,30}投案"
+    - "因害怕被抓[^。！？；：]{0,20}将[^。！？；：]{0,20}[归交退放送回还]"
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
@@ -304,10 +319,17 @@ tenthleveldisabilityextract:
   negativemodelrule:
 pretendpoliceextract:
   name: "冒充军警"
-  type: "公用纯正则"
+  type: "共有纯正则"
   code: "1030"
   positivepurerule:
     - "冒充军警"
+    - "(?<!没有|是否构成|不具有|是否具有|不构成|不属于)冒充军警"
+    - "(谎称|假冒|冒充|假称|说自己)[^。；！？]{0,20}(军警|民警|警察|武警人员|公安人员|巡防队员|刑警大队工作人员|网络刑警|武装部的人员)"
+    - "换穿[^。；！？]{0,5}武警制式服装"
+    - "对[^。；！？]*?宣称是派出所的"
+    - "以(公安人员查夜|派出所查户口)[^。；！？]*?为名"
+    - "被告人[^。；！？]*?(身着警察制式外套|(着|穿)(旧式)?警服|身穿印有“中国武警”标识的|穿武警制服|着“特警”作训服)"
+    - "身穿无警号警服|穿上预先准备的警服|穿司法警服|说其是[^。；！？]{0,5}派出所的"
   positivemodelrule:
   negativepurerule:
   negativemodelrule:

@@ -29,7 +29,7 @@ public class RemoveSpecialChar {
                 if (StringUtils.isNotEmpty(line))
                     cleanContent += line + "\n";
             }
-            cleanContent = cleanContent.replaceAll("[^0-9a-zA-Z\\u4e00-\\u9fa5.，,、。？“”：:*×\\n《》（）Oo〇【】〔〕\\/]+", "");
+            cleanContent = cleanContent.replaceAll("[^0-9a-zA-Z\\u4e00-\\u9fa5.，,、。？“”：:*×\\n《》（）Oo〇【】〔〕/]+", "");
             cleanContent = deleteDigitDot(cleanContent);
             return cleanContent;
         }

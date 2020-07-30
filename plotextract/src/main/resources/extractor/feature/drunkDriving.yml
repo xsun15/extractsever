@@ -3,7 +3,7 @@ bloodAlcoholContentextract:
   type: "私有"
   code: "1001"
   positivepurerule:
-    - "\\d+(\\.\\d*)?(mg|MG|Mg|mG|毫克)\\/100(ml|ML|mL|Ml|毫升)"
+    - "\\d+(\\.\\d*)?(mg|MG|Mg|mG|毫克)/100(ml|ML|mL|Ml|毫升)"
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
