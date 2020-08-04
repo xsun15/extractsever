@@ -29,6 +29,7 @@ onPublicextraction:
     - "(公园|花园|路(交叉)?口|广场|卖场|KTV|包厢|车站)[^。；！？]*?(寻衅|滋事|争执|殴斗|殴打|打斗|厮打|砍向|持械|互殴)"
   positivemodelrule:
   negativepurerule:
+    - "三）?\\)?在公共场所或者交通要道聚众斗殴，造成社会秩序严重混乱的"
   negativemodelrule:
 withWeaponextraction:
   name: "持械斗殴"
@@ -39,6 +40,7 @@ withWeaponextraction:
     - "(棒|管|刀|棍|械|镐|砖|斧|器|铁质|铁锹|酒瓶|啤酒扎杯|扳手|钢管)[^。；！？]*?(寻衅|滋事|争执|殴斗|殴打|打斗|厮打|砍向|持械|互殴)"
   positivemodelrule:
   negativepurerule:
+    - "持械[^。？！]*?持械聚众斗殴证据不足"
   negativemodelrule:
 disruptSocialOrderextraction:
   name: "严重扰乱社会秩序"
@@ -50,6 +52,7 @@ disruptSocialOrderextraction:
     - "情节恶劣.{0,10}破坏社会秩序"
   positivemodelrule:
   negativepurerule:
+    - "三）?\\)?在公共场所或者交通要道聚众斗殴，造成社会秩序严重混乱的"
   negativemodelrule:
 badSocialImpactextraction:
   name: "造成恶劣社会影响"
@@ -63,6 +66,7 @@ badSocialImpactextraction:
     - "社会危害性?大"
   positivemodelrule:
   negativepurerule:
+    - "二）?\\)?聚众斗殴人数多，规模大，社会影响恶劣的"
   negativemodelrule:
 organizeextraction:
   name: "组织、控制他人斗殴的"
@@ -72,6 +76,8 @@ organizeextraction:
     - "(教唆|组织|控制|纠集|指使|利用|带领|召集|伙同)[^。；！？]*?(寻衅|滋事|争执|殴斗|殴打|打斗|厮打|砍向|持械|互殴)"
   positivemodelrule:
   negativepurerule:
+    - "(他人的?|政府|受人?)(组织|纠集)"
+    - "黑社会性质组织罪"
   negativemodelrule:
 minorextraction:
   name: "组织、控制未成年人斗殴"
@@ -87,6 +93,7 @@ minorextraction:
     - "(教唆|组织|控制|纠集|指使|利用|带领|召集|伙同)[^。；！？]*?尚未(18|十八)周?岁"
   positivemodelrule:
   negativepurerule:
+    - "被告人[^。；！？]*?处理其未成年儿子"
   negativemodelrule:
 propertyLossextraction:
   name: "损毁财物数额"
@@ -109,6 +116,9 @@ underworldextraction:
     - "带有黑社会性质"
   positivemodelrule:
   negativepurerule:
+    - "犯参加黑社会性质组织罪"
+    - "不构成参加黑社会性质组织罪"
+    - "未形成黑社会性质组织的违法犯罪组织"
   negativemodelrule:
 folkConflictextraction:
   name: "民间矛盾"
@@ -153,12 +163,14 @@ trafficDisorderextraction:
   type: "共有纯正则"
   code: "1012"
   positivepurerule:
-    - "(致|使|造成).{0,10}(道|路|交通).{0,10}(堵塞|混乱|阻断|中断|阻塞)"
-    - "(堵塞|扰乱|影响).{0,10}(道|交通)"
+    - "(?<!未|没有)(致|使|造成).{0,10}(道|路|交通).{0,10}(堵塞|混乱|阻断|中断|阻塞)"
+    - "(?<!未|没有)(堵塞|扰乱|影响).{0,10}(道|交通)"
     - "(道路|交通).{0,10}被?堵"
     - "在.{0,20}交通要道.{0,20}(追逐|撞击)"
   positivemodelrule:
   negativepurerule:
+    - "影响采金水道"
+    - "未造成严重交通拥堵"
   negativemodelrule:
 numberofseriousinjuryextract:
   name: "重伤人数"

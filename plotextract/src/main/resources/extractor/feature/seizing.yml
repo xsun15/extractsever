@@ -25,6 +25,10 @@ drugWordsextract:
     - "(夺|抢)[^，。]*?毒资"
   positivemodelrule:
   negativepurerule:
+    - "贩卖毒品"
+    - "(吸食|购买)毒品"
+    - "毒资"
+    - "毒品的?管理(法规|规定|制度)"
   negativemodelrule:
 drugExpressionsextract:
   name: "为吸毒而抢夺的"
@@ -35,6 +39,13 @@ drugExpressionsextract:
     - "获.{0,10}毒.{0,10}资"
   positivemodelrule:
   negativepurerule:
+    - "因吸食毒品被行政处罚，与本案不属于同一法律事实"
+    - "犯罪动机并非系?为了吸毒"
+    - "因吸食毒品在被行政拘留期间"
+    - "吸毒等?劣迹"
+    - "提供场所容留他人吸食毒品"
+    - "为他人吸食毒品提供场所"
+    - "因吸食毒品被抓获"
   negativemodelrule:
 betExpressionsextract:
   name: "为赌博而抢夺的"
@@ -57,6 +68,9 @@ deathCountExpListextract:
     - "(致(?!中枢性呼吸)|受|造成|使得)[^，。；]*?(死(?!亡或者造成其他严重后果的|刑|亡或者以特别残忍手段|亡、强奸、抢劫)|自杀|身亡)"
   positivemodelrule:
   negativepurerule:
+    - "曾因[^，。；]*?致人死亡"
+    - "五）?抢劫致人重伤、死亡的"
+    - "二）?导致他人自杀的"
   negativemodelrule:
 suicideCountExpListextract:
   name: "抢夺致人自杀"
@@ -87,6 +101,7 @@ minorLabelVerbWordsextract:
     - "实施抢夺的被告人.{0,10}等人"
   positivemodelrule:
   negativepurerule:
+    - "参与赌博过程中[^。；：]*?抢"
   negativemodelrule:
 minorLabelExpressionsextract:
   name: "组织、控制未成年人抢夺"
@@ -105,6 +120,13 @@ minorLabelExpressionsextract:
     - "搭载.*?(未成年|1-9周?岁|[一二三四五六七八九十]周?岁|1[0-7]周?岁|十[一二三四五六七]周?岁|[不未]满(18|十八)周?岁|尚未(18|十八)周?岁|[无|未达到]刑事责任)"
   positivemodelrule:
   negativepurerule:
+    - "公诉机关[^。？！]*?教唆不满十八周岁的人[^。？！]*?的意见[^。？！]*?不予采纳"
+    - "(犯前罪时[未已]|最后一次犯罪时仍未|年|刚|前罪实施时不|曾因作案时未)满十八周岁"
+    - "(抢夺|犯罪)(对象[为是])?未成年人"
+    - "六）?抢夺老年人、未成年人、孕妇、携带婴幼儿的人、残疾人、丧失劳动能力人的财物的"
+    - "一年内抢夺三次以上的驾驶机动车、非机动车抢夺的人、携带要幼儿的人、疾人、丧失劳动能力人财物的在医院抢夺病人"
+    - "被害人包括怀孕妇女[^。，？！]{1,4}未成年人"
+    - "犯[^。，？！]{1,15}罪时为未成年"
   negativemodelrule:
 driveActionWordsextract:
   name: "抢夺老年人、未成年人、孕妇、携带婴幼儿的人、残疾人、丧失劳动能力人的财物的"
@@ -120,6 +142,12 @@ driveActionWordsextract:
     - "(夺|抢).*?(丧失|没有|无)劳动能力"
   positivemodelrule:
   negativepurerule:
+    - "被告人[^，。？！]*?[是系](聋哑|又聋又哑的|残疾)人"
+    - "有前科劣迹，抢夺老年人、丧失劳动能力人的财物"
+    - "被告人[^，。？！]*?属一级残疾"
+    - "系聋哑人，归案后能"
+    - "系聋哑人犯罪"
+    - "系聋哑人，予以减轻处罚"
   negativemodelrule:
 specialFundsAndMaterialsExpListextract:
   name: "抢夺救灾、抢险、防汛、优抚、扶贫、移民、救济款物"
@@ -138,6 +166,15 @@ patientExpListextract:
     - "照看病人"
   positivemodelrule:
   negativepurerule:
+    - "被告人[^，。？！]*?虽然办理了住院手续"
+    - "被告人[^，。？！]*?曾因精神分裂症住院治疗"
+    - "住院治疗[^。？！]*?合理损失为"
+    - "被告人[^，。？！]*?住院、门诊病历及随卷病历"
+    - "无证据证实其住院因本案被告人的行为所致"
+    - "因伤住院治疗[^。？！]*?误工费"
+    - "住院[^，。？！]*?费[^。？！]*?应予赔偿"
+    - "被告人[^，。？！]*?曾因重度抑郁[^。？！]*?住院治疗"
+    - "赔偿[^，。？！]*?住院[^，。？！]*?费"
   negativemodelrule:
 forLivingExpListextract:
   name: "生活所迫、学习、治病急需而抢夺"
@@ -204,6 +241,7 @@ givebackbeforeexposuredextract:
     - "因害怕被抓[^。！？；：]{0,20}将[^。！？；：]{0,20}[归交退放送回还]"
   positivemodelrule:
   negativepurerule:
+    - "(案发|归案|捉获)后[^？！]*?(主动[^。，！？；：]{0,5}退还|主动[^。，！？；：]{0,10}追回|主动带领民警|(全部|积极)退还|部分赃物已归还|退[还回]了?部分赃款|退还所抢夺物品|主动归还所抢夺|将被抢[^。，！？；：]{0,5}退还|将抢得的[^。，！？；：]{0,10}归还|赃物已退还)"
   negativemodelrule:
 numberofseriousinjuryextract:
   name: "重伤人数"
@@ -332,6 +370,7 @@ pretendpoliceextract:
     - "身穿无警号警服|穿上预先准备的警服|穿司法警服|说其是[^。；！？]{0,5}派出所的"
   positivemodelrule:
   negativepurerule:
+    - "六）?冒充军警人员抢劫的"
   negativemodelrule:
 firstlevelseriousinjurynumberextract:
   name: "重伤一级人数"

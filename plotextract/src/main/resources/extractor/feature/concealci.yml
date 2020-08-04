@@ -175,6 +175,9 @@ vehicleCrimeextraction:
     - "明知该.{0,10}(?<!自行|电瓶|电动|押|三轮)车[是系为]被盗车辆的情况下"
     - "[盗窃抢骗偷].{0,10}所得的.{0,10}(?<!自行|电瓶|电动|押|三轮|用|停)车(?!电瓶|计|后备箱|内|被|运|拉|欲|以|总计)"
     - "明知.{0,5}销售的.{0,15}(?<!自行|电瓶|电动|押|三轮)车[是系为]赃物"
+  positivemodelrule:
+  negativepurerule:
+  negativemodelrule:
 vehicleValueextraction:
   name: "机动车犯罪价值"
   type: "私有"
