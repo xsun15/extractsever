@@ -108,6 +108,8 @@ sell2studentsReListextract:
     - "贩卖.{0,20}[同|在]校学生"
   positivemodelrule:
   negativepurerule:
+    - "三）?向在校学生贩卖毒品的"
+    - "没有证据证明买毒人是在校学生"
   negativemodelrule:
 specialLocationsReListextract:
   name: "特殊地点"

@@ -39,6 +39,8 @@ drugExpressionsextract:
   positivepurerule:
     - "吸.{0,10}毒"
     - "获.{0,10}毒.{0,10}资"
+    - "(抢|拽走|夺)[^？！]*?(换[购了成取](毒品|甲基苯丙胺|海洛因)|购买了?(海洛因|毒品))"
+    - "(筹[措集]?|购买)毒[资品][^。？！]*?[抢夺]"
   positivemodelrule:
   negativepurerule:
     - "因吸食毒品被行政处罚，与本案不属于同一法律事实"

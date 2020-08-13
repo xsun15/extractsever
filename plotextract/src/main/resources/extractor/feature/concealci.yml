@@ -89,7 +89,6 @@ majorPublicInterestextraction:
     - "(盗|偷卖).*?(电缆|原油)"
   positivemodelrule:
   negativepurerule:
-    - "并不是.{0,5}盗窃的电缆线"
   negativemodelrule:
 buySellextraction:
   name: "买卖、介绍买卖、典当、拍卖、抵押或者用其抵债的(替换为人名)"
