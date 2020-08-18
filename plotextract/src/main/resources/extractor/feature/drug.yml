@@ -3,7 +3,7 @@ againstWithViolenceExpListextract:
   type: "共有纯正则"
   code: "1001"
   positivepurerule:
-    - "抗拒检查"
+    - "暴力抗拒检查"
     - "强行冲卡"
     - "驾驶.{1,9}车.{0,9}撞击"
     - "用.{1,9}匕首.{0,9}刺伤"
@@ -13,6 +13,7 @@ againstWithViolenceExpListextract:
     - "逃跑.{1,9}撞"
   positivemodelrule:
   negativepurerule:
+    - "四）?以暴力抗拒检查、拘留、逮捕，情节严重的?"
   negativemodelrule:
 govEmplyeeInvolvedExpListextract:
   name: "国家工作人员走私、贩卖、运输、制造毒品"
@@ -20,7 +21,7 @@ govEmplyeeInvolvedExpListextract:
   code: "1002"
   positivepurerule:
     - "被告人.{0,20}[系|是].{0,20}行政事业编制工作人员"
-    - "被告人.{0,20}[系|是|为].{1,12}[州|省|市|区|县].{2,10}[职工|工作人员|退休]"
+    - "被告人.{0,20}[系|是|为].{1,12}[州|省|市|区|县](?!人民检察院指控).{2,10}(职工|工作人员|退休)"
     - "被告人.{0,20}[州|省|市|区|县].{0,20}事业单位.{1,20}工作"
     - "为.{1,20}单位在编人员"
   positivemodelrule:
@@ -55,6 +56,7 @@ multipleCrimesReListextract:
     - ".{0,50}多次.{0,5}贩卖.{0,10}吸毒"
   positivemodelrule:
   negativepurerule:
+    "多次贩卖毒品[^，。？！]*?不能成立"
   negativemodelrule:
 poorQualityReListextract:
   name: "毒品含量明显偏低"
@@ -70,13 +72,18 @@ poorQualityReListextract:
     - "加入辅料"
   positivemodelrule:
   negativepurerule:
+    - "不能以毒品含量偏低进行考量"
+    - "供认变化为其贩卖的毒品海洛因中掺入脑复康成份"
+    - "(毒品|海洛因)含量(明显)?偏低[^，。？！]*?不予采纳"
+    - "掺入[^。？！]*?不足以根据毒品的纯度对其从轻处罚"
+    - "公安机关在提取时可能掺入杂物"
   negativemodelrule:
 quantityLureReListextract:
   name: "存在数量引诱情形"
   type: "共有纯正则"
   code: "1007"
   positivepurerule:
-    - "犯意引诱"
+    - "(?<!(不存在|并非特情))犯意引诱"
     - "数量引诱"
   positivemodelrule:
   negativepurerule:
@@ -99,6 +106,7 @@ sell2multipleReListextract:
     - "向多人.{0,5}贩卖"
   positivemodelrule:
   negativepurerule:
+    - "四）?项的规定：向多人贩卖或者多次贩毒的"
   negativemodelrule:
 sell2studentsReListextract:
   name: "向在校学生贩卖毒品"
@@ -136,6 +144,7 @@ underInstigationReListextract:
     - "被告人.{0,20}帮忙.{2,20}运.{2,20}毒品"
   positivemodelrule:
   negativepurerule:
+    - "受人雇佣、指使运输[^？！]{0,40}(无(其他|相关)(任何)?证据(予以)?(佐证|证实)|不予采信)"
   negativemodelrule:
 utilizeSpecialsReListextract:
   name: "组织、利用残疾人、严重疾病患者、怀孕或者正在哺乳自己婴儿的妇女"
@@ -160,6 +169,9 @@ utilizeMinorsReListextract:
     - "利用未成年人*[(贩卖|贩毒|出售)]"
   positivemodelrule:
   negativepurerule:
+    - "利用(、教唆)?未成年人贩卖毒品[^。？！]*?(没有充分的证据印证|证据不(足|充分))"
+    - "不属于刑法规定的“利用未成年人贩毒”的情形"
+    - "利用、教唆未成年人走私、贩卖、运输、制造毒品，或者向未成年人出售毒品的，从重处罚"
   negativemodelrule:
 yapianextract:
   name: "鸦片"
