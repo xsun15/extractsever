@@ -26,6 +26,7 @@ lossIrreparableextraction:
   code: "1003"
   positivepurerule:
     - "(造成|致|使|而)[^，。；]*?无法(挽回|追回)"
+    - "至今仍未追回"
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
@@ -34,7 +35,7 @@ obstructionextraction:
   type: "共有纯正则"
   code: "1004"
   positivepurerule:
-    - "[致使][^，。；]*?(无法|未能)及时查[处获]"
+    - "[致使][^，。；]*?(无法|未能)[^，。；]*?及时查[处获]"
     - "妨害[^，。；]*?对上游[^，。；]*?犯罪的追究"
   positivemodelrule:
   negativepurerule:
@@ -55,9 +56,10 @@ selfUseextraction:
   code: "1006"
   positivepurerule:
     - "明知[^，。；]*?(犯罪所得|被盗|赃[车物])[^，。；]*?自用"
-    - "被告人[^。；]*?[购买收][^，。；]*?自用"
+    - "被告人[^。；]*?[购买收][^。；]*?[自借].{0,10}用"
   positivemodelrule:
   negativepurerule:
+    - "自用的辩护意见[^？！]*?不予采纳"
   negativemodelrule:
 computerInformationCrimeextraction:
   name: "明知是非法获取计算机信息系统数据犯罪所获取的数据、非法控制计算机信息系统犯罪所获取的计算机信息系统控制权，而予以转移、收购、代为销售或者以其他方法掩饰、隐瞒"
@@ -75,6 +77,8 @@ seriousUpstreamCrimeextraction:
   positivepurerule:
     - "上游犯罪行为.{0,5}较重"
     - "明知.{0,5}(从事)?犯罪(活动|所得).{0,5}(而|仍).{0,10}(协助|予以)"
+    - "明知[^。？！]*?(盗|犯罪|无任何手续|赃物|来路不明|非法经营|没有合法有效的来历凭证|窃)[^。？！]*(购|帮助|提供|窝藏|存放|卖|收取|销售|抵押)"
+    - "[购买][^。？！]*?[盗抢窃][^，。？！]*?(赃物|手机|项链|摩托车)"
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
@@ -86,9 +90,10 @@ majorPublicInterestextraction:
     - "(涉及|危害|威胁).{0,15}国家安全"
     - "(涉及|危害|威胁).{0,15}公共安全"
     - "(涉及|危害|威胁).{0,15}公共利益"
-    - "(盗|偷卖).*?(电缆|原油)"
+    - "(?<!不是)(盗|偷卖).*?(电缆|原油)"
   positivemodelrule:
   negativepurerule:
+    - "酒驾[^。？！]*?(涉及|危害|威胁).{0,15}公共安全"
   negativemodelrule:
 buySellextraction:
   name: "买卖、介绍买卖、典当、拍卖、抵押或者用其抵债的(替换为人名)"
@@ -102,7 +107,8 @@ buySellextraction:
     - "(盗|抢劫|丢失|骗|未提供.{0,5}合法有效|无合法来历凭证|没有任何合法手续)[^。？！；]+(?<!自行|[123456789]|电瓶|电动|押|三轮|用|停)车(?!电瓶|计|后备箱|内|被|运|拉|欲|以|总计|为|公司)[^。？！；]*?(购|买|卖|典当|拍卖|抵押|抵债|质押)"
     - "(?<!自行|[123456789]|电瓶|电动|押|三轮|用|停|驾|下|上)车(?!电瓶|计|后备箱|内|被|运|拉|欲|以|总计|系|辆|店|公司|厅|搭乘|后|到|倒至).*?(盗|抢劫|丢失|骗|未提供合法有效|犯罪所得|无有效凭证)[^。？！；]*?(购|买|卖|典当|拍卖|抵押|抵债)"
     - "(?<!自行|[123456789]|电瓶|电动|押|三轮|用|停|驾|下|上|该)车(?!电瓶|计|后备箱|内|被|运|拉|欲|以|总计|开|系|辆|店|公司|厅|搭乘|后|到|倒至).*?(购|买|卖|典当|拍卖|抵押|抵债)[^。？！；]*?(盗|抢劫|丢失|骗|未提供合法有效)"
-    - "被告人.{0,10}明知是赃车而(购|买|卖|典当|拍卖|抵押|抵债)"
+    - "被告人[^。？！]*?(明知|没有|未核实)[^。？！]*?(赃[车物]|盗|凭证)[^。？！]*?(而|仍|先后|从|以|接受)[^，。？！]*?(购|买|卖|典当|拍卖|抵押|抵债)"
+    - "购买[^，。？！]*?无合法有效来历证明[^，。？！]*?三轮车"
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
@@ -124,8 +130,9 @@ modifyVehicleIdextraction:
   type: "共有纯正则"
   code: "1012"
   positivepurerule:
-    - "改.{0,10}发动机号"
+    - "(改|磨掉).{0,10}(发动机|车架)号"
     - "改.{0,10}车.{0,10}识别.{0,5}号"
+    - "发动机号.{0,10}改"
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
@@ -136,6 +143,8 @@ modifyVehicleShapeextraction:
   positivepurerule:
     - "[改涂喷].{0,10}车.{0,10}色"
     - "改.{0,10}车.{0,10}外形"
+    - "改装"
+    - "车.{0,10}色.{0,10}[改涂喷]"
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
@@ -148,15 +157,17 @@ provideVehicleCertificateextraction:
   positivemodelrule:
   negativepurerule:
     - "提供伪造的(整车合格证等凭证|机动车号牌)"
-    - "未向出售人索要[^，。？！；]来历凭证"
-    - "(被害人|失主|买卖方)[^，。？！]*?提供的((购车)?发票(和追回的车辆能够)?|车主授权委托书和身份)证明"
+    - "未向出售人索要[^，。？！；]*?来历凭证"
+    - "(被害人|失主|[买卖方]*?)[^，。？！]*?提供的((购车)?发票(和追回的车辆能够)?|车主授权委托书和身份)证明"
+    - "出售的[^，。？！]*?车辆?(无|没有)(合法)?有效[^，。？！]*?凭证"
   negativemodelrule:
 fakeVehicleCertificateextraction:
   name: "提供或者出售伪造、变造的机动车来历凭证、整车合格证、号牌以及有关机动车的其他证明和凭证的"
   type: "共有纯正则"
   code: "1015"
   positivepurerule:
-    - "伪造.{0,10}车.{0,10}(凭证|合格证|号牌|证明)"
+    - "(伪造|定制).{0,15}车.{0,10}(凭证|合格证|号牌|证明|牌照)"
+    - "车辆证件为假冒"
   positivemodelrule:
   negativepurerule:
   negativemodelrule:
